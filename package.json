@@ -1,0 +1,19 @@
+{
+  "name": "goldencat",
+  "version": "1.0.0",
+  "description": "Wordpress Starter Theme For 2021. This theme is a base created to speedup project init It's the result of developer experience.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noveni/goldencat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noveni/goldencat/issues"
+  },
+  "homepage": "https://github.com/noveni/goldencat#readme"
+}
