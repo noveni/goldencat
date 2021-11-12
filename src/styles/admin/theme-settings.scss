@@ -1,0 +1,51 @@
+.toplevel_page_goldencat-theme-settings {
+	
+	#wpcontent {
+		padding-left: 0;
+	}
+}
+
+#goldencat-theme-settings {
+
+	.goldencat-settings-header {
+		text-align: center;
+		margin: 0 0 1rem;
+		background: #fff;
+		border-bottom: 1px solid #dcdcde;
+
+		h1 {
+			display: inline-block;
+			font-weight: 600;
+			margin: 0 0.8rem 1rem;
+			font-size: 23px;
+			padding: 9px 0 4px 0;
+			line-height: 1.3;
+		}
+	}
+
+	.goldencat-settings-title-section {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		clear: both;
+		padding-top: 8px;
+	}
+}
+
+
+.goldencat-theme-settings-tab-panel {
+
+	display: inline-block;
+
+	.components-tab-panel__tabs-item:focus {
+		outline: none;
+	}
+	.components-tab-panel__tabs-item.is-active {
+		font-weight: 600;
+	}
+}
+
+.goldencat-settings-body {
+	max-width: 800px;
+	margin: 0 auto;
+}

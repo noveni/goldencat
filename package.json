@@ -4,7 +4,12 @@
   "description": "Wordpress Starter Theme For 2021. This theme is a base created to speedup project init It's the result of developer experience.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "production": "mix --production"
   },
   "repository": {
     "type": "git",
@@ -15,5 +20,21 @@
   "bugs": {
     "url": "https://github.com/noveni/goldencat/issues"
   },
-  "homepage": "https://github.com/noveni/goldencat#readme"
+  "homepage": "https://github.com/noveni/goldencat#readme",
+  "devDependencies": {
+    "@tinypixelco/laravel-mix-wp-blocks": "^1.1.0",
+    "@wordpress/babel-preset-default": "^6.3.4",
+    "@wordpress/dependency-extraction-webpack-plugin": "^3.2.1",
+    "@wordpress/stylelint-config": "^19.1.0",
+    "browser-sync": "^2.27.7",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "favicons-webpack-plugin": "^5.0.2",
+    "laravel-mix": "^6.0.39",
+    "resolve-url-loader": "^4.0.0",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
+    "stylelint": "^13.13.1",
+    "stylelint-webpack-plugin": "^3.1.0"
+  }
 }

@@ -19,7 +19,7 @@ if ( ! defined( '_S_VERSION' ) ) {
  * @param string $title
  */
 $en_error = function ($message, $subtitle = '', $title = '') {
-    $title = $title ?: __('Ecran Noir &rsaquo; Error', 'ecrannoirtwentyone');
+    $title = $title ?: __('Ecran Noir &rsaquo; Error', 'goldencat');
     $footer = '<a href="https://ecrannoir.be/">ecrannoir.be</a>';
     $message = "<h1>{$title}<br><small>{$subtitle}</small></h1><p>{$message}</p><p>{$footer}</p>";
     wp_die($message, $title);
@@ -27,7 +27,7 @@ $en_error = function ($message, $subtitle = '', $title = '') {
 
 // This theme requires WordPress 5.3 or later.
 if ( version_compare( $GLOBALS['wp_version'], '5.8', '<' ) ) {
-    $en_error(__('You must be using WordPress 5.8.0 or greater.', 'ecrannoirtwentyone'), __('Invalid WordPress version', 'ecrannoirtwentyone'));
+    $en_error(__('You must be using WordPress 5.8.0 or greater.', 'goldencat'), __('Invalid WordPress version', 'goldencat'));
 }
 
 
@@ -35,3 +35,18 @@ define( 'GOLDENCAT_THEME_ROOT_DIR', dirname( __DIR__ ) . DIRECTORY_SEPARATOR );
 define( 'GOLDENCAT_THEME_ROOT_DIR_THEME', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 define( 'GOLDENCAT_THEME_ROOT_URI', get_theme_root_uri('goldencat', 'goldencat') . DIRECTORY_SEPARATOR );
 define( 'GOLDENCAT_ECRANNOIR_POST_REVISIONS', 0 );
+
+
+require get_template_directory() . '/inc/theme-helpers.php';
+require get_template_directory() . '/inc/classes/class-theme-base.php';
+require get_template_directory() . '/inc/classes/class-theme-settings.php';
+require get_template_directory() . '/inc/classes/class-theme-scripts.php';
+
+
+
+$theme = new GoldenCatThemeBase(
+    array(
+        'disable_comment' => true,
+        'clean' => true,
+    )
+);
