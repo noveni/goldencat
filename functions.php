@@ -42,6 +42,7 @@ require get_template_directory() . '/inc/classes/class-theme-base.php';
 require get_template_directory() . '/inc/classes/class-theme-admin.php';
 require get_template_directory() . '/inc/classes/class-theme-settings.php';
 require get_template_directory() . '/inc/classes/class-theme-scripts.php';
+require get_template_directory() . '/inc/classes/class-theme-meta.php';
 
 
 

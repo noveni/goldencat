@@ -91,6 +91,7 @@ class GoldenCatThemeBase
 
         $this->imageSizes();
 
+        $this->addMeta();
         
     }
 
@@ -459,6 +460,7 @@ class GoldenCatThemeBase
             add_image_size( $slug, $width, $height, $crop ); 
         }
     }
+
     public function addImageSizesNames( $sizes )
     {
         $imageSizes = $this->theme_configuration['image_sizes'];
@@ -472,5 +474,24 @@ class GoldenCatThemeBase
         }
 
         return array_merge( $sizes, $parsed_sizes );
+    }
+
+     /**
+     * Add Meta to Theme
+     */
+    public function addMeta()
+    {
+        $open_graph = boolval( get_option( 'goldencat_theme_opengraph_on', true ) ?? false);
+		if ($open_graph === true) {
+            add_action( 'wp_head', [GoldenCatThemeMeta::class, 'print_meta'], 5);
+		}
+		add_action( 'wp_head', [GoldenCatThemeMeta::class, 'printFavicon'], 101);
+
+        $ga_id = get_option( 'goldencat_theme_ga_measurement_id', false);
+		if ( $ga_id && $ga_id != '' ) {
+			add_action( 'wp_head', function() use ( $ga_id ){
+				GoldenCatThemeMeta::addAnalytics($ga_id);
+			}, 102);
+		}
     }
 }

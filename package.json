@@ -29,6 +29,7 @@
     "browser-sync": "^2.27.7",
     "browser-sync-webpack-plugin": "^2.3.0",
     "clean-webpack-plugin": "^4.0.0",
+    "favicons": "^6.2.2",
     "favicons-webpack-plugin": "^5.0.2",
     "laravel-mix": "^6.0.39",
     "resolve-url-loader": "^4.0.0",

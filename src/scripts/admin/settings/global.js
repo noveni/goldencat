@@ -113,7 +113,7 @@ class GlobalSettings extends Component {
             isDismissible: true,
         }
       );
-  });
+    });
   }
 
   render() {

@@ -80,5 +80,23 @@ class GoldenCatThemeSettings
 				'default'      => false,
 			)
 		);
+		register_setting(
+			'goldencat_theme_settings',
+			'goldencat_theme_opengraph_on',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+		register_setting(
+			'goldencat_theme_settings',
+			'goldencat_theme_ga_measurement_id',
+			array(
+				'type'         => 'string',
+				'show_in_rest' => true,
+				'default'      => '',
+			)
+		);
 	}
 }
