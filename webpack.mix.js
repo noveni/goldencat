@@ -24,6 +24,7 @@ mix.js('src/scripts/theme/index.js', 'js/theme.js')
   .block('src/scripts/admin/settings/index.js', 'js/theme-admin-settings.js')
   .sass('src/styles/admin/theme-settings.scss', 'theme-admin-settings.css')
   .sass('src/styles/woocommerce.scss', 'woocommerce.css')
+  .js('src/scripts/admin/taxonomy-meta-field/index.js', 'js/admin/taxonomy-meta-field.js')
   .options({
     fileLoaderDirs: {
       images: 'img',

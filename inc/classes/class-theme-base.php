@@ -416,8 +416,6 @@ class GoldenCatThemeBase
 		 * Enqueue Login Assets
 		 */
 		add_action( 'login_enqueue_scripts', function() {
-			// EcranNoirTwentyOne_Scripts::toEnqueueScript('login');
-			// EcranNoirTwentyOne_Scripts::toEnqueueStyle('login');
 
 			$style = function() {
 				?>

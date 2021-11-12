@@ -28,7 +28,7 @@ function ec_dump($var, $die = false)
  *
  * @return string|bool False on failure, the result of the shortcode on success.
  */
-function ecrannoirtwentyone_do_shortcode( $tag, array $atts = array(), $content = null ) {
+function goldencat_do_shortcode( $tag, array $atts = array(), $content = null ) {
 	global $shortcode_tags;
 
 	if ( ! isset( $shortcode_tags[ $tag ] ) ) {
@@ -39,7 +39,7 @@ function ecrannoirtwentyone_do_shortcode( $tag, array $atts = array(), $content 
 }
 
 
-function ecrannoir_get_theme_color() {
+function goldencat_get_theme_color() {
 
 
     $theme_json = WP_Theme_JSON_Resolver::get_theme_data();

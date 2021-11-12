@@ -23,7 +23,7 @@ class GoldenCatThemeScripts
         $script_asset_path = $base_dir . $scriptName . '.asset.php';
         $script_asset = file_exists($script_asset_path) ? require($script_asset_path) : array('dependencies' => array(), 'version' => filemtime( $script_path ));
         
-        $handleFileName = $customHandleScriptName !== '' ? $customHandleScriptName : 'ecrannoirtwentyone-' . $scriptName . '-scripts';
+        $handleFileName = $customHandleScriptName !== '' ? $customHandleScriptName : 'goldencat-' . $scriptName . '-scripts';
         // Enqueue Scripts
         wp_enqueue_script($handleFileName, $base_uri . $scriptName . '.js', $script_asset['dependencies'], $script_asset['version'], true);
     }
@@ -47,7 +47,7 @@ class GoldenCatThemeScripts
 
         $script_asset = file_exists($script_asset_path) ? require($script_asset_path) : array('dependencies' => array(), 'version' => filemtime( $style_path ));
         
-        $handleFileName = $customHandleStyleName !== '' ? $customHandleStyleName : 'ecrannoirtwentyone-' . $styleName . '-styles';
+        $handleFileName = $customHandleStyleName !== '' ? $customHandleStyleName : 'goldencat-' . $styleName . '-styles';
         // Enqueue Style
         wp_enqueue_style($handleFileName, $base_uri . $styleName . '.css', $script_asset['dependencies'], $script_asset['version'], $media);
     }
