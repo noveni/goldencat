@@ -9,21 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 class GoldenCatThemeBase
 {
 
-     /**
+    /**
      * The theme configuration
      */
     protected $theme_configuration = array();
-
-    /**
-     * Is the theme need to be clean
-     */
-    private $clean_wordpress = false;
-
-
-    /**
-     * Is the theme need to disable comment
-     */
-    private $disable_comment = false;
 
     /**
      * Determines whether a class has already been instanciated.
@@ -40,11 +29,12 @@ class GoldenCatThemeBase
             'disable_comment' => false,
             'clean' => false,
             'menus' => array(
-                'primary'   => __( 'Header Menu', 'ecrannoirtwentyone' ),
-                'mobile'    => __( 'Mobile Menu', 'ecrannoirtwentyone' ),
+                'primary'   => __( 'Primary Menu', 'goldencat' ),
+                'footer'    => __( 'Footer Menu', 'goldencat' ),
             ),
             'widgets' => array(),
-            'theme_json_config' => array()
+            'theme_json_config' => array(),
+            'editor_styles' => './assets/editor.css'
         );
 
         $this->theme_configuration = wp_parse_args( $theme_configuration, $defaults );
@@ -64,7 +54,8 @@ class GoldenCatThemeBase
 
     public function init() {
 
-        add_action('template_redirect', 'goldencat_redirect' );
+        // Redirect to https
+        add_action('template_redirect', [ $this, 'redirectHttps'] );
 
         // Clean All Useless Stuff
         if ($this->theme_configuration['clean'] === true) {
@@ -74,12 +65,36 @@ class GoldenCatThemeBase
         // Check the maintenance Mode
         $this->checkMaintenanceMode();
 
-
+        
         // Setup Admin
-        $this->setupAdmin();
-        
+        new GoldenCatThemeAdmin();
+        // Setup theme
         add_action( 'after_setup_theme', [ $this, 'themeSetupAction'] );
+        // Setup Widget
+        add_action( 'widgets_init', [ $this, 'widgetSetupAction'] );
+
+        // Theme global Filter
+        $this->globalFilters();
+
+        // Clean All Useless Stuff
+        if ($this->theme_configuration['disable_comment'] === true) {
+            $this->disableComment();
+        }
+
+        $this->enqueueScripts();
+
         
+    }
+
+    /**
+     * Redirect always to https
+     */
+    public function redirectHttps()
+    {
+        if (!is_ssl()) {
+            wp_redirect('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], 301);
+            exit();
+        }
     }
 
     /**
@@ -112,6 +127,28 @@ class GoldenCatThemeBase
     }
 
     /**
+     * Check wether the maintenance mode is On
+     */
+    private function checkMaintenanceMode()
+    {
+        $maintenance_mode = boolval( get_option( 'goldencat_theme_maintenance_on', false ) ?? false);
+		if ($maintenance_mode === true) {
+			add_action( 'get_header', [ $this, 'doMaintenanceMode' ] );
+		}
+    }
+
+    /**
+     * Apply the maintenance mode and display message
+     */
+    public function doMaintenanceMode()
+    {
+        if ( !current_user_can('edit_themes') || !is_user_logged_in() ){
+            $site_title = get_bloginfo( 'name' );
+            wp_die('<div style="text-align:center"><h1 style="color:black">' . $site_title . '</h1><p>Nous effectuons une maintenance. Nous serons de retour en ligne sous peu!</p></div>');
+        }
+    }
+
+    /**
      * Setup the theme default and register support
      * 
      * Note that this function is hooked into the after_setup_theme hook, which
@@ -137,30 +174,258 @@ class GoldenCatThemeBase
         * WordPress will provide it for us.
         */
         add_theme_support( 'title-tag' );
+
+        /**
+         * Add post-formats support.
+         */
+        add_theme_support(
+            'post-formats',
+            array(
+                'link',
+                'aside',
+                'gallery',
+                'image',
+                'quote',
+                'status',
+                'video',
+                'audio',
+                'chat',
+            )
+        );
+
+        /*
+         * Enable support for Post Thumbnails on posts and pages.
+         *
+         * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+         */
+        add_theme_support( 'post-thumbnails' );
+        set_post_thumbnail_size( 1568, 9999 );
+
+        register_nav_menus( $this->theme_configuration['menus'] );
+
+        /*
+		 * Switch default core markup for search form, comment form, and comments
+		 * to output valid HTML5.
+		 */
+		add_theme_support(
+			'html5',
+			array(
+                'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+				'style',
+				'script',
+				'navigation-widgets',
+			)
+        );
+
+        // Add theme support for selective refresh for widgets.
+		add_theme_support( 'customize-selective-refresh-widgets' );
+
+		// Add support for Block Styles.
+		add_theme_support( 'wp-block-styles' );
+        
+        // Add support for editor styles.
+        add_theme_support( 'editor-styles' );
+
+        add_editor_style(  $this->theme_configuration['editor_styles'] );
+
+        // Add support for responsive embedded content.
+        add_theme_support( 'responsive-embeds' );
+
+        remove_theme_support( 'core-block-patterns' );
     }
 
-
-    private function setupAdmin()
+    public function widgetSetupAction()
     {
+        $sidebars = $this->theme_configuration['widgets'];
+        $config = [
+            'before_title'  => '',
+            'after_title'   => '',
+            'before_widget' => '<div class="widget %2$s">',
+            'after_widget'  => '</div>',
+        ];
 
-        // if (is_admin()) {
-        new GoldenCatThemeSettings();
-            // require get_template_directory() . '/inc/theme-admin.php';
-		// }
+        if (!empty($sidebars)) {
+            foreach ($sidebars as $sidebar) {
+                register_sidebar(
+                    array_merge(
+                        $config,
+                        $sidebar,
+                    )
+                );
+            }
+        }
     }
 
     /**
-     * Check wether the maintenance mode is On
+     * Add global Filter
      */
-    private function checkMaintenanceMode()
+    private function globalFilters()
     {
-        
-        $maintenance_mode = boolval( get_option( 'goldencat_theme_maintenance_on', false ) ?? false);
-		if ($maintenance_mode === true) {
-			add_action('get_header', 'goldencat_maintenance_mode');
-		}
+        add_filter( 'wp_revisions_to_keep', function( $num, $post ) {
+
+			if (defined('GOLDENCAT_POST_REVISIONS')) {
+				$num = GOLDENCAT_POST_REVISIONS;// Limit revisions otherwise
+			}
+			
+			return $num;
+		}, 10, 2 );
     }
 
+    /**
+     * Disable Comment
+     */
+    private function disableComment()
+    {
+        add_action( 'widgets_init', function() {
 
+            unregister_widget( 'WP_Widget_Recent_Comments' );
+            /**
+             * The widget has added a style action when it was constructed - which will
+             * still fire even if we now unregister the widget... so filter that out
+             */
+            add_filter( 'show_recent_comments_widget_style', '__return_false' );
+        } );
+
+        add_filter( 'wp_headers', function( $headers ) {
+            unset( $headers['X-Pingback'] );
+            return $headers;
+        } );
+
+        add_action( 'template_redirect', function() {
+            if ( is_comment_feed() ) {
+                wp_die( __( 'Comments are closed.', 'disable-comments' ), '', array( 'response' => 403 ) );
+            }
+        }, 9 );   // before redirect_canonical.
+
+        function comment_disable_admin_bar()
+        {
+            if ( is_admin_bar_showing() ) {
+                // Remove comments links from admin bar.
+                remove_action( 'admin_bar_menu', 'wp_admin_bar_comments_menu', 60 );
+                if ( is_multisite() ) {
+                    add_action( 'admin_bar_menu', function( $wp_admin_bar ) {
+                        // We have no way to know whether the plugin is active on other sites, so only remove this one.
+                        $wp_admin_bar->remove_menu( 'blog-' . get_current_blog_id() . '-c' );
+                    }, 500);
+                }
+            }
+        }
+        // Admin bar filtering has to happen here since WP 3.6.
+        add_action( 'template_redirect', 'comment_disable_admin_bar' );
+        add_action( 'admin_init', 'comment_disable_admin_bar' );
+
+        // Disable Comments REST API Endpoint
+        add_filter( 'rest_endpoints', function( $endpoints ) {
+            unset( $endpoints['comments'] );
+            return $endpoints;
+        } );
+
+        // Remove Comments Menu if it's disabled
+        add_action('wp_before_admin_bar_render', function() {
+            global $wp_admin_bar;
+            $wp_admin_bar->remove_node('comment');
+        }); 
+
+        function filter_admin_menu() {
+            global $pagenow;
+            if ( $pagenow == 'comment.php' || $pagenow == 'edit-comments.php' )
+                wp_die( __( 'Comments are closed.' ), '', array( 'response' => 403 ) );
+
+            remove_menu_page( 'edit-comments.php' );
+        }
+
+        function admin_css(){
+            echo '<style>
+                #dashboard_right_now .comment-count,
+                #dashboard_right_now .comment-mod-count,
+                #latest-comments,
+                #welcome-panel .welcome-comments,
+                .user-comment-shortcuts-wrap {
+                    display: none !important;
+                }
+            </style>';
+        }
+    
+
+        if( is_admin() ) {
+            add_action( 'admin_menu', 'filter_admin_menu', 9999 );	// do this as late as possible
+            add_action( 'admin_print_styles-index.php', 'admin_css' );
+            add_action( 'admin_print_styles-profile.php', 'admin_css' );
+            add_action( 'wp_dashboard_setup', function() {
+                remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
+            } );
+            add_filter( 'pre_option_default_pingback_flag', '__return_zero' );
+        }
+    }
+
+    private function enqueueScripts()
+    {
+        /**
+		 * Enqueue front-end assets.
+		 */
+		add_action('wp_enqueue_scripts', function ( $hook ) {
+            global $wp_query; 
+
+			GoldenCatThemeScripts::toRegisterScript('theme', 'goldencat-front-scripts');
+            wp_localize_script( 'goldencat-front-scripts', 'goldencat_theme_params', array(
+                'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
+                'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
+                'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
+                'max_page' => $wp_query->max_num_pages
+            ) );
+            // GoldenCatThemeScripts::toEnqueueScript('theme', 'goldencat-front-scripts');
+            wp_enqueue_script('goldencat-front-scripts');
+			wp_script_add_data('goldencat-front-scripts', 'async', true );
+			GoldenCatThemeScripts::toEnqueueStyle('style');
+		});
+
+        
+        /**
+		 * Enqueue admin assets.
+		 */
+		add_action('admin_enqueue_scripts', function($hook) {
+            if ( ! did_action( 'wp_enqueue_media' ) ) {
+                wp_enqueue_media();
+            }
+			GoldenCatThemeScripts::toEnqueueScript('admin');
+			GoldenCatThemeScripts::toEnqueueStyle('admin');
+        });
+        
+        /**
+		 * Enqueue editor assets.
+		 */
+		add_action('enqueue_block_editor_assets', function($hook) {
+            GoldenCatThemeScripts::toEnqueueScript( 'editor' );
+            GoldenCatThemeScripts::toEnqueueStyle( 'admin-editor' );
+        });
+        
+
+        /**
+		 * Enqueue Login Assets
+		 */
+		add_action( 'login_enqueue_scripts', function() {
+			// EcranNoirTwentyOne_Scripts::toEnqueueScript('login');
+			// EcranNoirTwentyOne_Scripts::toEnqueueStyle('login');
+
+			$style = function() {
+				?>
+				<style type="text/css">
+				#login h1 a, .login h1 a {
+					background-image: url(<?php echo get_template_directory_uri() . '/assets/img/logo-theme-author.svg'; ?>);
+					background-size: 80%;
+					height: 100px;
+					width: 100%;
+				}
+				</style>
+				<?php
+			};
+			$style();
+				
+		});
+    }
 
 }

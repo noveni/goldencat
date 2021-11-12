@@ -34,11 +34,12 @@ if ( version_compare( $GLOBALS['wp_version'], '5.8', '<' ) ) {
 define( 'GOLDENCAT_THEME_ROOT_DIR', dirname( __DIR__ ) . DIRECTORY_SEPARATOR );
 define( 'GOLDENCAT_THEME_ROOT_DIR_THEME', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 define( 'GOLDENCAT_THEME_ROOT_URI', get_theme_root_uri('goldencat', 'goldencat') . DIRECTORY_SEPARATOR );
-define( 'GOLDENCAT_ECRANNOIR_POST_REVISIONS', 0 );
+define( 'GOLDENCAT_POST_REVISIONS', 0 );
 
 
 require get_template_directory() . '/inc/theme-helpers.php';
 require get_template_directory() . '/inc/classes/class-theme-base.php';
+require get_template_directory() . '/inc/classes/class-theme-admin.php';
 require get_template_directory() . '/inc/classes/class-theme-settings.php';
 require get_template_directory() . '/inc/classes/class-theme-scripts.php';
 
@@ -48,5 +49,31 @@ $theme = new GoldenCatThemeBase(
     array(
         'disable_comment' => true,
         'clean' => true,
+        'widgets' => array(
+            array(
+                'name'          => __('Header Line', 'goldencat'),
+                'id'            => 'header-line',
+                'description'   => __( 'Add Widgets above the header.', 'goldencat' ),
+            ),
+            array(
+                'name'          => __('Big Footer', 'goldencat'),
+                'id'            => 'footer-main',
+                'description'   => __( 'Add Widgets here to appear in the main footer.', 'goldencat' ),
+            ),
+        )
     )
 );
+
+// Contact Form 7
+if ( class_exists('WPCF7') ) {
+    add_filter( 'wpcf7_load_js', '__return_false' );
+    add_filter( 'wpcf7_load_css', '__return_false' );
+
+    function load_wpcf7_js() {
+        if (is_page( 'contact' )){
+            wpcf7_enqueue_scripts();
+            wpcf7_enqueue_styles();
+        }
+    }
+    add_action( 'wp_footer', 'load_wpcf7_js' );
+}

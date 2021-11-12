@@ -17,46 +17,6 @@ function ec_dump($var, $die = false)
 }
 
 
-/*
- * Replace WP default login error messages
- */
-function goldencat_custom_login_error_msg( $error )
-{
-
-    // we will override only the above errors and not anything else
-    if ( is_int( strpos( $error, 'le mot de passe que vous avez saisi pour') ) || 
-        is_int( strpos( $error, 'Adresse e-mail inconnue' ) ) || 
-        is_int( strpos( $error, 'Identifiant inconnu' ) ) 
-    ) {
-        $error = '<strong>Erreur:</strong> Oops. Informations de connexion incorrectes.<br /><a href="' . wp_lostpassword_url() . '">Mot de passe perdu ?</a>';
-    }
-
-    return $error;
-}
-
-
-/**
- * Activate WordPress Maintenance Mode
- */
-function goldencat_maintenance_mode() {
-    if(!current_user_can('edit_themes') || !is_user_logged_in()){
-        $site_title = get_bloginfo( 'name' );
-        wp_die('<div style="text-align:center"><h1 style="color:black">' . $site_title . '</h1><p>Nous effectuons une maintenance. Nous serons de retour en ligne sous peu!</p></div>');
-    }
-}
-
-
-/**
- * Redirect always to https
- */
-function goldencat_redirect() {
-    if (!is_ssl()) {
-        wp_redirect('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], 301);
-        exit();
-    }
-}
-
-
 /**
  * Call a shortcode function by tag name.
  *

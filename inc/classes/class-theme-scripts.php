@@ -55,8 +55,9 @@ class GoldenCatThemeScripts
     public static function toRegisterScript($scriptName, $customHandleScriptName) {
 
         $script_asset_path = get_template_directory() . '/assets/js/' . $scriptName . '.asset.php';
-        $script_asset = file_exists($script_asset_path) ? require($script_asset_path) : array('dependencies' => array(), 'version' => filemtime( $script_path ));
         
-        wp_register_script($customHandleScriptName, get_template_directory_uri() . '/assets/js/' . $scriptName . '.js', $script_asset['dependencies'], $script_asset['version']);
+        $script_asset = file_exists($script_asset_path) ? require($script_asset_path) : array('dependencies' => array(), 'version' => 1);
+        
+        wp_register_script($customHandleScriptName, get_template_directory_uri() . '/assets/js/' . $scriptName . '.js', $script_asset['dependencies'], $script_asset['version'], true);
     }
 }
