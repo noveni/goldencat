@@ -60,6 +60,14 @@ $theme = new GoldenCatThemeBase(
                 'id'            => 'footer-main',
                 'description'   => __( 'Add Widgets here to appear in the main footer.', 'goldencat' ),
             ),
+        ),
+        'image_sizes' => array(
+            'goldencat_thumb' => array(
+                'nice_name' => __('Vignette du thème'),
+                'width' => 300,
+                'height' => 400,
+                'crop' => true
+            )
         )
     )
 );

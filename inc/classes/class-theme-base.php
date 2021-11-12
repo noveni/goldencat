@@ -25,7 +25,6 @@ class GoldenCatThemeBase
     {
 
         $defaults = array(
-            'theme_content_width' => 780,
             'disable_comment' => false,
             'clean' => false,
             'menus' => array(
@@ -33,8 +32,15 @@ class GoldenCatThemeBase
                 'footer'    => __( 'Footer Menu', 'goldencat' ),
             ),
             'widgets' => array(),
-            'theme_json_config' => array(),
-            'editor_styles' => './assets/editor.css'
+            'editor_styles' => './assets/editor.css',
+            'image_sizes' => array(
+                'goldencat_thumb' => array(
+                    'nice_name' => __('Vignette du thème'),
+                    'width' => 300,
+                    'height' => 400,
+                    'crop' => true
+                )
+            )
         );
 
         $this->theme_configuration = wp_parse_args( $theme_configuration, $defaults );
@@ -82,6 +88,8 @@ class GoldenCatThemeBase
         }
 
         $this->enqueueScripts();
+
+        $this->imageSizes();
 
         
     }
@@ -428,4 +436,43 @@ class GoldenCatThemeBase
 		});
     }
 
+    /**
+     * Add Image sizes set in config 
+     * 
+     */
+    public function imageSizes()
+    {
+        $imageSizes = $this->theme_configuration['image_sizes'];
+
+        if ( !empty( $imageSizes ) ) {
+            add_action( 'after_setup_theme', [ $this, 'addImageSizes' ] );
+            add_filter( 'image_size_names_choose', [ $this, 'addImageSizesNames' ] );
+        }
+    }
+
+    public function addImageSizes()
+    {
+        $imageSizes = $this->theme_configuration['image_sizes'];
+
+        foreach ($imageSizes as $slug => $size) {
+            $crop = isset( $size['crop'] ) ? $size['crop'] : false; // (default not cropped)
+            $width = isset( $size['width'] ) ? $size['width'] : 0;
+            $height = isset( $size['height'] ) ? $size['height'] : 0;
+            add_image_size( $slug, $width, $height, $crop ); 
+        }
+    }
+    public function addImageSizesNames( $sizes )
+    {
+        $imageSizes = $this->theme_configuration['image_sizes'];
+
+        $parsed_sizes = []; 
+        // array_map( function($size) {
+        //     return isset( $size['nice_name'] ) ? $size['nice_name'] : 'theme' ;
+        // }, $imageSizes );
+        foreach ($imageSizes as $slug => $size) {
+            $parsed_sizes[$slug] =  isset( $size['nice_name'] ) ? $size['nice_name'] : $slug;
+        }
+
+        return array_merge( $sizes, $parsed_sizes );
+    }
 }
