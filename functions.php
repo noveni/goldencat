@@ -43,7 +43,10 @@ require get_template_directory() . '/inc/classes/class-theme-admin.php';
 require get_template_directory() . '/inc/classes/class-theme-settings.php';
 require get_template_directory() . '/inc/classes/class-theme-scripts.php';
 require get_template_directory() . '/inc/classes/class-theme-meta.php';
+require get_template_directory() . '/inc/classes/class-theme-icons.php';
 
+require get_template_directory() . '/inc/icons-functions.php';
+require get_template_directory() . '/inc/template-functions.php';
 
 
 $theme = new GoldenCatThemeBase(
@@ -53,7 +56,7 @@ $theme = new GoldenCatThemeBase(
         'widgets' => array(
             array(
                 'name'          => __('Header Line', 'goldencat'),
-                'id'            => 'header-line',
+                'id'            => 'header-notice-bar',
                 'description'   => __( 'Add Widgets above the header.', 'goldencat' ),
             ),
             array(
@@ -72,6 +75,16 @@ $theme = new GoldenCatThemeBase(
         )
     )
 );
+
+if ( goldencat_is_woocommerce_activated() ) {
+	// require get_template_directory() . '/classes/EcrannoirTwentyOne-Woocommerce.php';
+    // $theme_woocommerce =new EcranNoirTwentyOne_WooCommerce();
+
+    require  get_template_directory() . '/inc/woocommerce/goldencat-wc.php';
+    // require  get_template_directory() . '/inc/woocommerce/ecrannoirtwentyone-woocommerce-template-functions.php';
+	// require  get_template_directory() . '/inc/woocommerce/ecrannoirtwentyone-woocommerce-functions.php';
+}
+
 
 // Contact Form 7
 if ( class_exists('WPCF7') ) {
