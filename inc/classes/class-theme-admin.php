@@ -41,6 +41,16 @@ class GoldenCatThemeAdmin
 
         }
 
+        if (is_user_logged_in()) {
+            
+            $show_admin_bar = boolval( get_option( 'goldencat_theme_show_admin_bar_on', true ) ?? false);
+            if ($show_admin_bar === true) {
+                show_admin_bar(true);
+            } else {
+                show_admin_bar(false);
+            }
+        }
+
         // Customize Login Errors
         add_filter('login_errors', [ $this, 'customLoginErrorMsg' ]);
 

@@ -103,5 +103,14 @@ class GoldenCatThemeSettings
 				'default'      => '',
 			)
 		);
+		register_setting(
+			'goldencat_theme_settings',
+			'goldencat_theme_show_admin_bar_on',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
 	}
 }

@@ -68,6 +68,7 @@ class GlobalSettings extends Component {
       isAPISaving: false,
       isAPILoaded: false,
       maintenanceOn: false,
+      showAdminBarOn: true,
     };
   }
 
@@ -82,6 +83,7 @@ class GlobalSettings extends Component {
 				this.settings.fetch().then( ( response ) => {
           this.setState( {
             maintenanceOn: Boolean( response[ 'goldencat_theme_maintenance_on' ] ),
+            showAdminBarOn: Boolean( response[ 'goldencat_theme_show_admin_bar_on' ] ),
             isAPILoaded: true,
           })
         })
@@ -92,16 +94,19 @@ class GlobalSettings extends Component {
   saveSettings() {
     const {
       maintenanceOn,
+      showAdminBarOn
     } = this.state;
 
     this.setState({ isAPISaving: true });
 
     const settings = new api.models.Settings( {
       [ 'goldencat_theme_maintenance_on' ]: maintenanceOn ? 'true' : 'false',
+      [ 'goldencat_theme_show_admin_bar_on' ]: showAdminBarOn ? 'true' : 'false',
     } );
     settings.save().then( response => {
       this.setState({
           ['goldencat_theme_maintenance_on']: response['goldencat_theme_maintenance_on'],
+          ['goldencat_theme_show_admin_bar_on']: response['goldencat_theme_show_admin_bar_on'],
           isAPISaving: false
       });
 
@@ -120,6 +125,7 @@ class GlobalSettings extends Component {
 
     const {
 			maintenanceOn,
+      showAdminBarOn,
 			isAPILoaded,
 		} = this.state;
 
@@ -153,6 +159,13 @@ class GlobalSettings extends Component {
           <PanelBody title="Admin-Bar">
             <PanelRow>
             Afficher la bar d'admin sur le site?
+            </PanelRow>
+            <PanelRow>
+              <ToggleControl
+                label="Bar d'admin affichée"
+                checked={ showAdminBarOn }
+                onChange={ () => this.setState({ showAdminBarOn: !showAdminBarOn }) }
+              />
             </PanelRow>
           </PanelBody>
           <Button
