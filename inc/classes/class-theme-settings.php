@@ -7,6 +7,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Custom Settings Page
+ * 
+ * Inspired and doc
+ * https://wholesomecode.ltd/wordpress/create-settings-page-wordpress-gutenberg-components/
+ * https://www.codeinwp.com/blog/plugin-options-page-gutenberg/
+ * https://wpshop.io/blog/wp-shopify-3-0-progress-update-2-admin-settings/
  *
  */
 class GoldenCatThemeSettings
