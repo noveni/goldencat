@@ -18,12 +18,12 @@
 				<?php dynamic_sidebar( 'footer-main' ); ?>
 			</div>
 		<?php endif; ?>
-		<?php if ( is_active_sidebar('footer-between-main-credits') ) : ?>
-			<div class="footer-between-main-credits">
-				<?php dynamic_sidebar( 'footer-between-main-credits' ); ?>
+		<?php if ( is_active_sidebar('footer-between-main') ) : ?>
+			<div class="footer-between-main">
+				<?php dynamic_sidebar( 'footer-between-main' ); ?>
 			</div>
 		<?php endif; ?>
-		<div class="footer-bottom">
+		<div class="footer-bottom aligncenter">
 			<?php get_template_part( 'template-parts/footer/credits' ); ?>
 			<?php get_template_part( 'template-parts/footer/legals' ); ?>
 		</div>
