@@ -22,14 +22,12 @@ if ( ! $has_credits ) {
                 esc_html__( '&copy; %1$s - %2$s %3$s', 'goldencat' ),
                 date_i18n(_x( 'Y', 'copyright date format', 'goldencat' )),
                 _x('Copyright', 'credits', 'goldencat'),
-                '<a href="' . esc_url( home_url( '/' )  ) . '">' . get_bloginfo( 'name' ) . '</a>',
+                '<a href="' . esc_url( home_url( '/' )  ) . '"><strong>' . get_bloginfo( 'name' ) . '</strong></a>',
             );
         ?></span>
-        <?php echo $separator; ?>
         <span>
             <?php _e('Tous droits réservés', 'goldencat' ); ?>
         </span>
-        <?php echo $separator; ?>
         <span><?php
         printf(
             esc_html__( 'Site créé par %1$s & %2$s.', 'goldencat' ),
