@@ -1,0 +1,84 @@
+// Responsive breakpoints mixin
+@mixin media( $res ) {
+
+	@if mobile-only == $res {
+		@media only screen and (max-width: #{$breakpoint_sm - 1}) {
+			@content;
+		}
+	}
+
+	@if mobile == $res {
+		@media only screen and (min-width: #{$breakpoint_sm}) {
+			@content;
+		}
+	}
+
+	@if tablet-only == $res {
+		@media only screen and (max-width: #{$breakpoint_md - 1}) {
+			@content;
+		}
+	}
+
+	@if tablet == $res {
+		@media only screen and (min-width: #{$breakpoint_md}) {
+			@content;
+		}
+	}
+
+	@if laptop-only == $res {
+		@media only screen and (max-width: #{$breakpoint_lg - 1}) {
+			@content;
+		}
+	}
+
+	@if laptop == $res {
+		@media only screen and (min-width: #{$breakpoint_lg}) {
+			@content;
+		}
+	}
+
+	@if desktop-only == $res {
+		@media only screen and (max-width: #{$breakpoint_xl - 1}) {
+			@content;
+		}
+	}
+
+	@if desktop == $res {
+		@media only screen and (min-width: #{$breakpoint_xl}) {
+			@content;
+		}
+	}
+
+	@if wide-only == $res {
+		@media only screen and (max-width: #{$breakpoint_xxl - 1}) {
+			@content;
+		}
+	}
+
+	@if wide == $res {
+		@media only screen and (min-width: #{$breakpoint_xxl}) {
+			@content;
+		}
+	}
+}
+
+@mixin mediapx( $res ) {
+	@media only screen and (min-width: $res) {
+		@content;
+	}
+}
+
+@mixin screen-reader-text() {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	-webkit-clip-path: inset(50%);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+	word-break: normal;
+}

@@ -1,0 +1,169 @@
+
+%menu-item-style {
+	// display: inline-block;
+	font-size: var(--wp--preset--font-size--menu);
+	font-weight: 500;
+	text-decoration: none;
+	text-transform: uppercase;
+	position: relative;
+	letter-spacing: 0.93px;
+	text-align: center;
+	line-height: 34px;
+	// color: var(--primary-nav--color-link);
+}
+
+%menu-item-footer {
+	font-size: var(--wp--preset--font-size--menu);
+	font-weight: 500;
+	letter-spacing: 2px;
+	line-height: 24px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+
+	@include media(tablet) {
+		line-height: 30px;
+	}
+}
+
+%theme-button-style {
+	font-family: var(--wp--preset--font-family--primary);
+	color: var(--global--color-background);
+	font-weight: 500;
+	font-size: 13px;
+	letter-spacing: 2.17px;
+	line-height: 16px;
+	cursor: pointer;
+	background-color: var(--global--color-primary);
+	border-radius: 0;
+	border: 0;
+	text-decoration: none;
+	padding: var(--button--padding-vertical) var(--button--padding-horizontal);
+	text-align: center;
+	text-transform: uppercase;
+	will-change: color, background-color;
+	transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+%theme-button-arrow-style {
+	font-size: 8px;
+	letter-spacing: 1.33px;
+	color: var(--button--color-text);
+	background-color: transparent;
+	padding: 0 0;
+
+	@include media(tablet) {
+		font-size: 8px;
+		font-size: var(--wp--preset--font-size--menu);
+		letter-spacing: 2.17px;
+		line-height: 16px;
+	}
+}
+
+%theme-input-text-and-placeholder-style {
+	font-family: var(--wp--preset--font-family--primary);
+	font-style: italic;
+	font-weight: var(--form--label-weight);
+	font-size: 13px;
+	color: var(--form--color-text);
+	letter-spacing: 0.27px;
+	line-height: 18px;
+
+	&::placeholder {
+		font-weight: 300;
+		color: var(--form--color-text);
+	}
+}
+
+%theme-title-style {
+	clear: both;
+	font-family: var(--wp--preset--font-family--secondary);
+	// font-weight: $heading--font-weight;
+	line-height: 1;
+
+	// strong {
+	// 	font-weight: $heading--font-weight-strong;
+	// }
+}
+
+%theme-title-h1 {
+	font-size: var(--heading--font-size-h1);
+	font-weight: 400;
+	letter-spacing: 2.63px;
+	line-height: var(--heading--line-height-h1);
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke: 1px var(--wp--preset--color--heading-border);
+	// line-height: $heading--line-height-h1;
+
+	@include media(tablet) {
+		-webkit-text-stroke: 2.4px var(--wp--preset--color--heading-border);
+	}
+
+	&.has-text-color {
+		-webkit-text-stroke: 1px currentColor;
+
+		@include media(tablet) {
+			-webkit-text-stroke: 2.4px currentColor;
+		}
+	}
+
+}
+
+%theme-title-h2 {
+	font-size: var(--heading--font-size-h2);
+}
+
+%theme-title-h3 {
+	font-size: var(--heading--font-size-h3);
+	letter-spacing: 0;
+	-webkit-text-fill-color: unset;
+	-webkit-text-stroke: unset;
+}
+
+%theme-title-h4 {
+	font-size: var(--heading--font-size-h4);
+	letter-spacing: 0;
+	line-height: 1.2;
+	-webkit-text-fill-color: unset;
+	-webkit-text-stroke: unset;
+}
+
+%theme-title-h5 {
+	font-size: var(--heading--font-size-h5);
+	// font-weight: $heading--font-weight-strong;
+	letter-spacing: 0;
+}
+
+%theme-title-h6 {
+	font-size: var(--heading--font-size-h6);
+	// font-weight: $heading--font-weight-strong;
+	letter-spacing: 0;
+}
+
+%theme-wc-price {
+	font-family: var(--wp--preset--font-family--primary);
+	font-size: var(--global--font-size-base);
+	font-weight: bold;
+	font-style: italic;
+	color: var(--global--color-third);
+	letter-spacing: 2.17px;
+	line-height: 16px;
+}
+
+%timing-detail-italic {
+	font-family: var(--wp--preset--font-family--primary);
+	font-size: var(--global--font-size-base);
+	font-weight: 300;
+	font-style: italic;
+	letter-spacing: 0.27px;
+	line-height: 18px;
+}
+
+%theme-menu-style {
+	font-family: var(--wp--preset--font-family--primary);
+	font-size: var(--global--font-size-base);
+	font-weight: 500;
+	letter-spacing: 2.17px;
+	line-height: 18px;
+	text-transform: uppercase;
+}

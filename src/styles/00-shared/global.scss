@@ -1,0 +1,49 @@
+/* stylelint-disable */
+:root {
+	--wp--preset--font-family--primary: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+	--wp--preset--font-family--secondary: Montserrat, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+body {
+	--wp--preset--font-family--primary: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+	--wp--preset--font-family--secondary: Montserrat, Helvetica Neue, Helvetica, Arial, sans-serif;
+
+	--goldencat--admin-bar--height: 0px;
+
+	&.admin-bar {
+		--goldencat--admin-bar--height: 46px;
+	}
+
+	--goldencat--baseline-unit: 10px;
+	
+	--goldencat--default_width: #{$default_width};
+	--goldencat--max_content_width: #{$max_content_width};
+
+	--goldencat--breakpoint_mobile: #{$breakpoint_sm};
+	--goldencat--breakpoint_tablet: #{$breakpoint_md};
+	--goldencat--breakpoint_laptop: #{$breakpoint_lg};
+	--goldencat--breakpoint_desktop: #{$breakpoint_xl};
+	--goldencat--breakpoint_wide: #{$breakpoint_xxl};
+
+
+	--goldencat--font-size--base: var(--wp--preset--font-size--normal);
+
+
+	/* Spacing */
+	--goldencat--spacing-unit: #{2 * $baseline-unit}; // 20px
+	--goldencat--spacing-measure: unset; // Use ch units here. ie: 60ch = 60 character max-width
+	--goldencat--spacing-horizontal: #{2.5 * $baseline-unit}; // 25px
+	--goldencat--spacing-vertical: #{3 * $baseline-unit}; // 30px.
+
+
+	// Color
+	--goldencat--color-primary: var(--wp--preset--color--black); /* Body text color, site title, footer text color. */
+	--goldencat--color-secondary: var(--wp--preset--color--blue); /* Headings */
+	--goldencat--color-third: var(--wp--preset--color--blue-green); /* Headings */
+	--goldencat--color-gray: var(--wp--preset--color--gray); /* Headings */
+	--goldencat--color-primary-hover: var(--goldencat--color-primary);
+	--goldencat--color-background: var(--wp--preset--color--white); /* Mint, default body background */
+	--goldencat--color-border: var(--global--color-primary); /* Used for borders (separators) */
+
+}
+/* stylelint-enable */

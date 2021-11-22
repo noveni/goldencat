@@ -1,0 +1,65 @@
+/**
+ * Site Structure
+ *
+ * - Set vertical margins and responsive widths on
+ *   top-level wrappers and content wrappers
+ * - `--global--width-content` is a responsive variable
+ * - See: globals/_global-width-responsive.scss
+ */
+
+/**
+ * Top Level Wrappers (header, main, footer)
+ * - Set vertical padding and horizontal margins
+ */
+.site-header,
+.site-main,
+.widget-area {
+	padding-top: var(--goldencat--spacing-vertical);
+	padding-bottom: var(--goldencat--spacing-vertical);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.site-header {
+	padding-top: calc(0.5 * var(--goldencat--spacing-vertical));
+	padding-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
+}
+
+.site-main {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+/**
+ * Site-main children wrappers
+ * - Add double vertical margins here for clearer hierarchy
+ */
+.site-main > * {
+	margin-top: calc(2 * var(--goldencat--spacing-vertical));
+	margin-bottom: calc(2 * var(--goldencat--spacing-vertical));
+
+	&:first-child {
+		margin-top: 0;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+
+/*
+ * Block & non-gutenberg content wrappers
+ * - Set margins
+ */
+.entry-header,
+.post-thumbnail,
+.entry-content,
+.entry-footer,
+.author-bio,
+.wp-block-ecrannoirtwentyone-term-of-taxonomy .term-of-taxonomy-row {
+	margin-top: var(--goldencat--spacing-vertical);
+	margin-right: auto;
+	margin-bottom: var(--goldencat--spacing-vertical);
+	margin-left: auto;
+}
