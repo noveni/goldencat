@@ -1,0 +1,41 @@
+
+// Site Header
+.site-header {
+	@extend %responsive-alignwide-width;
+
+	ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	color: var(--primary-nav--color-link);
+}
+
+
+// Site branding
+.site-branding {
+
+	h1 {
+		line-height: normal;
+
+		@include media(laptop) {
+			font-size: inherit;
+		}
+	}
+
+	.site-logo {
+		max-width: 101px;
+		margin: 0 auto;
+
+		svg {
+			fill: var(--primary-nav--color-link);
+		}
+	}
+}
+
+
+@import "./header/menu-button.scss";
+
+@import "./header/navigation.scss";
+@import "./header/link.scss";
+@import "./header/header-layout.scss";

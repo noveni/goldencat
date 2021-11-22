@@ -1,0 +1,152 @@
+{
+    "version": 1,
+    "settings": {
+        "color": {
+            "custom": false,
+            "customDuotone": false,
+            "customGradient": false,
+            "duotone": [],
+            "gradients": [],
+            "link": false,
+            "palette": [
+                {
+                    "slug": "black",
+                    "color": "#000000",
+                    "name": "Black"
+                },
+                {
+                    "slug": "white",
+                    "color": "#FFFFFF",
+                    "name": "White"
+                },
+                {
+                    "slug": "white-alt",
+                    "color": "#E7F7FF",
+                    "name": "White Alt"
+                },
+                {
+                    "slug": "gray",
+                    "color": "#868686",
+                    "name": "Gray"
+                },
+                {
+                    "slug": "red",
+                    "color": "#FA5B3D",
+                    "name": "Red"
+                },
+                {
+                    "slug": "green-light",
+                    "color": "#5F8B66",
+                    "name": "Green"
+                },
+                {
+                    "slug": "green",
+                    "color": "#86D7BB",
+                    "name": "Green Light"
+                },
+                {
+                    "slug": "blue-green",
+                    "color": "#026A77",
+                    "name": "Blue Green"
+                },
+                {
+                    "slug": "blue",
+                    "color": "#1621F7",
+                    "name": "Blue"
+                },
+                {
+                    "slug": "orange",
+                    "color": "#EE8054",
+                    "name": "Orange"
+                },
+                {
+                    "slug": "yellow",
+                    "color": "#FEC550",
+                    "name": "Jaune"
+                },
+                {
+                    "slug": "yellow-alt",
+                    "color": "#F4A43D",
+                    "name": "Jaune Alt"
+                },
+                {
+                    "slug": "yellow-alt-2",
+                    "color": "#FEB550",
+                    "name": "Jaune Alt 2"
+                },
+                {
+                    "slug": "rose",
+                    "color": "#F6BCCB",
+                    "name": "Rose"
+                },
+                {
+                    "slug": "turquoise",
+                    "color": "#86CDD7",
+                    "name": "Turquoise"
+                },
+                {
+                    "slug": "turquoise-alt",
+                    "color": "#86D7BB",
+                    "name": "Turquoise Alt"
+                },
+                {
+                    "slug": "gray-alt",
+                    "color": "#FDF6F4",
+                    "name": "Background Gray"
+                }
+            ]
+        },
+        "custom": {},
+        "layout": {
+            "contentSize": "835px",
+            "wideSize": "1260px"
+        },
+        "spacing": {
+            "customMargin": false,
+            "customPadding": false,
+            "units": [ "%", "px", "em", "rem", "vh", "vw" ]
+        },
+        "typography": {
+            "customFontSize": true,
+            "customLineHeight": false,
+            "dropCap": false,
+            "fontSizes": [
+                {
+                    "slug": "normal",
+                    "size": "14px",
+                    "name": "Normal"
+                },
+                {
+                    "slug": "h2",
+                    "size": "46px",
+                    "name": "H2"
+                },
+                {
+                    "slug": "h3",
+                    "size": "28px",
+                    "name": "H3"
+                },
+                {
+                    "slug": "h4",
+                    "size": "22px",
+                    "name": "H4"
+                },
+                {
+                    "slug": "h5",
+                    "size": "20px",
+                    "name": "H5"
+                },
+                {
+                    "slug": "h6",
+                    "size": "18px",
+                    "name": "H6"
+                },
+                {
+                    "slug": "menu",
+                    "size": "13px",
+                    "name": "Menu"
+                }
+            ]
+        }
+    }
+}

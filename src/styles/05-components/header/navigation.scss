@@ -1,0 +1,97 @@
+.primary-navigation {
+	top: var(--goldencat--admin-bar--height);
+	right: 0;
+	color: var(--primary-nav--color-text);
+	font-size: var(--wp--preset--font-size--menu);
+	line-height: 1.15;
+	margin-top: 0;
+	margin-bottom: 0;
+
+	@include media(laptop) {
+		position: relative;
+		// margin-left: 0;
+		width: 100%;
+
+		display: flex;
+		align-items: center;
+	}
+
+	// Mobile menu closed
+	> .primary-menu-container {
+		visibility: hidden;
+		opacity: 0;
+		// z-index: 2; // To be greater than the cover block and embeds.
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		padding-top: calc(0 + var(--goldencat--admin-bar--height));
+		background-color: var(--goldencat--color-background);
+
+		width: 100%;
+		transform-origin: 0% 0%;
+		transition: all .15s ease-in-out;
+
+		@include media(laptop) {
+			background-color: transparent;
+			padding: 0;
+			visibility: visible;
+			opacity: 1;
+			position: relative;
+			overflow: initial;
+
+			display: flex;
+			justify-content: center;
+		}
+	}
+
+	// Mobile menu open
+	.primary-navigation-open & {
+		width: 100%;
+		position: fixed;
+		z-index: 10; // To be greater than the cover block and embeds.
+
+		> .primary-menu-container {
+			position: fixed;
+			visibility: visible;
+			opacity: 1;
+			transform: translateY(0);
+			top: calc(90px + var(--goldencat--admin-bar--height));
+		}
+	}
+
+	.site-branding {
+		display: none;
+
+		@include media(laptop) {
+			display: block;
+			// flex: 0 1 auto;
+			// display: flex;
+			// max-width: 120px;
+			margin: 0 calc(1 * var(--goldencat--spacing-horizontal));
+
+			a {
+				padding: 0;
+			}
+
+			.svg-icon {
+				width: 100%;
+			}
+		}
+
+		@include media(desktop) {
+			margin: 0 calc(2 * var(--goldencat--spacing-horizontal));
+		}
+	}
+}
+
+// Keep the menu pinned to the top when the menu is open.
+@include media(laptop-only) {
+
+	.lock-scrolling .site {
+		position: fixed;
+		max-width: 100%;
+		width: 100%;
+	}
+}
