@@ -3,6 +3,10 @@
 .search-container {
 	display: inline-block;
 	position: relative;
+
+	// .search-toggle-menu-open & {
+
+	// }
 }
 
 .search-inline {
@@ -14,4 +18,9 @@
 
 	visibility: hidden;
 	opacity: 0;
+
+	.search-toggle-menu-open & {
+		visibility: visible;
+		opacity: 1;
+	}
 }

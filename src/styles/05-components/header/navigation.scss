@@ -47,7 +47,7 @@
 	}
 
 	// Mobile menu open
-	.primary-navigation-open & {
+	.primary-toggle-menu-open & {
 		width: 100%;
 		position: fixed;
 		z-index: 10; // To be greater than the cover block and embeds.
