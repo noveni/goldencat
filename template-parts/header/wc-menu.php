@@ -21,14 +21,14 @@ if ( is_user_logged_in() ) {
 }
 ?>
 
-<div class="menu-button-container">
+<div class="wc-header-wrapper">
     <!-- Account -->
     <a class="header-account-button wc-header-button" href="<?php echo $account_button_permalink; ?>" class="" title="<?php echo $account_button_title; ?>">
         <?php echo goldencat_icon( 'ui', 'user' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
         <span class="screen-reader-text"><?php echo $account_button_label; ?></span>
     </a>
-    <div class="header-cart-button wc-header-button">
-        <?php goldencat_cart_link(); ?>
+    <?php goldencat_cart_link(); ?>
+    <div class="site-header-cart">
         <?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
     </div>
 </div>
