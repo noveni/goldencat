@@ -1,20 +1,43 @@
 .menu-button-container {
 	// width: 100%;
 	// z-index: 500;
-	// position: relative;
+	position: absolute;
+	right: 0;
+	display: flex;
+	align-items: center;
+	height: 100%;
 	// text-align: center;
 	// background-color: var(--global--color-secondary);
+
+	&.menu-button-right {
+		right: 0;
+		left: auto;
+	}
+
+	&.menu-button-left {
+		right: auto;
+		left: 0;
+	}
+
+	.wc-header-wrapper {
+		display: inline-block;
+	}
 
 
 	// Override specificty from default button styles.
 	button,
 	.cart-button,
+	.wc-header-button,
 	.button.button {
-		padding: 0;
+		padding: 0 2px;
 		background-color: transparent;
 		border: none;
 		color: var(--primary-nav--color-link);
 		-webkit-tap-highlight-color: transparent;
+	}
+
+	.wc-header-button {
+		display: inline-block;
 	}
 
 	button,

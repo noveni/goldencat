@@ -3,5 +3,7 @@
 
 	&.header-layout-style-left-logo {
 		display: flex;
+		position: relative;
+		justify-content: center;
 	}
 }

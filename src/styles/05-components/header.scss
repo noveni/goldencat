@@ -24,7 +24,7 @@
 	}
 
 	.site-logo {
-		max-width: 101px;
+		max-width: 155px;
 		margin: 0 auto;
 
 		svg {
@@ -39,3 +39,4 @@
 @import "./header/navigation.scss";
 @import "./header/link.scss";
 @import "./header/header-layout.scss";
+@import "./header/search.scss";
