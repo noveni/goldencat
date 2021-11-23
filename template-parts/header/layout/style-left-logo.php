@@ -45,20 +45,24 @@
             ?>
             </ul>
         <?php endif; ?>
+        </div>
     </nav>
 
-    <div class="menu-button-container">
-        <button id="primary-menu-button" class="button" aria-controls="primary-menu" aria-expanded="false">
-            <?php echo goldencat_icon( 'ui', 'menu', 22 ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-            <span class="screen-reader-text"><?php esc_html_e( 'Menu', 'goldencat' ); ?></span>
-        </button><!-- #primary-mobile-menu -->
+    <div class="search-container">
+        <?php get_template_part( 'template-parts/header/inline-search' ); ?>
+    </div>
+
+    <div class="menu-button-container menu-button-right">
         <button class="search-header-toggle" data-toggle-target=".search-inline" data-set-focus=".search-inline .search-input" >
             <span class="screen-reader-text"><?php esc_html_e( 'Rechercher', 'ecrannoirtwentyone' ); ?></span>
             <?php echo goldencat_icon( 'ui', 'search' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
         </button>
-        <div class="search-container">
-            <?php get_template_part( 'template-parts/header/inline-search' ); ?>
-        </div>
+        <button id="primary-menu-button" class="button" aria-controls="primary-menu" aria-expanded="false">
+            <?php echo goldencat_icon( 'ui', 'menu', 22 ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+            <span class="screen-reader-text"><?php esc_html_e( 'Menu', 'goldencat' ); ?></span>
+        </button><!-- #primary-mobile-menu -->
     </div>
-    <?php get_template_part( 'template-parts/header/wc-menu' ); ?>
+    <div class="menu-button-container menu-button-left">
+        <?php get_template_part( 'template-parts/header/wc-menu' ); ?>
+    </div>
 </div>
