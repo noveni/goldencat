@@ -1,87 +1,35 @@
 .primary-navigation {
-	top: var(--goldencat--admin-bar--height);
-	right: 0;
-	color: var(--primary-nav--color-text);
-	font-size: var(--wp--preset--font-size--menu);
-	line-height: 1.15;
-	margin-top: 0;
-	margin-bottom: 0;
-
-	@include media(laptop) {
-		position: relative;
-		// margin-left: 0;
-		width: 100%;
-
-		display: flex;
-		align-items: center;
-	}
 
 	// Mobile menu closed
 	> .primary-menu-container {
 		visibility: hidden;
 		opacity: 0;
-		// z-index: 2; // To be greater than the cover block and embeds.
-		position: absolute;
-		top: 0;
+		position: fixed;
+		top: calc(var(--goldencat--header--height) + var(--goldencat--admin-bar--height));
 		right: 0;
 		bottom: 0;
 		left: 0;
-		// padding-top: calc(var(--goldencat--admin-bar--height) + var(--goldencat--admin-bar--height));
+
 		background-color: var(--goldencat--color-background);
+		padding: var(--goldencat--spacing-unit);
 
-		width: 100%;
-		transform-origin: 0% 0%;
-		transition: all .15s ease-in-out;
-
-		@include media(laptop) {
-			background-color: transparent;
-			padding: 0;
-			visibility: visible;
-			opacity: 1;
-			position: relative;
-			overflow: initial;
-
-			display: flex;
-			justify-content: center;
-		}
+		transition: opacity 0.25s ease-in;
 	}
 
 	// Mobile menu open
 	.primary-toggle-menu-open & {
-		width: 100%;
-		position: fixed;
-		z-index: 10; // To be greater than the cover block and embeds.
 
 		> .primary-menu-container {
-			position: fixed;
 			visibility: visible;
 			opacity: 1;
-			transform: translateY(0);
-			top: calc(var(--goldencat--header--height) + var(--goldencat--admin-bar--height));
+			transition: all 0.25s ease-out;
 		}
 	}
 
-	.site-branding {
-		display: none;
+	.menu-wrapper {
 
-		@include media(laptop) {
-			display: block;
-			// flex: 0 1 auto;
-			// display: flex;
-			// max-width: 120px;
-			margin: 0 calc(1 * var(--goldencat--spacing-horizontal));
-
-			a {
-				padding: 0;
-			}
-
-			.svg-icon {
-				width: 100%;
-			}
-		}
-
-		@include media(desktop) {
-			margin: 0 calc(2 * var(--goldencat--spacing-horizontal));
+		li {
+			text-align: center;
 		}
 	}
 }
