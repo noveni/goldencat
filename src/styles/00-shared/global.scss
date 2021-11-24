@@ -46,5 +46,11 @@ body {
 	--goldencat--color-background: var(--wp--preset--color--white); /* Mint, default body background */
 	--goldencat--color-border: var(--global--color-primary); /* Used for borders (separators) */
 
+	// Shadowing
+	--goldencat--shadow-color: 0deg 0% 80%;
+	--goldencat--shadow-elevation--high:
+	-0.1px 0.1px 0.2px hsl(var(--goldencat--shadow-color) / 0),
+	-1.3px 2px 3.6px hsl(var(--goldencat--shadow-color) / 0.29),
+	-3.9px 6px 10.7px hsl(var(--goldencat--shadow-color) / 0.58);
 }
 /* stylelint-enable */

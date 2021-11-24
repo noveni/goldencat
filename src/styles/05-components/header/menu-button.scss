@@ -29,12 +29,7 @@
 	.cart-button,
 	.wc-header-button,
 	.button.button {
-		padding: 0;
-		margin: 0 2px;
-		background-color: transparent;
-		border: none;
-		color: var(--primary-nav--color-link);
-		-webkit-tap-highlight-color: transparent;
+		margin: 0 4px;
 	}
 
 	.wc-header-button {

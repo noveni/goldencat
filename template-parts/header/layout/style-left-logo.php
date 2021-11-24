@@ -19,7 +19,7 @@
     <?php get_template_part( 'template-parts/header/site-branding' ); ?>
 
     <nav id="site-navigation" class="primary-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary menu', 'ecrannoirtwentyone' ); ?>">
-        <div class="primary-menu-container">
+        <div class="primary-menu-container goldencat-toggle-menu">
         <?php if ( has_nav_menu( 'primary' ) ) : ?>
             <?php
                 wp_nav_menu(

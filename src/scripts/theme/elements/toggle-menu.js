@@ -15,23 +15,25 @@ const toggleAriaExpanded = ( el, withListeners ) => {
 		el.setAttribute( 'aria-expanded', 'true' );
 		submenuPosition( el.parentElement );
 		if ( withListeners ) {
-			document.addEventListener( 'click', collapseMenuOnClickOutside );
+			// document.addEventListener( 'click', collapseMenuOnClickOutside );
 		}
 	} else {
 		el.setAttribute( 'aria-expanded', 'false' );
 		if ( withListeners ) {
-			document.removeEventListener( 'click', collapseMenuOnClickOutside );
+			// document.removeEventListener( 'click', collapseMenuOnClickOutside );
 		}
 	}
 }
 
-const collapseMenuOnClickOutside = ( event ) => {
-	if ( ! document.getElementById( 'site-navigation' ).contains( event.target ) ) {
-		document.getElementById( 'site-navigation' ).querySelectorAll( '.sub-menu-toggle' ).forEach( function( button ) {
-			button.setAttribute( 'aria-expanded', 'false' );
-		} );
-	}
-}
+// const collapseMenuOnClickOutside = ( event ) => {
+// 	console.log(event.target, document.querySelector( '.goldencat-toggle-menu' ))
+// 	console.log(! document.querySelector( '.goldencat-toggle-menu' ).contains( event.target ));
+// 	if ( ! document.querySelector( '.goldencat-toggle-menu' ).contains( event.target ) ) {
+// 		document.getElementById( 'site-navigation' ).querySelectorAll( '.sub-menu-toggle' ).forEach( function( button ) {
+// 			button.setAttribute( 'aria-expanded', 'false' );
+// 		} );
+// 	}
+// }
 
 /**
  * Changes the position of submenus so they always fit the screen horizontally.
@@ -100,21 +102,45 @@ export const toggleMenu = ( id ) => {
 	 	toggleMenu.onclick = function() {
 			wrapper.classList.toggle( id + '-toggle-menu-open' );
 			wrapper.classList.toggle( 'lock-scrolling' );
-			toggleAriaExpanded( toggleMenu );
+			// toggleAriaExpanded( toggleMenu );
+			if ( 'true' !== toggleMenu.getAttribute( 'aria-expanded' ) ) {
+				toggleMenu.setAttribute( 'aria-expanded', 'true' );
+				submenuPosition( toggleMenu.parentElement );
+				// document.addEventListener(  'click', closeMenuOnClickOutside );
+			} else {
+				toggleMenu.setAttribute( 'aria-expanded', 'false' );
+				// document.removeEventListener( 'click', closeMenuOnClickOutside );
+			}
 			toggleMenu.focus();
 	 	};
  	}
+
+	const closeMenuOnClickOutside = ( event ) => {
+		// if ( toggleMenu.contains( event.target ) ) {
+		// 	return;
+		// }
+		console.log(event.target, document.querySelector( '.' + id + '-menu-container' ))
+		console.log(! document.querySelector( '.' + id + '-menu-container').contains( event.target ));
+		if ( ! document.querySelector( '.' + id + '-menu-container').contains( event.target ) ) {
+			wrapper.classList.toggle( id + '-toggle-menu-open' );
+			wrapper.classList.toggle( 'lock-scrolling' );
+			// document.getElementById( 'site-navigation' ).querySelectorAll( '.sub-menu-toggle' ).forEach( function( button ) {
+			// 	button.setAttribute( 'aria-expanded', 'false' );
+			// } );
+		}
+	}
  	/**
 	* Trap keyboard navigation in the menu modal.
 	* Adapted from TwentyTwenty
 	*/
  	document.addEventListener( 'keydown', function( event ) {
+		
 		var modal, elements, selectors, lastEl, firstEl, activeEl, tabKey, shiftKey, escKey;
-		if ( ! wrapper.classList.contains( id + '-navigation-open' ) ) {
+		if ( ! wrapper.classList.contains( id + '-toggle-menu-open' ) ) {
 			return;
 		}
 
-		modal = document.querySelector( '.' + id + '-navigation' );
+		modal = document.querySelector( '.goldencat-toggle-menu' );
 		selectors = 'input, a, button';
 		elements = modal.querySelectorAll( selectors );
 		elements = Array.prototype.slice.call( elements );
@@ -127,8 +153,8 @@ export const toggleMenu = ( id ) => {
 
 		if ( escKey ) {
 			event.preventDefault();
-			wrapper.classList.remove( id + '-navigation-open', 'lock-scrolling' );
-			toggleAriaExpanded( toggleMenu );
+			wrapper.classList.remove( id + '-toggle-menu-open', 'lock-scrolling' );
+			toggleAriaExpanded( toggleMenu, true );
 			toggleMenu.focus();
 		}
 

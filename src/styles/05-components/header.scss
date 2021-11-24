@@ -2,13 +2,24 @@
 // Site Header
 .site-header {
 	@extend %responsive-alignwide-width;
+	color: var(--primary-nav--color-link);
 
 	ul {
 		list-style: none;
 		padding: 0;
 	}
 
-	color: var(--primary-nav--color-link);
+	button,
+	.cart-button,
+	.wc-header-button,
+	.button.button {
+		padding: 0;
+		margin: 0;
+		background-color: transparent;
+		border: none;
+		color: var(--primary-nav--color-link);
+		-webkit-tap-highlight-color: transparent;
+	}
 }
 
 
