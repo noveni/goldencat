@@ -3,6 +3,10 @@
  * Meta Class
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly
+
 class GoldenCatThemeMeta {
 
     /**

@@ -1,10 +1,4 @@
 <?php
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-} // Exit if accessed directly
-
-
 /**
  * Custom Settings Page
  * 
@@ -14,6 +8,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * https://wpshop.io/blog/wp-shopify-3-0-progress-update-2-admin-settings/
  *
  */
+
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly
+
 class GoldenCatThemeSettings
 {
     /**

@@ -6,6 +6,10 @@
  *
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly
+
 if ( function_exists( 'register_block_style' ) ) {
 	/**
 	 * Register block styles.

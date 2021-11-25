@@ -1,14 +1,13 @@
 <?php
+/**
+ * Custom Settings Page
+ *
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } // Exit if accessed directly
 
-
-/**
- * Custom Settings Page
- *
- */
 class GoldenCatThemeAdmin
 {
     /**
