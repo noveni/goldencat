@@ -96,7 +96,8 @@ const expandSubMenu = ( el ) => { // jshint ignore:line
 */
 export const toggleMenu = ( id ) => {
  	var wrapper = document.body, // this is the element to which a CSS class is added when a mobile nav menu is open
-	 toggleMenu = document.getElementById( id + '-toggle-menu' );
+	 toggleMenu = document.getElementById( id + '-toggle-menu' ),
+	 altToggleMenu = document.querySelectorAll(  '.' + id + '-alt-toggle-menu' );
 
  	if ( toggleMenu ) {
 	 	toggleMenu.onclick = function() {
@@ -114,6 +115,19 @@ export const toggleMenu = ( id ) => {
 			toggleMenu.focus();
 	 	};
  	}
+
+	if ( altToggleMenu ) {
+		altToggleMenu.forEach( function( altToggleBtn ) {
+			altToggleBtn.onclick = () => {
+				wrapper.classList.toggle( id + '-toggle-menu-open' );
+				wrapper.classList.toggle( 'lock-scrolling' );
+				toggleAriaExpanded( altToggleBtn );
+			}
+			// wrapper.classList.toggle( id + '-toggle-menu-open' );
+			// wrapper.classList.toggle( 'lock-scrolling' );
+			// toggleAriaExpanded( toggleMenu );
+		});
+	}
 
 	const closeMenuOnClickOutside = ( event ) => {
 		// if ( toggleMenu.contains( event.target ) ) {

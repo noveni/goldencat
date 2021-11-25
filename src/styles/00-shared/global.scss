@@ -13,6 +13,10 @@ body {
 
 	&.admin-bar {
 		--goldencat--admin-bar--height: 46px;
+
+		@include media(tablet) {
+			--goldencat--admin-bar--height: 32px;
+		}
 	}
 
 	--goldencat--baseline-unit: 10px;

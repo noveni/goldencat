@@ -10,7 +10,7 @@
 ?>
 <div class="search-inline search-menu-container goldencat-toggle-menu">
 	<div class="search-inline-inner">
-		<button class="toggle search-untoggle close-search-toggle fill-children-current-color">
+		<button class="toggle search-untoggle close-search-toggle fill-children-current-color search-alt-toggle-menu">
 			<span class="screen-reader-text"><?php _e( 'Close search', 'ecrannoir' ); ?></span>
 			<?php echo goldencat_icon( 'ui', 'close' ); ?>
 		</button>

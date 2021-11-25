@@ -31,7 +31,24 @@
 }
 
 .search-inline {
-	background-color: var(--goldencat--color-background);
+
+	&.goldencat-toggle-menu {
+		background-color: var(--goldencat--color-background);
+		height: auto;
+		bottom: unset;
+		top: var(--goldencat--admin-bar--height);
+		z-index: 11;
+
+		width: 100%;
+		// transition: all 0.25s ease-out;
+
+		// @include media(mobile) {
+		// 	max-width: 340px;
+		// }
+		@include media(tablet) {
+			width: unset;
+		}
+	}
 
 	.search-inline-inner {
 		display: flex;
