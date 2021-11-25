@@ -24,7 +24,7 @@ registerBlockType('ecrannoir/faq-block-grid', {
   attributes: {
     postType: {
       type: 'string',
-      default: 'ec_faq',
+      default: 'gc_faq',
     },
     postsToShow: {
       type: 'number',

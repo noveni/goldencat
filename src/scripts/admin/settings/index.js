@@ -23,6 +23,7 @@ import GlobalSettings from "./global";
 import ToolsSettings from "./tools";
 import AnalyticsSettings from "./analytics";
 import DocumentationSettings from "./docs";
+import PosttypeSettings from "./posttype";
 
 
 const ThemeSettings = ( props ) => {
@@ -54,6 +55,10 @@ const ThemeSettings = ( props ) => {
                   name: 'tab-docs',
                   title: 'Documentation',
               },
+              {
+                  name: 'tab-posttype',
+                  title: 'Types de postes',
+              },
           ] }
         >
           { ( tab ) => '' }
@@ -64,6 +69,7 @@ const ThemeSettings = ( props ) => {
         { activeTab == 'tab-analytics' && <AnalyticsSettings /> }
         { activeTab == 'tab-tools' && <ToolsSettings /> }
         { activeTab == 'tab-docs' && <DocumentationSettings /> }
+        { activeTab == 'tab-posttype' && <PosttypeSettings /> }
       </div>
     </Fragment>
   );

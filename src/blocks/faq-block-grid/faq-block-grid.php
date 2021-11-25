@@ -1,15 +1,15 @@
 <?php
 
-// Action ecrannoir_ajax_filter_ec_faq_cat_action
+// Action ecrannoir_ajax_filter_gc_faq_cat_action
 
-function ecrannoir_faq_filter_category( $taxonomy = 'ec_faq_cat', $post_type = 'ec_faq' ) {
+function ecrannoir_faq_filter_category( $taxonomy = 'gc_faq_cat', $post_type = 'gc_faq' ) {
 
     $js_selector = 'ecrannoir_ajax_filter_' . $taxonomy;
     $label_all_item = 'All';
     $block_filter_wrapper_class = 'ecrannoir-list-filter ecrannoir-faq-filter';
 
     $terms = get_terms( array(
-		'taxonomy' => 'ec_faq_cat',
+		'taxonomy' => 'gc_faq_cat',
 		'orderby'    => 'count',
 		'order' => 'DESC',
 		'hide_empty' => true,
@@ -92,7 +92,7 @@ function ecrannoir_render_faq_block_grid( $attributes ) {
     ob_start(); ?>
     <div class="<?php echo $class; ?>">
         <?php if ($showFilter): ?>
-            <?php ecrannoir_faq_filter_category( 'ec_faq_cat', $attributes['postType'] );
+            <?php ecrannoir_faq_filter_category( 'gc_faq_cat', $attributes['postType'] );
         endif;
         ?>
         <div class="faq-block-grid wp-block-group <?php echo $showFilter ? 'filter-content-to-refresh' : ''; ?> loadmore-content-to-refresh">
@@ -128,7 +128,7 @@ function ecrannoir_register_block_core_faq_block_grid() {
             'attributes'      => array(
                 'postType'                => array(
                     'type'  => 'string',
-                    'default' => 'ec_faq',
+                    'default' => 'gc_faq',
                 ),
                 'postsToShow'             => array(
                     'type'    => 'number',
@@ -217,5 +217,5 @@ function ecrannoir_faq_block_grid_ajax () {
     exit;
 }
 
-add_action( 'wp_ajax_ecrannoir_ajax_filter_ec_faq_cat_action', 'ecrannoir_faq_block_grid_ajax' );
-add_action( 'wp_ajax_nopriv_ecrannoir_ajax_filter_ec_faq_cat_action', 'ecrannoir_faq_block_grid_ajax' );
+add_action( 'wp_ajax_ecrannoir_ajax_filter_gc_faq_cat_action', 'ecrannoir_faq_block_grid_ajax' );
+add_action( 'wp_ajax_nopriv_ecrannoir_ajax_filter_gc_faq_cat_action', 'ecrannoir_faq_block_grid_ajax' );

@@ -112,5 +112,23 @@ class GoldenCatThemeSettings
 				'default'      => true,
 			)
 		);
+		register_setting(
+			'goldencat_theme_settings',
+			'goldencat_theme_posttype_faq_on',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+		register_setting(
+			'goldencat_theme_settings',
+			'goldencat_theme_posttype_quote_on',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
 	}
 }

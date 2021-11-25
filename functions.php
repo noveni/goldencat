@@ -136,6 +136,10 @@ if (is_admin() && $theme_taxonomy_fields) {
 }
 
 
+// Custom Post Types
+require get_template_directory() . '/inc/post-type-functions.php';
+
+
 require get_template_directory() . '/assets/blocks/cover-slider-block.php';
 require get_template_directory() . '/assets/blocks/faq-block-grid.php';
 require get_template_directory() . '/assets/blocks/latest-posts.php';
