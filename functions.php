@@ -46,9 +46,20 @@ require get_template_directory() . '/inc/classes/class-theme-meta.php';
 require get_template_directory() . '/inc/classes/class-theme-icons.php';
 require get_template_directory() . '/inc/classes/class-theme-menu.php';
 
-require get_template_directory() . '/inc/blocks-functions.php';
 require get_template_directory() . '/inc/icons-functions.php';
 require get_template_directory() . '/inc/template-functions.php';
+
+
+// Custom Post Types
+require get_template_directory() . '/inc/post-type-functions.php';
+// Register Meta
+require get_template_directory() . '/inc/block-post-meta.php';
+// Block template functions
+require get_template_directory() . '/inc/blocks-functions.php';
+// Block Patterns.
+require get_template_directory() . '/inc/block-patterns.php';
+// Block Styles.
+require get_template_directory() . '/inc/block-styles.php';
 
 
 $theme = new GoldenCatThemeBase(
@@ -136,8 +147,6 @@ if (is_admin() && $theme_taxonomy_fields) {
 }
 
 
-// Custom Post Types
-require get_template_directory() . '/inc/post-type-functions.php';
 
 
 require get_template_directory() . '/assets/blocks/cover-slider-block.php';
