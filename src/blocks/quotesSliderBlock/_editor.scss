@@ -1,0 +1,40 @@
+// Editor style
+.wp-block-ecrannoirtwentyone-quotes-slider {
+
+	.quotes-slider {
+		max-width: 1004px;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+	}
+
+	.is-style-ecrannoirtwentyone-circular {
+		width: 114px;
+		height: 114px;
+		margin-left: auto;
+		margin-right: auto;
+
+		img {
+			display: block;
+			border-radius: 9999px !important;
+			width: 100%;
+			height: 100%;
+			// background: $global--color-olive-light;
+			object-fit: cover;
+		}
+	}
+
+	.quote-customer-title {
+		font-style: normal;
+		font-weight: 400;
+	}
+
+	.quote-content {
+		margin-bottom: var(--global--spacing-vertical);
+	}
+
+	.is-sous-titre {
+		margin-top: 0;
+		margin-bottom: unset;
+	}
+}

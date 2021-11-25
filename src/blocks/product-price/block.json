@@ -1,0 +1,35 @@
+{
+    "apiVersion": 2,
+    "name": "ecrannoir/product-price",
+    "title": "Product Price",
+    "category": "theme",
+    "description": "Displays the price of a product.",
+    "textdomain": "default",
+    "usesContext": [
+        "postId",
+        "postType",
+        "queryId"
+    ],
+    "attributes": {
+        "textAlign": {
+            "type": "string"
+        }
+    },
+    "supports": {
+        "align": [
+            "wide",
+            "full"
+        ],
+        "html": false,
+        "color": {
+            "gradients": true,
+            "link": true
+        },
+        "typography": {
+            "fontSize": true,
+            "lineHeight": true,
+            "__experimentalFontFamily": true
+        }
+    },
+    "style": "wp-block-product-price"
+}

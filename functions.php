@@ -134,3 +134,13 @@ if (is_admin() && $theme_taxonomy_fields) {
     require get_template_directory() . '/inc/classes/class-taxonomy-meta-field.php';
     $taxo_meta_field = new GoldenCatTaxonomyMetaField( $theme_taxonomy_fields );
 }
+
+
+require get_template_directory() . '/assets/blocks/cover-slider-block.php';
+require get_template_directory() . '/assets/blocks/faq-block-grid.php';
+require get_template_directory() . '/assets/blocks/latest-posts.php';
+require get_template_directory() . '/assets/blocks/picked-post-block.php';
+require get_template_directory() . '/assets/blocks/picked-term.php';
+require get_template_directory() . '/assets/blocks/product-price.php';
+require get_template_directory() . '/assets/blocks/quotes-slider.php';
+require get_template_directory() . '/assets/blocks/term-of-taxonomy.php';

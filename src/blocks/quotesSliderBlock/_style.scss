@@ -1,0 +1,80 @@
+// Theme Style
+
+.wp-block-ecrannoirtwentyone-quotes-slider {
+
+	background-color: #fcf3e7;
+	position: relative;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: calc(0.666 * var(--global--spacing-vertical));
+	padding-bottom: calc(0.666 * var(--global--spacing-vertical));
+
+	@include media(mobile) {
+		padding-top: calc(2.3 * var(--global--spacing-vertical));
+		padding-bottom: calc(2.3 * var(--global--spacing-vertical));
+	}
+
+	.quotes-slider {
+		max-width: 648px;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+	}
+
+	.glide__arrow {
+		border: none;
+		box-shadow: none;
+		text-shadow: none;
+
+		path {
+			fill: var(--global--color-primary);
+		}
+	}
+
+	.glide__arrow--left {
+		left: 0;
+		transform: translateX(-100%);
+
+	}
+
+	.glide__arrow--right {
+		right: 0;
+		transform: translateX(100%);
+
+	}
+
+	.glide__bullets {
+		position: absolute;
+		// margin-left: auto;
+		// margin-right: auto;
+		// transform: none;
+		bottom: -20px;
+		// left: unset;
+	}
+
+	.glide__bullet {
+		box-shadow: none;
+		width: 11px;
+		height: 11px;
+		background-color: var(--global--color-background);
+		border: 1px solid transparent;
+	}
+
+	.glide__bullet--active {
+		// background-color: var(--global--color-background);
+		border: 1px solid var(--global--color-secondary);
+	}
+
+	// .quote-customer-title {
+	// 	font-style: normal;
+	// 	font-weight: 400;
+	// }
+
+	// .quote-content {
+	// 	margin-bottom: var(--global--spacing-vertical);
+	// }
+
+	// .is-sous-titre {
+	// 	margin-bottom: unset;
+	// }
+}

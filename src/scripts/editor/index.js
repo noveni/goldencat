@@ -12,6 +12,8 @@ import './extensions/narrow-align';
 import './extensions/no-padding-block';
 // import './extensions/block-animation';
 
+import '../../blocks';
+
 /**
  * Remove unused blocks
  *

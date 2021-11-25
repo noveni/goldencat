@@ -1,0 +1,23 @@
+// Front Style
+.wp-block-ecrannoirtwentyone-term-of-taxonomy {
+
+	.term-filter-tag {
+		@extend %theme-menu-style;
+		text-decoration: none;
+
+		padding: 13px 11px 10px;
+		margin-left: 7px;
+		margin-right: 7px;
+		margin-bottom: 14px;
+		display: inline-block;
+
+		border: 1px solid var(--global--color-secondary);
+		border-radius: 2px;
+
+		&:hover,
+		&.active {
+			color: var(--global--color-background);
+			background-color: var(--global--color-secondary);
+		}
+	}
+}
