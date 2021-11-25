@@ -20,7 +20,15 @@
 			// visibility: visible;
 			transform: translate3d(0, 0, 0);
 			opacity: 1;
+			width: 100%;
 			// transition: all 0.25s ease-out;
+
+			@include media(mobile) {
+				max-width: 340px;
+			}
+			@include media(tablet) {
+				max-width: unset;
+			}
 		}
 	}
 
