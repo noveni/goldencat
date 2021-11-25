@@ -24,6 +24,7 @@
   "devDependencies": {
     "@tinypixelco/laravel-mix-wp-blocks": "^1.1.0",
     "@wordpress/babel-preset-default": "^6.3.4",
+    "@wordpress/block-editor": "^8.0.5",
     "@wordpress/dependency-extraction-webpack-plugin": "^3.2.1",
     "@wordpress/stylelint-config": "^19.1.0",
     "browser-sync": "^2.27.7",
@@ -32,6 +33,7 @@
     "favicons": "^6.2.2",
     "favicons-webpack-plugin": "^5.0.2",
     "laravel-mix": "^6.0.39",
+    "postcss": "^8.4.1",
     "resolve-url-loader": "^4.0.0",
     "sass": "^1.43.4",
     "sass-loader": "^12.3.0",

@@ -3,6 +3,15 @@ import domReady from '@wordpress/dom-ready';
 import { unregisterBlockStyle, registerBlockStyle } from '@wordpress/blocks';
 
 
+// import './extensions/disable-title';
+import './extensions/block-full-height';
+import './extensions/block-links';
+import './extensions/center-on-mobile';
+import './extensions/hide-block';
+import './extensions/narrow-align';
+import './extensions/no-padding-block';
+// import './extensions/block-animation';
+
 /**
  * Remove unused blocks
  *
@@ -14,8 +23,4 @@ import { unregisterBlockStyle, registerBlockStyle } from '@wordpress/blocks';
   unregisterBlockStyle( 'core/image', [ 'default', 'rounded', 'editorskit-circular', 'editorskit-rounded', 'editorskit-diagonal', 'editorskit-inverted-diagonal', 'editorskit-shadow' ] );
   unregisterBlockStyle( 'core/columns', ['default', 'gapless']);
 
-  // registerBlockStyle( 'core/cover', {
-  //   name: 'bg-size-100',
-  //   label: 'Background-Size: 100%'
-  // });
 });
