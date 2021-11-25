@@ -1,7 +1,5 @@
 // Footer
 .site-footer {
-	// padding-top: 0;
-	// padding-bottom: 0;
 	@extend %responsive-alignfull-width;
 
 	ul {
@@ -11,18 +9,16 @@
 
 	.footer-bottom {
 		font-size: 11px;
-		padding-top: calc(0.5 * var(--global--spacing-vertical));
-		padding-bottom: calc(0.2 * var(--global--spacing-vertical));
-		background-color: var(--wp--preset--color--rose-light);
+		padding-top: calc(0.5 * var(--goldencat--spacing-vertical));
+		padding-bottom: calc(0.2 * var(--goldencat--spacing-vertical));
+		background-color: var(--goldencat--color-background);
 
-		@include media(mobile) {
-			background-color: var(--wp--preset--color--rose-light-2);
-		}
 
 		a {
 			text-decoration: none;
 		}
 
+		// Separator " | "
 		p > span:not(:last-child) {
 
 			&::after {
@@ -33,4 +29,79 @@
 			}
 		}
 	}
+
+	// Footer Widget since wp 5.8
+	.widget_block {
+
+		.wp-block-columns {
+			margin-bottom: 0;
+
+			.widget_nav_menu {
+				margin-top: 0;
+				margin-bottom: 0;
+				text-align: center;
+
+				a {
+					@extend %menu-item-footer;
+				}
+			}
+		}
+	}
+
+	.footer-main-area {
+		@extend %responsive-alignwide-width;
+
+		// Design Border between 3 col footer;
+		.wp-block-column {
+			@include media(tablet) {
+				position: relative;
+
+				&:not(:first-child) {
+
+					&::before {
+						content: "";
+						height: 100px;
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+						left: -1em;
+						width: 1px;
+						display: block;
+						background-color: var(--goldencat--color-primary);
+					}
+				}
+			}
+		}
+
+		.wp-block-columns {
+			justify-content: center;
+
+			.wp-block-column {
+
+				@include media(tablet) {
+					padding: var(--goldencat--spacing-unit);
+				}
+			}
+		}
+	}
 }
+
+/* stylelint-disable */
+#sb_instagram.sbi_col_3 #sbi_images .sbi_item,
+#sb_instagram.sbi_col_4 #sbi_images .sbi_item, 
+#sb_instagram.sbi_col_5 #sbi_images .sbi_item, 
+#sb_instagram.sbi_col_6 #sbi_images .sbi_item {
+	width: 25%;
+}
+
+#sb_instagram.sbi_col_6 #sbi_images .sbi_item {
+	@include media(tablet) {
+		width: 16.66%;
+	}
+}
+#sb_instagram #sbi_images .sbi_item:nth-child(n+5) {
+	@include media(tablet-only) {
+		display: none;
+	}
+}
+/* stylelint-enable */
