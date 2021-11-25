@@ -78,6 +78,9 @@ class GoldenCatThemeBase
         add_action( 'after_setup_theme', [ $this, 'themeSetupAction'] );
         // Setup Widget
         add_action( 'widgets_init', [ $this, 'widgetSetupAction'] );
+        
+        // Handle Theme menu Hook and filter
+        new GoldenCatThemeMenu();
 
         // Theme global Filter
         $this->globalFilters();
@@ -476,7 +479,7 @@ class GoldenCatThemeBase
         return array_merge( $sizes, $parsed_sizes );
     }
 
-     /**
+    /**
      * Add Meta to Theme
      */
     public function addMeta()
