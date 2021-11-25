@@ -56,3 +56,76 @@ function goldencat_body_classes( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'goldencat_body_classes' );
+
+/**
+ * Creates continue reading text
+ */
+function goldencat_continue_reading_text() {
+	$continue_reading = sprintf(
+		/* translators: %s: Name of current post. */
+		esc_html__( 'Voir plus %s', 'goldencat' ),
+		the_title( '<span class="screen-reader-text">', '</span>', false )
+	);
+
+	return $continue_reading;
+}
+
+/**
+ * Create the continue reading link for excerpt.
+ */
+function goldencat_continue_reading_link_excerpt() {
+	if ( ! is_admin() ) {
+
+		if ( !is_single() ) {
+			return '&hellip; <a class="more-link" href="' . esc_url( get_permalink() ) . '">' . goldencat_continue_reading_text() . '</a>';
+		}
+	}
+}
+add_filter( 'excerpt_more', 'goldencat_continue_reading_link_excerpt' );
+
+/**
+ * Create the continue reading link.
+ */
+function goldencat_continue_reading_link() {
+	if ( ! is_admin() ) {
+		return '<div class="more-link-container"><a class="more-link" href="' . esc_url( get_permalink() ) . '#more-' . esc_attr( get_the_ID() ) . '">' . goldencat_continue_reading_text() . '</a></div>';
+	}
+}
+add_filter( 'the_content_more_link', 'goldencat_continue_reading_link' );
+
+/**
+ * Excerpt Length
+ */
+function goldencat_filter_excerpt_length($length) {
+    if ( is_admin() ) {
+        return $length;
+    }
+
+	if ( is_single() ) {
+		return -1;
+	}
+    return 10;
+}
+
+// Filter the excerpt length.
+add_filter('excerpt_length', 'goldencat_filter_excerpt_length');
+
+/**
+ * Filter the number of result for query
+ */
+function ecrannoir_twenty_one_limit_type_post( $query ) {
+    // check if the user is requesting an admin page 
+	// or current query is not the main query
+    if ( is_admin() || !$query->is_main_query() ){
+        return;
+	}
+
+	if ( is_archive() ) {
+		$query->set('posts_per_page', 9);
+	} elseif ( is_search() ) {
+		$query->set('posts_per_page', 12);
+	} else {
+		$query->set('posts_per_page', 8);
+	}
+}
+add_action( 'pre_get_posts', 'ecrannoir_twenty_one_limit_type_post' );

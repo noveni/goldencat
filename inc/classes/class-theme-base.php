@@ -79,6 +79,8 @@ class GoldenCatThemeBase
         
         // Handle Theme menu Hook and filter
         new GoldenCatThemeMenu();
+        // Handle Assets Hook and filter
+        new GoldenCatThemeAssets();
 
         // Theme global Filter
         $this->globalFilters();
