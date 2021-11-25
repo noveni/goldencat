@@ -194,11 +194,11 @@ export const toggleMenu = ( id ) => {
 
 		document.getElementById( 'site-navigation' ).querySelectorAll( '.menu-wrapper > .menu-item-has-children' ).forEach( function( li ) {
 			li.addEventListener( 'mouseenter', function() {
-				this.querySelector( '.sub-menu-toggle' ).setAttribute( 'aria-expanded', 'true' );
+				this.querySelector( '.sub-menu' ).setAttribute( 'aria-expanded', 'true' );
 				submenuPosition( li );
 			} );
 			li.addEventListener( 'mouseleave', function() {
-				this.querySelector( '.sub-menu-toggle' ).setAttribute( 'aria-expanded', 'false' );
+				this.querySelector( '.sub-menu' ).setAttribute( 'aria-expanded', 'false' );
 			} );
 		} );
 	}

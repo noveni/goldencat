@@ -31,7 +31,7 @@ body {
 
 
 	/* Spacing */
-	--goldencat--spacing-unit: #{2 * $baseline-unit}; // 20px
+	--goldencat--spacing-unit: #{1 * $baseline-unit}; // 20px
 	--goldencat--spacing-measure: unset; // Use ch units here. ie: 60ch = 60 character max-width
 	--goldencat--spacing-horizontal: #{2.5 * $baseline-unit}; // 25px
 	--goldencat--spacing-vertical: #{3 * $baseline-unit}; // 30px.

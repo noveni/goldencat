@@ -2,27 +2,82 @@
 
 	// Mobile menu closed
 	> .primary-menu-container {
-		// transform: translate3d(100%, 0, 0);
-		// transition: transform 0.4s, opacity 0.3s;
-		// will-change: transform;
+
+		@include media(tablet) {
+			opacity: 1;
+			position: relative;
+
+			background-color: transparent;
+			padding: 0;
+			top: unset;
+			right: unset;
+			bottom: unset;
+
+			transform: none;
+			transition: none;
+			box-shadow: none;
+		}
 	}
-
-	// // Mobile menu open
-	// .primary-toggle-menu-open & {
-
-	// 	> .primary-menu-container {
-	// 		// visibility: visible;
-	// 		transform: translate3d(0, 0, 0);
-	// 		opacity: 1;
-	// 		// transition: all 0.25s ease-out;
-	// 	}
-	// }
 
 	.menu-wrapper {
 
+		@include media(tablet) {
+			display: flex;
+			justify-content: flex-end;
+		}
+
+		.menu-item-has-children {
+			// height: 100%;
+			// align-self: center;
+			position: relative;
+			z-index: 100;
+		}
+
 		li {
 			text-align: center;
+
+			@include media(tablet) {
+				text-align: left;
+			}
+		}
+
+		// Sub-menus Flyout
+		> li > .sub-menu {
+			position: relative;
+
+			@include media(tablet) {
+				left: 50%;
+				margin: 0;
+				min-width: max-content;
+				position: absolute;
+				top: 100%;
+				border: 1px solid var(--goldencat--color-primary);
+				padding: var(--goldencat--spacing-unit);
+				opacity: 1;
+				transform: translate3d(-50%, 0, 0);
+				transition: transform 0.3s, opacity 0.3s;
+				will-change: transform, opacity;
+
+			}
+
+			> li {
+				text-align: center;
+			}
+
 		}
 	}
+
+	// Hide sub-sub-menus
+	/* stylelint-disable */
+	> .primary-menu-container > .primary-menu-ul > ul > li ul.sub-menu:not([aria-expanded]),
+	> .primary-menu-container > .primary-menu-ul > ul > li ul.sub-menu[aria-expanded="false"] {
+
+		@include media(tablet) {
+			transform: translate3d(-50%, -100%, 0);
+			opacity: 10;
+			top: -100%;
+		}
+	}
+	/* stylelint-enable */
 }
 

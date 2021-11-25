@@ -52,6 +52,9 @@
         <?php get_template_part( 'template-parts/header/inline-search' ); ?>
     </div>
 
+    <div class="menu-button-container menu-button-left">
+        <?php get_template_part( 'template-parts/header/wc-menu' ); ?>
+    </div>
     <div class="menu-button-container menu-button-right">
         <button id="search-toggle-menu" class="search-header-toggle" data-toggle-target=".search-inline" data-set-focus=".search-inline .search-input" >
             <span class="screen-reader-text"><?php esc_html_e( 'Rechercher', 'ecrannoirtwentyone' ); ?></span>
@@ -61,8 +64,5 @@
             <?php echo goldencat_icon( 'ui', 'menu', 22 ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
             <span class="screen-reader-text"><?php esc_html_e( 'Menu', 'goldencat' ); ?></span>
         </button><!-- #primary-mobile-menu -->
-    </div>
-    <div class="menu-button-container menu-button-left">
-        <?php get_template_part( 'template-parts/header/wc-menu' ); ?>
     </div>
 </div>
