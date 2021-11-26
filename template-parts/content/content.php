@@ -60,12 +60,23 @@
 	<footer class="entry-footer">
 		<?php
 
-		goldencat_posted_on();
-		goldencat_posted_by();
+		if ( is_single() ) :
+
+			goldencat_posted_on();
+			goldencat_posted_by();
+
+			?>
+
+			<div class="excerpt-term">
+			<?php echo goldencat_get_the_term_list( 'category', null, ', '); ?>
+			</div>
+			
+			<?php
+
+		endif; 
+
 		?>
-		<div class="excerpt-term">
-		<?php echo goldencat_get_the_term_list( 'category', null, ', '); ?>
-		</div>
-		<?php //goldencat_entry_footer(); ?>
+
 	</footer><!-- .entry-footer -->
+
 </article><!-- #post-<?php the_ID(); ?> -->
