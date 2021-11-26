@@ -33,7 +33,7 @@ get_header();
 		</div>
 	</div>
 	<?php
-	the_posts_navigation();
+	get_template_part( 'template-parts/pagination' );
 
 else :
 

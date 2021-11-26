@@ -13,9 +13,7 @@
 
 	<header class="entry-header alignwide">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-        <?php if (has_post_thumbnail()) : ?>
-		    <?php the_post_thumbnail( 'thumbnail' ); ?>
-        <?php endif; ?>
+        <?php goldencat_post_thumbnail(); ?>
 
 	</header><!-- .entry-header -->
 

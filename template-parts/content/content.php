@@ -29,7 +29,7 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php //goldencat_post_thumbnail(); ?>
+	<?php goldencat_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
