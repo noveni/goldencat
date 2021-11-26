@@ -164,7 +164,7 @@ if ( ! function_exists( 'goldencat_the_first_term_tag' ) ) {
 
 if ( ! function_exists( 'goldencat_get_the_term_list' ) ) {
 
-	function goldencat_get_the_term_list( $taxonomy = 'category', $post_id = null, $separator = '' ) {
+	function goldencat_get_the_term_list( $taxonomy = 'category', $post_id = null, $separator = '', $limit = false ) {
 
 		$post = get_post( $post_id );
 		$post_id = ! empty( $post ) ? $post->ID : false;
@@ -181,6 +181,12 @@ if ( ! function_exists( 'goldencat_get_the_term_list' ) ) {
 		$terms_tag = '';
 		$i = 0;
 		foreach ( $terms as $term ) {
+
+			if ( false !== (bool) $limit ) {
+				if ( $i > $limit ) {
+					break;
+				}
+			}
 
 			if ( $term->slug === 'non-classe' ) {
 				continue;

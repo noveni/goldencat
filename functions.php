@@ -92,12 +92,12 @@ $theme = new GoldenCatThemeBase(
 );
 
 if ( goldencat_is_woocommerce_activated() ) {
-	// require get_template_directory() . '/classes/EcrannoirTwentyOne-Woocommerce.php';
-    // $theme_woocommerce =new EcranNoirTwentyOne_WooCommerce();
+	require get_template_directory() . '/inc/classes/class-theme-woocommerce.php';
+    
+    $theme_woocommerce = new GoldenCatThemeWooCommerce();
 
     require  get_template_directory() . '/inc/woocommerce/goldencat-wc.php';
-    // require  get_template_directory() . '/inc/woocommerce/ecrannoirtwentyone-woocommerce-template-functions.php';
-	// require  get_template_directory() . '/inc/woocommerce/ecrannoirtwentyone-woocommerce-functions.php';
+    require  get_template_directory() . '/inc/woocommerce/goldencat-wc-template-functions.php';
 }
 
 

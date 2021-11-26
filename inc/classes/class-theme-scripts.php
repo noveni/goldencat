@@ -53,7 +53,7 @@ class GoldenCatThemeScripts
         
         $handleFileName = $customHandleStyleName !== '' ? $customHandleStyleName : 'goldencat-' . $styleName . '-styles';
         // Enqueue Style
-        wp_enqueue_style($handleFileName, $base_uri . $styleName . '.css', $script_asset['dependencies'], $script_asset['version'], $media);
+        wp_enqueue_style($handleFileName, $base_uri . $styleName . '.css', array(), $script_asset['version'], $media);
     }
     
     public static function toRegisterScript($scriptName, $customHandleScriptName) {
