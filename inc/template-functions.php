@@ -106,9 +106,28 @@ function goldencat_filter_excerpt_length($length) {
 	}
     return 10;
 }
-
 // Filter the excerpt length.
 add_filter('excerpt_length', 'goldencat_filter_excerpt_length');
+
+/**
+ * Filters the trimmed excerpt string.
+ *
+ * @since 2.8.0
+ *
+ * @param string $text        The trimmed text.
+ * @param string $raw_excerpt The text prior to trimming.
+ */
+function goldencat_force_trim_excerpt( $text, $raw_excerpt ) {
+
+	if ( '' !== trim( $raw_excerpt ) ) {
+
+		$excerpt_length = (int) apply_filters( 'excerpt_length', 55 );
+		$excerpt_more = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+		$text = wp_trim_words( $text, $excerpt_length, $excerpt_more );
+	}
+	return $text;
+}
+add_filter( 'wp_trim_excerpt', 'goldencat_force_trim_excerpt', 10, 2);
 
 /**
  * Filter the number of result for query
@@ -121,11 +140,11 @@ function ecrannoir_twenty_one_limit_type_post( $query ) {
 	}
 
 	if ( is_archive() ) {
-		$query->set('posts_per_page', 9);
+		$query->set('posts_per_page', 3);
 	} elseif ( is_search() ) {
-		$query->set('posts_per_page', 12);
+		$query->set('posts_per_page', 3);
 	} else {
-		$query->set('posts_per_page', 8);
+		$query->set('posts_per_page', 3);
 	}
 }
 add_action( 'pre_get_posts', 'ecrannoir_twenty_one_limit_type_post' );

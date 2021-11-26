@@ -49,6 +49,7 @@ require get_template_directory() . '/inc/classes/class-theme-assets.php';
 
 require get_template_directory() . '/inc/icons-functions.php';
 require get_template_directory() . '/inc/template-functions.php';
+require get_template_directory() . '/inc/template-tags.php';
 
 
 // Custom Post Types

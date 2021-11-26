@@ -11,9 +11,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('goldencat-grid__col-4'); ?>>
     <a href="<?php the_permalink(); ?>">
-		<div>
-            <?php the_post_thumbnail( 'goldencat_thumb' ); ?>
-        </div>
+		<?php goldencat_post_thumbnail(); ?>
 		<?php the_title( '<h4 class="">', '</h4>' ); ?>
 	</a>
 	<div class="entry-content">
