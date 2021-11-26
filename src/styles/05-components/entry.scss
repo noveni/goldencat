@@ -1,0 +1,35 @@
+.entry-title {
+	@extend %responsive-alignwide-width;
+
+	a {
+		color: currentColor;
+
+		&:active {
+			color: currentColor;
+		}
+	}
+}
+
+
+/**
+ * Entry Content
+ */
+
+.entry-content {
+
+	p {
+		word-wrap: break-word;
+	}
+
+	// Overwrite iframe embeds that have inline styles.
+	> iframe[style] {
+
+		margin: var(--goldencat--spacing-vertical) 0 !important;
+		max-width: 100% !important;
+	}
+
+	// Classic editor audio embeds.
+	.wp-audio-shortcode {
+		@extend %responsive-aligndefault-width;
+	}
+}

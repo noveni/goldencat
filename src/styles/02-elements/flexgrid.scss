@@ -1,0 +1,17 @@
+$default-grid-gutter: 2%;
+
+.goldencat-grid {
+
+	@include media(tablet) {
+		@include grid($gutter: $default-grid-gutter, $flex-wrap: wrap);
+	}
+
+	@for $i from 1 through 12 {
+
+		@include media(tablet) {
+			> .goldencat-grid__col-#{$i} {
+				@include grid-col($col: $i, $gutter: 2em);
+			}
+		}
+	}
+}
