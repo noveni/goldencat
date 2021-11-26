@@ -10,7 +10,8 @@
  */
 
 ?>
-	</main><!-- #primary -->
+		</main><!-- #primary -->
+	</div><!-- #content -->
 	<?php get_template_part( 'template-parts/footer/above-section' ); ?>
 	<footer id="colophon" class="site-footer">
 		<?php if ( is_active_sidebar('footer-main') ) : ?>

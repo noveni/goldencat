@@ -27,5 +27,6 @@
 	<?php get_template_part( 'template-parts/header/notice-bar' ); ?>
 	<?php get_template_part( 'template-parts/header/site-header' ); ?>
 
-	<main id="primary" class="site-main" role="main">
+	<div id="content" class="site-content">
+		<main id="primary" class="site-main" role="main">
 	
