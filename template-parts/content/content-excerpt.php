@@ -9,13 +9,24 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('goldencat-grid__col-4'); ?>>
+<article id="post-<?php the_ID(); ?>" class="goldencat-grid__col-4 content-excerpt">
     <a href="<?php the_permalink(); ?>">
 		<?php goldencat_post_thumbnail(); ?>
 		<?php the_title( '<h4 class="">', '</h4>' ); ?>
 	</a>
 	<div class="entry-content">
 		<?php the_excerpt(); ?>
+		<?php goldencat_block_button( array( 'href' => get_the_permalink() ) ); ?>
 	</div><!-- .entry-content -->
 
+	<div class="entry-footer">
+		<?php
+
+			goldencat_posted_on();
+			goldencat_posted_by();
+		?>
+		<div class="excerpt-term">
+			<?php echo goldencat_get_the_term_list( 'category', null, ', '); ?>
+		</div>
+	</div>
 </article><!-- #post-${ID} -->
