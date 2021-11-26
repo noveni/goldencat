@@ -4,7 +4,14 @@
 	top: calc(var(--goldencat--header--height) + var(--goldencat--admin-bar--height));
 	right: 0;
 	bottom: 0;
-
+	width: 100%;
+	z-index: 1;
+	@include media(mobile) {
+		max-width: 340px;
+	}
+	@include media(tablet) {
+		max-width: unset;
+	}
 	background-color: var(--goldencat--color-background);
 	padding: var(--goldencat--spacing-unit);
 
@@ -20,15 +27,7 @@
 			// visibility: visible;
 			transform: translate3d(0, 0, 0);
 			opacity: 1;
-			width: 100%;
 			// transition: all 0.25s ease-out;
-
-			@include media(mobile) {
-				max-width: 340px;
-			}
-			@include media(tablet) {
-				max-width: unset;
-			}
 		}
 	}
 

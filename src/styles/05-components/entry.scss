@@ -10,6 +10,13 @@
 	}
 }
 
+.post-thumbnail {
+
+	img {
+		width: 100%;
+	}
+}
+
 
 /**
  * Entry Content
@@ -32,4 +39,8 @@
 	.wp-audio-shortcode {
 		@extend %responsive-aligndefault-width;
 	}
+}
+
+.entry-footer {
+	@extend %responsive-alignwide-width;
 }

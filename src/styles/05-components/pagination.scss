@@ -41,13 +41,74 @@
 // Singular navigation
 .post-navigation {
 
-	.post-title {
-		display: inline-block;
+	.nav-title {
+		display: none;
+
+		@include media(tablet) {
+			display: block;
+
+			font-size: 12px;
+		}
+	}
+
+	.nav-subtitle {
+		display: flex;
+		align-items: center;
+		// svg {
+		// 	vertical-align: middle;
+		// }
+
+		@include media(tablet) {
+			margin-bottom: calc(1 * var(--goldencat--spacing-unit));
+		}
 	}
 
 	.nav-links {
-		@include media(mobile) {
-			justify-content: space-between;
+		text-align: center;
+
+		> * {
+			padding: 0 calc(1 * var(--goldencat--spacing-unit));
+
+			@include media(tablet) {
+
+				padding: 0 calc(2 * var(--goldencat--spacing-unit));
+
+				&:first-child {
+					position: relative;
+
+					&::after {
+						content: "";
+						display: block;
+						position: absolute;
+						right: 0;
+						border-left: 1px solid #000;
+						height: 100%;
+						top: 50%;
+						transform: translateY(-50%);
+					}
+				}
+			}
+
+		}
+	}
+
+	.nav-next {
+		text-align: left;
+
+		.nav-subtitle svg {
+			margin-left: calc(1 * var(--goldencat--spacing-unit));
+		}
+	}
+
+	.nav-previous {
+		text-align: right;
+
+		.nav-subtitle {
+			justify-content: flex-end;
+		}
+
+		.nav-subtitle svg {
+			margin-right: calc(1 * var(--goldencat--spacing-unit));
 		}
 	}
 }
