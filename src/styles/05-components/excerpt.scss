@@ -1,0 +1,27 @@
+.post-excerpt {
+
+	a {
+		text-decoration: none;
+	}
+}
+
+.excerpt-thumbnail {
+	@extend %responsive-alignfull-width;
+	position: relative;
+
+	img {
+		width: 100%;
+	}
+
+	.wp-post-image {
+		display: block;
+		max-width: 100%;
+	}
+}
+
+.excerpt-content {
+
+	a {
+		text-decoration: none;
+	}
+}

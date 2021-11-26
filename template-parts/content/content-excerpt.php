@@ -9,17 +9,17 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" class="goldencat-grid__col-4 content-excerpt">
+<article id="post-<?php the_ID(); ?>" class="goldencat-grid__col-4 post-excerpt">
     <a href="<?php the_permalink(); ?>">
 		<?php goldencat_post_thumbnail(); ?>
 		<?php the_title( '<h4 class="">', '</h4>' ); ?>
 	</a>
-	<div class="entry-content">
+	<div class="excerpt-content">
 		<?php the_excerpt(); ?>
 		<?php goldencat_block_button( array( 'href' => get_the_permalink() ) ); ?>
 	</div><!-- .entry-content -->
 
-	<div class="entry-footer">
+	<div class="excerpt-footer">
 		<?php
 
 			goldencat_posted_on();

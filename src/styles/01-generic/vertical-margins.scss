@@ -7,6 +7,26 @@
  * - See: globals/_global-width-responsive.scss
  */
 
+
+%goldencat-default-vertical {
+
+	margin-top: calc(0.666 * var(--goldencat--spacing-vertical));
+	margin-bottom: calc(0.666 * var(--goldencat--spacing-vertical));
+
+	@include media(mobile) {
+		margin-top: calc(1 * var(--goldencat--spacing-vertical));
+		margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
+	}
+
+	&:first-child {
+		margin-top: 0;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
 /**
  * Top Level Wrappers (header, main, footer)
  * - Set vertical padding and horizontal margins
@@ -57,9 +77,43 @@
 .entry-content,
 .entry-footer,
 .author-bio,
-.wp-block-ecrannoirtwentyone-term-of-taxonomy .term-of-taxonomy-row {
+.wp-block-goldencat-term-of-taxonomy .term-of-taxonomy-row {
 	margin-top: var(--goldencat--spacing-vertical);
 	margin-right: auto;
 	margin-bottom: var(--goldencat--spacing-vertical);
 	margin-left: auto;
+}
+
+.excerpt-content {
+
+	> * {
+
+		margin-top: calc(0.5 * var(--goldencat--spacing-vertical));
+		margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
+	}
+}
+
+.excerpt-thumbnail {
+	margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
+}
+
+.site-main > .navigation {
+	margin-top: calc(1 * var(--goldencat--spacing-vertical));
+	margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
+
+	@include media(tablet) {
+		margin-top: calc(2 * var(--goldencat--spacing-vertical));
+		margin-bottom: calc(2 * var(--goldencat--spacing-vertical));
+	}
+}
+
+.goldencat-grid {
+
+	.post-excerpt {
+		margin-bottom: calc(2 * var(--goldencat--spacing-vertical));
+
+		@include media(tablet) {
+			margin-bottom: calc(2 * var(--goldencat--spacing-vertical));
+		}
+	}
 }

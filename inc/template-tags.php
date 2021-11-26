@@ -70,12 +70,12 @@ if ( ! function_exists( 'goldencat_post_thumbnail' ) ) {
         if ( is_singular() ) :
             ?>
             
-            <div class="post-thumbnail">
+            <figure class="post-thumbnail">
 				<?php the_post_thumbnail( 'post-thumbnail', array( 'loading' => false ) ); ?>
                 <?php if ( wp_get_attachment_caption( get_post_thumbnail_id() ) ) : ?>
 					<figcaption class="wp-caption-text"><?php echo wp_kses_post( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></figcaption>
 				<?php endif; ?>
-			</div><!-- .post-thumbnail -->
+			</figure><!-- .post-thumbnail -->
 
         <?php else : ?>
             
@@ -83,6 +83,8 @@ if ( ! function_exists( 'goldencat_post_thumbnail' ) ) {
             <?php if ( $with_link === true ) : ?>
                 <a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
             <?php endif; ?>
+
+				<figure class="excerpt-thumbnail">
 				<?php
 					the_post_thumbnail(
 						'goldencat_thumb',
@@ -95,6 +97,8 @@ if ( ! function_exists( 'goldencat_post_thumbnail' ) ) {
 						)
 					);
 				?>
+				</figure>
+				
             <?php if ( $with_link ) : ?>
                 </a>
             <?php endif; ?>
