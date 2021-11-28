@@ -89,16 +89,19 @@ if ( ! function_exists( 'goldencat_cart_link' ) ) {
 	 * @return void
 	 * @since  1.0.0
 	 */
-	function goldencat_cart_link() {
+	function goldencat_cart_link( $with_label = false ) {
 		if ( ! goldencat_woo_cart_available() ) {
 			return;
 		}
+		$account_button_label_class = $with_label === true ? 'header-button-label' : 'screen-reader-text';
 		?>
 			<a class="cart-contents wc-header-button" href="<?php echo esc_url( wc_get_checkout_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'goldencat' ); ?>">
-				<?php echo goldencat_icon( 'ui', 'cart' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-				<?php /* translators: %d: number of items in cart */ ?>
-				<span class="count"><?php echo wp_kses_data( WC()->cart->get_cart_contents_count() ); ?></span>
-				<span class="screen-reader-text"><?php _e('Panier', 'goldencat'); ?></span>
+				<div class="svg-icon">
+					<?php echo goldencat_icon( 'ui', 'cart' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+					<?php /* translators: %d: number of items in cart */ ?>
+					<span class="count"><?php echo wp_kses_data( WC()->cart->get_cart_contents_count() ); ?></span>
+				</div>
+				<span class="<?php echo $account_button_label_class; ?>"><?php _e('Panier', 'goldencat'); ?></span>
 			</a>
 		<?php
 	}
