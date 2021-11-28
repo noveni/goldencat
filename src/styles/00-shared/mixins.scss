@@ -82,3 +82,78 @@
 	word-wrap: normal !important;
 	word-break: normal;
 }
+
+@mixin clearfix {
+
+	&::before,
+	&::after {
+		content: "";
+		display: table;
+	}
+
+	&::after {
+		clear: both;
+	}
+}
+
+@mixin wrap-break-word {
+	// https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap
+	// https://developer.mozilla.org/en-US/docs/Web/CSS/word-break
+	// This is the current standard, works in most browsers.
+	overflow-wrap: anywhere;
+	// Safari supports word-break.
+	word-break: break-word;
+	// We also need word-wrap and for IE.
+	-ms-word-break: break-all;
+}
+
+@mixin grid-archive-wrapper() {
+	@extend %responsive-alignwide-width;
+
+	> * {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-bottom: 1rem;
+		margin-top: 0;
+		margin-left: calc(-0.5 * var(--global--spacing-horizontal));
+		margin-right: calc(-0.5 * var(--global--spacing-horizontal));
+
+		> * {
+			padding-left: calc(0.5 * var(--global--spacing-horizontal));
+			padding-right: calc(0.5 * var(--global--spacing-horizontal));
+		}
+	}
+}
+
+@mixin woocommerce-label() {
+	font-weight: 500;
+	font-size: var(--global--font-size-base);
+	color: var(--wp--preset--color--black);
+	letter-spacing: 0;
+	line-height: 18px;
+}
+
+@mixin woocommerce-cart-title() {
+	// font-family: Montserrat-SemiBold;
+	font-family: var(--wp--preset--font-family--primary);
+	font-weight: 600;
+	font-size: 18px;
+	color: var(--wp--preset--color--black);
+	letter-spacing: 0;
+	line-height: 24px;
+}
+
+@mixin non-selectable {
+	user-select: none;
+	pointer-events: none;
+}
+
+@mixin underlined-link() {
+	font-weight: 600;
+	text-decoration: underline;
+
+	&:hover {
+		text-decoration: none;
+	}
+}

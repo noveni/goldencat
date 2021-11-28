@@ -27,8 +27,8 @@ if ( is_user_logged_in() ) {
         <?php echo goldencat_icon( 'ui', 'user' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
         <span class="screen-reader-text"><?php echo $account_button_label; ?></span>
     </a>
-    <?php goldencat_cart_link(); ?>
     <div class="site-header-cart">
+        <?php goldencat_cart_link(); ?>
         <?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
     </div>
 </div>

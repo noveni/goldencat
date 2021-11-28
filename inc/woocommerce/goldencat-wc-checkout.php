@@ -62,6 +62,7 @@ function goldencat_checkout_billing_title() {
 // Wrap Customer Billing and Order Review
 add_action( 'woocommerce_checkout_before_customer_details', 'goldencat_checkout_wrapper_row_start');
 add_action( 'woocommerce_checkout_after_order_review', 'goldencat_checkout_wrapper_row_end', 11);
+add_action( 'woocommerce_checkout_billing', 'goldencat_checkout_billing_title' );
 
 function goldencat_checkout_wrapper_row_start() {
     ?>
@@ -74,6 +75,7 @@ function goldencat_checkout_wrapper_row_end() {
     </div><!-- .wrapper-checkout-row -->
     <?php
 }
+
 
 // Make a Step #2 Part For checkout. We Can add Delivery Step
 add_action( 'woocommerce_checkout_after_order_review', 'goldencat_checkout_step_block_second', 20);
@@ -190,7 +192,7 @@ function goldencat_wc_checkout_fields_add_label_to_placeholder( $field_groups ) 
 function goldencat_wc_checkout_fields_remove_fields ( $field_groups ) {
     if ( !WC()->cart->needs_shipping() ) {
         // Remove Country Field
-        unset($field_groups['billing']['billing_country']);
+        // unset($field_groups['billing']['billing_country']);
     }
 
     // Remove Company

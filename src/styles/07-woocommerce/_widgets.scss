@@ -1,0 +1,145 @@
+/**
+ * Widgets
+ */
+
+.widget {
+
+	ul.products {
+
+		li.product {
+
+			a {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+.widget_products {
+
+	a {
+		display: block;
+	}
+}
+
+.widget_layered_nav {
+
+	li {
+		margin-bottom: ms(-2);
+	}
+}
+
+.widget.woocommerce {
+
+	li {
+
+		.count {
+			font-size: 1em;
+			float: right;
+		}
+	}
+}
+
+.widget_price_filter {
+
+	.price_slider {
+		margin-bottom: 1em;
+	}
+
+	.price_slider_amount {
+		text-align: right;
+		line-height: 2.4;
+
+		.button {
+			float: left;
+		}
+	}
+
+	@media (min-width: $breakpoint_md) and (max-width: 1024px) {
+
+		.price_slider_amount {
+			text-align: left;
+
+			.button {
+				display: block;
+				float: none;
+				width: 100%;
+			}
+		}
+	}
+
+	.ui-slider {
+		position: relative;
+		text-align: left;
+	}
+
+	.ui-slider .ui-slider-handle {
+		position: absolute;
+		top: auto;
+		z-index: 2;
+		width: 1em;
+		height: 1em;
+
+		border-top-left-radius: (1em);
+		border-top-right-radius: (1em);
+		border-bottom-left-radius: (1em);
+		border-bottom-right-radius: (1em);
+		cursor: ew-resize;
+		background: var(--global--color-secondary);
+		box-sizing: border-box;
+		margin-top: -0.25em;
+		margin-left: auto;
+		opacity: 1;
+		border: 0;
+
+		&:last-child {
+			margin-left: -1em;
+		}
+
+		&:hover,
+		&.ui-state-active {
+			box-shadow: 0 0 0 0.236em rgba(#000, 0.1);
+		}
+	}
+
+	.ui-slider .ui-slider-range {
+		position: absolute;
+		z-index: 1;
+		font-size: 0.7em;
+		display: block;
+		border: 0;
+		background: var(--global--color-secondary);
+
+		border-top-left-radius: (1em);
+		border-top-right-radius: (1em);
+		border-bottom-left-radius: (1em);
+		border-bottom-right-radius: (1em);
+	}
+
+	.price_slider_wrapper .ui-widget-content {
+
+		border-top-left-radius: (1em);
+		border-top-right-radius: (1em);
+		border-bottom-left-radius: (1em);
+		border-bottom-right-radius: (1em);
+		background: rgba(0, 0, 0, 0.1);
+		border: 0;
+	}
+
+	.ui-slider-horizontal {
+		height: 0.5em;
+	}
+
+	.ui-slider-horizontal .ui-slider-range {
+		top: 0;
+		height: 100%;
+	}
+
+	.ui-slider-horizontal .ui-slider-range-min {
+		left: -1px;
+	}
+
+	.ui-slider-horizontal .ui-slider-range-max {
+		right: -1px;
+	}
+}

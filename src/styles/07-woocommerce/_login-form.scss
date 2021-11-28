@@ -1,0 +1,77 @@
+
+.u-columns.col2-set {
+	display: flex;
+
+	> .u-column1 {
+		width: 33.33%;
+	}
+
+	> .u-column2 {
+		width: 33.33%;
+	}
+}
+
+.u-columns.col2-set#customer_login { /* stylelint-disable-line */
+	justify-content: space-evenly;
+
+	.u-column2,
+	.u-column1 {
+		width: 35%;
+		text-align: center;
+
+		.form-row {
+
+			label {
+				text-align: left;
+			}
+		}
+	}
+}
+
+.woocommerce-account:not(.logged-in) {
+
+	.site-main > .hentry {
+		background-color: var(--wp--preset--color--gray-alt);
+		overflow: hidden;
+	}
+
+	.entry-content > .woocommerce {
+		@extend %responsive-alignfull-width;
+	}
+
+	.goldencat-login-wrapper {
+
+		h2 {
+			margin-bottom: calc(0.666 * var(--goldencat--spacing-vertical));
+		}
+
+		form {
+			margin-top: calc(1 * var(--goldencat--spacing-vertical));
+			margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
+		}
+	}
+}
+
+.woocommerce-form .form-row {
+
+	.info-required {
+		// font-weight: 500;
+		// font-size: 8px;
+		color: var(--wp--preset--color--black);
+		// letter-spacing: 0;
+		// line-height: 24px;
+		// text-transform: uppercase;
+		display: block;
+		text-align: right;
+		transform: translateY(calc(0.3 * var(--global--spacing-vertical)));
+	}
+}
+
+.woocommerce-LostPassword {
+	font-size: 13px;
+	letter-spacing: 0;
+	text-align: center;
+	line-height: 14px;
+	text-transform: uppercase;
+	margin-top: calc(0.25 * var(--global--spacing-vertical));
+}

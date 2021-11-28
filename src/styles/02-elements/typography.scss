@@ -28,13 +28,13 @@
 
 %theme-button-style {
 	font-family: var(--wp--preset--font-family--primary);
-	color: var(--global--color-background);
+	color: var(--goldencat--color-background);
 	font-weight: 500;
 	font-size: 13px;
 	letter-spacing: 2.17px;
 	line-height: 16px;
 	cursor: pointer;
-	background-color: var(--global--color-primary);
+	background-color: var(--goldencat--color-primary);
 	border-radius: 0;
 	border: 0;
 	text-decoration: none;
@@ -63,7 +63,7 @@
 %theme-input-text-and-placeholder-style {
 	font-family: var(--wp--preset--font-family--primary);
 	font-style: italic;
-	font-weight: var(--form--label-weight);
+	font-weight: 300;
 	font-size: 13px;
 	color: var(--form--color-text);
 	letter-spacing: 0.27px;
@@ -71,7 +71,7 @@
 
 	&::placeholder {
 		font-weight: 300;
-		color: var(--form--color-text);
+		color: var(--goldencat--color-primary);
 	}
 }
 
@@ -142,10 +142,10 @@
 
 %theme-wc-price {
 	font-family: var(--wp--preset--font-family--primary);
-	font-size: var(--global--font-size-base);
+	font-size: var(--goldencat--font-size-base);
 	font-weight: bold;
 	font-style: italic;
-	color: var(--global--color-third);
+	color: var(--goldencat--color-third);
 	letter-spacing: 2.17px;
 	line-height: 16px;
 }
@@ -161,7 +161,7 @@
 
 %theme-menu-style {
 	font-family: var(--wp--preset--font-family--primary);
-	font-size: var(--global--font-size-base);
+	font-size: var(--goldencat--font-size-base);
 	font-weight: 500;
 	letter-spacing: 2.17px;
 	line-height: 18px;

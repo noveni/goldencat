@@ -1,0 +1,124 @@
+/**
+ * Reviews
+ */
+#reviews {
+	outline: none;
+
+	#comments {
+		padding-top: 0;
+	}
+
+	.comment-reply-title {
+		display: none;
+	}
+
+	.commentlist {
+		list-style: none;
+		margin-left: 0;
+
+		li {
+			list-style: none;
+			clear: both;
+
+			@include clearfix;
+
+			.comment_container {
+				border-radius: 3px;
+
+				@include clearfix;
+
+				.comment-text {
+
+					width: 83.33%;
+
+					.star-rating {
+						float: right;
+						line-height: 1;
+						height: 1em;
+					}
+				}
+			}
+
+			&:last-child {
+				border-bottom: 0;
+				margin-bottom: 0;
+			}
+
+			time {
+				opacity: 0.5;
+			}
+
+			.avatar {
+
+				width: 16.66%;
+				height: auto;
+			}
+
+			p.meta {
+				margin-bottom: 1em;
+
+				strong {
+					line-height: 1;
+				}
+
+				time {
+					display: block;
+				}
+
+				.verified {
+					font-style: normal;
+				}
+
+				.woocommerce-review__dash {
+					display: none;
+				}
+			}
+
+			ul.children {
+				margin: 0;
+
+				width: 83.33%;
+
+				.avatar {
+
+					width: 20%;
+				}
+
+				.comment-text {
+
+					width: 80%;
+				}
+
+				li {
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+
+	.comment-form-rating {
+		clear: both;
+
+		label {
+			display: block;
+		}
+	}
+}
+
+@include media(tablet) {
+
+	#reviews {
+
+		.comment-form-author,
+		.comment-form-email {
+			width: 47%;
+		}
+
+		.comment-form-email {
+			margin-right: 0;
+		}
+	}
+}

@@ -34,10 +34,10 @@ figcaption,
 .wp-caption-text,
 .wp-block-embed figcaption {
 	color: currentColor;
-	font-size: var(--global--font-size-xs);
+	font-size: var(--goldencat--font-size-xs);
 	//line-height: $global--line-height-body;
-	margin-top: calc(0.5 * var(--global--spacing-unit));
-	margin-bottom: var(--global--spacing-unit);
+	margin-top: calc(0.5 * var(--goldencat--spacing-unit));
+	margin-bottom: var(--goldencat--spacing-unit);
 	text-align: center;
 
 	.alignleft &,

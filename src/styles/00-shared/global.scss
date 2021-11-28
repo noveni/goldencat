@@ -31,7 +31,22 @@ body {
 	--goldencat--breakpoint_wide: #{$breakpoint_xxl};
 
 
-	--goldencat--font-size--base: var(--wp--preset--font-size--normal);
+	/* Font Size */
+	--goldencat--font-size-base: 12px;
+	--goldencat--font-size-xs: 1rem; // 16px / 16px
+	--goldencat--font-size-sm: 1.125rem; // 18px / 16px
+	--goldencat--font-size-md: 1.25rem; // 20px / 16px
+	--goldencat--font-size-lg: 1.5rem; // 24px / 16px
+	--goldencat--font-size-xl: 2.25rem; // 36px / 16px
+	--goldencat--font-size-xxl: 4rem; // 64px / 16px
+	--goldencat--font-size-xxxl: 5rem; // 80px / 16px
+	--goldencat--font-size-page-title: var(--goldencat--font-size-xxl);
+	--goldencat--letter-spacing: 0.27px;
+	--goldencat--line-height: 18px;
+
+	@include media(tablet) {
+		--goldencat--font-size-base: var(--wp--preset--font-size--normal);
+	}
 
 
 	/* Spacing */
@@ -56,5 +71,13 @@ body {
 	-0.1px 0.1px 0.2px hsl(var(--goldencat--shadow-color) / 0),
 	-1.3px 2px 3.6px hsl(var(--goldencat--shadow-color) / 0.29),
 	-3.9px 6px 10.7px hsl(var(--goldencat--shadow-color) / 0.58);
+
+	// Form
+	--goldencat--form--border-radius: 0;
+	--goldencat--form--border-width: 1px;
+	--goldencat--form--border-color: var(--goldencat--color-secondary);
+	--goldencat--form--color-text: var(--goldencat--color-primary);
+	--goldencat--form--spacing-unit: calc(0.5 * var(--goldencat--spacing-unit));
+	
 }
 /* stylelint-enable */
