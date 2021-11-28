@@ -1,0 +1,150 @@
+.wp-block-quote {
+	position: relative;
+	border-left: none;
+	margin: var(--goldencat--spacing-vertical) auto var(--goldencat--spacing-vertical) var(--goldencat--spacing-horizontal);
+
+	p {
+		font-family: var(--wp--preset--font-family--secondary);
+		font-size: var(--goldencat--font-size-md);
+		font-style: normal;
+		font-weight: 500;
+		//line-height: $goldencat--line-height-body;
+	}
+
+	strong {
+		font-weight: bolder;
+	}
+
+	&:before {
+		content: "\201C";
+		font-size: var(--goldencat--font-size-md);
+		//line-height: $goldencat--line-height-body;
+		left: calc(-0.5 * var(--goldencat--spacing-horizontal));
+	}
+
+	.wp-block-quote__citation {
+		color: var(--goldencat--color-primary);
+		font-size: var(--goldencat--font-size-xs);
+		font-style: normal;
+
+		.has-background &,
+		[class*="background-color"] &,
+		[style*="background-color"] &,
+		.wp-block-cover[style*="background-image"] & {
+			color: currentColor;
+		}
+	}
+
+	&.has-text-align-right {
+		margin: var(--goldencat--spacing-vertical) var(--goldencat--spacing-horizontal) var(--goldencat--spacing-vertical) auto;
+		padding-right: 0;
+		border-right: none;
+
+		// Hide the left aligned quote.
+		&:before {
+			display: none;
+		}
+
+		// Align the quote left of the text.
+		p:before {
+			content: "\201D";
+			font-size: var(--goldencat--font-size-md);
+			font-weight: normal;
+			//line-height: $goldencat--line-height-body;
+			margin-right: 5px;
+		}
+	}
+
+	&.has-text-align-center {
+		margin: var(--goldencat--spacing-vertical) auto;
+
+		&:before {
+			display: none;
+		}
+	}
+
+	&.is-large,
+	&.is-style-large {
+		padding-left: 0;
+
+		/* Resetting margins to match _block-container.scss */
+		margin-top: var(--goldencat--spacing-vertical);
+		margin-bottom: var(--goldencat--spacing-vertical);
+
+		p {
+			font-size: var(--goldencat--font-size-xl);
+			font-style: normal;
+			line-height: 1.35;
+		}
+
+		&:before {
+			font-size: var(--goldencat--font-size-xl);
+			line-height: 1.35;
+			left: calc(-1 * var(--goldencat--spacing-horizontal));
+		}
+
+		&.has-text-align-right {
+
+			// Hide the left aligned quote.
+			&:before {
+				display: none;
+			}
+
+			// Align the quote left of the text.
+			p:before {
+				content: "\201D";
+				font-size: var(--goldencat--font-size-xl);
+				font-weight: normal;
+				line-height: 1.35;
+				margin-right: 10px;
+			}
+		}
+
+		@include media(mobile-only) {
+			padding-left: var(--goldencat--spacing-horizontal);
+
+			&:before {
+				left: 0;
+			}
+
+			&.has-text-align-right {
+				padding-left: 0;
+				padding-right: var(--goldencat--spacing-horizontal);
+
+				&:before {
+					right: 0;
+				}
+			}
+		}
+	}
+
+	@include media(mobile-only) {
+		padding-left: calc(0.5 * var(--goldencat--spacing-horizontal));
+
+		&:before {
+			left: 0;
+		}
+
+		&.has-text-align-right {
+			padding-left: 0;
+			padding-right: calc(0.5 * var(--goldencat--spacing-horizontal));
+
+			&:before {
+				right: 0;
+			}
+		}
+
+		&.has-text-align-center {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	@include media(mobile) {
+		margin-left: auto;
+
+		&.has-text-align-right {
+			margin-right: auto;
+		}
+	}
+}

@@ -1,0 +1,15 @@
+.wp-block-code {
+	border-color: var(--goldencat--color-border);
+	border-radius: 0;
+	border-style: solid;
+	border-width: 0.1rem;
+	padding: var(--goldencat--spacing-unit);
+
+	code {
+		color: var(--goldencat--color-primary);
+		font-size: var(--goldencat--font-size-xs);
+		white-space: pre;
+		overflow-x: auto;
+		display: block;
+	}
+}

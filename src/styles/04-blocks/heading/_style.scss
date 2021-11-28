@@ -1,0 +1,47 @@
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	@extend %theme-title-style;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+.wp-block.editor-post-title__block .editor-post-title__input {
+	@extend %theme-title-h1;
+}
+
+h2,
+.h2 {
+	@extend %theme-title-h2;
+}
+
+h3,
+.h3 {
+	@extend %theme-title-h3;
+}
+
+h4,
+.h4 {
+	@extend %theme-title-h4;
+}
+
+h5,
+.h5 {
+	@extend %theme-title-h5;
+}
+
+h6,
+.h6 {
+	@extend %theme-title-h6;
+}

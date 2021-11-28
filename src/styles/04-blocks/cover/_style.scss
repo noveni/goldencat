@@ -1,0 +1,48 @@
+.wp-block-cover,
+.wp-block-cover-image {
+
+	&:not(.alignwide):not(.alignfull) {
+		clear: both;
+	}
+
+	&.alignfull {
+		margin-top: 0;
+		margin-bottom: 0;
+
+		&:last-child {
+			margin-bottom: inherit;
+		}
+	}
+
+	background-color: var(--wp--preset--color--black);
+	min-height: 30px;
+	margin-top: inherit;
+	margin-bottom: inherit;
+
+	.wp-block-cover__inner-container,
+	.wp-block-cover-image-text,
+	.wp-block-cover-text {
+		color: currentColor; // Uses text color specified with background-color options in 07-utilities\color-palette.scss
+
+		a:not(.wp-block-button__link):not(.wp-block-file__button) {
+			color: currentColor;
+		}
+
+		.has-link-color a {
+			color: var(--wp--style--color--link, var(--goldencat--color-primary));
+		}
+	}
+
+	/* default & custom background-color */
+	&:not([class*="background-color"]) {
+
+		.wp-block-cover__inner-container,
+		.wp-block-cover-image-text,
+		.wp-block-cover-text {
+			color: var(--wp--preset--color--white);
+		}
+	}
+
+
+	/* Block Styles */
+}

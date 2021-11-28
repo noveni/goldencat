@@ -38,7 +38,7 @@
 	border-radius: 0;
 	border: 0;
 	text-decoration: none;
-	padding: var(--button--padding-vertical) var(--button--padding-horizontal);
+	padding: var(--goldencat--button--padding-vertical) var(--goldencat--button--padding-horizontal);
 	text-align: center;
 	text-transform: uppercase;
 	will-change: color, background-color;
@@ -91,8 +91,8 @@
 	font-weight: 400;
 	letter-spacing: 2.63px;
 	line-height: var(--heading--line-height-h1);
-	-webkit-text-fill-color: transparent;
-	-webkit-text-stroke: 1px var(--wp--preset--color--heading-border);
+	// -webkit-text-fill-color: transparent;
+	// -webkit-text-stroke: 1px var(--wp--preset--color--heading-border);
 	// line-height: $heading--line-height-h1;
 
 	@include media(tablet) {

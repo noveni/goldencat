@@ -1,0 +1,56 @@
+.wp-block-group {
+	// Start IE clearfix.
+	// This hack is only necessary because we want to support IE11.
+	// If we don't want to support IE11, then "display: flow-root" would suffice.
+	display: block;
+	clear: both;
+
+	display: flow-root; // stylelint-disable-line declaration-block-no-duplicate-properties
+
+	&:before,
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+	// End IE clearfix.
+
+
+	> * {
+		@extend %goldencat-default-vertical;
+	}
+
+	> .wp-block-group {
+
+		@include media(tablet-only) {
+			margin-bottom: 0;
+		}
+	}
+
+	&.has-background.alignfull {
+		padding: calc(1 * var(--goldencat--spacing-vertical));
+
+		@include media(mobile) {
+			padding: calc(2 * var(--goldencat--spacing-vertical)) calc(1 * var(--goldencat--spacing-vertical));
+		}
+	}
+
+	&.has-background:not(.alignfull) {
+		padding: calc(0.666 * var(--goldencat--spacing-vertical));
+
+		@include media(mobile) {
+			padding: calc(0.7 * var(--goldencat--spacing-vertical));
+		}
+
+		// Adjust alignfull items to account for left and right padding.
+		.wp-block-group__inner-container > .alignfull,
+		.wp-block-group__inner-container > hr.wp-block-separator:not(.is-style-dots):not(.alignwide).alignfull {
+			max-width: calc(var(--responsive--alignfull-width) + (2 * var(--goldencat--spacing-vertical)));
+			width: calc(var(--responsive--alignfull-width) + (2 * var(--goldencat--spacing-vertical)));
+			margin-left: calc(-1 * var(--goldencat--spacing-vertical));
+		}
+	}
+
+	// Block Styles
+
+}

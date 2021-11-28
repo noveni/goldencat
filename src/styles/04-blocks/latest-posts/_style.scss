@@ -1,0 +1,99 @@
+.wp-block-latest-posts {
+	padding-left: 0;
+
+	// Vertical margins logic
+	&:not(.is-grid) > li {
+		margin-top: calc(1.666 * var(--goldencat--spacing-vertical));
+		margin-bottom: calc(1.666 * var(--goldencat--spacing-vertical));
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&.is-grid {
+		word-wrap: break-word;
+		word-break: break-word;
+
+		> li {
+			margin-bottom: var(--goldencat--spacing-vertical);
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		// Remove bottom margins in grid columns
+		&.columns-2 > li:nth-last-child(-n + 2):nth-child(2n + 1),
+		&.columns-2 > li:nth-last-child(-n + 2):nth-child(2n + 1) ~ li,
+		&.columns-3 > li:nth-last-child(-n + 3):nth-child(3n + 1),
+		&.columns-3 > li:nth-last-child(-n + 3):nth-child(3n + 1) ~ li,
+		&.columns-4 > li:nth-last-child(-n + 4):nth-child(4n + 1),
+		&.columns-4 > li:nth-last-child(-n + 4):nth-child(4n + 1) ~ li,
+		&.columns-5 > li:nth-last-child(-n + 5):nth-child(5n + 1),
+		&.columns-5 > li:nth-last-child(-n + 5):nth-child(5n + 1) ~ li,
+		&.columns-6 > li:nth-last-child(-n + 6):nth-child(6n + 1),
+		&.columns-6 > li:nth-last-child(-n + 6):nth-child(6n + 1) ~ li {
+			margin-bottom: 0;
+		}
+	}
+
+	> li > * {
+		margin-top: calc(0.333 * var(--goldencat--spacing-vertical));
+		margin-bottom: calc(0.333 * var(--goldencat--spacing-vertical));
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	// Post title
+	> li > a {
+		display: inline-block;
+		margin-bottom: calc(0.333 * var(--goldencat--spacing-vertical));
+	}
+
+	// Post author
+	.wp-block-latest-posts__post-author {
+		color: var(--goldencat--color-primary);
+	}
+
+	// Post date
+	.wp-block-latest-posts__post-date {
+		color: var(--goldencat--color-primary);
+
+		[class*="inner-container"] &,
+		.has-background & {
+			color: currentColor;
+		}
+	}
+
+	// Post content
+	.wp-block-latest-posts__post-excerpt,
+	.wp-block-latest-posts__post-full-content {
+		margin-top: calc(0.666 * var(--goldencat--spacing-vertical));
+	}
+
+	// Utility classes
+	&.alignfull {
+		padding-left: var(--goldencat--spacing-unit);
+		padding-right: var(--goldencat--spacing-unit);
+
+		.entry-content [class*="inner-container"] &,
+		.entry-content .has-background & {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	// Block Styles
+
+}

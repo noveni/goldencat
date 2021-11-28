@@ -1,0 +1,72 @@
+.wp-block-image {
+	text-align: center;
+
+	figcaption {
+		color: var(--goldencat--color-primary);
+		font-size: var(--goldencat--font-size-xs);
+		margin-top: calc(0.5 * var(--goldencat--spacing-unit));
+		margin-bottom: var(--goldencat--spacing-unit);
+		text-align: center;
+	}
+
+	.alignright {
+		margin-left: var(--global--spacing-horizontal);
+	}
+
+	.alignleft {
+		margin-right: var(--global--spacing-horizontal);
+	}
+
+	a:focus img {
+		outline-offset: 2px;
+	}
+}
+
+// Remove vertical margins from image block wrappers when floated
+.entry-content > *[class="wp-block-image"],
+.entry-content [class*="inner-container"] > *[class="wp-block-image"] {
+	margin-top: 0;
+	margin-bottom: 0;
+
+	// Remove top margins from the following element when previous image block is floated
+	+ * {
+		margin-top: 0;
+	}
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+// Block Styles
+
+
+.entry-content {
+
+	> .wp-block-image {
+
+		> .alignleft,
+		> .alignright {
+			@include media(mobile) {
+				max-width: 50%;
+			}
+			@include media(mobile-only) {
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+	}
+
+	.wp-block-image {
+
+		&.is-style-ecrannoir-classic-portrait {
+			border-bottom-right-radius: 50%;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+}

@@ -48,12 +48,32 @@ body {
 		--goldencat--font-size-base: var(--wp--preset--font-size--normal);
 	}
 
+	--heading--font-size-h6: 14px;
+	--heading--font-size-h5: 14px;
+	--heading--font-size-h4: 14px;
+	--heading--font-size-h3: 20px;
+	--heading--font-size-h2: 30px;
+	--heading--font-size-h1: 30px;
+	--heading--line-height-h1: 1;
+
+	@include media(tablet) {
+		--heading--font-size-h6: 20px;
+		--heading--font-size-h5: 24px;
+		--heading--font-size-h4: var(--wp--preset--font-size--h-4);
+		--heading--font-size-h3: var(--wp--preset--font-size--h-3);
+		--heading--font-size-h2: var(--wp--preset--font-size--h-2);
+		--heading--font-size-h1: var(--wp--preset--font-size--h-2);
+		--heading--line-height-h1: 117px;
+
+	}
 
 	/* Spacing */
 	--goldencat--spacing-unit: #{1 * $baseline-unit}; // 20px
 	--goldencat--spacing-measure: unset; // Use ch units here. ie: 60ch = 60 character max-width
 	--goldencat--spacing-horizontal: #{2.5 * $baseline-unit}; // 25px
 	--goldencat--spacing-vertical: #{3 * $baseline-unit}; // 30px.
+	--goldencat--button--padding-vertical: 15px;
+	--goldencat--button--padding-horizontal: 30px;
 
 
 	// Color
