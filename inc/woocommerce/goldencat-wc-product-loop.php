@@ -36,7 +36,7 @@ add_filter( 'woocommerce_product_loop_end', 'goldencat_product_loop_end' );
 
 if ( ! function_exists( 'goldencat_product_loop_start' ) ) {
 	function goldencat_product_loop_start() {
-		return '<div class="products-grid-wrapper alignwide"><ul class="products columns">';
+		return '<div class="products-grid-wrapper alignwide"><ul class="products columns goldencat-grid">';
 	}
 }
 
@@ -45,6 +45,16 @@ if ( ! function_exists( 'goldencat_product_loop_end' ) ) {
 		return '</ul></div>';
 	}
 }
+
+add_filter( 'woocommerce_post_class', 'goldencat_make_product_grid_size', 10, 2);
+
+function goldencat_make_product_grid_size( $classes, $product ) {
+
+	$classes[] = 'goldencat-grid__col-4';
+
+	return $classes;
+}
+
 
 // Remove classic Button
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );

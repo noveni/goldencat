@@ -63,7 +63,7 @@
 		// text-transform: uppercase;
 		display: block;
 		text-align: right;
-		transform: translateY(calc(0.3 * var(--global--spacing-vertical)));
+		transform: translateY(calc(0.3 * var(--goldencat--spacing-vertical)));
 	}
 }
 
@@ -73,5 +73,5 @@
 	text-align: center;
 	line-height: 14px;
 	text-transform: uppercase;
-	margin-top: calc(0.25 * var(--global--spacing-vertical));
+	margin-top: calc(0.25 * var(--goldencat--spacing-vertical));
 }

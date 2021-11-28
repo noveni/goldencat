@@ -81,7 +81,7 @@ table.cart {
 	td.actions {
 		border-top: 1px solid #979797;
 		background-color: transparent;
-		padding-top: calc(1 * var(--global--spacing-vertical));
+		padding-top: calc(1 * var(--goldencat--spacing-vertical));
 
 		@include media(tablet) {
 			text-align: right;
@@ -98,7 +98,7 @@ table.cart {
 		.coupon {
 			padding-bottom: 1em;
 			margin-bottom: 1em;
-			border-bottom: 1px solid var(--global--color-border);
+			border-bottom: 1px solid var(--goldencat--color-border);
 
 			@include media(tablet) {
 				padding-bottom: 0;
@@ -157,7 +157,7 @@ ul#shipping_method { /* stylelint-disable-line */
 	margin-left: 0;
 
 	li {
-		margin-bottom: calc(0.5 * var(--global--spacing-vertical));
+		margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
 
 		&:last-child {
 			margin-bottom: 0;

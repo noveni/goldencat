@@ -7,10 +7,10 @@
 	> * {
 
 		&:first-child {
-			margin-top: calc(0.666 * var(--global--spacing-vertical));
+			margin-top: calc(0.666 * var(--goldencat--spacing-vertical));
 
 			@include media(mobile) {
-				margin-top: calc(2 * var(--global--spacing-vertical));
+				margin-top: calc(2 * var(--goldencat--spacing-vertical));
 			}
 		}
 	}
@@ -20,10 +20,6 @@
 /**
  * Products
  */
-
-.products-grid-wrapper {
-	@include grid-archive-wrapper;
-}
 
 ul.products {
 	list-style: none;
@@ -38,54 +34,36 @@ ul.products,
 	.wc-block-grid__product {
 		font-size: inherit;
 		list-style: none;
-		margin-left: 0;
-		margin-bottom: calc(1 * var(--global--spacing-vertical));
-		// margin-bottom: 0;
-		text-align: left;
 		position: relative;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
 
-		flex: 1 0 50%;
-		max-width: 50%;
-
-		> a {
-			flex: 0 1 auto;
-		}
 
 		.woocommerce-shop & {
-			margin-bottom: calc(2.1 * var(--global--spacing-vertical));
-		}
-
-		@include media(tablet) {
-			flex: 1 0 25%;
-			max-width: 25%;
+			margin-bottom: calc(2.1 * var(--goldencat--spacing-vertical));
 		}
 
 		.star-rating {
-			margin: 0 auto calc(3 * var(--global--spacing-vertical));
+			margin: 0 auto calc(3 * var(--goldencat--spacing-vertical));
 		}
 
 		.woocommerce-LoopProduct-link {
 			text-decoration: none;
 			display: flex;
 			flex-direction: column;
-			margin-bottom: calc(0.5 * var(--global--spacing-vertical));
+			margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
 		}
 
 		.price,
 		.wc-block-grid__product-price {
 			@extend %theme-wc-price;
 			margin: 0;
-			margin-bottom: calc(0.5 * var(--global--spacing-vertical));
+			margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
 		}
 
 		.woocommerce-loop-product__title,
 		.woocommerce-loop-category__title,
 		.wc-block-grid__product-title,
 		.wc-block-grid__product-title > a {
-			margin-bottom: calc(0.35 * var(--global--spacing-vertical));
+			margin-bottom: calc(0.35 * var(--goldencat--spacing-vertical));
 		}
 
 		.woocommerce-loop-product__title {
@@ -111,7 +89,7 @@ ul.products,
 				justify-content: center;
 				font-weight: 800;
 				// font-size: 18px;
-				// color: var(--global--color-white);
+				// color: var(--goldencat--color-white);
 				// letter-spacing: 0;
 				text-align: center;
 				// line-height: 24px;
@@ -123,7 +101,7 @@ ul.products,
 		}
 
 		.woocommerce-loop-product__img-wrapper {
-			margin-bottom: calc(0.5 * var(--global--spacing-vertical));
+			margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
 		}
 
 	}

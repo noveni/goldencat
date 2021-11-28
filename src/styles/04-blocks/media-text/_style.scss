@@ -43,8 +43,8 @@
 
 	&.is-stacked-on-mobile .wp-block-media-text__content {
 		@include media(mobile) {
-			padding-top: var(--global--spacing-vertical);
-			padding-bottom: var(--global--spacing-vertical);
+			padding-top: var(--goldencat--spacing-vertical);
+			padding-bottom: var(--goldencat--spacing-vertical);
 		}
 	}
 

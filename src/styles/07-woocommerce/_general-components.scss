@@ -204,21 +204,6 @@ p.stars {
 	}
 }
 
-// .wc-block-grid__product-onsale,
-// .onsale {
-// 	border: 1px solid;
-// 	// border-color: $global--color-primary;
-// 	// color: $global--color-primary;
-// 	padding: 0.202em ms(-2);
-// 	font-size: ms(-1);
-// 	text-transform: uppercase;
-// 	font-weight: 600;
-// 	display: inline-block;
-// 	margin-bottom: 1em;
-// 	border-radius: 3px;
-// 	position: relative;
-// }
-
 .wc-block-grid__product-onsale,
 .round-badge {
 	@extend %timing-detail-italic;
