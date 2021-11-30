@@ -109,3 +109,13 @@ function goldencat_wc_product_single_add_to_cart_text() {
     return 'Je commande!';
 }
 add_filter( 'woocommerce_product_single_add_to_cart_text', 'goldencat_wc_product_single_add_to_cart_text' );
+
+
+/**
+ * Change 
+ */
+function goldencat_wc_product_single_keep_default_variations( $do_change, $product ) {
+
+    return $do_change;
+}
+add_filter( 'goldencat_wc_change_variation_to_radio', 'goldencat_wc_product_single_keep_default_variations', 10, 2);

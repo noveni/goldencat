@@ -213,6 +213,14 @@ class GoldenCatThemeWooCommerce {
             return;
         }
     
+        $change_variation_to_radio = apply_filters( 'goldencat_wc_change_variation_to_radio', true, $product );
+    
+        if ( $change_variation_to_radio === false ) {
+            return;
+        }
+
+        $exclude_variation_name_from_tag_conversion = apply_filters( 'goldencat_wc_change_variation_to_radio_exclude', [], $product );
+
         // Inline jQuery
         ?>
         <script>
@@ -221,43 +229,46 @@ class GoldenCatThemeWooCommerce {
                 $( ".variations_form" )
                     .on( "wc_variation_form woocommerce_update_variation_values", function() {
                         var product_attr    =   jQuery.parseJSON( $(".variations_form").attr("data-product_variations") )
+                        var excluded_variations = <?php echo json_encode($exclude_variation_name_from_tag_conversion) ?>;
                         $( "label.generatedRadios" ).remove();
                         $( "table.variations select" ).each( function() {
                             var selName = $( this ).attr( "name" );
-                            $( "select[name=" + selName + "] option" ).each( function() {
-                                var option = $( this );
-                                var value = option.attr( "value" );
-                                if( value == "" ) { return; }
-                                var label = option.html();
-                                var select = option.parent();
-                                var selected = select.val();
-                                var isSelected = ( selected == value )
-                                    ? " checked=\"checked\"" : "";
-                                var selClass = ( selected == value )
-                                    ? " selected" : "";
-                                var radHtml
-                                    = `<input name="${selName}" type="radio" value="${value}" />`;
-                                var optionHtml
-                                    = `<label class="generatedRadios${selClass}">${radHtml} ${label}</label>`;
-                                select.parent().append(
-                                    $( optionHtml ).click( function() {
-                                        select.val( value ).trigger( "change" );
+                            if ( !excluded_variations.includes( selName )) {
+                                $( "select[name=" + selName + "] option" ).each( function() {
+                                    var option = $( this );
+                                    var value = option.attr( "value" );
+                                    if( value == "" ) { return; }
+                                    var label = option.html();
+                                    var select = option.parent();
+                                    var selected = select.val();
+                                    var isSelected = ( selected == value )
+                                        ? " checked=\"checked\"" : "";
+                                    var selClass = ( selected == value )
+                                        ? " selected" : "";
+                                    var radHtml
+                                        = `<input name="${selName}" type="radio" value="${value}" />`;
+                                    var optionHtml
+                                        = `<label class="generatedRadios${selClass}">${radHtml} ${label}</label>`;
+                                    select.parent().append(
+                                        $( optionHtml ).click( function() {
+                                            select.val( value ).trigger( "change" );
+                                            $('.woocommerce-variation-price').hide();
+                                        } )
+                                    )
+
+                                    if (isSelected) {
+                                        // Move Variation Price up.
+                                        $.each( product_attr, function( index, loop_value ) {
+                                            if( value === loop_value.attributes[selName] ){
+                                                $('.product_title + .price').html( loop_value.price_html );
+                                            }
+                                        });
+
+                                        // Hide Old Variation Price
                                         $('.woocommerce-variation-price').hide();
-                                    } )
-                                )
-
-                                if (isSelected) {
-                                    // Move Variation Price up.
-                                    $.each( product_attr, function( index, loop_value ) {
-                                        if( value === loop_value.attributes[selName] ){
-                                            $('.product_title + .price').html( loop_value.price_html );
-                                        }
-                                    });
-
-                                    // Hide Old Variation Price
-                                    $('.woocommerce-variation-price').hide();
-                                }
-                            } ).parent().hide();
+                                    }
+                                } ).parent().hide();
+                            }
                         } );
                     } );
                 
