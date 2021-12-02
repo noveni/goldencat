@@ -106,7 +106,7 @@ class GoldenCatThemeWooCommerce {
             font-weight: 400;
             font-style: normal;
         }';
-        wp_add_inline_style( 'goldencat-woocommerce-style', $inline_font );
+        wp_add_inline_style( 'goldencat-woocommerce-styles', $inline_font );
     }
 
     public function addThemeActiveClass( $classes )
