@@ -15,7 +15,7 @@ if ( function_exists( 'register_block_style' ) ) {
 	 * Register block styles.
 	 *
 	 */
-	function ecrannoir_twenty_one_register_block_styles() {
+	function goldencat_register_block_styles() {
 
 		// Button With Arrow.
 		register_block_style(
@@ -37,5 +37,5 @@ if ( function_exists( 'register_block_style' ) ) {
 
 
 	}
-	add_action( 'init', 'ecrannoir_twenty_one_register_block_styles' );
+	add_action( 'init', 'goldencat_register_block_styles' );
 }
