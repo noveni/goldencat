@@ -20,6 +20,7 @@ require get_template_directory() . '/inc/woocommerce/goldencat-wc-product-loop.p
 require get_template_directory() . '/inc/woocommerce/goldencat-wc-product.php';
 require get_template_directory() . '/inc/woocommerce/goldencat-wc-product-single.php';
 require get_template_directory() . '/inc/woocommerce/goldencat-wc-product-meta-fields.php';
+require get_template_directory() . '/inc/woocommerce/goldencat-wc-admin.php';
 
 add_filter('woocommerce_cart_item_thumbnail', 'goldencat_wc_cart_item_thumbnail', 10, 3);
 
