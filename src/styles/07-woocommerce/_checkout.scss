@@ -5,6 +5,10 @@
  *     just the checkout form. We do this because otherwise our sticky order
  *     review can break out of the checkout form (and the blockUI element).
  */
+
+$left-col-desktop-width: 56%;
+$right-col-desktop-width: 41%;
+
 .checkout_coupon {
 	margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
 
@@ -150,7 +154,7 @@ form.checkout {
 		margin-bottom: calc(0.7 * var(--goldencat--spacing-vertical));
 
 		@include media(tablet) {
-			width: 58.333%;
+			width: $left-col-desktop-width;
 		}
 
 	}
@@ -167,7 +171,7 @@ form.checkout {
 		width: 100%;
 
 		@include media(tablet) {
-			width: 56%;
+			width: $left-col-desktop-width;
 		}
 	}
 
@@ -177,7 +181,7 @@ form.checkout {
 
 		@include media(tablet) {
 			order: 1;
-			width: 41%;
+			width: $right-col-desktop-width;
 		}
 	}
 
