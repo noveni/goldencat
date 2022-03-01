@@ -51,7 +51,7 @@ function goldencat_checkout_order_review_add_order_button() {
 
 function goldencat_checkout_billing_title() {
     ?>
-    <h4 class="goldencat-checkout-numbered-step"><?php esc_html_e( 'Je crée mon compte', 'woocommerce' ); ?></h4>
+    <h4 class="goldencat-checkout-numbered-step"><?php is_user_logged_in() ? esc_html_e( 'Détails', 'woocommerce' ) : esc_html_e( 'Je crée mon compte', 'woocommerce' ); ?></h4>
     <?php
 }
 
