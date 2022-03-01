@@ -1,0 +1,31 @@
+// Theme Front Style
+// @import "01-shared/file-header";
+$flexbox-grid-mixins-grid-type: skeleton;
+// https://thingsym.github.io/flexbox-grid-mixins/
+@import "flexbox-grid-mixins";
+
+@import "00-shared/variables";
+@import "00-shared/mixins";
+@import "00-shared/fonts";
+@import "00-shared/global";
+
+@import "01-generic/normalize";
+@import "01-generic/breakpoints";
+@import "01-generic/vertical-margins";
+@import "01-generic/reset";
+@import "01-generic/clearings";
+
+@import "02-elements/typography";
+@import "02-elements/blockquote";
+@import "02-elements/forms";
+@import "02-elements/media";
+@import "02-elements/misc";
+@import "02-elements/links";
+@import "02-elements/flexgrid.scss";
+
+@import "04-blocks/blocks";
+@import "../blocks/style";
+
+@import "05-components/coming-soon.scss";
+
+@import "06-utilities/a11y";

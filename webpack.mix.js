@@ -25,6 +25,9 @@ mix.js('src/scripts/theme/index.js', 'js/theme.js')
   .sass('src/styles/admin/theme-settings.scss', 'theme-admin-settings.css')
   .sass('src/styles/woocommerce.scss', 'woocommerce.css')
   .js('src/scripts/admin/taxonomy-meta-field/index.js', 'js/admin/taxonomy-meta-field.js')
+  // Coming Soon
+  .js('src/scripts/theme/coming-soon.js', 'js/coming-soon.js')
+  .sass('src/styles/coming-soon.scss', 'coming-soon.css')
   .options({
     fileLoaderDirs: {
       images: 'img',

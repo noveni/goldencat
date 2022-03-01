@@ -69,6 +69,10 @@ class GoldenCatThemeBase
         // Check the maintenance Mode
         $this->checkMaintenanceMode();
 
+          
+        $this->checkComingSoon();
+
+
         
         // Setup Admin
         new GoldenCatThemeAdmin();
@@ -158,6 +162,85 @@ class GoldenCatThemeBase
             $site_title = get_bloginfo( 'name' );
             wp_die('<div style="text-align:center"><h1 style="color:black">' . $site_title . '</h1><p>Nous effectuons une maintenance. Nous serons de retour en ligne sous peu!</p></div>');
         }
+    }
+
+
+    private function  checkComingSoon()
+    {
+        $comingsoon_mode = boolval( get_option( 'goldencat_theme_coming_soon_on', false ) ?? false);
+        if ( $comingsoon_mode === true ) {
+            add_action( 'template_redirect', [ $this, 'doComingSoon' ] );
+            add_filter( 'template_include', [ $this, 'doComingSoonTemplate' ], 99 );
+
+            remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+
+             /**
+             * Enqueue Coming Soon Assets
+             */
+            add_action('wp_enqueue_scripts', function ( $hook ) {
+
+                if ( is_page( 'coming-soon' )  ) {
+
+                    global $wp_query; 
+
+                    GoldenCatThemeScripts::toRegisterScript('coming-soon', 'goldencat-coming-soon-scripts');
+                    
+                    GoldenCatThemeScripts::toEnqueueScript('coming-soon', 'goldencat-coming-soon-scripts');
+                    GoldenCatThemeScripts::toEnqueueStyle('coming-soon');
+
+                    wp_dequeue_style( 'sb_instagram_styles' );
+                    wp_dequeue_style( 'wc-blocks-vendors-style' );
+                    wp_dequeue_style( 'wc-blocks-style' );
+                    wp_dequeue_style( 'coopcycle' );
+                    wp_dequeue_style( 'wc-gc-css' );
+                    wp_dequeue_style( 'wcsatt-css' );
+                    wp_dequeue_style( 'goldencat-style-styles' );
+                    wp_deregister_style( 'goldencat-style-styles' );
+                    wp_dequeue_style( 'goldencat-woocommerce-styles' );
+                    wp_deregister_style( 'goldencat-woocommerce-styles' );
+                    wp_dequeue_script( 'google-recaptcha-js' );
+                    wp_deregister_script( 'google-recaptcha-js' );
+                    wp_dequeue_script( 'wpcf7-recaptcha-js' );
+                    wp_deregister_script( 'wpcf7-recaptcha-js' );
+                    wp_dequeue_script( 'goldencat-front-scripts' );
+                    wp_deregister_script( 'goldencat-front-scripts' );
+                };
+            }, 9999);
+		}
+
+
+    }
+
+    /**
+     * Apply the Coming Soon mode and display message
+     */
+    public function doComingSoon()
+    {
+        global $pagenow;
+	
+        if( !is_user_logged_in() && !is_page("login") && !is_page("coming-soon") && $pagenow != "wp-login.php" )
+        {
+            wp_redirect( site_url('coming-soon') );
+            exit();
+        }
+        
+    }
+
+    /**
+     * Apply the Coming Soon mode and display message
+     */
+    public function doComingSoonTemplate( $template )
+    {
+        if ( is_page( 'coming-soon' )  ) {
+            remove_action('wp_enqueue_scripts', [WC_Frontend_Scripts::class, 'load_scripts']);
+            remove_action('wp_print_scripts', [WC_Frontend_Scripts::class, 'localize_printed_scripts'], 5);
+            remove_action('wp_print_footer_scripts', [WC_Frontend_Scripts::class, 'localize_printed_scripts'], 5);
+            $new_template = locate_template( array( 'coming-soon.php' ) );
+            if ( '' != $new_template ) {
+                return $new_template ;
+            }
+        }
+        return $template;
     }
 
     /**

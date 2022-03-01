@@ -14,6 +14,7 @@ import {
   SnackbarList,
   Spinner,
   TabPanel,
+  Notice,
   ToggleControl
 } from '@wordpress/components';
 
@@ -63,12 +64,15 @@ class GlobalSettings extends Component {
     super( ...arguments );
 
     this.saveSettings = this.saveSettings.bind( this );
+    this.createCommingSoonPage = this.createCommingSoonPage.bind( this );
 
     this.state = {
       isAPISaving: false,
       isAPILoaded: false,
       maintenanceOn: false,
       showAdminBarOn: true,
+      comingsoonOn: false,
+      isPageComingSoonExist: false
     };
   }
 
@@ -76,14 +80,21 @@ class GlobalSettings extends Component {
     api.loadPromise.then( () => {
 
       this.settings = new api.models.Settings();
+      const Page = new api.models.Page( );
 
       const { isAPILoaded } = this.state;
 
       if ( isAPILoaded === false ) {
+        Page.fetch( { data: { slug: "coming-soon" } } ).then( (response) => {
+          this.setState( {
+            isPageComingSoonExist: response.length > 0
+          })
+        })
 				this.settings.fetch().then( ( response ) => {
           this.setState( {
             maintenanceOn: Boolean( response[ 'goldencat_theme_maintenance_on' ] ),
             showAdminBarOn: Boolean( response[ 'goldencat_theme_show_admin_bar_on' ] ),
+            comingsoonOn: Boolean( response[ 'goldencat_theme_coming_soon_on' ] ),
             isAPILoaded: true,
           })
         })
@@ -94,18 +105,21 @@ class GlobalSettings extends Component {
   saveSettings() {
     const {
       maintenanceOn,
-      showAdminBarOn
+      showAdminBarOn,
+      comingsoonOn
     } = this.state;
 
     this.setState({ isAPISaving: true });
 
     const settings = new api.models.Settings( {
       [ 'goldencat_theme_maintenance_on' ]: maintenanceOn ? 'true' : 'false',
+      [ 'goldencat_theme_coming_soon_on' ]: comingsoonOn ? 'true' : 'false',
       [ 'goldencat_theme_show_admin_bar_on' ]: showAdminBarOn ? 'true' : 'false',
     } );
     settings.save().then( response => {
       this.setState({
           ['goldencat_theme_maintenance_on']: response['goldencat_theme_maintenance_on'],
+          ['goldencat_theme_coming_soon_on']: response['goldencat_theme_coming_soon_on'],
           ['goldencat_theme_show_admin_bar_on']: response['goldencat_theme_show_admin_bar_on'],
           isAPISaving: false
       });
@@ -121,12 +135,75 @@ class GlobalSettings extends Component {
     });
   }
 
+  createCommingSoonPage() {
+
+    this.setState({ isAPISaving: true });
+
+    const pageData = {
+      title: 'Coming Soon',
+      slug: 'coming-soon',
+      status: 'publish'
+    }
+
+    
+    // Check before to create if page is exisint
+    const existingComingSoonPage = new api.models.Page();
+    existingComingSoonPage.fetch( { data: { slug: "coming-soon" } } ).then( ( pages ) => {
+      // If page exist we update the state dispatch the info
+      if (pages.length > 0) {
+
+        this.setState( {
+          isPageComingSoonExist: true,
+          isAPISaving: false
+        })
+
+        dispatch('core/notices').createNotice(
+          'success',
+          __( 'Page already created', 'goldencat' ),
+          {
+              type: 'snackbar',
+              isDismissible: true,
+              actions: [{
+                label: 'Voir la page',
+                url: pages[0].link
+              }]
+          }
+        );
+      } else {
+        // Else we create the page
+        const newComingSoonPage = new api.models.Page( pageData );
+        newComingSoonPage.save().then( response => {
+
+          this.setState( {
+            isPageComingSoonExist: true,
+            isAPISaving: false
+          })
+    
+          dispatch('core/notices').createNotice(
+            'success',
+            __( 'Page created', 'goldencat' ),
+            {
+                type: 'snackbar',
+                isDismissible: true,
+                actions: [{
+                  label: 'Voir la page',
+                  url: response.link
+                }]
+            }
+          );
+        } )
+      }
+    });
+  }
+
   render() {
 
     const {
 			maintenanceOn,
       showAdminBarOn,
 			isAPILoaded,
+      comingsoonOn,
+      isPageComingSoonExist
 		} = this.state;
 
     if ( ! isAPILoaded ) {
@@ -165,6 +242,28 @@ class GlobalSettings extends Component {
                 label="Bar d'admin affichée"
                 checked={ showAdminBarOn }
                 onChange={ () => this.setState({ showAdminBarOn: !showAdminBarOn }) }
+              />
+            </PanelRow>
+          </PanelBody>
+          <PanelBody title="Coming-soon">
+            <PanelRow>
+              <div>
+                <p>Afficher la page coming soon?</p>
+                <p></p>
+                {!isPageComingSoonExist && (
+                  <Notice status="info" isDismissible={ false }>
+                    <p>Une page <em>coming soon</em> doit être créé pour pouvoir faire fonctionner le mode.</p>
+                    <Button variant="secondary" onClick={this.createCommingSoonPage}>Créer la page ?</Button>
+                  </Notice>
+                )}
+              </div>
+            </PanelRow>
+            <PanelRow>
+              <ToggleControl
+                label="Coming Soon"
+                checked={ comingsoonOn }
+                disabled={!isPageComingSoonExist}
+                onChange={ () => this.setState({ comingsoonOn: !comingsoonOn }) }
               />
             </PanelRow>
           </PanelBody>
