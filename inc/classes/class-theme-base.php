@@ -72,6 +72,8 @@ class GoldenCatThemeBase
           
         $this->checkComingSoon();
 
+        new GoldenCatThemeCookies();
+
 
         
         // Setup Admin

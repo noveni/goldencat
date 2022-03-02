@@ -140,5 +140,39 @@ class GoldenCatThemeSettings
 				'default'      => false,
 			)
 		);
+
+		register_setting(
+			'goldencat_theme_settings',
+			'goldencat_theme_cookie_settings',
+			array(
+				'type'         => 'object',
+				'default'      => array(
+					'goldencat_cookie_settings_active' => false,
+					'goldencat_cookie_settings_msg' => 'Nous utilisons des cookies pour nous assurer que nous vous offrons la meilleure expérience sur notre site Web. Si vous continuez à utiliser ce site, nous supposerons que vous en êtes satisfait.',
+					'goldencat_cookie_settings_btn' => 'Accepter',
+					'goldencat_cookie_settings_duration' => 3600 //1 heure
+				),
+				'show_in_rest' => array(
+					'schema' => array(
+						'type' => 'object',
+						'properties' => array(
+							'goldencat_cookie_settings_active' => array(
+								'type' => 'boolean',
+								'default' => false
+							),
+							'goldencat_cookie_settings_msg' => array(
+								'type' => 'string'
+							),
+							'goldencat_cookie_settings_btn' => array(
+								'type' => 'string'
+							),
+							'goldencat_cookie_settings_duration' => array(
+								'type' => 'integer'
+							),
+						)
+					)
+				),
+			)
+		);
 	}
 }

@@ -46,6 +46,7 @@ require get_template_directory() . '/inc/classes/class-theme-meta.php';
 require get_template_directory() . '/inc/classes/class-theme-icons.php';
 require get_template_directory() . '/inc/classes/class-theme-menu.php';
 require get_template_directory() . '/inc/classes/class-theme-assets.php';
+require get_template_directory() . '/inc/classes/class-theme-cookies.php';
 
 require get_template_directory() . '/inc/icons-functions.php';
 require get_template_directory() . '/inc/template-functions.php';

@@ -28,6 +28,9 @@ mix.js('src/scripts/theme/index.js', 'js/theme.js')
   // Coming Soon
   .js('src/scripts/theme/coming-soon.js', 'js/coming-soon.js')
   .sass('src/styles/coming-soon.scss', 'coming-soon.css')
+  // Front Handle Cookie 
+  .js('src/scripts/theme/cookie-settings.js', 'js/cookie-settings.js')
+  .sass('src/styles/cookie-front.scss', 'cookie.css')
   .options({
     fileLoaderDirs: {
       images: 'img',
