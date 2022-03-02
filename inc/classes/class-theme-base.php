@@ -496,7 +496,12 @@ class GoldenCatThemeBase
 		 * Enqueue editor assets.
 		 */
 		add_action('enqueue_block_editor_assets', function($hook) {
+
             GoldenCatThemeScripts::toEnqueueScript( 'editor' );
+            if ( get_current_screen()->base === 'post' ) {
+                // Block Editor - Post (Build separately because wp dependency @wordpress/editor cannot be enqueued within the widget block editor)
+                GoldenCatThemeScripts::toEnqueueScript( 'post-editor' );
+            }
             GoldenCatThemeScripts::toEnqueueStyle( 'admin-editor' );
         });
         

@@ -25,6 +25,8 @@ mix.js('src/scripts/theme/index.js', 'js/theme.js')
   .sass('src/styles/admin/theme-settings.scss', 'theme-admin-settings.css')
   .sass('src/styles/woocommerce.scss', 'woocommerce.css')
   .js('src/scripts/admin/taxonomy-meta-field/index.js', 'js/admin/taxonomy-meta-field.js')
+  // Block Editor - Post (Build separately because wp dependency @wordpress/editor cannot be enqueued within the widget block editor)
+  .block('src/scripts/editor/post-editor.js', 'js/post-editor.js')
   // Coming Soon
   .js('src/scripts/theme/coming-soon.js', 'js/coming-soon.js')
   .sass('src/styles/coming-soon.scss', 'coming-soon.css')
