@@ -8,7 +8,6 @@
  */
 
 
-$separator = apply_filters( 'goldencat_footer_separator', '<span class="separator"> | </span>' );
 if ( ! has_nav_menu( 'footer-legals' ) ) {
 	return;
 }
@@ -17,13 +16,13 @@ if ( ! has_nav_menu( 'footer-legals' ) ) {
     <p>
         <?php
         $menu_args = array(
-                'theme_location' => 'legals',
+                'theme_location' => 'footer-legals',
                 'items_wrap'     => '%3$s',
                 'container'      => false,
                 'echo' 			 => false,
                 'depth'          => 0,
                 'before'    => '<span>',
-                'after'     => "</span> $separator ",
+                'after'     => "</span>",
                 'fallback_cb'    => false,
         );
         echo strip_tags(wp_nav_menu( $menu_args ), '<span><a>' );

@@ -8,11 +8,13 @@
 	}
 
 	.footer-bottom {
+		@extend %responsive-alignwide-width;
 		font-size: 11px;
+		margin-top: calc(0.5 * var(--goldencat--spacing-vertical));
 		padding-top: calc(0.5 * var(--goldencat--spacing-vertical));
 		padding-bottom: calc(0.2 * var(--goldencat--spacing-vertical));
 		background-color: var(--goldencat--color-background);
-
+		border-top: 1px solid var(--goldencat--color-primary);
 
 		a {
 			text-decoration: none;
