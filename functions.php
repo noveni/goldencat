@@ -69,6 +69,10 @@ $theme = new GoldenCatThemeBase(
     array(
         'disable_comment' => true,
         'clean' => true,
+        'menus' => array(
+            'primary'   => __( 'Primary Menu', 'goldencat' ),
+            'footer-legals'    => __( 'Legals Menu', 'goldencat' ),
+        ),
         'widgets' => array(
             array(
                 'name'          => __('Header Line', 'goldencat'),
@@ -79,6 +83,11 @@ $theme = new GoldenCatThemeBase(
                 'name'          => __('Big Footer', 'goldencat'),
                 'id'            => 'footer-main',
                 'description'   => __( 'Add Widgets here to appear in the main footer.', 'goldencat' ),
+            ),
+            array(
+                'name'          => __('Header-Menu Social', 'goldencat'),
+                'id'            => 'header-menu-social',
+                'description'   => __( 'Add Social menu here to appear in the header.', 'goldencat' ),
             ),
         ),
         'image_sizes' => array(
@@ -160,3 +169,7 @@ require get_template_directory() . '/assets/blocks/picked-term.php';
 require get_template_directory() . '/assets/blocks/product-price.php';
 require get_template_directory() . '/assets/blocks/quotes-slider.php';
 require get_template_directory() . '/assets/blocks/term-of-taxonomy.php';
+
+add_filter( 'goldencat_theme_layout_menu_style', function() {
+    return 'logo-left-menu-central';
+}, 100);

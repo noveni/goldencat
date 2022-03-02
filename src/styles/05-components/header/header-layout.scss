@@ -112,4 +112,29 @@
 			}
 		}
 	}
+
+	&.header-layout-style-logo-left-menu-central {
+		display: flex;
+		position: relative;
+		justify-content: center;
+
+		@include media(tablet) {
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.primary-navigation {
+
+			@include media(tablet) {
+				flex-grow: 1;
+			}
+
+			.menu-wrapper {
+
+				@include media(tablet) {
+					justify-content: center;
+				}
+			}
+		}
+	}
 }
