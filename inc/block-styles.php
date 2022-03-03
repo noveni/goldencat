@@ -21,8 +21,8 @@ if ( function_exists( 'register_block_style' ) ) {
 		register_block_style(
 			'core/button',
 			array(
-				'name'  => 'ecrannoir-button-arrow',
-				'label' => esc_html__( 'Bouton fléché', 'ecrannoirtwentyone' ),
+				'name'  => 'goldencat-button-arrow',
+				'label' => esc_html__( 'Bouton fléché', 'goldencat' ),
 			)
 		);
 		
@@ -30,8 +30,8 @@ if ( function_exists( 'register_block_style' ) ) {
 		register_block_style(
 			'core/list',
 			array(
-				'name'  => 'ecrannoir-list-horizontal',
-				'label' => esc_html__( 'Liste Horizontal', 'ecrannoirtwentyone' ),
+				'name'  => 'goldencat-list-horizontal',
+				'label' => esc_html__( 'Liste Horizontal', 'goldencat' ),
 			)
 		);
 

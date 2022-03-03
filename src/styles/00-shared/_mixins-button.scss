@@ -1,0 +1,70 @@
+@mixin theme-base-button() {
+	font-family: var(--wp--preset--font-family--primary);
+	font-weight: 500;
+	font-size: 13px;
+	letter-spacing: 2.17px;
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	word-break: break-word;
+	cursor: pointer;
+	will-change: color, background-color;
+	transition: color 0.25s ease, background-color 0.25s ease;
+	box-sizing: border-box;
+	box-shadow: none;
+	border-radius: 0;
+	padding: var(--goldencat--button--padding-vertical) var(--goldencat--button--padding-horizontal);
+	background-color: var(--goldencat--color-primary);
+	border: 1px solid var(--goldencat--color-primary);
+	color: var(--goldencat--color-background);
+
+	&:focus,
+	&:active,
+	&:hover {
+		background-color: transparent;
+		// border: 1px solid var(--goldencat--color-background);
+		color: var(--goldencat--color-primary);
+	}
+}
+
+@mixin theme-button-arrow() {
+	font-size: 13px;
+	color: var(--goldencat--color-primary);
+	background-color: transparent;
+	border: none;
+	padding-left: 0;
+	padding-right: 0;
+	position: relative;
+
+	&::after {
+		margin-left: calc(0.5 * var(--goldencat--button--padding-horizontal));
+		content: "";
+		background: url(../../img/icons/arrow-wire.svg) center / 100% no-repeat;
+		display: inline-block;
+		height: 10px;
+		width: 15px;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		background: var(--goldencat--color-primary);
+		transform: scaleX(0);
+		transform-origin: bottom right;
+		transition: transform 0.4s;
+		transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+	}
+
+	&:hover,
+	&:focus {
+
+		&::before {
+			transform: scaleX(1);
+			transform-origin: bottom left;
+		}
+	}
+}

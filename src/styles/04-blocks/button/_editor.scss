@@ -25,67 +25,24 @@
 .wp-block-button {
 
 	// Target the default and filled button states.
-	&:not(.is-style-outline) {
+	.wp-block-button__link {
 
-		.wp-block-button__link {
-
-			&:active {
-				color: var(--button--color-text-active) !important;
-				background: transparent !important;
-				border-color: var(--button--color-background);
-			}
-
-			&:hover {
-				color: var(--button--color-text-hover) !important;
-				background: transparent !important;
-				border-color: var(--button--color-background);
-			}
-		}
+		@include theme-base-button();
 	}
 
 	// Outline Style.
 	&.is-style-outline {
 
 		.wp-block-button__link {
-			color: var(--button--color-background);
 			background: transparent;
-			border: var(--button--border-width) solid currentColor;
-			padding: var(--goldencat--button--padding-vertical) var(--goldencat--button--padding-horizontal);
+			color: currentColor;
 
+			&:focus,
 			&:active,
 			&:hover {
-				background-color: var(--button--color-background);
-				color: var(--button--color-text-hover);
-				border-color: var(--button--color-background);
-			}
-
-			&.has-background {
-				border-color: var(--button--color-background);
-
-				&:active,
-				&:hover {
-					background-color: var(--button--color-background) !important;
-				}
-			}
-
-			&.has-background:not(.has-text-color) {
-				color: var(--button--color-background);
-			}
-
-			&.has-background.has-gray-background-color:not(.has-text-color),
-			&.has-background.has-dark-gray-background-color:not(.has-text-color),
-			&.has-background.has-black-background-color:not(.has-text-color) {
-				color: var(--wp--preset--color--white);
-			}
-
-			&.has-text-color {
-				border-color: currentColor;
-
-				&:active,
-				&:hover {
-					color: var(--button--color-text-hover) !important;
-					border-color: var(--button--color-background);
-				}
+				background-color: var(--goldencat--color-primary);
+				// border: 1px solid var(--goldencat--color-background);
+				color: var(--goldencat--color-background);
 			}
 		}
 	}
@@ -93,6 +50,13 @@
 	// Squared Style
 	&.is-style-squared {
 		border-radius: 0;
+	}
+
+	&.is-style-goldencat-button-arrow {
+
+		.wp-block-button__link {
+			@include theme-button-arrow;
+		}
 	}
 }
 

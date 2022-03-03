@@ -26,40 +26,6 @@
 	}
 }
 
-%theme-button-style {
-	font-family: var(--wp--preset--font-family--primary);
-	color: var(--goldencat--color-background);
-	font-weight: 500;
-	font-size: 13px;
-	letter-spacing: 2.17px;
-	line-height: 16px;
-	cursor: pointer;
-	background-color: var(--goldencat--color-primary);
-	border-radius: 0;
-	border: 0;
-	text-decoration: none;
-	padding: var(--goldencat--button--padding-vertical) var(--goldencat--button--padding-horizontal);
-	text-align: center;
-	text-transform: uppercase;
-	will-change: color, background-color;
-	transition: color 0.25s ease, background-color 0.25s ease;
-}
-
-%theme-button-arrow-style {
-	font-size: 8px;
-	letter-spacing: 1.33px;
-	color: var(--button--color-text);
-	background-color: transparent;
-	padding: 0 0;
-
-	@include media(tablet) {
-		font-size: 8px;
-		font-size: var(--wp--preset--font-size--menu);
-		letter-spacing: 2.17px;
-		line-height: 16px;
-	}
-}
-
 %theme-input-text-and-placeholder-style {
 	font-family: var(--wp--preset--font-family--primary);
 	font-style: italic;

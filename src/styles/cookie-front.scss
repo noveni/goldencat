@@ -40,10 +40,10 @@
 	}
 
 	.goldencat-cookie-btn {
-		@extend %theme-button-style;
+		@include theme-base-button();
 
 		background: transparent;
-		color: var(--goldencat--color-white);
+		color: currentColor;
 		border: 1px solid var(--goldencat--color-white);
 		font-size: var(--goldencat--font-size-md);
 		padding: calc(0.5 * var(--goldencat--button--padding-vertical)) calc(0.5 * var(--goldencat--button--padding-horizontal));
