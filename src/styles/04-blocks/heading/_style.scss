@@ -1,5 +1,3 @@
-h1,
-.h1,
 h2,
 .h2,
 h3,
@@ -10,38 +8,42 @@ h5,
 .h5,
 h6,
 .h6 {
-	@extend %theme-title-style;
+	clear: both;
+	line-height: 1;
 }
 
-h1,
 .h1,
-h2,
-.h2,
 .wp-block.editor-post-title__block .editor-post-title__input {
-	@extend %theme-title-h1;
+	font-size: var(--heading--font-size-h1);
+	font-weight: 400;
+	letter-spacing: 2.63px;
+	line-height: 1;
+
+	@include media(tablet) {
+		line-height: 117px;
+	}
 }
 
-h2,
 .h2 {
-	@extend %theme-title-h2;
+	font-size: var(--heading--font-size-h2);
 }
 
-h3,
 .h3 {
-	@extend %theme-title-h3;
+	font-size: var(--heading--font-size-h3);
+	letter-spacing: 0;
 }
 
-h4,
 .h4 {
-	@extend %theme-title-h4;
+	font-size: var(--heading--font-size-h4);
+	letter-spacing: 0;
 }
 
-h5,
 .h5 {
-	@extend %theme-title-h5;
+	font-size: var(--heading--font-size-h5);
+	letter-spacing: 0;
 }
 
-h6,
 .h6 {
-	@extend %theme-title-h6;
+	font-size: var(--heading--font-size-h6);
+	letter-spacing: 0;
 }

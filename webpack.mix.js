@@ -96,7 +96,8 @@ mix.browserSync({
     "inc/**/*.php",
     "woocommerce/**/*.php",
     "classes/",
-    "*.php"
+    "*.php",
+    "theme.json"
   ]
 });
   

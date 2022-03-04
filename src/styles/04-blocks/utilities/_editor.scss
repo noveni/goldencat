@@ -41,25 +41,25 @@
 	}
 }
 
-.has-primary-background-color[class] {
-	background-color: var(--goldencat--color-primary);
-	color: var(--goldencat--color-background);
-}
+// .has-primary-background-color[class] {
+// 	background-color: var(--goldencat--color-primary);
+// 	color: var(--goldencat--color-background);
+// }
 
-.has-secondary-background-color[class] {
-	background-color: var(--goldencat--color-secondary);
-	color: var(--goldencat--color-background);
-}
+// .has-secondary-background-color[class] {
+// 	background-color: var(--goldencat--color-secondary);
+// 	color: var(--goldencat--color-background);
+// }
 
-.has-white-background-color[class] {
-	background-color: var(--wp--preset--color--white);
-	color: var(--goldencat--color-secondary);
-}
+// .has-white-background-color[class] {
+// 	background-color: var(--wp--preset--color--white);
+// 	color: var(--goldencat--color-secondary);
+// }
 
-.has-black-background-color[class] {
-	background-color: var(--wp--preset--color--black);
-	color: var(--goldencat--color-primary);
-}
+// .has-black-background-color[class] {
+// 	background-color: var(--wp--preset--color--black);
+// 	color: var(--goldencat--color-primary);
+// }
 
 // Spacing Overrides
 [data-block] {
@@ -72,14 +72,14 @@
 
 	// Gutenberg injects a rule that limits the max width of .wp-block to 580px
 	// This line overrides it to use the responsive spacing rules for default width content
-	max-width: var(--responsive--aligndefault-width);
+	// max-width: var(--responsive--content-size-width);
 	margin-left: auto;
 	margin-right: auto;
 
 	// Use the theme's max-width for wide alignment.
 	&[data-align="wide"],
 	&.alignwide {
-		max-width: var(--responsive--alignwide-width);
+		// max-width: var(--responsive--alignwide-width);
 	}
 
 	&[data-align="full"],

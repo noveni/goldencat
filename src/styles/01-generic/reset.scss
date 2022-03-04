@@ -44,7 +44,7 @@ html {
 	box-sizing: border-box;
 
 	// HTML resets
-	font-family: var(--wp--preset--font-family--primary);
+	// font-family: var(--wp--preset--font-family--primary);
 	//line-height: $global--line-height-body;
 	font-size: 62.5%; /* 1rem = 10px */
 }
@@ -63,11 +63,11 @@ html {
 
 // body resets
 body {
-	font-size: var(--goldencat--font-size-base);
-	font-weight: normal;
-	color: var(--goldencat--color-primary);
+	// font-size: var(--goldencat--font-size-base);
+	// font-weight: normal;
+	// color: var(--goldencat--color-primary);
 	text-align: left;
-	background-color: var(--goldencat--color-background);
+	// background-color: var(--goldencat--color-background);
 }
 
 

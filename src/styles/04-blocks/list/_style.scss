@@ -66,7 +66,8 @@ ol.is-style-ecrannoir-list-horizontal {
 		display: block;
 		color: var(--wp--preset--color--white);
 		text-align: center;
-		@extend %theme-title-h4;
+		font-size: var(--heading--font-size-h4);
+		letter-spacing: 0;
 		// margin-right: 1rem;
 		line-height: 41px;
 		margin-right: auto;

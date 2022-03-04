@@ -203,7 +203,8 @@ form.checkout {
 			display: inline-block;
 			color: var(--wp--preset--color--white);
 			text-align: center;
-			@extend %theme-title-h4;
+			font-size: var(--heading--font-size-h4);
+			letter-spacing: 0;
 			margin-right: 1rem;
 			line-height: inherit;
 		}
@@ -499,7 +500,8 @@ form.checkout .woocommerce-billing-fields > h3:first-child,
 }
 
 #ship-to-different-address {
-	@extend %theme-title-h5;
+	font-size: var(--heading--font-size-h5);
+	letter-spacing: 0;
 }
 
 

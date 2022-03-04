@@ -1,13 +1,5 @@
 /* stylelint-disable */
-:root {
-	--wp--preset--font-family--primary: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
-	--wp--preset--font-family--secondary: Montserrat, Helvetica Neue, Helvetica, Arial, sans-serif;
-}
-
 body {
-	--wp--preset--font-family--primary: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
-	--wp--preset--font-family--secondary: Montserrat, Helvetica Neue, Helvetica, Arial, sans-serif;
-
 	--goldencat--admin-bar--height: 0px;
 	--goldencat--header--height: 0px;
 
@@ -20,9 +12,6 @@ body {
 	}
 
 	--goldencat--baseline-unit: 10px;
-	
-	--goldencat--default_width: #{$default_width};
-	--goldencat--max_content_width: #{$max_content_width};
 
 	--goldencat--breakpoint_mobile: #{$breakpoint_sm};
 	--goldencat--breakpoint_tablet: #{$breakpoint_md};
@@ -54,16 +43,14 @@ body {
 	--heading--font-size-h3: 20px;
 	--heading--font-size-h2: 30px;
 	--heading--font-size-h1: 30px;
-	--heading--line-height-h1: 1;
 
 	@include media(tablet) {
-		--heading--font-size-h6: 20px;
-		--heading--font-size-h5: 24px;
+		--heading--font-size-h6: var(--wp--preset--font-size--h-6);
+		--heading--font-size-h5: var(--wp--preset--font-size--h-5);
 		--heading--font-size-h4: var(--wp--preset--font-size--h-4);
 		--heading--font-size-h3: var(--wp--preset--font-size--h-3);
 		--heading--font-size-h2: var(--wp--preset--font-size--h-2);
-		--heading--font-size-h1: var(--wp--preset--font-size--h-2);
-		--heading--line-height-h1: 117px;
+		--heading--font-size-h1: var(--wp--preset--font-size--h-1);
 
 	}
 

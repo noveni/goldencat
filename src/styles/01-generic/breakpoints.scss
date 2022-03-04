@@ -4,7 +4,7 @@
  */
 body {
 	--responsive--spacing-horizontal: calc(2 * var(--goldencat--spacing-horizontal) * 0.6);
-	--responsive--aligndefault-width: calc(100vw - var(--responsive--spacing-horizontal));
+	--responsive--content-size-width: calc(100vw - var(--responsive--spacing-horizontal));
 	--responsive--alignwide-width: calc(100vw - var(--responsive--spacing-horizontal));
 	--responsive--alignfull-width: 100%;
 	--responsive--alignright-margin: var(--goldencat--spacing-horizontal);
@@ -14,18 +14,18 @@ body {
 @include media(tablet) {
 
 	body {
-		--responsive--aligndefault-width: min(calc(100vw - 4 * var(--goldencat--spacing-horizontal)), #{$default_width});
+		--responsive--content-size-width: min(calc(100vw - 4 * var(--goldencat--spacing-horizontal)), #{$layout-content-size});
 		--responsive--alignwide-width: calc(100vw - 4 * var(--goldencat--spacing-horizontal));
-		--responsive--alignright-margin: calc(0.5 * (100vw - var(--responsive--aligndefault-width)));
-		--responsive--alignleft-margin: calc(0.5 * (100vw - var(--responsive--aligndefault-width)));
+		--responsive--alignright-margin: calc(0.5 * (100vw - var(--responsive--content-size-width)));
+		--responsive--alignleft-margin: calc(0.5 * (100vw - var(--responsive--content-size-width)));
 	}
 }
 
 @include media(desktop) {
 
 	body {
-		--responsive--aligndefault-width: min(calc(100vw - 8 * var(--goldencat--spacing-horizontal)), #{$default_width});
-		--responsive--alignwide-width: min(calc(100vw - 8 * var(--goldencat--spacing-horizontal)), #{$max_content_width});
+		--responsive--content-size-width: min(calc(100vw - 8 * var(--goldencat--spacing-horizontal)), #{$layout-content-size});
+		--responsive--alignwide-width: min(calc(100vw - 8 * var(--goldencat--spacing-horizontal)), #{$layout-wide-size});
 	}
 }
 
@@ -33,7 +33,7 @@ body {
  * Extends
  */
 %responsive-aligndefault-width {
-	max-width: var(--responsive--aligndefault-width);
+	max-width: var(--responsive--content-size-width);
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -109,7 +109,7 @@ body {
 
 	text-align: left;
 
-	max-width: var(--responsive--aligndefault-width);
+	max-width: var(--responsive--content-size-width);
 	@extend %responsive-alignleft;
 
 	float: left;
@@ -121,7 +121,7 @@ body {
 
 .entry-content > .alignright {
 
-	max-width: var(--responsive--aligndefault-width);
+	max-width: var(--responsive--content-size-width);
 	@extend %responsive-alignright;
 
 	float: right;

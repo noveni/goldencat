@@ -24,8 +24,10 @@
 	}
 
 	.wc-block-grid__product-title {
-		@extend %theme-title-style;
-		@extend %theme-title-h4;
+		font-family: var(--wp--preset--font-family--secondary);
+		line-height: 1;
+		font-size: var(--heading--font-size-h4);
+		letter-spacing: 0;
 		// font-family: var(--wp--preset--font-family--secondary);
 		// font-weight: $heading--font-weight;
 		// font-size: var(--heading--font-size-h4);

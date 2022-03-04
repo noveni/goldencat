@@ -288,7 +288,8 @@ p.stars {
 .upsells {
 
 	> h2:first-child {
-		@extend %theme-title-h3;
+		font-size: var(--heading--font-size-h3);
+		letter-spacing: 0;
 		line-height: 1;
 		-webkit-text-fill-color: unset;
 		-webkit-text-stroke: unset;

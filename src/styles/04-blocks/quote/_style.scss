@@ -6,7 +6,9 @@
 
 	&::after,
 	&::before {
-		@extend %theme-title-h1;
+		font-size: var(--heading--font-size-h1);
+		font-weight: 400;
+		letter-spacing: 2.63px;
 		font-family: var(--wp--preset--font-family--secondary);
 		position: absolute;
 		line-height: 40px;
