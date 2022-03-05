@@ -18,7 +18,8 @@ registerBlockType('ecrannoirtwentyone/cover-slider', {
   category: 'common',
   keywords: [ __( 'recent posts' ) ],
   supports: {
-    align: ['wide', 'full'],
+    anchor: true,
+    align: true,
     html: false,
     color: {
 			gradients: true,

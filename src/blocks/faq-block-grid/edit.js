@@ -31,7 +31,7 @@
    __experimentalImageSizeControl as ImageSizeControl,
    InnerBlocks,
    useBlockProps,
-   __experimentalUseInnerBlocksProps as useInnerBlocksProps,
+  useInnerBlocksProps,
  } from '@wordpress/block-editor';
  import { select, useSelect } from '@wordpress/data';
  import { pin, list, grid } from '@wordpress/icons';

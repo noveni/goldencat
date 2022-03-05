@@ -25,7 +25,7 @@ import {
   InspectorControls,
 	InnerBlocks,
 	useBlockProps,
-	__experimentalUseInnerBlocksProps as useInnerBlocksProps,
+	useInnerBlocksProps,
   __experimentalUnitControl as UnitControl,
 } from '@wordpress/block-editor';
 import {
