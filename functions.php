@@ -127,36 +127,39 @@ if ( class_exists('WPCF7') ) {
 
 
 
-$color_theme = goldencat_get_theme_color();
-$theme_taxonomy_fields = array(
-    array(
-        'taxonomy' => array( 'category', 'post_tag' ),
-        'fields' => array(
-            array(
-                'id' => 'global_field_color',
-                'label' => 'Select Color',
-                'type' => 'theme_color',
-                'choices' => $color_theme,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
-            ),
+add_action( 'init', function() {
+    $color_theme = goldencat_get_theme_color();
+    $theme_taxonomy_fields = array(
+        array(
+            'taxonomy' => array( 'category', 'post_tag' ),
+            'fields' => array(
+                array(
+                    'id' => 'global_field_color',
+                    'label' => 'Select Color',
+                    'type' => 'theme_color',
+                    'choices' => $color_theme,
+                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+                ),
+            )
+        ),
+        array(
+            'taxonomy' => array( 'category' ),
+            'fields' => array(
+                array(
+                    'id' => 'only-category-image',
+                    'label' => 'Image',
+                    'type' => 'image',
+                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
+                ),
+             )
         )
-    ),
-    array(
-        'taxonomy' => array( 'category' ),
-        'fields' => array(
-            array(
-                'id' => 'only-category-image',
-                'label' => 'Image',
-                'type' => 'image',
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'
-            ),
-         )
-    )
-);
-if (is_admin() && $theme_taxonomy_fields) {
-    require get_template_directory() . '/inc/classes/class-taxonomy-meta-field.php';
-    $taxo_meta_field = new GoldenCatTaxonomyMetaField( $theme_taxonomy_fields );
-}
+    );
+    if (is_admin() && $theme_taxonomy_fields) {
+        require get_template_directory() . '/inc/classes/class-taxonomy-meta-field.php';
+        $taxo_meta_field = new GoldenCatTaxonomyMetaField( $theme_taxonomy_fields );
+    }
+}, 99);
+
 
 
 
