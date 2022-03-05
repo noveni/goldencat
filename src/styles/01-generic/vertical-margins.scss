@@ -72,9 +72,7 @@
  * Block & non-gutenberg content wrappers
  * - Set margins
  */
-.entry-header,
 .post-thumbnail,
-.entry-content,
 .entry-footer,
 .author-bio,
 .wp-block-goldencat-term-of-taxonomy .term-of-taxonomy-row {
@@ -85,11 +83,34 @@
 }
 
 .excerpt-content {
+	margin-right: auto;
+	margin-left: auto;
 
 	> * {
 
 		margin-top: calc(0.5 * var(--goldencat--spacing-vertical));
 		margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
+	}
+}
+
+.entry-content > *,
+[class*="inner-container"] > *,
+.wp-block-template-part > * {
+
+	// margin-top: calc(0.666 * var(--goldencat--spacing-vertical));
+	margin-bottom: calc(0.666 * var(--goldencat--spacing-vertical));
+
+	@include media(mobile) {
+		// margin-top: calc(1 * var(--goldencat--spacing-vertical));
+		margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
+	}
+
+	&:first-child {
+		margin-top: 0;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
 	}
 }
 
@@ -103,7 +124,7 @@
 
 	@include media(tablet) {
 		margin-top: calc(2 * var(--goldencat--spacing-vertical));
-		margin-bottom: calc(2 * var(--goldencat--spacing-vertical));
+		// margin-bottom: calc(2 * var(--goldencat--spacing-vertical));
 	}
 }
 

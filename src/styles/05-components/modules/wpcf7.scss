@@ -1,0 +1,120 @@
+
+.wpcf7 {
+
+	p {
+		display: flex;
+		flex-wrap: wrap;
+		margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
+
+		> * {
+			flex-grow: 1;
+		}
+
+		.wpcf7-form-control-wrap:not(:only-child) {
+			flex-basis: 100% !important;
+			flex-grow: 0;
+			flex-shrink: 0;
+
+			@include media(tablet) {
+				flex-basis: calc(50% - 1em) !important;
+				flex-grow: 0;
+			}
+		}
+
+		.wpcf7-form-control-wrap:nth-child(2n) {
+
+			@include media(tablet) {
+				margin-left: 2em;
+			}
+		}
+	}
+
+	.wp-block-buttons {
+		margin-bottom: var(--goldencat--spacing-vertical);
+		display: flex;
+		justify-content: center;
+
+		.ajax-loader {
+			position: absolute;
+		}
+
+		.wpcf7-spinner {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+
+	// p > .wpcf7-form-control-wrap {
+	// 	// padding-left: 1em;
+	// 	// padding-right: 1em;
+	// 	width: 50%;
+	// 	box-sizing: border-box;
+	// }
+
+	.wpcf7-form-control-wrap {
+		// display: block;
+		// margin-bottom: calc(1 * var(--goldencat--button--padding-vertical));
+
+		select,
+		textarea,
+		input {
+			// margin-bottom: 0;
+
+			&.wpcf7-not-valid {
+				border-color: var(--wp--preset--color--red);
+			}
+		}
+
+	}
+
+	.wpcf7-not-valid-tip {
+		padding-top: 0.6rem;
+		color: var(--wp--preset--color--red);
+		font-size: var(--goldencat--font-size-base);
+	}
+
+
+	.site & form .wpcf7-response-output {
+		margin-left: 0;
+		margin-right: 0;
+		margin-top: calc(1 * var(--goldencat--spacing-vertical));
+		border: none;
+		padding: 1.3rem;
+	}
+
+	.site & form.invalid .wpcf7-response-output {
+		background-color: var(--wp--preset--color--yellow);
+	}
+
+	.site & form.sent .wpcf7-response-output {
+		background-color: var(--wp--preset--color--rose); /* Rose */
+	}
+
+	.site & form.failed .wpcf7-response-output,
+	.site & form.aborted .wpcf7-response-output {
+		background-color: var(--wp--preset--color--red); /* Red */
+	}
+
+	.site & form.spam .wpcf7-response-output {
+		background-color: #f56e28; /* Orange */
+	}
+
+	.site & form.invalid .wpcf7-response-output,
+	.site & form.unaccepted .wpcf7-response-output {
+		background-color: var(--wp--preset--color--yellow); /* Yellow */
+	}
+
+	.wpcf7-acceptance {
+		display: block;
+
+		label {
+			display: block;
+
+			.wpcf7-list-item-label {
+				padding-left: 1rem;
+				// vertical-align: super;
+			}
+		}
+	}
+}

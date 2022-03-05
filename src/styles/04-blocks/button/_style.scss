@@ -4,8 +4,7 @@
 .site .button,
 input[type="submit"],
 input[type="reset"],
-.wp-block-search__button,
-.wp-block-button .wp-block-button__link {
+.wp-block-search__button {
 
 	@include theme-base-button();
 }
@@ -14,6 +13,24 @@ input[type="reset"],
  * Block Options
  */
 .wp-block-button {
+
+	.wp-block-button__link {
+		text-align: center;
+		word-break: break-word;
+		cursor: pointer;
+		will-change: color, background-color;
+		transition: color 0.25s ease, background-color 0.25s ease;
+		box-sizing: border-box;
+		box-shadow: none;
+
+		&:focus,
+		&:active,
+		&:hover {
+			background-color: transparent;
+			// border: 1px solid var(--goldencat--color-background);
+			color: var(--goldencat--color-primary);
+		}
+	}
 
 	&.is-style-outline {
 

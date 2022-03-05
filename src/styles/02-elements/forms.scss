@@ -22,13 +22,13 @@ input[type="color"],
 	border-radius: var(--goldencat--form--border-radius);
 	background-color: transparent;
 
-	padding: calc(1 * var(--goldencat--spacing-vertical)) 0 0;
+	padding: calc(0.7 * var(--goldencat--spacing-vertical)) 0 calc(0.3 * var(--goldencat--spacing-vertical));
 	// // Gives a little more space for the outline offset.
 	max-width: 100%;
 
 	&:focus {
 		color: var(--goldencat--form--color-text);
-		outline: none;
+		// outline: none;
 		border-bottom-color: var(--goldencat--form--color-text);
 	}
 
@@ -62,19 +62,23 @@ input[type="url"] {
 }
 
 select {
-	border: var(--goldencat--form--border-width) solid var(--goldencat--color-secondary);
+	width: 100%;
+	border: none;
+	border-bottom: var(--goldencat--form--border-width) solid var(--goldencat--form--border-color);
 	color: var(--goldencat--form--color-text);
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
 	// padding: var(--goldencat--form--spacing-unit) calc(3 * var(--goldencat--form--spacing-unit)) var(--goldencat--form--spacing-unit) var(--goldencat--form--spacing-unit);
-	padding: calc(3 * var(--goldencat--form--spacing-unit)) 0 0;
+	padding: calc(0.7 * var(--goldencat--spacing-vertical)) 0 calc(0.3 * var(--goldencat--spacing-vertical));
 	background: var(--wp--preset--color--white) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%2328303d'><polygon points='0,0 10,0 5,5'/></svg>") no-repeat; // stylelint-disable-line function-url-quotes
 	background-position: right var(--goldencat--form--spacing-unit) top 60%;
+	margin-bottom: calc(0.7 * var(--goldencat--spacing-vertical));
 
 	&:focus {
-		outline-offset: 2px;
-		outline: 1px dotted var(--goldencat--color-secondary);
+		// outline: none;
+		// padding-bottom: calc(var(--goldencat--form--spacing-unit) - 1px);
+		// border-bottom: 2px solid var(--goldencat--form--border-color);
 	}
 }
 
@@ -83,7 +87,7 @@ select {
 	.select2-selection--single {
 		margin: calc(2.5 * var(--goldencat--form--spacing-unit)) 0 0;
 		border: none;
-		border-bottom: var(--goldencat--form--border-width) solid var(--form--border-color);
+		border-bottom: var(--goldencat--form--border-width) solid var(--goldencat--form--border-color);
 		color: var(--goldencat--form--color-text);
 		border-radius: 0;
 
@@ -98,8 +102,10 @@ select {
 	}
 }
 
-textarea {
+.site textarea {
 	width: 100%;
+	border: var(--goldencat--form--border-width) solid var(--goldencat--form--border-color);
+	padding: calc(0.7 * var(--goldencat--spacing-vertical)) calc(0.7 * var(--goldencat--spacing-vertical)) calc(0.3 * var(--goldencat--spacing-vertical));
 }
 
 label {

@@ -16,9 +16,6 @@
 			padding: var(--goldencat--spacing-vertical);
 		}
 
-		> * {
-			@extend %goldencat-default-vertical;
-		}
 	}
 
 	&.alignfull .wp-block-media-text__content {
