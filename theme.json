@@ -201,6 +201,11 @@
             "fontWeight": "normal"
         },
         "elements": {
+            "link": {
+                "color": {
+                    "text": "inherit"
+                }
+            },
             "h1": {
                 "typography": {
                     "fontSize": "var(--wp--preset--font-size--h-1)",
