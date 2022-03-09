@@ -20,14 +20,25 @@
 			text-decoration: none;
 		}
 
-		// Separator " | "
-		p > span:not(:last-child) {
+		p > span {
+			display: block;
+		}
 
-			&::after {
-				padding-left: 2px;
-				padding-right: 1px;
-				content: "|";
-				display: inline-block;
+		@include media(tablet) {
+
+			p > span {
+				display: inline;
+			}
+
+			// Separator " | "
+			p > span:not(:last-child) {
+
+				&::after {
+					padding-left: 2px;
+					padding-right: 1px;
+					content: "|";
+					display: inline-block;
+				}
 			}
 		}
 	}

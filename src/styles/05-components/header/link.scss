@@ -6,7 +6,16 @@
 		@extend %menu-item-style;
 		color: var(--primary-nav--color-link);
 
+		@include media(tablet) {
+			font-size: 10px;
+			letter-spacing: 0.1px;
+			font-weight: 400;
+		}
+
 		@include media(laptop) {
+			font-size: 12px;
+			letter-spacing: 0.25px;
+			font-weight: 500;
 			line-height: 24px;
 		}
 

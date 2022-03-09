@@ -26,6 +26,15 @@ $flexbox-grid-mixins-grid-type: skeleton;
 @import "04-blocks/blocks";
 @import "../blocks/style";
 
+.wp-block-cover,
+.wp-block-cover-image {
+
+	.entry-content > &.alignfull {
+		max-width: 100%;
+	}
+}
+
+
 @import "05-components/coming-soon.scss";
 
 @import "06-utilities/a11y";

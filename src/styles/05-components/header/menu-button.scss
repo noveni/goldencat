@@ -11,6 +11,15 @@
 		position: relative;
 	}
 
+	&.menu-button-left {
+		left: 0;
+		right: auto;
+
+		@include media(tablet) {
+			left: auto;
+			right: 0;
+		}
+	}
 
 	.site-header-cart,
 	.wc-header-wrapper {

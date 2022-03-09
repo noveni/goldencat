@@ -78,8 +78,8 @@ class GoldenCatThemeCookies
             <div class="goldencat-cookie-content wide-max-width">
                 <p>
                     <span><?php echo $msg; ?></span>
-                    <button class="goldencat-cookie-btn cookie-accept"><?php echo $btn_label; ?></button>
                 </p>
+                <button class="wp-block-button__link goldencat-cookie-btn cookie-accept"><?php echo $btn_label; ?></button>
             </div>
         </div>
         <!-- / Theme Cookie Notice -->

@@ -1,3 +1,5 @@
+h1,
+.h1,
 h2,
 .h2,
 h3,
@@ -10,6 +12,19 @@ h6,
 .h6 {
 	clear: both;
 	line-height: 1;
+
+	> img {
+		margin: 0 auto;
+		max-width: 40px !important;
+
+		@include media(tablet) {
+			margin: 0;
+			display: inline-block;
+			padding: 0 var(--goldencat--spacing-vertical);
+			max-width: 100% !important;
+		}
+
+	}
 }
 
 .h1,
