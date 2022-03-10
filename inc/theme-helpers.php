@@ -63,3 +63,14 @@ function goldencat_get_theme_color() {
         return $editor_settings['colors'];
     }
 }
+
+function goldencat_label( $label_type = 'btn-product-shop' ) {
+	
+	$label_text = GoldenCatThemeSettings::getSettingsLabel( $label_type );
+
+	if ( $label_text ) {
+		return $label_text;
+	} else {
+		return false;
+	}
+}

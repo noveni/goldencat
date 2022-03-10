@@ -174,5 +174,48 @@ class GoldenCatThemeSettings
 				),
 			)
 		);
+
+		register_setting(
+			'goldencat_theme_settings',
+			'goldencat_theme_label_settings',
+			array(
+				'type'         => 'object',
+				'default'      => array(
+					'goldencat_label_btn_product_shop' => 'Découvrir',
+				),
+				'show_in_rest' => array(
+					'schema' => array(
+						'type' => 'object',
+						'properties' => array(
+							'goldencat_label_btn_product_shop' => array(
+								'type' => 'string'
+							),
+						)
+					)
+				),
+			)
+		);
+	}
+
+	public static function getSettingsLabel( $type = 'btn-product-shop' ) {
+		$settings = get_option( 'goldencat_theme_label_settings', [] );
+
+		if ( empty( $settings ) ) {
+			return false;
+		}
+
+		$settings_slug = false;
+
+		switch ($type) {
+			case 'btn-product-shop':
+				$settings_slug = 'goldencat_label_btn_product_shop';
+				break;
+		}
+
+		if ( $settings_slug && isset($settings[ $settings_slug ] ) && $settings[ $settings_slug ] != '' ) {
+			return $settings[ $settings_slug ];
+		}
+
+		return false;
 	}
 }

@@ -25,6 +25,7 @@ import AnalyticsSettings from "./analytics";
 import DocumentationSettings from "./docs";
 import PosttypeSettings from "./posttype";
 import CookieSettings from "./cookies";
+import LabelSettings from "./label";
 
 
 const ThemeSettings = ( props ) => {
@@ -64,6 +65,10 @@ const ThemeSettings = ( props ) => {
                   name: 'tab-cookie',
                   title: 'Gestion des Cookies',
               },
+              {
+                  name: 'tab-label',
+                  title: 'Gestion des label',
+              },
           ] }
         >
           { ( tab ) => '' }
@@ -76,6 +81,7 @@ const ThemeSettings = ( props ) => {
         { activeTab == 'tab-docs' && <DocumentationSettings /> }
         { activeTab == 'tab-posttype' && <PosttypeSettings /> }
         { activeTab == 'tab-cookie' && <CookieSettings /> }
+        { activeTab == 'tab-label' && <LabelSettings /> }
       </div>
     </Fragment>
   );

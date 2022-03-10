@@ -38,7 +38,11 @@ function goldencat_checkout_order_review_add_order_button() {
     <tr>
         <td colspan="2">
             <?php	
-                goldencat_block_button("#payments-step", "Commander", '', 'order-review-custom-btn');
+                goldencat_block_button(array(
+                    'href' => "#payments-step",
+                    'label' => "Commander",
+                    'extraClass' => 'order-review-custom-btn'
+                ));
             ?>
         </td>
     </tr>
@@ -120,7 +124,11 @@ add_action( 'goldencat_checkout_step_third', 'woocommerce_checkout_payment'  );
 add_action( 'woocommerce_checkout_shipping', 'goldencat_checkout_add_next_step_button', 100 );
 
 function goldencat_checkout_add_next_step_button() {
-    goldencat_block_button("#shipping-step", "Suivant", '', 'order-review-custom-btn');
+    goldencat_block_button(array(
+        'href' => "#payments-step",
+        'label' => "Suivant",
+        'extraClass' => 'order-review-custom-btn'
+    ));
 }
 
 

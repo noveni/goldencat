@@ -55,10 +55,10 @@ class GoldenCatThemeWooCommerce {
                 'thumbnail_image_width' => 416,
                 'gallery_thumbnail_image_width' => 416,
                 'product_grid'          => array(
-                    'default_columns' => 4,
+                    'default_columns' => 3,
                     'default_rows'    => 4,
-                    'min_columns'     => 4,
-                    'max_columns'     => 4,
+                    'min_columns'     => 3,
+                    'max_columns'     => 3,
                     'min_rows'        => 1,
                 ),
             )
@@ -138,8 +138,8 @@ class GoldenCatThemeWooCommerce {
      */
     public function related_products_args( $args ) {
         $args = array(
-            'posts_per_page' => 4,
-            'columns'        => 4,
+            'posts_per_page' => 3,
+            'columns'        => 3,
         );
 
         return $args;
@@ -183,15 +183,15 @@ class GoldenCatThemeWooCommerce {
         } );
         add_filter( 'woocommerce_get_image_size_thumbnail', function( $size ) {
             return array(
-                'width' => 301,
-                'height' => 410,
+                'width' => 600,
+                'height' => 754,
                 'crop' => 1,
             );
         } );
         add_filter( 'woocommerce_get_image_size_single', function( $size ) {
             return array(
-                'width' => 727,
-                'height' => 685,
+                'width' => 750,
+                'height' => 978,
                 'crop' => 1,
             );
         } );

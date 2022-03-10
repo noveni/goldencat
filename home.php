@@ -12,7 +12,7 @@ get_header();
 
 <div class="entry-content">
 	<?php ob_start(); ?>
-	<div class="archive-content">
+	<div class="archive-content alignwide">
 		<div class="alignwide">
 			<div>
 				<div class="goldencat-grid filter-content-to-refresh loadmore-content-to-refresh">
