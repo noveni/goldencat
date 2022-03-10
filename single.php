@@ -19,8 +19,8 @@ while ( have_posts() ) :
 	$goldencat_next = is_rtl() ? goldencat_icon( 'ui', 'arrow_left' ) : goldencat_icon( 'ui', 'arrow_right' );
 	$goldencat_prev = is_rtl() ? goldencat_icon( 'ui', 'arrow_right' ) : goldencat_icon( 'ui', 'arrow_left' );
 
-	$goldencat_next_label     = esc_html__( 'Next post', 'goldencat' );
-	$goldencat_previous_label = esc_html__( 'Previous post', 'goldencat' );
+	$goldencat_next_label     = esc_html__( 'Article suivant', 'goldencat' );
+	$goldencat_previous_label = esc_html__( 'Article précédent', 'goldencat' );
 
 	the_post_navigation(
 		array(

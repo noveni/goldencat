@@ -1,99 +1,146 @@
 // Footer
 .site-footer {
 	@extend %responsive-alignfull-width;
+	position: relative;
+	overflow: hidden;
 
 	ul {
 		list-style: none;
 		padding: 0;
 	}
 
-	.footer-bottom {
-		@extend %responsive-alignwide-width;
-		font-size: 11px;
+	.widget_nav_menu {
 		margin-top: calc(0.5 * var(--goldencat--spacing-vertical));
-		padding-top: calc(0.5 * var(--goldencat--spacing-vertical));
-		padding-bottom: calc(0.2 * var(--goldencat--spacing-vertical));
-		background-color: var(--goldencat--color-background);
-		border-top: 1px solid var(--goldencat--color-primary);
+		margin-bottom: calc(0.8 * var(--goldencat--spacing-vertical));
+		max-width: var(--responsive--content-size-width);
+		margin-left: auto;
+		margin-right: auto;
+
+		ul {
+			text-align: center;
+
+			@include media(tablet) {
+				display: flex;
+				justify-content: space-evenly;
+			}
+		}
 
 		a {
 			text-decoration: none;
-		}
+			position: relative;
+			color: var(--goldencat--color-primary);
+			padding-bottom: calc(0.5 * var(--goldencat--button--padding-vertical));
 
-		p > span {
-			display: block;
-		}
-
-		@include media(tablet) {
-
-			p > span {
-				display: inline;
+			&::after {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin-left: auto;
+				margin-right: auto;
+				width: 100%;
+				height: 1px;
+				background: var(--goldencat--color-primary);
+				transform: scaleX(0);
+				transform-origin: bottom center;
+				transition: transform 0.4s;
+				transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 			}
 
-			// Separator " | "
-			p > span:not(:last-child) {
+			&:hover,
+			&:focus {
 
 				&::after {
-					padding-left: 2px;
-					padding-right: 1px;
-					content: "|";
-					display: inline-block;
+					transform: scaleX(0.9);
+					transform-origin: bottom center;
 				}
+			}
+		}
+
+		.current-menu-item a {
+
+			&::after {
+				transform: scaleX(0.9);
+				transform-origin: bottom center;
 			}
 		}
 	}
 
-	// Footer Widget since wp 5.8
 	.widget_block {
+		margin-top: calc(0.5 * var(--goldencat--spacing-vertical));
+		margin-bottom: calc(0.8 * var(--goldencat--spacing-vertical));
+	}
 
-		.wp-block-columns {
-			margin-bottom: 0;
+}
 
-			.widget_nav_menu {
-				margin-top: 0;
-				margin-bottom: 0;
-				text-align: center;
+.footer-main-area {
+	@extend %responsive-alignwide-width;
+	margin-top: calc(0.5 * var(--goldencat--spacing-vertical));
+	margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
 
-				a {
-					@extend %menu-item-footer;
-				}
-			}
+	@include media(laptop) {
+		margin-top: calc(1 * var(--goldencat--spacing-vertical));
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	h3 {
+		margin-bottom: 0;
+		text-align: center;
+
+		@include media(tablet) {
+			text-align: left;
 		}
 	}
 
-	.footer-main-area {
-		@extend %responsive-alignwide-width;
+	// .wp-block-columns {
+	// 	justify-content: center;
 
-		// Design Border between 3 col footer;
-		.wp-block-column {
-			@include media(tablet) {
-				position: relative;
+	// 	.wp-block-column {
 
-				&:not(:first-child) {
+	// 		@include media(tablet) {
+	// 			padding: var(--goldencat--spacing-unit);
+	// 		}
+	// 	}
+	// }
+}
 
-					&::before {
-						content: "";
-						height: 100px;
-						position: absolute;
-						top: 50%;
-						transform: translateY(-50%);
-						left: -1em;
-						width: 1px;
-						display: block;
-						background-color: var(--goldencat--color-primary);
-					}
-				}
-			}
+.footer-bottom {
+	@extend %responsive-alignwide-width;
+	font-size: 11px;
+	line-height: 1.4;
+	margin-top: calc(0.5 * var(--goldencat--spacing-vertical));
+	margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
+	padding-top: calc(0.5 * var(--goldencat--spacing-vertical));
+	padding-bottom: calc(0.2 * var(--goldencat--spacing-vertical));
+	background-color: var(--goldencat--color-background);
+	border-top: 1px solid var(--goldencat--color-primary);
+
+	a {
+		text-decoration: none;
+	}
+
+	p > span {
+		display: block;
+	}
+
+	@include media(tablet) {
+
+		p > span {
+			display: inline;
 		}
 
-		.wp-block-columns {
-			justify-content: center;
+		// Separator " | "
+		p > span:not(:last-child) {
 
-			.wp-block-column {
-
-				@include media(tablet) {
-					padding: var(--goldencat--spacing-unit);
-				}
+			&::after {
+				padding-left: 2px;
+				padding-right: 1px;
+				content: "|";
+				display: inline-block;
 			}
 		}
 	}

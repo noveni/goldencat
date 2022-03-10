@@ -24,4 +24,21 @@
 			padding-right: var(--goldencat--spacing-unit);
 		}
 	}
+
+	&.is-style-goldencat-columns-media-text {
+
+		.wp-block-column {
+			@include media(laptop) {
+				--wp--style--block-gap: calc(3 * var(--goldencat--spacing-horizontal));
+			}
+			@include media(desktop) {
+				--wp--style--block-gap: calc(4 * var(--goldencat--spacing-horizontal));
+			}
+		}
+	}
 }
+
+.wp-block-column {
+	--wp--style--block-gap: 1.8rem;
+}
+

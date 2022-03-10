@@ -17,12 +17,31 @@ if ( function_exists( 'register_block_style' ) ) {
 	 */
 	function goldencat_register_block_styles() {
 
+		// Default Outline 
+		register_block_style(
+			'core/button',
+			array(
+				'name'  => 'outline',
+				'label' => esc_html__( 'Outline', 'goldencat' ),
+				'is_default' => true
+			)
+		);
+
 		// Button With Arrow.
 		register_block_style(
 			'core/button',
 			array(
 				'name'  => 'goldencat-button-arrow',
 				'label' => esc_html__( 'Bouton fléché', 'goldencat' ),
+			)
+		);
+
+		// Default Link style 
+		register_block_style(
+			'core/button',
+			array(
+				'name'  => 'goldencat-button-link',
+				'label' => esc_html__( 'Link', 'goldencat' ),
 			)
 		);
 		
@@ -35,6 +54,14 @@ if ( function_exists( 'register_block_style' ) ) {
 			)
 		);
 
+		// Columns Media-Text Like
+		register_block_style(
+			'core/columns',
+			array(
+				'name'  => 'goldencat-columns-media-text',
+				'label' => esc_html__( 'Column Media Text', 'goldencat' ),
+			)
+		);
 
 	}
 	add_action( 'init', 'goldencat_register_block_styles' );

@@ -4,6 +4,20 @@ $default-grid-gutter: 2%;
 
 	@include media(tablet) {
 		@include grid($gutter: $default-grid-gutter, $flex-wrap: wrap);
+
+		> .goldencat-grid__col {
+			@include grid-col($col: 12, $gutter: 2%);
+			overflow: hidden;
+
+			@include mediapx(600px) {
+				@include grid-col($col: 6, $gutter: 2%);
+				overflow: hidden;
+			}
+
+			@include mediapx(980px) {
+				@include grid-col($col: 4, $gutter: 2%);
+			}
+		}
 	}
 
 	@for $i from 1 through 12 {

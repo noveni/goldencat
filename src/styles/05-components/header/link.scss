@@ -3,7 +3,14 @@
 	button,
 	.button,
 	a {
-		@extend %menu-item-style;
+		font-size: 12px;
+		letter-spacing: 0.25px;
+		font-weight: 500;
+		text-decoration: none;
+		text-transform: uppercase;
+		position: relative;
+		text-align: center;
+		line-height: 34px;
 		color: var(--primary-nav--color-link);
 
 		@include media(tablet) {
@@ -41,7 +48,7 @@
 		// padding: 0 var(--goldencat--spacing-unit);
 
 		@include media(tablet) {
-			padding: 0 var(--goldencat--spacing-unit);
+			margin: 0 var(--goldencat--spacing-unit);
 		}
 
 		// @include mediapx(1080px) {
@@ -65,7 +72,7 @@
 			position: absolute;
 			width: 100%;
 			height: 1px;
-			background: var(--primary-nav--border-color);
+			background: var(--wp--style--color--link, var(--goldencat--color-primary));
 			top: 90%;
 			left: 0;
 			pointer-events: none;

@@ -9,6 +9,8 @@ body {
 	--responsive--alignfull-width: 100%;
 	--responsive--alignright-margin: var(--goldencat--spacing-horizontal);
 	--responsive--alignleft-margin: var(--goldencat--spacing-horizontal);
+	--responsive--alignfull-content-gutter: calc(2px + calc(0.5 * calc(100vw - var(--responsive--alignwide-width))));
+	--responsive--aligndefault-content-gutter: calc(0.5 * calc(100vw - var(--responsive--aligndefault-width)));
 }
 
 @include media(tablet) {
@@ -18,6 +20,8 @@ body {
 		--responsive--alignwide-width: calc(100vw - 4 * var(--goldencat--spacing-horizontal));
 		--responsive--alignright-margin: calc(0.5 * (100vw - var(--responsive--content-size-width)));
 		--responsive--alignleft-margin: calc(0.5 * (100vw - var(--responsive--content-size-width)));
+		--responsive--alignfull-content-gutter: calc(2px + calc(0.5 * calc(100vw - var(--responsive--alignwide-width))));
+		--responsive--aligndefault-content-gutter: calc(0.5 * calc(100vw - var(--responsive--content-size-width)));
 	}
 }
 
@@ -26,6 +30,8 @@ body {
 	body {
 		--responsive--content-size-width: min(calc(100vw - 8 * var(--goldencat--spacing-horizontal)), #{$layout-content-size});
 		--responsive--alignwide-width: min(calc(100vw - 8 * var(--goldencat--spacing-horizontal)), #{$layout-wide-size});
+		--responsive--alignfull-content-gutter: calc(2px + calc(0.5 * calc(100vw - var(--responsive--alignwide-width))));
+		--responsive--aligndefault-content-gutter: calc(0.5 * calc(100vw - var(--responsive--content-size-width)));
 	}
 }
 

@@ -7,17 +7,10 @@
 
 	&.alignfull {
 		margin-top: 0;
-		// margin-bottom: 0;
-
-		// &:last-child {
-		// 	margin-bottom: inherit;
-		// }
 	}
 
 	background-color: var(--wp--preset--color--black);
 	min-height: 30px;
-	// margin-top: inherit;
-	// margin-bottom: inherit;
 
 	.wp-block-cover__inner-container,
 	.wp-block-cover-image-text,

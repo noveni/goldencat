@@ -15,6 +15,10 @@
 	font-size: var(--goldencat--font-size-md);
 	animation-name: slideIn;
 
+	p {
+		margin-bottom: 0;
+		line-height: 1.4;
+	}
 
 	&.gc-block-animate {
 		animation-duration: 0.7s;
@@ -37,8 +41,8 @@
 	.goldencat-cookie-content {
 		padding-top: calc(0.5 * var(--goldencat--spacing-vertical));
 		padding-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
-
-		text-align: center;
+		display: flex;
+		align-items: center;
 
 		@include media(tablet) {
 			display: flex;

@@ -158,3 +158,83 @@ function goldencat_print_first_instance_of_block( $block_name, $content = null, 
 
 	return false;
 }
+
+
+
+
+/**
+ * 
+ * @param mixed $page_slug Question arguments.
+ * @param int|string $page_slug   Page slug or page ID. Passed by reference.
+ */
+function goldencat_print_page_blocks( $page_slug, $content )
+{
+
+	// Find the first instance of block
+
+	if (is_numeric( $page_slug )) {
+		$page = get_post( $page_slug );
+	} else {
+		$page = get_page_by_path( $page_slug );
+	}
+	
+	if ($page) {
+		$blocks = parse_blocks( $page->post_content );
+
+		$instances = 1;
+		$instances_count = 0;
+		$blocks_content  = '';
+		$block_name = 'ecrannoir/theme-loop-content-block';
+
+		// $block = ecrannoir_twenty_one_print_first_instance_of_block('ecrannoir/theme-loop-content-block', $page->post_content, 1, false);
+		foreach( $blocks as $block ) {
+			// Sanity check.
+			if ( ! isset( $block['blockName'] ) ) {
+				continue;
+			}
+
+			// Check if this the block matches the $block_name.
+			$is_matching_block = false;
+
+			// If the block ends with *, try to match the first portion.
+			if ( '*' === $block_name[-1] ) {
+				$is_matching_block = 0 === strpos( $block['blockName'], rtrim( $block_name, '*' ) );
+			} else {
+				$is_matching_block = $block_name === $block['blockName'];
+			}
+
+			if ( $is_matching_block ) {
+				// Increment count.
+				$instances_count++;
+
+				// Add the block HTML.
+				$blocks_content .= $content;
+
+				// // Break the loop if the $instances count was reached.
+				// if ( $instances_count >= $instances ) {
+				// 	break;
+				// }
+			} else {
+				$blocks_content .= render_block( $block );
+			}
+			
+			// // If we find the loop-content element
+			// if( 'core/paragraph' === $block['blockName'] &&  strpos($block['innerHTML'], '[loop-content]')) {
+			// 	echo $content;
+			// } else {
+			// 	echo render_block( $block );
+			// }
+		}
+
+		if ( $blocks_content ) {
+			$the_block_content = $blocks_content; //apply_filters( 'the_content', $blocks_content );
+			echo $the_block_content; // phpcs:ignore WordPress.Security.EscapeOutput
+			// } else {
+			// 	return $the_block_content;
+			// }
+			// return true;
+		}
+	} else {
+		echo $content;
+	}
+}

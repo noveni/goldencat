@@ -100,9 +100,14 @@
 	// margin-top: calc(0.666 * var(--goldencat--spacing-vertical));
 	margin-bottom: calc(0.666 * var(--goldencat--spacing-vertical));
 
-	@include media(mobile) {
+	@include media(tablet) {
 		// margin-top: calc(1 * var(--goldencat--spacing-vertical));
 		margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
+	}
+
+	@include media(desktop) {
+		// margin-top: calc(1 * var(--goldencat--spacing-vertical));
+		margin-bottom: calc(1.5 * var(--goldencat--spacing-vertical));
 	}
 
 	&:first-child {
@@ -116,6 +121,33 @@
 
 .excerpt-thumbnail {
 	margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
+}
+
+
+.entry-content > .wp-block-group > * {
+	margin-bottom: calc(0.666 * var(--goldencat--spacing-vertical));
+
+	@include media(tablet) {
+		margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
+	}
+
+	@include media(desktop) {
+		margin-bottom: calc(1.5 * var(--goldencat--spacing-vertical));
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.entry-content > * {
+	@include media(tablet) {
+		margin-bottom: calc(1.5 * var(--goldencat--spacing-vertical));
+	}
+
+	@include media(desktop) {
+		margin-bottom: calc(2.5 * var(--goldencat--spacing-vertical));
+	}
 }
 
 .site-main > .navigation {

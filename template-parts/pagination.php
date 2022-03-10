@@ -9,8 +9,8 @@
 $goldencat_next = is_rtl() ? goldencat_icon( 'ui', 'arrow_left' ) : goldencat_icon( 'ui', 'arrow_right' );
 $goldencat_prev = is_rtl() ? goldencat_icon( 'ui', 'arrow_right' ) : goldencat_icon( 'ui', 'arrow_left' );
 
-$goldencat_next_label     = esc_html__( 'Newer posts', 'goldencat' );
-$goldencat_previous_label = esc_html__( 'Older posts', 'goldencat' );
+$goldencat_next_label     = esc_html__( 'Nouveaux articles', 'goldencat' );
+$goldencat_previous_label = esc_html__( 'Articles plus anciens', 'goldencat' );
 
 $prev_text = sprintf(
 	'%s <span class="screen-reader-text">%s</span>',

@@ -12,22 +12,27 @@ input[type="reset"],
 /**
  * Block Options
  */
+
+.wp-block-button__link {
+	word-break: break-word;
+	cursor: pointer;
+	will-change: color, background-color;
+	transition: color 0.25s ease, background-color 0.25s ease;
+	box-sizing: border-box;
+	box-shadow: none;
+}
+
 .wp-block-button {
 
 	.wp-block-button__link {
+
 		text-align: center;
-		word-break: break-word;
-		cursor: pointer;
-		will-change: color, background-color;
-		transition: color 0.25s ease, background-color 0.25s ease;
-		box-sizing: border-box;
-		box-shadow: none;
 
 		&:focus,
 		&:active,
 		&:hover {
 			background-color: transparent;
-			// border: 1px solid var(--goldencat--color-background);
+			border: 1px solid var(--goldencat--color-background);
 			color: var(--goldencat--color-primary);
 		}
 	}
@@ -37,6 +42,7 @@ input[type="reset"],
 		.wp-block-button__link {
 			background: transparent;
 			color: currentColor;
+			border-color: var(--goldencat--color-primary);
 
 			&:focus,
 			&:active,
@@ -45,6 +51,15 @@ input[type="reset"],
 				// border: 1px solid var(--goldencat--color-background);
 				color: var(--goldencat--color-background);
 			}
+
+			&.has-black-color {
+
+				&:focus,
+				&:active,
+				&:hover {
+					color: var(--goldencat--color-background) !important;
+				}
+			}
 		}
 	}
 
@@ -52,6 +67,44 @@ input[type="reset"],
 
 		.wp-block-button__link {
 			@include theme-button-arrow;
+		}
+	}
+
+	&.is-style-goldencat-button-link {
+
+		.wp-block-button__link {
+			background-color: transparent;
+			border: none;
+			padding-left: 0;
+			padding-right: 0;
+			position: relative;
+			color: var(--goldencat--color-primary);
+
+			&::after {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin-left: auto;
+				margin-right: auto;
+				width: 100%;
+				height: 2px;
+				background: var(--goldencat--color-primary);
+				transform: scaleX(0.8);
+				transform-origin: bottom center;
+				transition: transform 0.4s;
+				transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+			}
+
+			&:hover,
+			&:focus {
+
+				&::after {
+					transform: scaleX(1.2);
+					transform-origin: bottom center;
+				}
+			}
 		}
 	}
 }

@@ -16,6 +16,9 @@ export default {
     }
 
     const buttonCookieAccept = document.querySelector('.goldencat-cookie-btn.cookie-accept');
+    if ( !buttonCookieAccept) {
+      return;
+    }
 
     const expireTime = new Date(new Date().getTime() + parseInt(goldencat_cookies_args.cookieTime) * 1000);
 

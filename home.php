@@ -10,35 +10,32 @@
 get_header();
 ?>
 
-<?php if ( have_posts() ) : ?>
-
-	<header class="page-header">
-		<?php
-		the_archive_title( '<h1 class="page-title">', '</h1>' );
-		?>
-	</header><!-- .page-header -->
-	<div class="alignwide">
-		<div class="goldencat-grid">
-		<?php
-		/* Start the Loop */
-		while ( have_posts() ) :
-			the_post();
-
-			get_template_part( 'template-parts/content/content', 'excerpt' );
-
-		endwhile;
-		?>
+<div class="entry-content">
+	<?php ob_start(); ?>
+	<div class="archive-content">
+		<div class="alignwide">
+			<div>
+				<div class="goldencat-grid filter-content-to-refresh loadmore-content-to-refresh">
+					<?php if ( have_posts() ) : ?>
+						<?php while ( have_posts() ) : ?>
+							<?php the_post(); ?>
+							<div class="goldencat-grid__col">
+								<?php get_template_part( 'template-parts/content/content-excerpt' ); ?>
+							</div>
+						<?php endwhile; ?>
+					<?php else : ?>
+						<p class="aligncenter">Aucun articles, essayez de retirer des filtres.</p>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+		<div class="aligncenter">
+			<?php get_template_part( 'template-parts/pagination'); // Previous/next page navigation. ?>
 		</div>
 	</div>
-	<?php
-	get_template_part( 'template-parts/pagination' );
-
-else :
-
-	get_template_part( 'template-parts/content/content', 'none' );
-
-endif;
-?>
+	<?php $content = ob_get_clean(); ?>
+<?php goldencat_print_page_blocks( get_option('page_for_posts'), $content ); ?>
+</div>
 
 <?php
 get_footer();
