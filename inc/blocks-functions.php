@@ -226,6 +226,10 @@ function goldencat_print_page_blocks( $page_slug, $content )
 			// }
 		}
 
+		if ( isset( $is_matching_block ) && $is_matching_block === false ) {
+			$blocks_content .= $content;
+		}
+
 		if ( $blocks_content ) {
 			$the_block_content = $blocks_content; //apply_filters( 'the_content', $blocks_content );
 			echo $the_block_content; // phpcs:ignore WordPress.Security.EscapeOutput

@@ -29,9 +29,14 @@ function goldencat_register_faq() {
         'hierarchical'              => false,
         'show_in_rest'              => true,
         'exclude_from_search'       => false,
-        'publicly_queryable'        => false,
-        'rewrite'                   => false,
-        'has_archive'               => false,
+        'publicly_queryable'        => true,
+        'rewrite'             => array(
+            'slug'       => 'faqs',
+            'with_front' => false,
+            'feeds'      => true,
+        ) ,
+        'has_archive'               => 'myfaq',
+        'capability_type'           => 'post',
         'supports'                  => array(
             'title',
             'editor',
