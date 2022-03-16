@@ -69,3 +69,18 @@
 		}
 	}
 }
+
+@mixin theme-numbered-step() {
+	font-family: var(--wp--preset--font-family--primary);
+	background: var(--goldencat--color-secondary);
+	width: 41px;
+	height: 41px;
+	border-radius: 50%;
+	display: inline-block;
+	color: var(--wp--preset--color--white);
+	text-align: center;
+	font-size: var(--heading--font-size-h4);
+	letter-spacing: 0;
+	margin-right: 1rem;
+	line-height: inherit;
+}
