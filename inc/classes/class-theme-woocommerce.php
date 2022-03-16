@@ -122,11 +122,10 @@ class GoldenCatThemeWooCommerce {
      * @since 1.0.0
      */
     public function woocommerce_scripts() {
-        global $storefront_version;
-
-        $suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
         GoldenCatThemeScripts::toEnqueueStyle('woocommerce');
+        GoldenCatThemeScripts::toRegisterScript('woocommerce', 'goldencat-wc-scripts');
+        wp_enqueue_script('goldencat-wc-scripts');
     }
 
     /**

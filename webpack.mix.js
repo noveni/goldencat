@@ -23,7 +23,10 @@ mix.js('src/scripts/theme/index.js', 'js/theme.js')
   .sass('src/styles/admin.scss', 'admin.css')
   .block('src/scripts/admin/settings/index.js', 'js/theme-admin-settings.js')
   .sass('src/styles/admin/theme-settings.scss', 'theme-admin-settings.css')
+  // WooCommerce Theme - https://developer.woocommerce.com/2020/11/16/woocommerce-dependency-extraction-webpack-plugin/
   .sass('src/styles/woocommerce.scss', 'woocommerce.css')
+  .js('src/scripts/woocommerce/index.js', 'js/woocommerce.js')
+  // Theme Meta Field
   .js('src/scripts/admin/taxonomy-meta-field/index.js', 'js/admin/taxonomy-meta-field.js')
   // Block Editor - Post (Build separately because wp dependency @wordpress/editor cannot be enqueued within the widget block editor)
   .block('src/scripts/editor/post-editor.js', 'js/post-editor.js')
