@@ -31,11 +31,11 @@ function goldencat_register_faq() {
         'exclude_from_search'       => false,
         'publicly_queryable'        => true,
         'rewrite'             => array(
-            'slug'       => 'faqs',
+            'slug'       => 'faq',
             'with_front' => false,
             'feeds'      => true,
         ) ,
-        'has_archive'               => 'myfaq',
+        'has_archive'               => 'faq',
         'capability_type'           => 'post',
         'supports'                  => array(
             'title',
