@@ -286,6 +286,10 @@ class GoldenCatThemeWooCommerce {
         // Quantity Label and Plus and Minus Sign
         add_action( 'woocommerce_before_quantity_input_field', [ $this, 'singleProductQuantityAddLabel' ] );
         add_action( 'woocommerce_after_quantity_input_field', [ $this, 'singleProductQuantityAddBtn' ] );
+
+        // Wrap Quantity Input and Add To Cart Button on single product page
+        add_action( 'woocommerce_before_add_to_cart_quantity', [ $this, 'wrapSingleProductQuantityAndAddToCartBnBefore' ]);
+        add_action( 'woocommerce_after_add_to_cart_button', [ $this, 'wrapSingleProductQuantityAndAddToCartBtnAfter' ]);
     }
 
     public function singleProductQuantityAddLabel()
@@ -301,6 +305,19 @@ class GoldenCatThemeWooCommerce {
 		<button type="button" class="qty-btn-number" onclick="this.parentNode.querySelector('[type=number]').stepDown();">&#8722;</button>
 		<button type="button" class="qty-btn-number" onclick="this.parentNode.querySelector('[type=number]').stepUp();">&#43;</button>
 		<?php
+    }
+
+
+    public function wrapSingleProductQuantityAndAddToCartBnBefore() {
+        ?>
+        <div class="goldencat_wrap_qty_and_add_to_cart">
+        <?php
+    }
+
+    public function wrapSingleProductQuantityAndAddToCartBtnAfter() {
+        ?>
+        </div>
+        <?php
     }
 
     public function globalActions()

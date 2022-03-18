@@ -29,6 +29,7 @@
 			}
 		}
 
+		&.complet .woocommerce-product-gallery__image,
 		&.comingsoon .woocommerce-product-gallery__image {
 			position: relative;
 
@@ -54,6 +55,13 @@
 				font-family: var(--wp--preset--font-family--secondary);
 				font-size: 27px;
 				color: var(--wp--preset--color--saumon);
+			}
+		}
+
+		&.complet .woocommerce-product-gallery__image {
+
+			&::before {
+				content: "Complet";
 			}
 		}
 
@@ -210,27 +218,32 @@
 				margin-top: calc(1.1 * var(--goldencat--spacing-vertical));
 				margin-bottom: calc(1.1 * var(--goldencat--spacing-vertical));
 
-				&:first-child {
-					margin-top: 0;
+				@include media(tablet) {
+
+					&:first-child {
+						margin-top: 0;
+					}
 				}
 			}
 		}
 
 		form.cart {
 
+			.goldencat_wrap_qty_and_add_to_cart {
 
-			.quantity {
-				margin-bottom: calc(1.1 * var(--goldencat--spacing-vertical));
-				margin-right: calc(0.3 * var(--goldencat--spacing-horizontal));
+				.quantity {
+					margin-bottom: calc(1.1 * var(--goldencat--spacing-vertical));
+					margin-right: calc(0.3 * var(--goldencat--spacing-horizontal));
+
+					@include media(tablet) {
+						margin-bottom: 0;
+					}
+				}
 
 				@include media(tablet) {
-					margin-bottom: 0;
+					margin-top: calc(0.6 * var(--goldencat--spacing-vertical));
+					display: flex;
 				}
-			}
-
-			@include media(tablet) {
-				display: flex;
-				align-items: center;
 			}
 
 			// button[type="submit"].button {
@@ -263,6 +276,10 @@
 					}
 				}
 			}
+		}
+
+		form.cart.variations_form {
+			margin-top: 0;
 		}
 
 		.product_title.entry-title {
@@ -328,9 +345,9 @@
 				}
 			}
 
-			.value {
-				margin-bottom: 1em;
-			}
+			// .value {
+			// 	margin-bottom: 1em;
+			// }
 
 			select {
 				max-width: 70%;
@@ -341,18 +358,54 @@
 				@extend %theme-menu-style;
 			}
 
+			th.label,
 			td.label {
 				margin-bottom: calc(0.8 * var(--goldencat--spacing-vertical));
+			}
+
+			th.label {
+				margin-top: calc(1 * var(--goldencat--spacing-vertical));
+			}
+
+			td.value {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: stretch;
 			}
 
 			.value label {
 				padding: 16px 18px;
 				border: 1px solid var(--goldencat--color-secondary);
-				display: inline-block;
-				max-width: 140px;
+				// display: inline-block;
 				text-align: center;
+				justify-content: center;
 				margin-right: 14px;
-				margin-bottom: calc(0.45 * var(--goldencat--spacing-vertical));
+				margin-bottom: 14px;
+				display: flex;
+				align-items: center;
+
+				flex: 1 0 calc(50% - 14px);
+				max-width: calc(50% - 14px);
+
+				@include media(mobile) {
+					flex: 0 0 calc(33% - 14px);
+					max-width: calc(33% - 14px);
+				}
+
+				@include media(tablet) {
+					flex: 1 0 calc(50% - 14px);
+					max-width: calc(50% - 14px);
+				}
+
+				@include media(laptop) {
+					flex: 0 0 calc(33% - 14px);
+					max-width: calc(33% - 14px);
+				}
+
+				@include media(desktop) {
+					flex: 0 0 calc(25% - 14px);
+					max-width: calc(25% - 14px);
+				}
 
 				input {
 					visibility: hidden;
@@ -366,14 +419,23 @@
 
 				&.selected {
 					background-color: var(--goldencat--color-secondary);
-					font-weight: 600;
+					// font-weight: 600;
 				}
 
 			}
 		}
 
+		.wc-pao-addon-container {
+			margin-top: calc(1 * var(--goldencat--spacing-vertical));
+			margin-bottom: 0;
+		}
+
+		.wc-pao-addon-checkbox-group-required,
 		.wc-pao-addon {
 			padding: 0;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: stretch;
 		}
 
 		.wc-pao-addon-name {
@@ -381,22 +443,56 @@
 
 			margin-bottom: calc(0.8 * var(--goldencat--spacing-vertical));
 			width: 100%;
+			flex: 1 0 100%;
 		}
 
 		.wc-pao-addon-wrap.ecrannoir-radio-button {
 			display: inline-block;
+			margin-bottom: 14px;
+			margin-top: 0;
+			flex: 1 0 50%;
+			max-width: 50%;
+			// flex-basis: 33%;
+
+			@include media(mobile-only) {
+
+				&:nth-child(even) {
+					padding-right: 14px;
+				}
+			}
+
+			@include media(mobile) {
+				flex: 0 0 33%;
+				max-width: 33%;
+				padding-right: 14px;
+			}
+
+			@include media(tablet) {
+				flex: 1 0 50%;
+				max-width: 50%;
+				padding-right: 14px;
+			}
+
+			@include media(laptop) {
+				flex: 0 0 33%;
+				max-width: 33%;
+			}
+
+			@include media(desktop) {
+				flex: 0 0 25%;
+				max-width: 25%;
+			}
 
 			label {
 				@extend %theme-menu-style;
 				position: relative;
 				z-index: 1;
 				padding: 16px 18px;
-				// border: 1px solid var(--goldencat--color-secondary);
-				display: inline-block;
-				max-width: 140px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				text-align: center;
-				margin-right: 14px;
-				margin-bottom: calc(0.45 * var(--goldencat--spacing-vertical));
+				height: 100%;
 
 				// input {
 				// 	visibility: hidden;
@@ -410,16 +506,39 @@
 			}
 		}
 
-		.wc-pao-addon-notes {
+		.wc-pao-addon-checkbox-group-required {
+
+			.wc-pao-addon-wrap.ecrannoir-radio-button {
+
+				@include media(mobile-only) {
+
+					&:nth-child(even) {
+						padding-right: 0;
+					}
+
+					&:nth-child(odd) {
+						padding-right: 14px;
+					}
+				}
+			}
+		}
+
+		[class*="wc-pao-addon-encodez-"],
+		.wc-pao-addon-commentaires {
 
 			label {
-				margin-bottom: calc(0.4 * var(--goldencat--spacing-vertical));
+				margin-bottom: calc(0.2 * var(--goldencat--spacing-vertical));
 			}
 
-			textarea {
-				padding: 1em;
-				border: var(--form--border-width) solid var(--goldencat--color-secondary);
+			.wc-pao-addon-description {
+				margin-bottom: calc(0.3 * var(--goldencat--spacing-vertical));
 			}
+		}
+
+		.wc-pao-addon-custom-textarea,
+		.wc-pao-addon-custom-text {
+			padding: 1em;
+			border: var(--form--border-width) solid var(--goldencat--color-secondary);
 		}
 
 		input.wc-pao-addon-field.wc-pao-addon-checkbox,
@@ -460,6 +579,7 @@
 		}
 
 		.woocommerce-product-rating {
+			margin-bottom: ms(3);
 
 			@include clearfix;
 
@@ -470,10 +590,13 @@
 
 			.star-rating {
 				float: left;
+				margin-right: ms(-2);
 			}
 		}
 
 		.product_meta {
+			font-size: ms(-1);
+			padding-top: 1em;
 			border-top: 1px solid var(--goldencat--color-border);
 
 			.sku_wrapper,

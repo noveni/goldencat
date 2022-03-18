@@ -446,7 +446,7 @@ dl.variation {
 
 form.cart,
 .product-quantity,
-.ecrannoirtwentyone_wrap_qty_and_add_to_cart {
+.goldencat_wrap_qty_and_add_to_cart {
 
 	.quantity {
 		width: 100%;
@@ -505,7 +505,8 @@ form.cart,
 	.label_quantity {
 		@extend %theme-menu-style;
 		margin-bottom: 0;
-		margin-right: calc(0.5 * var(--goldencat--spacing-horizontal));
+		flex: 1 0 auto;
+		margin-right: 0; //calc(0.5 * var(--global--spacing-horizontal));
 	}
 }
 
