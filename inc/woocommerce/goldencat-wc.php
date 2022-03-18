@@ -22,7 +22,7 @@ require get_template_directory() . '/inc/woocommerce/goldencat-wc-product-single
 require get_template_directory() . '/inc/woocommerce/goldencat-wc-product-meta-fields.php';
 require get_template_directory() . '/inc/woocommerce/goldencat-wc-admin.php';
 
-add_filter('woocommerce_cart_item_thumbnail', 'goldencat_wc_cart_item_thumbnail', 10, 3);
+// add_filter('woocommerce_cart_item_thumbnail', 'goldencat_wc_cart_item_thumbnail', 10, 3);
 
 function goldencat_wc_cart_item_thumbnail( $thumbnail, $cart_item, $cart_item_key ) {
     return '<div class="cart-item-main-wrapper"><figure class="cart-item-thumbnail">' . $thumbnail . '</figure>';
@@ -31,23 +31,32 @@ function goldencat_wc_cart_item_thumbnail( $thumbnail, $cart_item, $cart_item_ke
 add_filter( 'woocommerce_cart_item_name', 'goldencat_wc_cart_item_name', 100, 3);
 
 function goldencat_wc_cart_item_name( $name, $cart_item, $cart_item_key ) {
-    $start_div = '<div class="cart-item-product-content">';
-    $start_div_info = '<div class="cart-item-product-content-info">';
-    $product = $cart_item['data'];
-    $img = $product->get_image();
-    return $start_div . $img . $start_div_info . '<span>' . $name . '</span>';
+    
+    if ( is_checkout() ) {
+
+        $start_div = '<div class="cart-item-product-content">';
+        $start_div_info = '<div class="cart-item-product-content-info">';
+        $product = $cart_item['data'];
+        $img = $product->get_image();
+        return $start_div . $img . $start_div_info . '<span>' . $name . '</span>';
+    }
+
+    return $name;
     
 }
 
 function goldencat_wc_checkout_cart_item_quantity( $html, $cart_item, $cart_item_key ) {
-    $product = $cart_item['data'];
-    $qty = '<div class="product-quantity">' . __( 'Quantité', 'goldencat' ) . '&nbsp;:&nbsp;' . $cart_item['quantity'] . '</div>';
-    $product_total = apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $product, $cart_item['quantity'] ), $cart_item, $cart_item_key );
-    $product_delete = goldencat_wc_checkout_cart_remove_link( $product, $cart_item, $cart_item_key );
-    $product_delete_icon = goldencat_wc_checkout_cart_remove_icon( $product, $cart_item, $cart_item_key );
-    $end_div_info = "</div> <!-- .cart-item-product-content-info -->";
-    $end_div = "</div> <!-- .cart-item-product-content -->";
-    return $qty . $product_total . $product_delete . $product_delete_icon . $end_div_info . $end_div;
+    if ( is_checkout() ) {
+        $product = $cart_item['data'];
+        $qty = '<div class="product-quantity">' . __( 'Quantité', 'goldencat' ) . '&nbsp;:&nbsp;' . $cart_item['quantity'] . '</div>';
+        $product_total = apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $product, $cart_item['quantity'] ), $cart_item, $cart_item_key );
+        $product_delete = goldencat_wc_checkout_cart_remove_link( $product, $cart_item, $cart_item_key );
+        $product_delete_icon = goldencat_wc_checkout_cart_remove_icon( $product, $cart_item, $cart_item_key );
+        $end_div_info = "</div> <!-- .cart-item-product-content-info -->";
+        $end_div = "</div> <!-- .cart-item-product-content -->";
+        return $qty . $product_total . $product_delete . $product_delete_icon . $end_div_info . $end_div;
+    }
+    return $html;
 }
 
 add_filter( 'woocommerce_checkout_cart_item_quantity', 'goldencat_wc_checkout_cart_item_quantity', 100, 3);

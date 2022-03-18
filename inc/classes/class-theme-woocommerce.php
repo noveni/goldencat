@@ -338,8 +338,16 @@ class GoldenCatThemeWooCommerce {
 			wp_redirect( get_home_url() );
 			exit();
 		} else {
-			// Else redirect to check out url
-			wp_redirect( wc_get_checkout_url(), 302 );
+			do_action( 'woocommerce_check_cart_items' );
+
+			if ( wc_notice_count( 'error' ) > 0 ) {
+				wc_clear_notices();
+				return;
+			} else {
+				// Else redirect to check out url
+				wp_redirect( wc_get_checkout_url(), 302 );
+			}
+			return;
 		}
 		
 		exit;
