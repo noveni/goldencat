@@ -31,16 +31,16 @@
 		}
 	}
 
-	// Default & custom background-color
-	&:not([class*="background-color"]) {
+	// // Default & custom background-color
+	// &:not([class*="background-color"]) {
 
-		.wp-block-cover__inner-container,
-		.wp-block-cover-image-text,
-		.wp-block-cover-text,
-		.block-editor-block-list__block {
-			color: var(--wp--preset--color--white);
-		}
-	}
+	// 	.wp-block-cover__inner-container,
+	// 	.wp-block-cover-image-text,
+	// 	.wp-block-cover-text,
+	// 	.block-editor-block-list__block {
+	// 		color: var(--wp--preset--color--white);
+	// 	}
+	// }
 
 	// Block Styles
 }
