@@ -37,7 +37,7 @@ function goldencat_wc_cart_item_name( $name, $cart_item, $cart_item_key ) {
         $start_div = '<div class="cart-item-product-content">';
         $start_div_info = '<div class="cart-item-product-content-info">';
         $product = $cart_item['data'];
-        $img = $product->get_image();
+        $img = $product->get_image( array( '50', '50'));
         return $start_div . $img . $start_div_info . '<span>' . $name . '</span>';
     }
 
