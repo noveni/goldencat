@@ -56,3 +56,26 @@ function goldencat_wc_product_all_settings( $settings, $current_section ) {
 		return $settings;
 	}
 }
+
+/**
+ * @snippet       Shipping Class ID Column
+ * @author        Misha Rudrastyh
+ * @url           https://rudrastyh.com/woocommerce/how-to-get-shipping-class-id.html
+ */
+add_filter( 'woocommerce_shipping_classes_columns', 'goldencat_add_shipping_class_column' );
+
+function goldencat_add_shipping_class_column( $shipping_class_columns ) {
+
+	$shipping_class_columns = array_slice( $shipping_class_columns, 0, 2 ) + array( 'id' => 'ID' ) + array_slice( $shipping_class_columns, 2, 3 );
+	return $shipping_class_columns;
+
+}
+
+// woocommerce_shipping_classes_column_{COLUMN ID}
+add_action( 'woocommerce_shipping_classes_column_id', 'goldencat_populate_shipping_class_column' );
+
+function goldencat_populate_shipping_class_column() {
+
+	echo '{{ data.term_id }}';
+
+}
