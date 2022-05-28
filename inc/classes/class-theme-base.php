@@ -127,6 +127,7 @@ class GoldenCatThemeBase
             echo preg_replace($pattern, '', ob_get_clean());
         }, 3, 0);
         remove_action('wp_head', 'rsd_link');
+        add_filter( 'xmlrpc_enabled', '__return_false' );
         remove_action('wp_head', 'wlwmanifest_link');
         remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10);
         remove_action('wp_head', 'wp_generator');
