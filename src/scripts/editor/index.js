@@ -10,6 +10,7 @@ import './extensions/center-on-mobile';
 import './extensions/hide-block';
 import './extensions/narrow-align';
 import './extensions/no-padding-block';
+import './extensions/no-gap';
 
 
 import '../../blocks';

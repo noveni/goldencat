@@ -18,3 +18,13 @@
 .wp-block-column {
 	--wp--style--block-gap: 1.8rem;
 }
+
+.wp-block-columns.goldencat-no-gap {
+	--wp--style--block-gap: 0;
+	gap: 0;
+
+	.wp-block-column {
+		--wp--style--block-gap: 0;
+	}
+}
+
