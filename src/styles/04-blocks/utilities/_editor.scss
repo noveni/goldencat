@@ -11,12 +11,6 @@
 	max-width: var(--responsive--alignwide-width);
 }
 
-// Editor UI font styles
-.wp-block.block-editor-default-block-appender > textarea {
-	font-family: var(--wp--preset--font-family--secondary);
-	font-size: var(--goldencat--font-size-md);
-}
-
 // Gutenberg text color options
 .has-primary-color[class] {
 	color: var(--goldencat--color-primary);
@@ -41,25 +35,26 @@
 	}
 }
 
-// .has-primary-background-color[class] {
-// 	background-color: var(--goldencat--color-primary);
-// 	color: var(--goldencat--color-background);
-// }
+.has-primary-background-color[class] {
+	// background-color: var(--goldencat--color-primary);
+	color: var(--wp--preset--color--black);
+}
 
-// .has-secondary-background-color[class] {
-// 	background-color: var(--goldencat--color-secondary);
-// 	color: var(--goldencat--color-background);
-// }
+.has-secondary-background-color[class] {
+	// background-color: var(--goldencat--color-secondary);
+	color: var(--wp--preset--color--white);
+}
 
-// .has-white-background-color[class] {
-// 	background-color: var(--wp--preset--color--white);
-// 	color: var(--goldencat--color-secondary);
-// }
+.has-white-background-color[class] {
+	// background-color: var(--wp--preset--color--white);
+	// color: var(--goldencat--color-secondary);
+	color: var(--wp--preset--color--black);
+}
 
-// .has-black-background-color[class] {
-// 	background-color: var(--wp--preset--color--black);
-// 	color: var(--goldencat--color-primary);
-// }
+.has-black-background-color[class] {
+	// background-color: var(--wp--preset--color--black);
+	color: var(--wp--preset--color--white);
+}
 
 // Spacing Overrides
 [data-block] {

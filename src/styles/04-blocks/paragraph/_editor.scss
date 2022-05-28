@@ -4,31 +4,4 @@ p {
 	&.has-background {
 		padding: var(--goldencat--spacing-unit);
 	}
-
-	&.is-style-ecrannoir-notification {
-		background-color: #fff0f0;
-		max-width: var(--responsive--alignfull-width) !important;
-		width: auto;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 0;
-		margin-bottom: 0;
-		padding: 39px 40px 40px;
-
-		&:first-child {
-			margin-top: 0 !important;
-		}
-
-		@include media(desktop) {
-			text-align: center !important;
-
-			padding-left: calc(0.5 * calc(100vw - var(--responsive--alignwide-width)));
-			padding-right: calc(0.5 * calc(100vw - var(--responsive--alignwide-width)));
-		}
-
-		font-family: var(--wp--preset--font-family--secondary);
-		line-height: 1;
-		font-size: var(--heading--font-size-h4);
-		letter-spacing: 0;
-	}
 }
