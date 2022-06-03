@@ -20,13 +20,6 @@
 				flex-grow: 0;
 			}
 		}
-
-		.wpcf7-form-control-wrap:nth-child(2n) {
-
-			@include media(tablet) {
-				margin-left: 2em;
-			}
-		}
 	}
 
 	.wp-block-buttons {
@@ -105,16 +98,32 @@
 		background-color: var(--wp--preset--color--yellow); /* Yellow */
 	}
 
-	.wpcf7-acceptance {
+	span.wpcf7-list-item {
 		display: block;
+		margin-left: 0;
+	}
+
+	.wpcf7-radio,
+	.wpcf7-acceptance {
+		// display: block;
 
 		label {
 			display: block;
+			margin-bottom: 0;
 
 			.wpcf7-list-item-label {
-				padding-left: 1rem;
+				padding-left: 0.5rem;
 				// vertical-align: super;
 			}
 		}
 	}
 }
+
+.wpcf7-stripe {
+
+	.buttons {
+		display: flex;
+		justify-content: center;
+	}
+}
+
