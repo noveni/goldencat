@@ -15,10 +15,10 @@
 		left: 0;
 		right: auto;
 
-		@include media(tablet) {
-			left: auto;
-			right: 0;
-		}
+		// @include media(tablet) {
+		// 	left: auto;
+		// 	right: 0;
+		// }
 	}
 
 	.site-header-cart,
@@ -83,8 +83,23 @@
 			.wc-header-button {
 				display: flex;
 				align-items: center;
+
+				&.header-account-button {
+					display: inline-block;
+
+					@include media(tablet) {
+						display: flex;
+					}
+				}
 			}
 		}
+
+		// @include media(tablet) {
+
+		// 	.svg-icon {
+		// 		display: none;
+		// 	}
+		// }
 	}
 }
 
@@ -133,5 +148,31 @@
 	@include media(laptop) {
 		display: none;
 		visibility: hidden;
+	}
+}
+
+.header-menu-social {
+
+	.widget.widget_block {
+
+		@include media(tablet) {
+			height: 100%;
+		}
+
+		ul {
+			justify-content: center;
+
+			@include media(tablet) {
+				height: 100%;
+			}
+		}
+
+		a {
+			font-size: 18px;
+
+			@include media(tablet) {
+				font-size: 14px;
+			}
+		}
 	}
 }

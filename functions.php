@@ -70,7 +70,8 @@ $theme = new GoldenCatThemeBase(
         'disable_comment' => true,
         'clean' => true,
         'menus' => array(
-            'primary'   => __( 'Primary Menu', 'goldencat' ),
+            'primary-left'   => __( 'Primary Menu Left', 'goldencat' ),
+            'primary-right'   => __( 'Primary Menu Right', 'goldencat' ),
             'footer-legals'    => __( 'Legals Menu', 'goldencat' ),
         ),
         'widgets' => array(
@@ -174,5 +175,5 @@ require get_template_directory() . '/assets/blocks/quotes-slider.php';
 require get_template_directory() . '/assets/blocks/term-of-taxonomy.php';
 
 add_filter( 'goldencat_theme_layout_menu_style', function() {
-    return 'logo-left-menu-central';
+    return 'central-logo';
 }, 100);

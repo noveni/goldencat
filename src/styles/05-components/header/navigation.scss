@@ -50,14 +50,22 @@
 				margin: 0;
 				min-width: max-content;
 				position: absolute;
-				top: 100%;
-				border: 1px solid var(--goldencat--color-primary);
+				border: none;
 				padding: var(--goldencat--spacing-unit);
-				opacity: 1;
-				transform: translate3d(-50%, 0, 0);
+				background-color: var(--goldencat--color-white);
 				transition: transform 0.3s, opacity 0.3s;
 				will-change: transform, opacity;
+				padding-top: 20px;
+				// transform: translate3d(-50%, 0, 0);
+				// opacity: 1;
+				// top: 100%;
+				// z-index: -1;
 
+				transform: translate3d(-50%, 30%, 0);
+				opacity: 0;
+				// top: -100%;
+				z-index: -1;
+				pointer-events: none;
 			}
 
 			> li {
@@ -69,15 +77,42 @@
 
 	// Hide sub-sub-menus
 	/* stylelint-disable */
-	> .primary-menu-container > .primary-menu-ul > ul > li ul.sub-menu:not([aria-expanded]),
-	> .primary-menu-container > .primary-menu-ul > ul > li ul.sub-menu[aria-expanded="false"] {
+	// > .primary-menu-container > .primary-menu-ul > ul > li ul.sub-menu:not([aria-expanded]),
+	// > .primary-menu-container > .primary-menu-ul > ul > li ul.sub-menu[aria-expanded="false"],
+	> .primary-menu-container .primary-menu-ul > ul li.menu-item-has-children:hover {
 
-		@include media(tablet) {
-			transform: translate3d(-50%, -100%, 0);
-			opacity: 10;
-			top: -100%;
+			.sub-menu {
+				@include media(tablet) {
+					transform: translate3d(-50%, 0, 0);
+					opacity: 1;
+					// top: 100%;
+					z-index: 1;
+					pointer-events: auto;
+				}
+			}
 		}
-	}
 	/* stylelint-enable */
 }
 
+
+.primary-toggle-menu-open {
+
+	.primary-navigation {
+
+		> .primary-menu-container {
+
+			> .primary-menu-ul {
+
+				@include media(tablet-only) {
+					height: 100%;
+
+					> .menu-wrapper {
+						height: 100%;
+						display: flex;
+						flex-direction: column;
+					}
+				}
+			}
+		}
+	}
+}
