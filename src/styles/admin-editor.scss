@@ -1,1 +1,10 @@
 // Additional style for admin editor
+body.block-editor-page {
+
+	&.goldencat-title-hidden {
+
+		h1.wp-block-post-title.editor-post-title {
+			opacity: 0.4;
+		}
+	}
+}
