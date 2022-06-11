@@ -1,0 +1,9 @@
+.wp-block-goldencat-block-wrapper-img {
+	position: relative;
+	z-index: 0;
+
+	.block-wrapper-img__element {
+		position: absolute;
+		z-index: 1;
+	}
+}

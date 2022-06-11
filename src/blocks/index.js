@@ -10,3 +10,5 @@ import './quoteMetas';
 import './quotesSliderBlock';
 import './faq-block-grid';
 import './theme-loop-content-block';
+
+import './block-wrapper-img';
