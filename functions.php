@@ -51,6 +51,7 @@ require get_template_directory() . '/inc/classes/class-theme-cookies.php';
 require get_template_directory() . '/inc/icons-functions.php';
 require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/template-tags.php';
+require get_template_directory() . '/inc/theme-social-share.php';
 
 
 // Custom Post Types

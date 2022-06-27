@@ -26,6 +26,7 @@ import DocumentationSettings from "./docs";
 import PosttypeSettings from "./posttype";
 import CookieSettings from "./cookies";
 import LabelSettings from "./label";
+import ShareSettings from "./share";
 
 
 const ThemeSettings = ( props ) => {
@@ -69,6 +70,10 @@ const ThemeSettings = ( props ) => {
                   name: 'tab-label',
                   title: 'Gestion des label',
               },
+              {
+                  name: 'tab-share',
+                  title: 'Gestion des partages',
+              },
           ] }
         >
           { ( tab ) => '' }
@@ -82,6 +87,7 @@ const ThemeSettings = ( props ) => {
         { activeTab == 'tab-posttype' && <PosttypeSettings /> }
         { activeTab == 'tab-cookie' && <CookieSettings /> }
         { activeTab == 'tab-label' && <LabelSettings /> }
+        { activeTab == 'tab-share' && <ShareSettings /> }
       </div>
     </Fragment>
   );

@@ -17,6 +17,21 @@
 	}
 }
 
+.entry-header {
+
+	.go-back-link {
+		display: flex;
+		align-items: center;
+
+		&::after {
+			margin-right: 10px;
+			margin-left: 0;
+			transform: scaleX(-1);
+			order: -1;
+		}
+	}
+}
+
 
 /**
  * Entry Content
@@ -43,4 +58,22 @@
 
 .entry-footer {
 	@extend %responsive-alignwide-width;
+}
+
+.goldencat-social-share {
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	gap: 11px;
+
+	.wp-block-social-links {
+		display: flex;
+		padding: 0;
+		margin-left: 0;
+		gap: 0.3em;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		font-size: 18px;
+	}
 }

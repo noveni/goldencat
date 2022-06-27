@@ -195,6 +195,37 @@ class GoldenCatThemeSettings
 				),
 			)
 		);
+
+		register_setting(
+			'goldencat_theme_settings',
+			'goldencat_theme_sharing_settings',
+			array(
+				'type'         => 'object',
+				'default'      => array(
+					'goldencat_sharing_services' => array( 'facebook' ),
+					'goldencat_sharing_posttype' =>  array( 'post' ),
+				),
+				'show_in_rest' => array(
+					'schema' => array(
+						'type' => 'object',
+						'properties' => array(
+							'goldencat_sharing_services' => array(
+								'type' => 'array',
+								'items' => array(
+									'type'   => 'string',
+								)
+							),
+							'goldencat_sharing_posttype' => array(
+								'type' => 'array',
+								'items' => array(
+									'type'   => 'string',
+								)
+							),
+						)
+					)
+				),
+			)
+		);
 	}
 
 	public static function getSettingsLabel( $type = 'btn-product-shop' ) {

@@ -3,6 +3,7 @@ import header from '../elements/header';
 import { toggleMenu } from '../elements/toggle-menu';
 import headerCart from '../elements/header-cart';
 import Animations from '../elements/animations';
+import SocialSharing from '../elements/social-share';
 
 export default {
   init() {
@@ -13,10 +14,12 @@ export default {
 
     headerCart.init();
     Animations.init();
+    SocialSharing.init();
   },
 	finalize() {
     header.finalize();
     headerCart.finalize();
     Animations.finalize();
+    SocialSharing.finalize();
   }
 }

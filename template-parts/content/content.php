@@ -20,8 +20,10 @@
 
 		if ( 'post' === get_post_type() ) :
 			?>
+			<?php goldencat_social_share_render_icon( get_the_ID() ); ?>
 			<div class="entry-meta">
 				<?php
+				
 				// goldencat_posted_on();
 				// goldencat_posted_by();
 				?>
