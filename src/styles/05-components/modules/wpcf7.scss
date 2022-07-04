@@ -103,12 +103,14 @@
 		margin-left: 0;
 	}
 
+	.wpcf7-checkbox,
 	.wpcf7-radio,
 	.wpcf7-acceptance {
 		// display: block;
 
 		label {
-			display: block;
+			display: flex;
+			align-items: center;
 			margin-bottom: 0;
 
 			.wpcf7-list-item-label {

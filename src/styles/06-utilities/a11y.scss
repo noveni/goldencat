@@ -34,4 +34,13 @@
 		transition-delay: 0s !important;
 		transition-duration: 0s !important;
 	}
+
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+
+:target {
+	scroll-margin-top: calc(var(--goldencat--header--height) + 2.5em);
 }
