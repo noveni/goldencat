@@ -6,12 +6,17 @@
 	bottom: 0;
 	width: 100%;
 	z-index: 100;
+	overflow: scroll;
+
 	@include media(mobile) {
 		max-width: 340px;
 	}
+
 	@include media(tablet) {
 		max-width: unset;
+		overflow: visible;
 	}
+
 	background-color: var(--goldencat--color-background);
 	padding: var(--goldencat--spacing-unit);
 
