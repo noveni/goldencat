@@ -7,11 +7,11 @@ import Router from '../utils/Router';
 
 import common from './routes/common';
 // import home from './routes/home'
-// import blocks from '../../blocks/theme';
+import blocks from '../../blocks/theme';
 const routes = new Router({
   // All pages
   common,
-  // blocks,
+  blocks,
   // Home page
   // home,
 });
