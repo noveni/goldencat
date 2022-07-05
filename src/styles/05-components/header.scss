@@ -1,8 +1,29 @@
+.site-header.sticky-header + #page .site-content {
+	margin-top: var(--goldencat--header--height, 0);
+}
+
+.has-sticky-header #wpadminbar {
+	position: fixed;
+}
+
 
 // Site Header
 .site-header {
 	@extend %responsive-alignwide-width;
 	color: var(--primary-nav--color-link);
+
+	&.sticky-header {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		transition: all 0.3s ease-in-out;
+		background-color: var(--goldencat--color-white);
+		z-index: 101;
+	}
+
+	.admin-bar &.sticky-header {
+		top: var(--goldencat--admin-bar--height);
+	}
 
 	ul {
 		list-style: none;

@@ -39,6 +39,10 @@ function goldencat_body_classes( $classes ) {
         }
     }
 
+	// Add Sticky Header if it's active
+	if ( goldencat_has_sticky() ) {
+		$classes[] = 'has-sticky-header';
+	}
 	// Helps detect if JS is enabled or not.
 	$classes[] = 'no-js';
 

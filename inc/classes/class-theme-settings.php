@@ -82,7 +82,8 @@ class GoldenCatThemeSettings
 				'default'      => array(
 					'maintenance_active' => false,
 					'show_admin_bar_active' => true,
-					'coming_soon_active' => false
+					'coming_soon_active' => false,
+					'sticky_header_active' => false
 				),
 				'show_in_rest' => array(
 					'schema' => array(
@@ -99,7 +100,11 @@ class GoldenCatThemeSettings
 							'coming_soon_active' => array(
 								'type'         => 'boolean',
 								'default'      => false
-							)
+							),
+							'sticky_header_active' => array(
+								'type'         => 'boolean',
+								'default'      => false
+							),
 						)
 					)
 				)
@@ -357,6 +362,20 @@ class GoldenCatThemeSettings
 		}
 
 		if ( isset( $settings['coming_soon_active'] ) && $settings['coming_soon_active'] == true ) {
+			return true;
+		}
+		return false;
+	}
+
+	public static function hasStickyHeader() {
+
+		$settings = get_option( 'goldencat_theme_global_settings', [] );
+		
+		if ( empty( $settings ) ) {
+			return false;
+		}
+
+		if ( isset( $settings['sticky_header_active'] ) && $settings['sticky_header_active'] == true ) {
 			return true;
 		}
 		return false;

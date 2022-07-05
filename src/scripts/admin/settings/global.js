@@ -31,6 +31,7 @@ const GlobalSettings = ( props ) => {
   const {
     maintenanceModeIsActive,
     showAdminBarIsActive,
+    stickyHeaderActive,
     comingSoonIsActive,
     comingSoonPage,
     hasResolvedComingSoonPage,
@@ -48,6 +49,7 @@ const GlobalSettings = ( props ) => {
     return {
       maintenanceModeIsActive: globalSettings?.maintenance_active,
       showAdminBarIsActive: globalSettings?.show_admin_bar_active,
+      stickyHeaderActive: globalSettings?.sticky_header_active,
       comingSoonIsActive: globalSettings?.coming_soon_active,
       comingSoonPage: getEntityRecords( ...selectorArgs )?.[0],
       hasResolvedComingSoonPage: hasFinishedResolution( 'getEntityRecords', selectorArgs ),
@@ -110,6 +112,10 @@ const GlobalSettings = ( props ) => {
     editEntityRecord( 'root', 'site', undefined, { 'goldencat_theme_global_settings': {...globalSettings, 'show_admin_bar_active': activeStatus } })
   }
 
+  const handleToggleStickyHeader = ( activeStatus ) => {
+    editEntityRecord( 'root', 'site', undefined, { 'goldencat_theme_global_settings': {...globalSettings, 'sticky_header_active': activeStatus } })
+  }
+
   const handleToggleShowComingSoon = ( activeStatus ) => {
     editEntityRecord( 'root', 'site', undefined, { 'goldencat_theme_global_settings': {...globalSettings, 'coming_soon_active': activeStatus } })
   }
@@ -151,6 +157,18 @@ const GlobalSettings = ( props ) => {
               Aucune données trouvée. 'goldencat_theme_global_settings'
             </PanelRow>
           )}
+        </PanelBody>
+        <PanelBody title="Sticky Header">
+          <PanelRow>
+            <p>Activer menu sticky ?</p>
+          </PanelRow>
+          <PanelRow>
+            <ToggleControl
+              label="Sticky header"
+              checked={ stickyHeaderActive }
+              onChange={ () => handleToggleStickyHeader(!stickyHeaderActive )}
+            />
+          </PanelRow>
         </PanelBody>
         <PanelBody title="Maintenance">
           <PanelRow>

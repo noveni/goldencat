@@ -74,3 +74,7 @@ function goldencat_label( $label_type = 'btn-product-shop' ) {
 		return false;
 	}
 }
+
+function goldencat_has_sticky() {
+	return GoldenCatThemeSettings::hasStickyHeader();
+}

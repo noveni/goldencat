@@ -8,9 +8,10 @@
  */
 
 
-$wrapper_classes  = 'site-header';
+$wrapper_classes = 'site-header';
+$wrapper_classes .= goldencat_has_sticky() ? ' sticky-header' : '';
 $layout_menu = apply_filters( 'goldencat_theme_layout_menu_style', 'left-logo' ); //'central-logo'
-$layout_menu_alignement = apply_filters( 'goldencat_theme_layout_menu_alignement', 'wide' ); //'full'
+$layout_menu_alignement = apply_filters( 'goldencat_theme_layout_menu_alignement', 'full' ); //'full'
 $wrapper_classes .= ' align' . $layout_menu_alignement;
 // $wrapper_classes .= true === get_theme_mod( 'display_title_and_tagline', true ) ? ' has-title-and-tagline' : '';
 // $wrapper_classes .= has_nav_menu( 'primary' ) ? ' has-menu' : '';
