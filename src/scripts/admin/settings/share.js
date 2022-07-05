@@ -32,13 +32,21 @@ import { usePostTypes, Notices } from './utils';
  
 const ShareSettings = ( props ) => {
 
-  const { activeServices, activePostTypes, sharingSettings, isSaving, hasEdits } = useSelect( ( select ) => {
+  const {
+    activeServices,
+    activePostTypes,
+    sharingSettings,
+    isOpenGraphActive,
+    isSaving,
+    hasEdits
+  } = useSelect( ( select ) => {
     const { getEditedEntityRecord, isSavingEntityRecord, hasEditsForEntityRecord } = select( coreDataStore );
     const siteSettings = getEditedEntityRecord( 'root', 'site' );
     const sharingSettings = siteSettings?.goldencat_theme_sharing_settings;
     return {
       activeServices: sharingSettings?.goldencat_sharing_services,
       activePostTypes: sharingSettings?.goldencat_sharing_posttype,
+      isOpenGraphActive: sharingSettings?.goldencat_sharing_opengraph_active,
       sharingSettings,
       isSaving: isSavingEntityRecord( 'root', 'site' ),
       hasEdits: hasEditsForEntityRecord( 'root', 'site' )
@@ -110,6 +118,11 @@ const ShareSettings = ( props ) => {
     }
     editEntityRecord( 'root', 'site', undefined, { 'goldencat_theme_sharing_settings': {...sharingSettings, 'goldencat_sharing_services': newActiveService } })
   }
+
+  const handleToggleOpenGraph = ( activeStatus ) => {
+    editEntityRecord( 'root', 'site', undefined, { 'goldencat_theme_sharing_settings': {...sharingSettings, 'goldencat_sharing_opengraph_active': activeStatus } })
+  }
+
   if ( ! isAPILoaded ) {
     return (
       <Placeholder>
@@ -129,11 +142,11 @@ const ShareSettings = ( props ) => {
           </PanelRow>
           {isAPILoaded === 'not-found' && (
             <PanelRow>
-              Aucune données trouvée. 'goldencat_theme_label_settings'
+              Aucune données trouvée. 'goldencat_theme_sharing_settings'
             </PanelRow>
           )}
         </PanelBody>
-        {postTypes.length > 0 && (
+        {postTypes && postTypes.length > 0 && (
           <PanelBody title="Type de contenus">
             <PanelRow>
               <p>Activer les boutons de partage pour les contenus suivant</p>
@@ -173,6 +186,18 @@ const ShareSettings = ( props ) => {
             
           </PanelBody>
         )}
+        <PanelBody title="OG Tag">
+          <PanelRow>
+            <p>Insérer les meta tag Open Graph pour le partage sur les réseaux sociaux</p>
+          </PanelRow>
+          <PanelRow>
+            <ToggleControl
+              label="Ajouter les tags"
+              checked={ isOpenGraphActive }
+              onChange={ () => handleToggleOpenGraph(!isOpenGraphActive) }
+            />
+          </PanelRow>
+        </PanelBody>
         <Button
             isPrimary
             isLarge

@@ -42,7 +42,7 @@ class GoldenCatThemeAdmin
 
         if (is_user_logged_in()) {
             
-            $show_admin_bar = boolval( get_option( 'goldencat_theme_show_admin_bar_on', true ) ?? false);
+            $show_admin_bar = boolval( GoldenCatThemeSettings::showAdminBar() );
             if ($show_admin_bar === true) {
                 show_admin_bar(true);
             } else {

@@ -74,60 +74,82 @@ class GoldenCatThemeSettings
 	 */
 	public function register_settings() {
 
-        // get_option( $option:string, $default:mixed );
+		register_setting(
+			'goldencat_theme_settings',
+			'goldencat_theme_global_settings',
+			array(
+				'type'         => 'object',
+				'default'      => array(
+					'maintenance_active' => false,
+					'show_admin_bar_active' => true,
+					'coming_soon_active' => false
+				),
+				'show_in_rest' => array(
+					'schema' => array(
+						'type' => 'object',
+						'properties' => array(
+							'maintenance_active' => array(
+								'type'         => 'boolean',
+								'default'      => false
+							),
+							'show_admin_bar_active' => array(
+								'type'         => 'boolean',
+								'default'      => true
+							),
+							'coming_soon_active' => array(
+								'type'         => 'boolean',
+								'default'      => false
+							)
+						)
+					)
+				)
+			)
+		);
 
 		register_setting(
 			'goldencat_theme_settings',
-			'goldencat_theme_maintenance_on',
+			'goldencat_theme_metrics_settings',
 			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => false,
+				'type'         => 'object',
+				'default'      => array(
+				),
+				'show_in_rest' => array(
+					'schema' => array(
+						'type' => 'object',
+						'properties' => array(
+							'ga_measurement_id' => array(
+								'type' => 'string'
+							)
+						)
+					)
+				)
 			)
 		);
+
 		register_setting(
 			'goldencat_theme_settings',
-			'goldencat_theme_opengraph_on',
+			'goldencat_theme_posttype_settings',
 			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-		register_setting(
-			'goldencat_theme_settings',
-			'goldencat_theme_ga_measurement_id',
-			array(
-				'type'         => 'string',
-				'show_in_rest' => true,
-				'default'      => '',
-			)
-		);
-		register_setting(
-			'goldencat_theme_settings',
-			'goldencat_theme_show_admin_bar_on',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-		register_setting(
-			'goldencat_theme_settings',
-			'goldencat_theme_posttype_faq_on',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-		register_setting(
-			'goldencat_theme_settings',
-			'goldencat_theme_posttype_quote_on',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
+				'type'         => 'object',
+				'default'      => array(
+					'posttype_faq_on' => true,
+					'posttype_quote_on' => false,
+				),
+				'show_in_rest' => array(
+					'schema' => array(
+						'type' => 'object',
+						'properties' => array(
+							'posttype_faq_on' => array(
+								'type' => 'boolean',
+								'default' => false
+							),
+							'posttype_quote_on' => array(
+								'type' => 'boolean',
+								'default' => false
+							),
+						)
+					)
+				)
 			)
 		);
 
@@ -179,17 +201,39 @@ class GoldenCatThemeSettings
 			'goldencat_theme_settings',
 			'goldencat_theme_label_settings',
 			array(
-				'type'         => 'object',
+				'type'         => 'array',
 				'default'      => array(
-					'goldencat_label_btn_product_shop' => 'Découvrir',
+					array(
+						'id' => 'shop_button',
+						'location' => 'shop',
+						'type'	=> 'button',
+						'label'	=> 'Découvrir'
+					),
+					array(
+						'id' => 'blog_button',
+						'location' => 'blog',
+						'type'	=> 'button',
+						'label'	=> 'Découvrir l\'article'
+					)
 				),
 				'show_in_rest' => array(
 					'schema' => array(
-						'type' => 'object',
-						'properties' => array(
-							'goldencat_label_btn_product_shop' => array(
-								'type' => 'string'
-							),
+						'items' => array(
+							'type' => 'object',
+							'properties' => array(
+								'id' => array(
+									'type' => 'string'
+								),
+								'location' => array(
+									'type' => 'string'
+								),
+								'type' => array(
+									'type' => 'string'
+								),
+								'label' => array(
+									'type' => 'string'
+								)
+							)
 						)
 					)
 				),
@@ -204,6 +248,7 @@ class GoldenCatThemeSettings
 				'default'      => array(
 					'goldencat_sharing_services' => array( 'facebook' ),
 					'goldencat_sharing_posttype' =>  array( 'post' ),
+					'goldencat_sharing_opengraph_active' => true
 				),
 				'show_in_rest' => array(
 					'schema' => array(
@@ -221,6 +266,10 @@ class GoldenCatThemeSettings
 									'type'   => 'string',
 								)
 							),
+							'goldencat_sharing_opengraph_active' => array(
+								'type' => 'boolean',
+								'default' => true
+							)
 						)
 					)
 				),
@@ -240,13 +289,76 @@ class GoldenCatThemeSettings
 		switch ($type) {
 			case 'btn-product-shop':
 				$settings_slug = 'goldencat_label_btn_product_shop';
+				$settings_label_id = 'shop_button';
 				break;
 		}
 
-		if ( $settings_slug && isset($settings[ $settings_slug ] ) && $settings[ $settings_slug ] != '' ) {
-			return $settings[ $settings_slug ];
+		$labels = array_filter( $settings, function( $label_item ) use ($settings_label_id) {
+			return $label_item['id'] === $settings_label_id;
+		} );
+		if ( !empty($labels) && isset($labels[0]['label']) && isset($labels[0]['label']) != '' ) {
+			return $labels[0]['label'];
 		}
 
+		return false;
+	}
+
+	public static function getPostTypeActive( $type ) {
+		if ( !$type || $type == '' ) {
+			return false;
+		}
+
+		$settings = get_option( 'goldencat_theme_posttype_settings', [] );
+		
+		if ( empty( $settings ) ) {
+			return false;
+		}
+
+		if ( isset( $settings[$type] ) && $settings[$type] == true ) {
+			return true;
+		}
+		return false;
+	}
+
+	public static function showAdminBar() {
+
+		$settings = get_option( 'goldencat_theme_global_settings', [] );
+		
+		if ( empty( $settings ) ) {
+			return false;
+		}
+
+		if ( isset( $settings['show_admin_bar_active'] ) && $settings['show_admin_bar_active'] == true ) {
+			return true;
+		}
+		return false;
+	}
+
+	public static function isActiveMaintenanceMode() {
+
+		$settings = get_option( 'goldencat_theme_global_settings', [] );
+		
+		if ( empty( $settings ) ) {
+			return false;
+		}
+
+		if ( isset( $settings['maintenance_active'] ) && $settings['maintenance_active'] == true ) {
+			return true;
+		}
+		return false;
+	}
+
+	public static function isActiveComingSoon() {
+
+		$settings = get_option( 'goldencat_theme_global_settings', [] );
+		
+		if ( empty( $settings ) ) {
+			return false;
+		}
+
+		if ( isset( $settings['coming_soon_active'] ) && $settings['coming_soon_active'] == true ) {
+			return true;
+		}
 		return false;
 	}
 }

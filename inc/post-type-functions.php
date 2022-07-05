@@ -40,11 +40,11 @@ function goldencat_get_default_post_type_config() {
 }
 
 // Custom Post Types
-$show_faq_type = boolval( get_option( 'goldencat_theme_posttype_faq_on', true ) ?? false);
+$show_faq_type = GoldenCatThemeSettings::getPostTypeActive('posttype_faq_on');
 if ($show_faq_type === true) {
     require get_template_directory() . '/inc/post-type/faq.php';
 }
-$show_quote_type = boolval( get_option( 'goldencat_theme_posttype_quote_on', true ) ?? false);
+$show_quote_type = GoldenCatThemeSettings::getPostTypeActive('posttype_quote_on');
 if ($show_quote_type === true) {
     require get_template_directory() . '/inc/post-type/temoignage.php';
 }

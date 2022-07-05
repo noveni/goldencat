@@ -2,28 +2,17 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import domReady from '@wordpress/dom-ready';
 import {
-  BaseControl,
   Button,
-  ExternalLink,
-  Disabled,
-  Notice,
   PanelBody,
   PanelRow,
   Panel,
   Placeholder,
-  SelectControl,
-  SnackbarList,
   Spinner,
-  TabPanel,
   TextControl,
-  TextareaControl,
-  ToggleControl
 } from '@wordpress/components';
 
-import api from '@wordpress/api';
-
+import { store as coreDataStore } from '@wordpress/core-data';
 import {
   dispatch,
   useDispatch,
@@ -31,71 +20,63 @@ import {
 } from '@wordpress/data';
  
 import {
-  render,
-  Component,
   Fragment,
   useState,
   useEffect
 } from '@wordpress/element';
 
-import { store as noticesStore } from '@wordpress/notices';
  
 /**
 * Internal dependencies
 */
+import { Notices } from './utils';
 
-
-const Notices = () => {
-  const notices = useSelect(
-    ( select ) =>
-      select( noticesStore )
-        .getNotices()
-        .filter( ( notice ) => notice.type === 'snackbar' ),
-    []
-  );
-  const { removeNotice } = useDispatch( noticesStore );
-  return (
-    <SnackbarList
-      className="edit-site-notices"
-      notices={ notices }
-      onRemove={ removeNotice }
-    />
-  );
-};
 const LabelSettings = ( props ) => {
 
-  const [isAPILoaded, setAPILoaded] = useState(false);
-  const [labelBtnProductShop, setLabelBtnProductShop] = useState('Découvrir');
+  const {
+    buttonLabels,
+    labelSettings,
+    isSaving,
+    hasEdits
+  } = useSelect( ( select ) => {
+    const { getEditedEntityRecord, isSavingEntityRecord, hasEditsForEntityRecord } = select( coreDataStore );
+    const siteSettings = getEditedEntityRecord( 'root', 'site' );
+    const labelSettings = siteSettings?.goldencat_theme_label_settings;
+    return {
+      buttonLabels: siteSettings.goldencat_theme_label_settings && siteSettings.goldencat_theme_label_settings.filter(label => label.type === 'button'),
+      labelSettings,
+      isSaving: isSavingEntityRecord( 'root', 'site' ),
+      hasEdits: hasEditsForEntityRecord( 'root', 'site' )
+    }
+  })
 
-  useEffect(() => {
-    api.loadPromise.then( () => {
-      const settings = new api.models.Settings();
+  const { editEntityRecord, saveEditedEntityRecord } = useDispatch( coreDataStore );
 
-      if ( isAPILoaded === false ) {
-        settings.fetch().then( ( response ) => {
 
-          if ( response[ 'goldencat_theme_label_settings' ] != undefined ) {
+  const [ isAPILoaded, setAPILoaded ] = useState(false);
 
-            setLabelBtnProductShop( response[ 'goldencat_theme_label_settings' ]['goldencat_label_btn_product_shop'] )
-            
-            setAPILoaded(true)
-          } else {
-            setAPILoaded('not-found')
-          }
-        })
+  useEffect( () => {
+    if ( labelSettings && buttonLabels ) {
+      setAPILoaded(true)
+    }
+
+	}, [ labelSettings, buttonLabels ] );
+
+  const setLabel = ( newLabel, id ) => {
+
+    const newLabels = labelSettings.map( labelItem => {
+      if ( labelItem.id == id ) {
+        return { ...labelItem, label: newLabel }
       }
+      return labelItem;
     })
-  });
 
-  const saveLabelSettings = () => {
-    const settings = new api.models.Settings( {
-      [ 'goldencat_theme_label_settings' ]: {
-        goldencat_label_btn_product_shop: labelBtnProductShop,
-      }
-    } );
+    editEntityRecord( 'root', 'site', undefined, { 'goldencat_theme_label_settings': newLabels })
+  }
 
-    settings.save().then( response => {
-      setLabelBtnProductShop( response[ 'goldencat_theme_label_settings' ]['goldencat_label_btn_product_shop'] )
+  const saveLabelSettings = async () => {
+    const updatedRecord = await saveEditedEntityRecord( 'root', 'site' );
+    if ( updatedRecord ) {
 
       dispatch('core/notices').createNotice(
         'success',
@@ -105,7 +86,7 @@ const LabelSettings = ( props ) => {
             isDismissible: true,
         }
       );
-    })
+    }
   }
 
   if ( ! isAPILoaded ) {
@@ -131,24 +112,34 @@ const LabelSettings = ( props ) => {
             </PanelRow>
           )}
         </PanelBody>
-        <Disabled isDisabled={ isAPILoaded === 'not-found' }>
+        {buttonLabels.length > 0 && (
           <PanelBody title="Boutons">
-            <PanelRow>
-              <TextControl
-                  help="Texte du bouton qui apparaît sur la page boutique"
-                  label="Bouton des vignettes produits"
-                  value={labelBtnProductShop}
-                  onChange={( newBtnText ) => setLabelBtnProductShop(newBtnText)}
-                />
-            </PanelRow>
+          {buttonLabels.map(( { id, location, label }, index) => {
+            return (
+              <PanelRow>
+                <TextControl
+                    help={`Texte du bouton qui apparaît sur la page ${location}`}
+                    label={`Bouton des vignettes ${location}`}
+                    value={label}
+                    onChange={( newLabel ) => setLabel(newLabel, id )}
+                  />
+                </PanelRow>
+            )
+          })}
           </PanelBody>
-        </Disabled>
+        )}
         <Button
             isPrimary
             isLarge
             onClick={saveLabelSettings}
+            disabled={ ! hasEdits || isSaving }
           >
-            { __( 'Save', 'goldencat-theme' ) }
+            { isSaving ? (
+              <>
+                  <Spinner/>
+                  Saving
+              </>
+            ) : __( 'Save', 'goldencat-theme' ) }
         </Button>
       </Panel>
       <div className="goldencat-theme-settings__notices">

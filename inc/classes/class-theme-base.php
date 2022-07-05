@@ -150,7 +150,7 @@ class GoldenCatThemeBase
      */
     private function checkMaintenanceMode()
     {
-        $maintenance_mode = boolval( get_option( 'goldencat_theme_maintenance_on', false ) ?? false);
+        $maintenance_mode = boolval( GoldenCatThemeSettings::isActiveMaintenanceMode() );
 		if ($maintenance_mode === true) {
 			add_action( 'get_header', [ $this, 'doMaintenanceMode' ] );
 		}
@@ -170,7 +170,7 @@ class GoldenCatThemeBase
 
     private function  checkComingSoon()
     {
-        $comingsoon_mode = boolval( get_option( 'goldencat_theme_coming_soon_on', false ) ?? false);
+        $comingsoon_mode = boolval( GoldenCatThemeSettings::isActiveComingSoon() );
         if ( $comingsoon_mode === true ) {
             add_action( 'template_redirect', [ $this, 'doComingSoon' ] );
             add_filter( 'template_include', [ $this, 'doComingSoonTemplate' ], 99 );
@@ -575,13 +575,16 @@ class GoldenCatThemeBase
      */
     public function addMeta()
     {
-        $open_graph = boolval( get_option( 'goldencat_theme_opengraph_on', true ) ?? false);
-		if ($open_graph === true) {
+        $sharing_settings = get_option( 'goldencat_theme_sharing_settings' );
+        $metrics_settings = get_option( 'goldencat_theme_metrics_settings' );
+        $open_graph_is_active = $sharing_settings && isset( $sharing_settings['goldencat_sharing_opengraph_active'] ) ? $sharing_settings['goldencat_sharing_opengraph_active'] : false;
+        $ga_id = $metrics_settings && isset( $metrics_settings['ga_measurement_id'] ) ? $metrics_settings['ga_measurement_id'] : false;
+
+		if ($open_graph_is_active === true) {
             add_action( 'wp_head', [GoldenCatThemeMeta::class, 'print_meta'], 5);
 		}
 		add_action( 'wp_head', [GoldenCatThemeMeta::class, 'printFavicon'], 101);
 
-        $ga_id = get_option( 'goldencat_theme_ga_measurement_id', false);
 		if ( $ga_id && $ga_id != '' ) {
 			add_action( 'wp_head', function() use ( $ga_id ){
 				GoldenCatThemeMeta::addAnalytics($ga_id);

@@ -51,14 +51,6 @@ const ThemeSettings = ( props ) => {
                   title: 'Analytics',
               },
               {
-                  name: 'tab-tools',
-                  title: 'Tools',
-              },
-              {
-                  name: 'tab-docs',
-                  title: 'Documentation',
-              },
-              {
                   name: 'tab-posttype',
                   title: 'Types de postes',
               },
@@ -82,8 +74,6 @@ const ThemeSettings = ( props ) => {
       <div className="goldencat-settings-body">
         { activeTab == 'tab-global' && <GlobalSettings /> }
         { activeTab == 'tab-analytics' && <AnalyticsSettings /> }
-        { activeTab == 'tab-tools' && <ToolsSettings /> }
-        { activeTab == 'tab-docs' && <DocumentationSettings /> }
         { activeTab == 'tab-posttype' && <PosttypeSettings /> }
         { activeTab == 'tab-cookie' && <CookieSettings /> }
         { activeTab == 'tab-label' && <LabelSettings /> }

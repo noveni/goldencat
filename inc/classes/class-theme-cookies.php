@@ -22,9 +22,10 @@ class GoldenCatThemeCookies
 
     public function __construct() {
 
+        $this->settings = get_option( 'goldencat_theme_cookie_settings' );
+        
         add_action( 'init', array( $this, 'init' ) );
 
-        $this->settings = get_option( 'goldencat_theme_cookie_settings' );
     }
 
     /**
@@ -34,11 +35,13 @@ class GoldenCatThemeCookies
 
         global $pagenow;
 
-        $cookie_setting_is_active = $this->settings["goldencat_cookie_settings_active"];
-
-        if ( $cookie_setting_is_active && !is_admin() && $pagenow !== 'widgets.php' && !isset( $_GET['legacy-widget-preview'] ) ) {
-            add_action( 'wp_enqueue_scripts', [$this, 'wp_enqueue_cookies_scripts'] );
-            add_action( 'wp_footer', [ $this, 'add_cookie_cookie_panel' ], 1000 );
+        
+        if ( $this->settings && !is_admin() && $pagenow !== 'widgets.php' && !isset( $_GET['legacy-widget-preview'] ) ) {
+            $cookie_setting_is_active = $this->settings["goldencat_cookie_settings_active"];
+            if ( $cookie_setting_is_active ) {
+                add_action( 'wp_enqueue_scripts', [$this, 'wp_enqueue_cookies_scripts'] );
+                add_action( 'wp_footer', [ $this, 'add_cookie_cookie_panel' ], 1000 );
+            }
         }
     }
 

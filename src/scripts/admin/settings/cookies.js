@@ -2,27 +2,22 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import domReady from '@wordpress/dom-ready';
 import {
-  BaseControl,
   Button,
-  ExternalLink,
   Disabled,
-  Notice,
   PanelBody,
   PanelRow,
   Panel,
   Placeholder,
   SelectControl,
-  SnackbarList,
   Spinner,
-  TabPanel,
   TextControl,
   TextareaControl,
   ToggleControl
 } from '@wordpress/components';
-import api from '@wordpress/api';
- 
+
+import { store as coreDataStore } from '@wordpress/core-data';
+
 import {
   dispatch,
   useDispatch,
@@ -30,84 +25,73 @@ import {
 } from '@wordpress/data';
 
 import {
-  render,
-  Component,
   Fragment,
   useState,
   useEffect
 } from '@wordpress/element';
 
-import { store as noticesStore } from '@wordpress/notices';
  
 /**
 * Internal dependencies
 */
 import moment from 'moment';
+import { Notices } from './utils';
 
-
-
-
-const Notices = () => {
-  const notices = useSelect(
-    ( select ) =>
-      select( noticesStore )
-        .getNotices()
-        .filter( ( notice ) => notice.type === 'snackbar' ),
-    []
-  );
-  const { removeNotice } = useDispatch( noticesStore );
-  return (
-    <SnackbarList
-      className="edit-site-notices"
-      notices={ notices }
-      onRemove={ removeNotice }
-    />
-  );
-};
  
 const CookieSettings = ( props ) => {
 
-  const [isAPILoaded, setAPILoaded] = useState(false);
-  const [isCookieNoticeActive, setCookieNoticeActive] = useState(false);
-  const [cookieNoticeMsg, setCookieNoticeMsg] = useState('');
-  const [cookieNoticeButton, setCookieNoticeButton] = useState('');
-  const [cookieNoticeDuration, setCookieNoticeDuration] = useState(6);
-
-  useEffect(() => {
-    api.loadPromise.then( () => {
-      const settings = new api.models.Settings();
-
-      if ( isAPILoaded === false ) {
-        settings.fetch().then( ( response ) => {
-          if ( response[ 'goldencat_theme_cookie_settings' ] != undefined ) {
-
-            setCookieNoticeActive( response[ 'goldencat_theme_cookie_settings' ]['goldencat_cookie_settings_active'] )
-            setCookieNoticeMsg( response[ 'goldencat_theme_cookie_settings' ]['goldencat_cookie_settings_msg'] )
-            setCookieNoticeButton( response[ 'goldencat_theme_cookie_settings' ]['goldencat_cookie_settings_btn'] )
-            setCookieNoticeDuration( response[ 'goldencat_theme_cookie_settings' ]['goldencat_cookie_settings_duration'] )
-            setAPILoaded(true)
-          }
-        })
-      }
-    })
+  const {
+    isCookieNoticeActive,
+    cookieNoticeMsg,
+    cookieNoticeButtonLabel,
+    cookieNoticeDuration,
+    cookieSettings,
+    isSaving,
+    hasEdits
+  } = useSelect( (select) => {
+    const { getEditedEntityRecord, isSavingEntityRecord, hasEditsForEntityRecord } = select( coreDataStore );
+    const siteSettings = getEditedEntityRecord( 'root', 'site' );
+    const cookieSettings = siteSettings?.goldencat_theme_cookie_settings;
+    return {
+      isCookieNoticeActive: cookieSettings?.goldencat_cookie_settings_active,
+      cookieNoticeMsg: cookieSettings?.goldencat_cookie_settings_msg,
+      cookieNoticeButtonLabel: cookieSettings?.goldencat_cookie_settings_btn,
+      cookieNoticeDuration: cookieSettings?.goldencat_cookie_settings_duration,
+      cookieSettings,
+      isSaving: isSavingEntityRecord( 'root', 'site' ),
+      hasEdits: hasEditsForEntityRecord( 'root', 'site' )
+    }
   });
+  const { editEntityRecord, saveEditedEntityRecord } = useDispatch( coreDataStore );
 
-  const saveCookiesSettings = () => {
+  const [isAPILoaded, setAPILoaded] = useState(false);
 
-    const settings = new api.models.Settings( {
-      [ 'goldencat_theme_cookie_settings' ]: {
-        goldencat_cookie_settings_active: isCookieNoticeActive,
-        goldencat_cookie_settings_msg: cookieNoticeMsg,
-        goldencat_cookie_settings_btn: cookieNoticeButton,
-        goldencat_cookie_settings_duration: cookieNoticeDuration
-      }
-    } );
+  useEffect( () => {
+    if ( cookieSettings ) {
+      setAPILoaded(true)
+    }
 
-    settings.save().then( response => {
-      setCookieNoticeActive( response[ 'goldencat_theme_cookie_settings' ]['goldencat_cookie_settings_active'] )
-      setCookieNoticeMsg( response[ 'goldencat_theme_cookie_settings' ]['goldencat_cookie_settings_msg'] )
-      setCookieNoticeButton( response[ 'goldencat_theme_cookie_settings' ]['goldencat_cookie_settings_btn'] )
-      setCookieNoticeDuration( response[ 'goldencat_theme_cookie_settings' ]['goldencat_cookie_settings_duration'] )
+	}, [ cookieSettings ] );
+
+  const handleToggleCookieNoticeActive = ( isActive ) => {
+    editEntityRecord( 'root', 'site', undefined, { 'goldencat_theme_cookie_settings': {...cookieSettings, 'goldencat_cookie_settings_active': isActive } })
+  }
+
+  const handleChangeCookieNoticeMsg = ( newMsg ) => {
+    editEntityRecord( 'root', 'site', undefined, { 'goldencat_theme_cookie_settings': {...cookieSettings, 'goldencat_cookie_settings_msg': newMsg } })
+  }
+
+  const handleChangeCookieNoticeButtonLabel = ( newLabelButton ) => {
+    editEntityRecord( 'root', 'site', undefined, { 'goldencat_theme_cookie_settings': {...cookieSettings, 'goldencat_cookie_settings_btn': newLabelButton } })
+  }
+
+  const handleChangeNoticeDuration = ( newDuration ) => {
+    editEntityRecord( 'root', 'site', undefined, { 'goldencat_theme_cookie_settings': {...cookieSettings, 'goldencat_cookie_settings_duration': newDuration } })
+  }
+
+  const saveCookiesSettings = async () => {
+    const updatedRecord = await saveEditedEntityRecord( 'root', 'site' );
+    if ( updatedRecord ) {
 
       dispatch('core/notices').createNotice(
         'success',
@@ -117,7 +101,7 @@ const CookieSettings = ( props ) => {
             isDismissible: true,
         }
       );
-    })
+    }
   }
 
   if ( ! isAPILoaded ) {
@@ -131,19 +115,23 @@ const CookieSettings = ( props ) => {
   return (
     <Fragment>
       <div className="goldencat-theme-settings-cookie">
-        {isAPILoaded}
       </div>
       <Panel header="Cookie Compliance">
         <PanelBody>
           <PanelRow>
             <p>Administrer ici la façon dont sont gérer les cookies sur le site coté client. Rappelons que la loi </p>
           </PanelRow>
+          {isAPILoaded === 'not-found' && (
+            <PanelRow>
+              Aucune data trouvée. 'goldencat_theme_cookie_settings'
+            </PanelRow>
+          )}
           
           <PanelRow>
             <ToggleControl
               label="Activer la notice de cookie"
               checked={isCookieNoticeActive}
-              onChange={() => setCookieNoticeActive(!isCookieNoticeActive)}
+              onChange={() => handleToggleCookieNoticeActive(!isCookieNoticeActive)}
             />
           </PanelRow>
 
@@ -157,7 +145,7 @@ const CookieSettings = ( props ) => {
                   label="Message"
                   rows={ 4 }
                   value={cookieNoticeMsg}
-                  onChange={( newMsg ) => setCookieNoticeMsg(newMsg)}
+                  onChange={( newMsg ) => handleChangeCookieNoticeMsg(newMsg)}
                 />
               </div>
             </PanelRow>
@@ -165,8 +153,8 @@ const CookieSettings = ( props ) => {
               <TextControl
                 help="Texte du bouton pour accepter la notice et la faire disparaître."
                 label="Bouton"
-                value={cookieNoticeButton}
-                onChange={( newBtnText ) => setCookieNoticeButton(newBtnText)}
+                value={cookieNoticeButtonLabel}
+                onChange={( newBtnText ) => handleChangeCookieNoticeButtonLabel(newBtnText)}
               />
             </PanelRow>
             <PanelRow>
@@ -184,7 +172,7 @@ const CookieSettings = ( props ) => {
                   { value: moment.duration(6, 'months').asSeconds(), label: '6 mois (Maximum)' },
                 ]}
                 value={cookieNoticeDuration}
-                onChange={( newDuration ) => setCookieNoticeDuration(newDuration)}
+                onChange={( newDuration ) => handleChangeNoticeDuration(newDuration)}
                 
               />
             </PanelRow>
@@ -194,8 +182,14 @@ const CookieSettings = ( props ) => {
             isPrimary
             isLarge
             onClick={saveCookiesSettings}
+            disabled={ ! hasEdits || isSaving }
           >
-            { __( 'Save', 'goldencat-theme' ) }
+            { isSaving ? (
+              <>
+                  <Spinner/>
+                  Saving
+              </>
+            ) : __( 'Save', 'goldencat-theme' ) }
         </Button>
       </Panel>
       <div className="goldencat-theme-settings__notices">
