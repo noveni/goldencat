@@ -11,6 +11,9 @@
  * @param {boolean} withListeners - Whether we want to add/remove listeners or not.
  */
 const toggleAriaExpanded = ( el, withListeners ) => {
+	if (!el) {
+		return;
+	}
 	if ( 'true' !== el.getAttribute( 'aria-expanded' ) ) {
 		el.setAttribute( 'aria-expanded', 'true' );
 		submenuPosition( el.parentElement );
@@ -193,7 +196,7 @@ export const toggleMenu = ( id ) => {
 		* Adapted from TwentyTwenty.
 		*/
 	if (document.getElementById( 'site-navigation' )) {
-		document.addEventListener( 'click', function( event ) {
+		document.getElementById( 'site-navigation' ).addEventListener( 'click', function( event ) {
 			// If target onclick is <a> with # within the href attribute
 			if ( event.target.hash && event.target.hash.includes( '#' ) ) {
 				wrapper.classList.remove( id + '-navigation-open', 'lock-scrolling' );
