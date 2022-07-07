@@ -4,7 +4,6 @@ import Glide, { Breakpoints } from '@glidejs/glide'
 export default {
   init() {
     if (document.querySelector('.block-cover-slider-gallery')) {
-      console.log('dgreg');
       new Glide('.block-cover-slider-gallery', {
         type: 'carousel',
         startAt: 0,

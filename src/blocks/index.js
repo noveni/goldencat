@@ -12,3 +12,4 @@ import './faq-block-grid';
 import './theme-loop-content-block';
 
 import './block-wrapper-img';
+import './covers-slider';
