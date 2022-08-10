@@ -1,7 +1,7 @@
 <?php
 
 
-function ecrannoir_twenty_one_render_quotes_slider( $attributes ) {
+function goldencat_render_quotes_slider( $attributes ) {
     if (is_admin()) {
         return;
     }
@@ -64,7 +64,7 @@ function ecrannoir_twenty_one_render_quotes_slider( $attributes ) {
 /**
  * Registers the `core/latest-posts` block on server.
  */
-function ecrannoir_twenty_one_register_block_core_quotes_slider() {
+function goldencat_register_block_core_quotes_slider() {
 	register_block_type(
 		'ecrannoirtwentyone/quotes-slider',
 		array(
@@ -82,8 +82,8 @@ function ecrannoir_twenty_one_register_block_core_quotes_slider() {
                     'default' => "full",
                 )
             ),
-			'render_callback' => 'ecrannoir_twenty_one_render_quotes_slider',
+			'render_callback' => 'goldencat_render_quotes_slider',
 		)
 	);
 }
-add_action( 'init', 'ecrannoir_twenty_one_register_block_core_quotes_slider' );
+add_action( 'init', 'goldencat_register_block_core_quotes_slider' );

@@ -1,22 +1,18 @@
 <?php
 
-function ecrannoir_twenty_one_render_picked_post( $attributes, $content ) {
-    if (is_admin()) {
+function goldencat_render_picked_term( $attributes, $content ) {
+    if (!isset($attributes['termId'])) {
         return;
     }
 
-    if (!$attributes['postId']) {
-        return;
-    }
-
-    $post = get_post( $attributes['postId']);
+    $term = get_term( $attributes['termId'], $attributes['taxonomy']);
 
 
     $style = 'style="';
 
     $style .= '"';
 
-    $class = 'wp-block-ecrannoirtwentyone-picked-post';
+    $class = 'wp-block-ecrannoirtwentyone-picked-term';
 
     if ( isset( $attributes['align'] ) ) {
 		$class .= ' align' . $attributes['align'];
@@ -26,18 +22,19 @@ function ecrannoir_twenty_one_render_picked_post( $attributes, $content ) {
 		$class .= ' theme-anim-' . $attributes['themeApparitionEffect'];
 	}
 
-    $post_link = esc_url( get_permalink( $post ) );
-    $title = get_the_title( $post );
-    if ( ! $title ) {
-        $title = __( '(no title)' );
-    }
+    $term_link = esc_url( get_term_link( $term ) );
+    $title = $term->name;
+        if ( ! $title ) {
+            $title = __( '(no title)' );
+        }
     
-    $featured_image = false;
-    if ( $attributes['displayFeaturedImage'] ) {
-        if (has_post_thumbnail( $post )) {
-            $featured_image = get_the_post_thumbnail( $post, 'post-thumbnail' );
+    $term_image = false;
+    if ( $attributes['displayImage'] ) {
+        $image_id = get_term_meta( $term->term_id, 'ecrannoirtwentyone-img', true );
+        if( $image = wp_get_attachment_image_src( $image_id ) ) {
+            $term_image = '<img src="' . $image[0] . '" />';
         } else {
-            $featured_image = ecrannoir_twenty_one_get_image_placeholder();
+            $term_image = goldencat_get_image_placeholder();
         }
     }
 
@@ -47,17 +44,23 @@ function ecrannoir_twenty_one_render_picked_post( $attributes, $content ) {
             
         ?>
         <article>
-            <?php if ( $featured_image ) : ?>
-                <a href="<?php echo $post_link; ?>"><figure>
-                <?php echo $featured_image; ?>
+            <?php if ( $term_image ) : ?>
+                <a href="<?php echo $term_link; ?>"><figure>
+                <?php echo $term_image; ?>
                 </figure></a>
             <?php endif; ?> 
             <header>
                 <h3 class="post-title h2">
-                    <a href="<?php echo $post_link; ?>"><?php echo $title; ?></a>
+                    <a href="<?php echo $term_link; ?>"><?php echo $title; ?></a>
                 </h3>
             </header>
-            <?php ecrannoir_twenty_one_block_button($post_link, esc_html__('Je découvre', 'ecrannoirtwentyone')); ?>
+            <?php if ($attributes['displayDescription']): ?>
+                <?php echo $term->description; ?>
+            <?php endif; ?> 
+            <?php goldencat_block_button(array(
+                'href' => $term_link,
+                'label' => esc_html__('Je découvre', 'goldencat')
+            )); ?>
         </article>
     </div>
     <?php
@@ -67,41 +70,37 @@ function ecrannoir_twenty_one_render_picked_post( $attributes, $content ) {
 /**
  * Registers the `core/latest-posts` block on server.
  */
-function ecrannoir_twenty_one_register_block_picked_post_block() {
+function goldencat_register_block_picked_term_block() {
 	register_block_type(
-		'ecrannoirtwentyone/picked-post',
+		'ecrannoirtwentyone/picked-term',
 		array(
             'attributes' => array(
-                'postId' =>                 array(
+                'termId' =>                 array(
                     'type'      => 'number'
                 ),
-                'postType' =>               array(
+                'taxonomy' =>               array(
                     'type'      => 'string',
-                    'default'   => 'post'
+                    'default'   => 'category'
                 ),
-                'displayPostContent' =>     array(
+                'displayDescription'            => array(
+                    'type'      => 'boolean',
+                    'default'   => true,
+                ),
+                'descriptionLength'             => array(
+                    'type'      => 'number',
+                    'default'   => 55,
+                ),
+                'displayImage' =>   array(
                     'type'      => 'boolean',
                     'default'   => true
                 ),
-                'excerptLength' =>          array(
-                    'type'      => 'number',
-                    'default'   => 55
-                ),
-                'displayAuthor' =>          array(
+                'showPostCounts' =>   array(
                     'type'      => 'boolean',
                     'default'   => false
                 ),
-                'displayPostDate' =>        array(
-                    'type'      => 'boolean',
-                    'default'   => true
-                ),
-                'displayFeaturedImage' =>   array(
-                    'type'      => 'boolean',
-                    'default'   => true
-                ),
             ),
-			'render_callback' => 'ecrannoir_twenty_one_render_picked_post',
+			'render_callback' => 'goldencat_render_picked_term',
 		)
 	);
 }
-add_action( 'init', 'ecrannoir_twenty_one_register_block_picked_post_block' );
+add_action( 'init', 'goldencat_register_block_picked_term_block' );

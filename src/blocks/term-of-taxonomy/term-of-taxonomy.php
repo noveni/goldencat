@@ -1,7 +1,7 @@
 <?php
 
 
-function ecrannoir_twenty_one_render_term_of_taxonomy( $attributes ) {
+function goldencat_render_term_of_taxonomy( $attributes ) {
     
     // ec_dump($attributes['termsToShow']);
     $terms = get_terms( array(
@@ -82,7 +82,7 @@ function ecrannoir_twenty_one_render_term_of_taxonomy( $attributes ) {
 /**
  * Registers the `core/latest-posts` block on server.
  */
-function ecrannoir_twenty_one_register_block_term_of_taxonomy() {
+function goldencat_register_block_term_of_taxonomy() {
 	register_block_type(
 		'ecrannoirtwentyone/term-of-taxonomy',
 		array(
@@ -128,8 +128,8 @@ function ecrannoir_twenty_one_register_block_term_of_taxonomy() {
                     'default' => 'date',
                 )
             ),
-			'render_callback' => 'ecrannoir_twenty_one_render_term_of_taxonomy',
+			'render_callback' => 'goldencat_render_term_of_taxonomy',
 		)
 	);
 }
-add_action( 'init', 'ecrannoir_twenty_one_register_block_term_of_taxonomy' );
+add_action( 'init', 'goldencat_register_block_term_of_taxonomy' );

@@ -136,7 +136,7 @@ add_filter( 'wp_trim_excerpt', 'goldencat_force_trim_excerpt', 10, 2);
 /**
  * Filter the number of result for query
  */
-function ecrannoir_twenty_one_limit_type_post( $query ) {
+function goldencat_limit_type_post( $query ) {
     // check if the user is requesting an admin page 
 	// or current query is not the main query
     if ( is_admin() || !$query->is_main_query() ){
@@ -151,4 +151,4 @@ function ecrannoir_twenty_one_limit_type_post( $query ) {
 		$query->set('posts_per_page', 3);
 	}
 }
-add_action( 'pre_get_posts', 'ecrannoir_twenty_one_limit_type_post' );
+add_action( 'pre_get_posts', 'goldencat_limit_type_post' );

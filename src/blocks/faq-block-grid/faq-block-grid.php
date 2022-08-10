@@ -111,7 +111,12 @@ function ecrannoir_render_faq_block_grid( $attributes ) {
 
         </div><!-- .faq-block-grid -->
         <?php if (  $post_query->max_num_pages > 1 ):
-            ecrannoir_twenty_one_block_button(false, 'Charger plus d’articles', '', ' theme-loadmore-button', array('parent_class' => 'aligncenter'));
+            goldencat_block_button(array(
+                'href' => '',
+                'label' => 'Charger plus d’articles',
+                'extraClass' => 'theme-loadmore-button',
+                'parentClass' => 'aligncenter'
+            ));
         endif; ?>
     </div><!-- .wp-block-ecrannoir-faq-block-grid -->
     <?php

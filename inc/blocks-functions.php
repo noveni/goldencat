@@ -186,7 +186,6 @@ function goldencat_print_page_blocks( $page_slug, $content )
 		$blocks_content  = '';
 		$block_name = 'ecrannoir/theme-loop-content-block';
 
-		// $block = ecrannoir_twenty_one_print_first_instance_of_block('ecrannoir/theme-loop-content-block', $page->post_content, 1, false);
 		foreach( $blocks as $block ) {
 			// Sanity check.
 			if ( ! isset( $block['blockName'] ) ) {

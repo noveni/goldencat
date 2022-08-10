@@ -1,6 +1,6 @@
 <?php
 
-function ecrannoir_twenty_one_render_picked_term( $attributes, $content ) {
+function goldencat_render_picked_term( $attributes, $content ) {
     if (!isset($attributes['termId'])) {
         return;
     }
@@ -34,7 +34,7 @@ function ecrannoir_twenty_one_render_picked_term( $attributes, $content ) {
         if( $image = wp_get_attachment_image_src( $image_id ) ) {
             $term_image = '<img src="' . $image[0] . '" />';
         } else {
-            $term_image = ecrannoir_twenty_one_get_image_placeholder();
+            $term_image = goldencat_get_image_placeholder();
         }
     }
 
@@ -57,7 +57,10 @@ function ecrannoir_twenty_one_render_picked_term( $attributes, $content ) {
             <?php if ($attributes['displayDescription']): ?>
                 <?php echo $term->description; ?>
             <?php endif; ?> 
-            <?php ecrannoir_twenty_one_block_button($term_link, esc_html__('Je découvre', 'ecrannoirtwentyone')); ?>
+            <?php goldencat_block_button(array(
+                'href' => $term_link,
+                'label' => esc_html__('Je découvre', 'goldencat')
+            )); ?>
         </article>
     </div>
     <?php
@@ -67,7 +70,7 @@ function ecrannoir_twenty_one_render_picked_term( $attributes, $content ) {
 /**
  * Registers the `core/latest-posts` block on server.
  */
-function ecrannoir_twenty_one_register_block_picked_term_block() {
+function goldencat_register_block_picked_term_block() {
 	register_block_type(
 		'ecrannoirtwentyone/picked-term',
 		array(
@@ -96,8 +99,8 @@ function ecrannoir_twenty_one_register_block_picked_term_block() {
                     'default'   => false
                 ),
             ),
-			'render_callback' => 'ecrannoir_twenty_one_render_picked_term',
+			'render_callback' => 'goldencat_render_picked_term',
 		)
 	);
 }
-add_action( 'init', 'ecrannoir_twenty_one_register_block_picked_term_block' );
+add_action( 'init', 'goldencat_register_block_picked_term_block' );

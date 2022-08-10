@@ -1,7 +1,7 @@
 <?php
 
 
-function ecrannoir_twenty_one_render_latest_posts( $attributes ) {
+function goldencat_render_latest_posts( $attributes ) {
     if (is_admin()) {
         return;
     }
@@ -49,7 +49,7 @@ function ecrannoir_twenty_one_render_latest_posts( $attributes ) {
             if (has_post_thumbnail( $post )) {
                 $featured_image = get_the_post_thumbnail( $post, 'post-thumbnail' );
             } else {
-                $featured_image = ecrannoir_twenty_one_get_image_placeholder();
+                $featured_image = goldencat_get_image_placeholder();
             }
         }
         ?>
@@ -64,7 +64,10 @@ function ecrannoir_twenty_one_render_latest_posts( $attributes ) {
                     <a href="<?php echo $post_link; ?>"><?php echo $title; ?></a>
                 </h3>
             </header>
-            <?php ecrannoir_twenty_one_block_button($post_link, esc_html__('Je découvre', 'ecrannoirtwentyone')); ?>
+            <?php goldencat_block_button(array(
+                'href' => $post_link,
+                'label' => esc_html__('Je découvre', 'goldencat')
+            )); ?>
         </article>
         <?php
     endforeach;
@@ -77,7 +80,7 @@ function ecrannoir_twenty_one_render_latest_posts( $attributes ) {
 /**
  * Registers the `core/latest-posts` block on server.
  */
-function ecrannoir_twenty_one_register_block_core_latest_posts() {
+function goldencat_register_block_core_latest_posts() {
 	register_block_type(
 		'ecrannoirtwentyone/latest-posts',
 		array(
@@ -126,8 +129,8 @@ function ecrannoir_twenty_one_register_block_core_latest_posts() {
                     'default' => true,
                 )
             ),
-			'render_callback' => 'ecrannoir_twenty_one_render_latest_posts',
+			'render_callback' => 'goldencat_render_latest_posts',
 		)
 	);
 }
-add_action( 'init', 'ecrannoir_twenty_one_register_block_core_latest_posts' );
+add_action( 'init', 'goldencat_register_block_core_latest_posts' );

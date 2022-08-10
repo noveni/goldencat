@@ -69,7 +69,7 @@ class GoldenCatThemeWooCommerce {
         add_theme_support( 'wc-product-gallery-slider' );
 
         /**
-         * Add 'ecrannoirtwentyone_woocommerce_setup' action.
+         * Add 'goldencat_woocommerce_setup' action.
          *
          * @since  2.4.0
          */
@@ -165,7 +165,7 @@ class GoldenCatThemeWooCommerce {
      */
     public function change_breadcrumb_delimiter( $defaults ) {
         $defaults['delimiter']   = '<span class="breadcrumb-separator"> / </span>';
-        $defaults['wrap_before'] = '<div class="ecrannoirtwentyone-breadcrumb"><div class="col-full"><nav class="woocommerce-breadcrumb" aria-label="' . esc_attr__( 'breadcrumbs', 'ecrannoirtwentyone' ) . '">';
+        $defaults['wrap_before'] = '<div class="goldencat-breadcrumb"><div class="col-full"><nav class="woocommerce-breadcrumb" aria-label="' . esc_attr__( 'breadcrumbs', 'goldencat' ) . '">';
         $defaults['wrap_after']  = '</nav></div></div>';
         return $defaults;
     }
