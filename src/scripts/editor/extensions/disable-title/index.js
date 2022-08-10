@@ -31,10 +31,8 @@
 	 const [ meta, setMeta ] = useEntityProp( 'postType', postType, 'meta' );
  
 	 useEffect( () => {
-			 // Met à jour le titre du document via l’API du navigateur
-			 // document.title = `Vous avez cliqué ${count} fois`;
 			 const titleBlock = document.querySelector( '.editor-post-title' );
-			 // console.log(meta[metaKey]);
+
 			 if ( titleBlock && meta[metaKey] == true ) {
 				 document.body.classList.add( 'goldencat-title-hidden' );
 			 } else {
