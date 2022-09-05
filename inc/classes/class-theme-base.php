@@ -256,6 +256,7 @@ class GoldenCatThemeBase
      */
     public function themeSetupAction()
     {
+        remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
         /**
          * Loads our translations before loading anything else
          */
