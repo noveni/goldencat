@@ -1,0 +1,34 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "goldencat/query-filters",
+	"title": "Query Filters",
+	"category": "theme",
+	"parent": [ "core/query" ],
+	"description": "Displays a filters tools to set of posts, when applicable.",
+	"textdomain": "default",
+	"attributes": {
+		"taxonomies": {
+			"type": "array",
+			"default": []
+
+		}
+	},
+	"usesContext": [ "queryId", "query" ],
+	"supports": {
+		"align": true,
+		"reusable": false,
+		"html": false,
+		"color": {
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true,
+				"link": true
+			}
+		}
+	},
+	"editorStyle": "wp-block-query-filters-editor",
+	"style": "wp-block-query-filters"
+}

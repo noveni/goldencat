@@ -13,3 +13,4 @@ import './theme-loop-content-block';
 
 import './block-wrapper-img';
 import './covers-slider';
+import './query-filters';

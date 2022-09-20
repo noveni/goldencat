@@ -1,0 +1,76 @@
+.wp-block-post-terms {
+
+	// Block Styles
+	&.is-style-goldencat-post-terms-sticky-tag {
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+		.wp-block-post-terms__separator {
+			display: none;
+		}
+
+		a {
+			display: none;
+			visibility: hidden;
+
+		}
+
+		&.taxonomy-post_activity a,
+		a:first-child {
+			display: block;
+			visibility: visible;
+			font-style: italic;
+			color: var(--wp--preset--color--white) !important;
+			border-width: 1px;
+			border-color: var(--wp--preset--color--white);
+			padding: calc(0.2 * var(--goldencat--button--padding-vertical)) calc(0.2 * var(--goldencat--button--padding-horizontal));
+			cursor: none;
+			pointer-events: none;
+			text-decoration: none;
+			margin-bottom: calc(0.2 * var(--goldencat--spacing-vertical));
+
+			@include media(tablet) {
+				margin-top: 0;
+				margin-right: 0;
+			}
+		}
+
+		&.taxonomy-recipe_region a,
+		&.taxonomy-escapade_region a {
+			border-color: var(--wp--preset--color--moutarde);
+			background-color: var(--wp--preset--color--moutarde);
+		}
+
+		&.taxonomy-recipe_category a {
+			border-color: var(--wp--preset--color--terracota);
+			background-color: var(--wp--preset--color--terracota);
+		}
+
+		&.taxonomy-recipe_season a {
+			border-color: var(--wp--preset--color--green);
+			background-color: var(--wp--preset--color--green);
+		}
+
+		&.taxonomy-category a {
+			border-color: var(--wp--preset--color--terracota);
+			background-color: var(--wp--preset--color--terracota);
+		}
+
+		&.taxonomy-post_activity a {
+			border-color: var(--wp--preset--color--terracota);
+			background-color: var(--wp--preset--color--terracota);
+		}
+
+		&.taxonomy-service_category a,
+		&.taxonomy-post_tag a {
+			border-color: var(--wp--preset--color--green);
+			background-color: var(--wp--preset--color--green);
+		}
+
+	}
+
+	// Hide on rectt
+
+}

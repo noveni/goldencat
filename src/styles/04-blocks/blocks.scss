@@ -26,5 +26,9 @@
 @import "tag-clould/style";
 @import "verse/style";
 @import "video/style";
+@import "post-template/style";
+@import "post-terms/style";
+@import "query/style";
+@import "query-pagination/style";
 @import "utilities/font-sizes";
 @import "utilities/style"; // Import LAST to cascade properly

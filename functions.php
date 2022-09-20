@@ -175,6 +175,7 @@ require get_template_directory() . '/assets/blocks/product-price.php';
 require get_template_directory() . '/assets/blocks/quotes-slider.php';
 require get_template_directory() . '/assets/blocks/term-of-taxonomy.php';
 require get_template_directory() . '/assets/blocks/covers-slider-block.php';
+require get_template_directory() . '/assets/blocks/query-filters.php';
 
 add_filter( 'goldencat_theme_layout_menu_style', function() {
     return 'central-logo';
