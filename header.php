@@ -27,6 +27,6 @@
 	<?php get_template_part( 'template-parts/header/notice-bar' ); ?>
 	<?php get_template_part( 'template-parts/header/site-header' ); ?>
 
-	<div id="content" class="site-content">
+	<div id="content" class="site-content<?php golencat_get_post_bg_color(); ?>">
 		<main id="primary" class="site-main" role="main">
 	

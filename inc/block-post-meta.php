@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( function_exists( 'register_meta' ) ) {
 	/**
-	 * Register block styles.
+	 * Register post meta, block Meta, etc.
 	 *
 	 */
 	function goldencat_register_meta() {
@@ -24,6 +24,20 @@ if ( function_exists( 'register_meta' ) ) {
 				'show_in_rest'  => true,
 				'single'        => true,
 				'type'          => 'boolean',
+				'auth_callback' => function() {
+					return current_user_can( 'edit_posts' );
+				},
+			)
+		);
+
+		// Register the post meta field the meta box will save to.
+		register_post_meta(
+			'page',
+			'_goldencat_bg_color',
+			array(
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
 				'auth_callback' => function() {
 					return current_user_can( 'edit_posts' );
 				},
@@ -70,5 +84,19 @@ function goldencat_get_post_icon( $post_id = null ) {
 		return '';
 	} else {
 		return wp_get_attachment_image($post_icon, '', true );
+	}
+}
+
+
+function golencat_get_post_bg_color( $post_id = null ) {
+
+	$post_id = $post_id ? $post_id : get_the_ID();
+
+	$bg_color = get_post_meta( $post_id, '_goldencat_bg_color', true );
+	$bg_classname = 'has-' . _wp_to_kebab_case($bg_color) . '-background-color';
+	if ( !$bg_color ) {
+		echo '';
+	} else {
+		echo ' ' . esc_html($bg_classname);
 	}
 }
