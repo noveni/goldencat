@@ -20,11 +20,11 @@
 
     <nav id="site-navigation" class="primary-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary menu', 'ecrannoirtwentyone' ); ?>">
         <div class="primary-menu-container goldencat-toggle-menu">
-        <?php if ( has_nav_menu( 'primary' ) ) : ?>
+        <?php if ( has_nav_menu( 'primary-left' ) ) : ?>
             <?php
                 wp_nav_menu(
                     array(
-                        'theme_location'  => 'primary',
+                        'theme_location'  => 'primary-left',
                         'menu_class'      => 'menu-wrapper',
                         'container_class' => 'primary-menu-ul',
                         'items_wrap'      => '<ul class="%2$s">%3$s</ul>',
@@ -33,17 +33,7 @@
                 );
             ?>
         <?php else: ?>
-            <ul class="primary-menu-ul menu-wrapper">
-            <?php 
-                wp_list_pages(
-                    array(
-                        'match_menu_classes' => true,
-                        'show_sub_menu_icons' => true,
-                        'title_li' => false,
-                    )
-                );
-            ?>
-            </ul>
+            <p class="aligncenter has-rose-background-color">Veuillez définir un menu dans l'administration</p>
         <?php endif; ?>
         </div>
     </nav>

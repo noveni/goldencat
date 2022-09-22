@@ -178,5 +178,8 @@ require get_template_directory() . '/assets/blocks/covers-slider-block.php';
 require get_template_directory() . '/assets/blocks/query-filters.php';
 
 add_filter( 'goldencat_theme_layout_menu_style', function() {
-    return 'central-logo';
+    return 'left-logo';
+}, 100);
+add_filter( 'goldencat_theme_layout_menu_alignement', function() {
+    return 'wide';
 }, 100);

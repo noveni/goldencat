@@ -3,28 +3,16 @@
 	button,
 	.button,
 	a {
-		font-size: 12px;
-		letter-spacing: 0.25px;
-		font-weight: 500;
+		font-family: var(--wp--custom--menu--font-family);
+		font-size: var(--wp--custom--menu--font-size);
+		font-weight: var(--wp--custom--menu--font-weight);
 		text-decoration: none;
-		text-transform: uppercase;
+		// text-transform: uppercase;
 		position: relative;
 		text-align: center;
 		line-height: 34px;
 		color: var(--primary-nav--color-link);
 
-		@include media(tablet) {
-			font-size: 10px;
-			letter-spacing: 0.1px;
-			font-weight: 400;
-		}
-
-		@include media(laptop) {
-			font-size: 12px;
-			letter-spacing: 0.25px;
-			font-weight: 500;
-			line-height: 24px;
-		}
 
 		svg {
 			fill: var(--primary-nav--color-link);
@@ -44,28 +32,15 @@
 	}
 
 	.menu-item a {
-		display: inline-block;
-		// padding: 0 var(--goldencat--spacing-unit);
+		font-family: var(--wp--custom--menu--font-family);
+		font-size: var(--wp--custom--menu--font-size);
+		font-weight: var(--wp--custom--menu--font-weight);
 
 		@include media(tablet) {
 			margin: 0 var(--goldencat--spacing-unit);
+			padding: var(--goldencat--spacing-unit);
 		}
 
-		// @include mediapx(1080px) {
-		// 	margin-left: 20px;
-		// 	margin-right: 20px;
-		// }
-
-
-		// @include mediapx(1160px) {
-		// 	margin-left: 26px;
-		// 	margin-right: 26px;
-		// }
-
-		// @include media(desktop) {
-		// 	margin-left: 30px;
-		// 	margin-right: 30px;
-		// }
 
 		&::before {
 			content: "";
