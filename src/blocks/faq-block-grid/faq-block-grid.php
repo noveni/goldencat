@@ -1,12 +1,12 @@
 <?php
 
-// Action ecrannoir_ajax_filter_gc_faq_cat_action
+// Action goldencat_ajax_filter_gc_faq_cat_action
 
-function ecrannoir_faq_filter_category( $taxonomy = 'gc_faq_cat', $post_type = 'gc_faq' ) {
+function goldencat_faq_filter_category( $taxonomy = 'gc_faq_cat', $post_type = 'gc_faq' ) {
 
-    $js_selector = 'ecrannoir_ajax_filter_' . $taxonomy;
+    $js_selector = 'goldencat_ajax_filter_' . $taxonomy;
     $label_all_item = 'All';
-    $block_filter_wrapper_class = 'ecrannoir-list-filter ecrannoir-faq-filter';
+    $block_filter_wrapper_class = 'goldencat-list-filter goldencat-faq-filter';
 
     $terms = get_terms( array(
 		'taxonomy' => 'gc_faq_cat',
@@ -53,7 +53,7 @@ function ecrannoir_faq_filter_category( $taxonomy = 'gc_faq_cat', $post_type = '
 }
 
 
-function ecrannoir_render_faq_block_grid( $attributes ) {
+function goldencat_render_faq_block_grid( $attributes ) {
     if (is_admin()) {
         return;
     }
@@ -70,7 +70,7 @@ function ecrannoir_render_faq_block_grid( $attributes ) {
 
     // $recent_posts = get_posts( $args );
 
-    $class = 'wp-block-ecrannoir-faq-block-grid';
+    $class = 'wp-block-goldencat-faq-block-grid';
 
     if ( isset( $attributes['align'] ) ) {
 		$class .= ' align' . $attributes['align'];
@@ -92,7 +92,7 @@ function ecrannoir_render_faq_block_grid( $attributes ) {
     ob_start(); ?>
     <div class="<?php echo $class; ?>">
         <?php if ($showFilter): ?>
-            <?php ecrannoir_faq_filter_category( 'gc_faq_cat', $attributes['postType'] );
+            <?php goldencat_faq_filter_category( 'gc_faq_cat', $attributes['postType'] );
         endif;
         ?>
         <div class="faq-block-grid wp-block-group <?php echo $showFilter ? 'filter-content-to-refresh' : ''; ?> loadmore-content-to-refresh">
@@ -118,7 +118,7 @@ function ecrannoir_render_faq_block_grid( $attributes ) {
                 'parentClass' => 'aligncenter'
             ));
         endif; ?>
-    </div><!-- .wp-block-ecrannoir-faq-block-grid -->
+    </div><!-- .wp-block-goldencat-faq-block-grid -->
     <?php
     return ob_get_clean();
 }
@@ -126,9 +126,9 @@ function ecrannoir_render_faq_block_grid( $attributes ) {
 /**
  * Registers the `core/latest-posts` block on server.
  */
-function ecrannoir_register_block_core_faq_block_grid() {
+function goldencat_register_block_core_faq_block_grid() {
 	register_block_type(
-		'ecrannoir/faq-block-grid',
+		'goldencat/faq-block-grid',
 		array(
             'attributes'      => array(
                 'postType'                => array(
@@ -153,14 +153,14 @@ function ecrannoir_register_block_core_faq_block_grid() {
                 )
 
             ),
-			'render_callback' => 'ecrannoir_render_faq_block_grid',
+			'render_callback' => 'goldencat_render_faq_block_grid',
 		)
 	);
 }
-add_action( 'init', 'ecrannoir_register_block_core_faq_block_grid' );
+add_action( 'init', 'goldencat_register_block_core_faq_block_grid' );
 
 
-function ecrannoir_faq_block_grid_ajax () {
+function goldencat_faq_block_grid_ajax () {
     $taxonomies = $_POST['the_taxos'];
     $the_selected_taxo = $_POST['the_selected'];
     $post_type = $_POST['postType'];
@@ -210,7 +210,7 @@ function ecrannoir_faq_block_grid_ajax () {
         ob_end_clean();
 	else: 
         // If no posts match this query, output this text. 
-        $output = '<p class="has-text-align-center">' . __( 'Désolé, aucun article ne correspond relatifs', 'ecrannoir' ) . '</p>';
+        $output = '<p class="has-text-align-center">' . __( 'Désolé, aucun article ne correspond relatifs', 'goldencat' ) . '</p>';
 	endif; 
 
     $result = [
@@ -222,5 +222,5 @@ function ecrannoir_faq_block_grid_ajax () {
     exit;
 }
 
-add_action( 'wp_ajax_ecrannoir_ajax_filter_gc_faq_cat_action', 'ecrannoir_faq_block_grid_ajax' );
-add_action( 'wp_ajax_nopriv_ecrannoir_ajax_filter_gc_faq_cat_action', 'ecrannoir_faq_block_grid_ajax' );
+add_action( 'wp_ajax_goldencat_ajax_filter_gc_faq_cat_action', 'goldencat_faq_block_grid_ajax' );
+add_action( 'wp_ajax_nopriv_goldencat_ajax_filter_gc_faq_cat_action', 'goldencat_faq_block_grid_ajax' );

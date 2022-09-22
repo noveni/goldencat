@@ -10,7 +10,7 @@ import { registerBlockType } from '@wordpress/blocks';
 */
 import edit from './edit';
 
-registerBlockType('ecrannoirtwentyone/term-of-taxonomy', {
+registerBlockType('goldencat/term-of-taxonomy', {
   title:  __( 'Terms of taxonomy' ),
   description: __( 'Display the terms of choosed taxonomy.' ),
   icon,

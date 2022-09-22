@@ -210,7 +210,7 @@ if ( ! function_exists( 'goldencat_get_the_term_list' ) ) {
 				$class = ' class="' . esc_attr( $classNames ) . '"';
 			}
 
-			$term_name = apply_filters( 'ecrannoir_get_all_tag', esc_html($term->name), $taxonomy );
+			$term_name = apply_filters( 'goldencat_get_all_tag', esc_html($term->name), $taxonomy );
 
 			// Markup
 			$terms_tag .= '<span '. $class .'>' . $term_name . '</span>';

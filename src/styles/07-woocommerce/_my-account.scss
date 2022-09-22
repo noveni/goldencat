@@ -36,12 +36,12 @@ label.inline {
 	ul {
 		margin-left: 0;
 		padding-left: 0;
-		counter-reset: ecrannoir-wc-myaccount-navigation;
+		counter-reset: goldencat-wc-myaccount-navigation;
 
 		li {
 			list-style: none;
 			position: relative;
-			counter-increment: ecrannoir-wc-myaccount-navigation;
+			counter-increment: goldencat-wc-myaccount-navigation;
 
 			&.woocommerce-MyAccount-navigation-link {
 				margin-bottom: calc(0.85 * var(--goldencat--spacing-vertical));
@@ -54,7 +54,7 @@ label.inline {
 					font-style: italic;
 
 					&::before {
-						content: counter(ecrannoir-wc-myaccount-navigation);
+						content: counter(goldencat-wc-myaccount-navigation);
 
 						font-family: var(--wp--preset--font-family--secondary);
 						background: var(--wp--preset--color--black);
@@ -205,7 +205,7 @@ ul.order_details {
 		justify-content: space-between;
 		flex-wrap: wrap;
 
-		.ecrannoir-myaccount-hello-msg {
+		.goldencat-myaccount-hello-msg {
 			flex: 0 0 100%;
 			margin-top: var(--goldencat--spacing-vertical);
 			margin-bottom: var(--goldencat--spacing-vertical);

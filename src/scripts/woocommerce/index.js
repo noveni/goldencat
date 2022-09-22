@@ -1,4 +1,4 @@
-import { ecrannoirDomReady } from '../utils/dom';
+import { goldencatDomReady } from '../utils/dom';
 
 import Router from '../utils/Router';
 
@@ -8,4 +8,4 @@ const routes = new Router({
   woocommerceCheckout,
 });
 
-ecrannoirDomReady( () => routes.loadEvents());
+goldencatDomReady( () => routes.loadEvents());

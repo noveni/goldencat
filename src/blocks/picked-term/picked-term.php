@@ -12,7 +12,7 @@ function goldencat_render_picked_term( $attributes, $content ) {
 
     $style .= '"';
 
-    $class = 'wp-block-ecrannoirtwentyone-picked-term';
+    $class = 'wp-block-goldencat-picked-term';
 
     if ( isset( $attributes['align'] ) ) {
 		$class .= ' align' . $attributes['align'];
@@ -30,7 +30,7 @@ function goldencat_render_picked_term( $attributes, $content ) {
     
     $term_image = false;
     if ( $attributes['displayImage'] ) {
-        $image_id = get_term_meta( $term->term_id, 'ecrannoirtwentyone-img', true );
+        $image_id = get_term_meta( $term->term_id, 'goldencat-img', true );
         if( $image = wp_get_attachment_image_src( $image_id ) ) {
             $term_image = '<img src="' . $image[0] . '" />';
         } else {
@@ -72,7 +72,7 @@ function goldencat_render_picked_term( $attributes, $content ) {
  */
 function goldencat_register_block_picked_term_block() {
 	register_block_type(
-		'ecrannoirtwentyone/picked-term',
+		'goldencat/picked-term',
 		array(
             'attributes' => array(
                 'termId' =>                 array(

@@ -122,7 +122,7 @@ export default function QuotePostsEdit( { isSelected, attributes, setAttributes,
                   { post.content.raw.trim() }
                 </RawHTML>
               </div>
-              <p className="quote-customer-name is-sous-titre has-moutarde-color has-text-color"><strong>{ post.meta._ecrannoirtwentyone_quotes_user_name }</strong></p>
+              <p className="quote-customer-name is-sous-titre has-moutarde-color has-text-color"><strong>{ post.meta._goldencat_quotes_user_name }</strong></p>
               
 						</div>
 					);

@@ -10,7 +10,7 @@ import { registerBlockType } from '@wordpress/blocks';
 */
 import edit from './edit';
 
-registerBlockType('ecrannoir/faq-block-grid', {
+registerBlockType('goldencat/faq-block-grid', {
   title:  __( 'FAQ Grid' ),
   description: __( 'Afficher une liste de FAQ' ),
   icon,

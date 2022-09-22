@@ -261,7 +261,7 @@ const PickedPostEdit = ( props ) => {
 	} = pickedPost;
 
 	const imageClasses = classnames( {
-		'ecrannoir-block-picked-posts__featured-image': true,
+		'goldencat-block-picked-posts__featured-image': true,
 	} );
 	
 	const renderFeaturedImage = displayFeaturedImage && imageSourceUrl;
@@ -296,7 +296,7 @@ const PickedPostEdit = ( props ) => {
 					</time>
 				) }
 				{ displayPostContent && (
-					<div className="ecrannoir-block-picked-post__post-content">
+					<div className="goldencat-block-picked-post__post-content">
 						{ postExcerpt }
 					</div>
 				) }

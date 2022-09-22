@@ -12,7 +12,7 @@ function goldencat_render_term_of_taxonomy( $attributes ) {
         'hide_empty'       => $attributes['hideEmpty'],
     ));
 
-    $class = 'wp-block-ecrannoirtwentyone-term-of-taxonomy';
+    $class = 'wp-block-goldencat-term-of-taxonomy';
 
     if ( isset( $attributes['align'] ) ) {
 		$class .= ' align' . $attributes['align'];
@@ -84,7 +84,7 @@ function goldencat_render_term_of_taxonomy( $attributes ) {
  */
 function goldencat_register_block_term_of_taxonomy() {
 	register_block_type(
-		'ecrannoirtwentyone/term-of-taxonomy',
+		'goldencat/term-of-taxonomy',
 		array(
             'attributes'      => array(
                 'taxonomy'                      => array(

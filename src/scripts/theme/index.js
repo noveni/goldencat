@@ -1,7 +1,7 @@
 // import domReady from '@wordpress/dom-ready';
 
 import './assets';
-import { ecrannoirDomReady } from '../utils/dom';
+import { goldencatDomReady } from '../utils/dom';
 
 import Router from '../utils/Router';
 
@@ -16,4 +16,4 @@ const routes = new Router({
   // home,
 });
 
-ecrannoirDomReady( () => routes.loadEvents());
+goldencatDomReady( () => routes.loadEvents());

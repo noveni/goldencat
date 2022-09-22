@@ -18,7 +18,7 @@
     <!-- Logo Site -->
     <?php get_template_part( 'template-parts/header/site-branding' ); ?>
 
-    <nav id="site-navigation" class="primary-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary menu', 'ecrannoirtwentyone' ); ?>">
+    <nav id="site-navigation" class="primary-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary menu',  ); ?>">
         <div class="primary-menu-container goldencat-toggle-menu">
         <?php if ( has_nav_menu( 'primary-left' ) ) : ?>
             <?php
@@ -47,7 +47,7 @@
     </div>
     <div class="menu-button-container menu-button-right">
         <button id="search-toggle-menu" class="search-header-toggle" data-toggle-target=".search-inline" data-set-focus=".search-inline .search-input" >
-            <span class="screen-reader-text"><?php esc_html_e( 'Rechercher', 'ecrannoirtwentyone' ); ?></span>
+            <span class="screen-reader-text"><?php esc_html_e( 'Rechercher',  ); ?></span>
             <?php echo goldencat_icon( 'ui', 'search' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
         </button>
         <button id="primary-toggle-menu" class="button" aria-controls="primary-menu" aria-expanded="false">

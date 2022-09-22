@@ -11,7 +11,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import edit from './edit';
 import save from './save';
 
-registerBlockType('ecrannoirtwentyone/cover-slider', {
+registerBlockType('goldencat/cover-slider', {
   title:  __( 'Cover Slider' ),
   description: __( 'Display a slider cover.' ),
   icon: 'slides',

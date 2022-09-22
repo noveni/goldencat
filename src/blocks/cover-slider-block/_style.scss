@@ -4,7 +4,7 @@
 // Optional Theme Stylesheet
 @import "@glidejs/glide/src/assets/sass/glide.theme";
 
-.wp-block-ecrannoirtwentyone-cover-slider {
+.wp-block-goldencat-cover-slider {
 	min-height: 430px;
 	padding: 0;
 	// This block has customizable padding, border-box makes that more predictable.
@@ -66,7 +66,7 @@
 	}
 }
 
-.wp-block-ecrannoirtwentyone-cover-slider:first-child {
+.wp-block-goldencat-cover-slider:first-child {
 	margin-top: -84px;
 	min-height: 215px;
 	@include media(tablet) {

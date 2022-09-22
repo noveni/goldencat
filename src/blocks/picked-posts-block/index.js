@@ -12,7 +12,7 @@ import edit from './edit';
 import save from './save';
 
 
-registerBlockType('ecrannoirtwentyone/picked-posts', {
+registerBlockType('goldencat/picked-posts', {
   title:  __( 'Picked Posts' ),
   description: __( 'Display a list/grid of picked posts.' ),
   icon,

@@ -1,6 +1,6 @@
 {
     "apiVersion": 2,
-    "name": "ecrannoir/product-price",
+    "name": "goldencat/product-price",
     "title": "Product Price",
     "category": "theme",
     "description": "Displays the price of a product.",

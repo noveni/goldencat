@@ -109,7 +109,7 @@ const filteringPosts = ( args ) => {
 export default {
   init() {
 
-    const faqFilter = document.querySelector('.ecrannoir-faq-filter');
+    const faqFilter = document.querySelector('.goldencat-faq-filter');
     if (faqFilter) {
       filteringPosts( { 
         postType: faqFilter.dataset.postType, 

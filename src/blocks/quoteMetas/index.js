@@ -6,7 +6,7 @@ import { registerBlockType } from '@wordpress/blocks';
 
 import { TextControl } from '@wordpress/components';
 
-registerBlockType( 'ecrannoirtwentyone/quote-meta', {
+registerBlockType( 'goldencat/quote-meta', {
   title:  __( 'Meta Quote' ),
   description: __( "Nom et titre d'un témoignage" ),
   category: 'widgets',
@@ -15,7 +15,7 @@ registerBlockType( 'ecrannoirtwentyone/quote-meta', {
 		userName: {
 			type: 'string',
 			source: 'meta',
-			meta: '_ecrannoirtwentyone_quotes_user_name',
+			meta: '_goldencat_quotes_user_name',
 		}
   },
   edit: props => {

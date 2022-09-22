@@ -5,7 +5,7 @@
  *
  * @param {Function} fn Callback function to run.
  */
-export const ecrannoirDomReady = ( cb ) => {
+export const goldencatDomReady = ( cb ) => {
 	if ( typeof cb !== 'function' ) {
 		return;
 	}
@@ -74,7 +74,7 @@ export const intrinsicRatioVideos = () => {
  * @param {string} query
  * @return {NodeList} parents matching query
  */
-export const ecrannoirFindParents = ( target, query ) => {
+export const goldencatFindParents = ( target, query ) => {
 	let parents = [];
 
 	// recursively go up the DOM adding matches to the parents array

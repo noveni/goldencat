@@ -16,7 +16,7 @@ function goldencat_render_picked_post( $attributes, $content ) {
 
     $style .= '"';
 
-    $class = 'wp-block-ecrannoirtwentyone-picked-post wp-block-group';
+    $class = 'wp-block-goldencat-picked-post wp-block-group';
     $thumbnail_size = 'thumbnail';
 
     if ( isset( $attributes['align'] ) ) {
@@ -75,7 +75,7 @@ function goldencat_render_picked_post( $attributes, $content ) {
  */
 function goldencat_register_block_picked_post_block() {
 	register_block_type(
-		'ecrannoirtwentyone/picked-post',
+		'goldencat/picked-post',
 		array(
             'attributes' => array(
                 'postId' =>                 array(

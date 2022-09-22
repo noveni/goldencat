@@ -11,7 +11,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import edit from './edit';
 
 
-registerBlockType('ecrannoirtwentyone/picked-term', {
+registerBlockType('goldencat/picked-term', {
   title:  __( 'Picked term' ),
   description: __( 'Display a picked term.' ),
   icon,

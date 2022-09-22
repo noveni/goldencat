@@ -1,6 +1,6 @@
-import { ecrannoirDomReady } from '../utils/dom';
+import { goldencatDomReady } from '../utils/dom';
 
 
-ecrannoirDomReady( () => {
+goldencatDomReady( () => {
   document.body.classList.remove('no-js');
 });

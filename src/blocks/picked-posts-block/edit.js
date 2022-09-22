@@ -36,7 +36,7 @@ import {
 import { select, useSelect } from '@wordpress/data';
 import { pin, list, grid } from '@wordpress/icons';
 
-const ALLOWED_BLOCKS = [ 'ecrannoirtwentyone/picked-post' ];
+const ALLOWED_BLOCKS = [ 'goldencat/picked-post' ];
 
 const PickedPostsEdit = ( props ) => {
   const {

@@ -1,9 +1,12 @@
 // Regroup All Editor Blocks
 
+@import "./block-wrapper-img/editor";
 @import "./cover-slider-block/editor";
-@import "./latest-posts/editor";
+@import "./faq-block-grid/editor";
 @import "./picked-post-block/editor";
 @import "./picked-posts-block/editor";
-@import "./quotesSliderBlock/editor";
-@import "./block-wrapper-img/editor";
+@import "./picked-term/editor";
+@import "./product-price/editor";
 @import "./query-filters/editor";
+@import "./quotesSliderBlock/editor";
+@import "./term-of-taxonomy/editor";

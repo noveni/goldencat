@@ -21,7 +21,7 @@ const BLOCKS_TEMPLATE = [
   ] ],
 ];
 
-registerBlockType( 'ecrannoir/theme-loop-content-block', {
+registerBlockType( 'goldencat/theme-loop-content-block', {
   title:  __( 'Loop Content' ),
   description: __( "Print the content above and bellow this block on a page." ),
   category: 'theme',

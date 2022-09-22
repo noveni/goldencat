@@ -18,9 +18,9 @@ function goldencat_register_temoignage() {
         'new_item'                  => __( 'Nouveau témoignage', 'goldencat' ),
         'view_items'                => __( 'Voir les témoignages', 'goldencat' ),
         'search_items'              => __( 'Rechercher des témoignages', 'goldencat' ),
-        'not_found'                 => __( 'Aucun témoignage trouvée', 'app' ),
-        'not_found_in_trash'        => __( 'Aucun témoignage trouvée dans la corbeille', 'app' ),
-        'all_items'                 => __( 'Tous les témoignages', 'ecrannoir'),
+        'not_found'                 => __( 'Aucun témoignage trouvée', 'goldencat' ),
+        'not_found_in_trash'        => __( 'Aucun témoignage trouvée dans la corbeille', 'goldencat' ),
+        'all_items'                 => __( 'Tous les témoignages', 'goldencat'),
     );
 
     $config = array(
@@ -50,10 +50,10 @@ function goldencat_register_temoignage() {
 
     register_post_type( $post_type_name, $post_type_args);
 }
-function ecrannoir_cpt_temoignage() {
+function goldencat_cpt_temoignage() {
     goldencat_register_temoignage();
 }
-add_action('init', 'ecrannoir_cpt_temoignage');
+add_action('init', 'goldencat_cpt_temoignage');
 
 
 
@@ -68,7 +68,7 @@ function goldencat_gc_temoignage_filter_posts_columns( $columns ) {
         'customername'  => __( 'Nom de la personne', 'goldencat' ),
         'date'          => $columns['date'],
     );
-  $columns['customername'] = __( 'Nom de la personne', 'ecrannoir' );
+  $columns['customername'] = __( 'Nom de la personne', 'goldencat' );
   return $columns;
 }
 

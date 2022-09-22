@@ -184,7 +184,7 @@ function goldencat_print_page_blocks( $page_slug, $content )
 		$instances = 1;
 		$instances_count = 0;
 		$blocks_content  = '';
-		$block_name = 'ecrannoir/theme-loop-content-block';
+		$block_name = 'goldencat/theme-loop-content-block';
 
 		foreach( $blocks as $block ) {
 			// Sanity check.

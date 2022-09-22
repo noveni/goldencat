@@ -10,7 +10,7 @@ import { registerBlockType } from '@wordpress/blocks';
  */
 import edit from './edit';
 
-registerBlockType('ecrannoirtwentyone/quotes-slider', {
+registerBlockType('goldencat/quotes-slider', {
   title:  __( 'Témoignages Slider' ),
   description: __( 'Display a slider quotes.' ),
   icon,
@@ -24,7 +24,7 @@ registerBlockType('ecrannoirtwentyone/quotes-slider', {
   attributes: {
     postType: {
       type: 'string',
-      default: 'ec_temoignage',
+      default: 'gc_temoignage',
     },
     postsToShow: {
 			type: 'number',

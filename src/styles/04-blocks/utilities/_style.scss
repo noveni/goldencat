@@ -80,3 +80,12 @@
 		}
 	}
 }
+
+.goldencat-no-gap {
+	--wp--style--block-gap: 0;
+	gap: 0 !important;
+
+	.wp-block-column {
+		--wp--style--block-gap: 0;
+	}
+}

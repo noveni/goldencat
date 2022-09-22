@@ -14,7 +14,7 @@
 
 <div class="header-layout header-layout-style-central-logo">
     <?php get_template_part( 'template-parts/header/site-branding' ); ?>
-    <nav id="site-navigation" class="primary-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary menu', 'ecrannoirtwentyone' ); ?>">
+    <nav id="site-navigation" class="primary-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary menu',  ); ?>">
         <div class="primary-menu-container goldencat-toggle-menu">
         <?php if ( has_nav_menu( 'primary-left' ) && has_nav_menu( 'primary-right' ) ) : ?>
             <div class="header-left-part">
@@ -70,7 +70,7 @@
                         <span class="header-button-label"><?php esc_html_e( 'Menu', 'goldencat' ); ?></span>
         </button><!-- #primary-mobile-menu -->
         <button class="search-header-toggle" data-toggle-target=".search-inline" data-set-focus=".search-inline .search-input" >
-            <span class="screen-reader-text"><?php esc_html_e( 'Rechercher', 'ecrannoirtwentyone' ); ?></span>
+            <span class="screen-reader-text"><?php esc_html_e( 'Rechercher',  ); ?></span>
             <?php echo goldencat_icon( 'ui', 'search' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
         </button>
         <div class="search-container">

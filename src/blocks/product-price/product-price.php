@@ -1,12 +1,12 @@
 <?php
 /**
- * Server-side rendering of the `ecrannoir/product-price` block.
+ * Server-side rendering of the `goldencat/product-price` block.
  *
  * @package WordPress
  */
 
 /**
- * Renders the `ecrannoir/product-price` block on the server.
+ * Renders the `goldencat/product-price` block on the server.
  *
  * @param array    $attributes Block attributes.
  * @param string   $content    Block default content.
@@ -14,7 +14,7 @@
  *
  * @return string Returns the filtered post title for the current post wrapped inside "h1" tags.
  */
-function render_block_ecrannoir_product_price( $attributes, $content, $block ) {
+function render_block_goldencat_product_price( $attributes, $content, $block ) {
 	if ( ! isset( $block->context['postId'] ) ) {
 		return '';
 	}
@@ -39,13 +39,13 @@ function render_block_ecrannoir_product_price( $attributes, $content, $block ) {
 /**
  * Registers the `core/post-title` block on the server.
  */
-function register_block_ecrannoir_product_price() {
+function register_block_goldencat_product_price() {
     $dir = __DIR__;// . '/product-price';
 	register_block_type_from_metadata(
 		$dir,
 		array(
-			'render_callback' => 'render_block_ecrannoir_product_price',
+			'render_callback' => 'render_block_goldencat_product_price',
 		)
 	);
 }
-add_action( 'init', 'register_block_ecrannoir_product_price' );
+add_action( 'init', 'register_block_goldencat_product_price' );

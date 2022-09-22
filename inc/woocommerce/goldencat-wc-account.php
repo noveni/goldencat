@@ -112,7 +112,7 @@ function goldencat_add_hello_msg_on_my_account() {
 			'br' => array(),
 		);
 		?>
-		<div class="ecrannoir-myaccount-hello-msg">
+		<div class="goldencat-myaccount-hello-msg">
 			<p class="has-text-align-center">
 				<?php
 				printf(

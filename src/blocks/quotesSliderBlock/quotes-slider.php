@@ -16,7 +16,7 @@ function goldencat_render_quotes_slider( $attributes ) {
 
     $recent_posts = get_posts( $args );
 
-    $class = 'wp-block-ecrannoirtwentyone-quotes-slider alignfull';
+    $class = 'wp-block-goldencat-quotes-slider alignfull';
 
     if ( isset( $attributes['align'] ) ) {
 		$class .= ' align' . $attributes['align'];
@@ -35,11 +35,11 @@ function goldencat_render_quotes_slider( $attributes ) {
                 <?php
                 foreach ( $recent_posts as $post ) :
 
-                    $user_name = get_post_meta( $post->ID, '_ecrannoirtwentyone_quotes_user_name', true );
+                    $user_name = get_post_meta( $post->ID, '_goldencat_quotes_user_name', true );
 
                     ?>
 
-                    <div class="glide__slide is-style-ecrannoirtwentyone-testimony aligncenter">
+                    <div class="glide__slide is-style-goldencat-testimony aligncenter">
                         <div class="quote-content"><?php echo get_the_content( null, false, $post ); ?></div>
                         <p class="quote-customer-name is-sous-titre"><?php echo $user_name; ?></p>
                     </div>
@@ -56,7 +56,7 @@ function goldencat_render_quotes_slider( $attributes ) {
                 <?php endfor; ?>
             </div>
         </div><!-- .quotes-slider -->
-    </div><!-- .wp-block-ecrannoirtwentyone-quotes-slider -->
+    </div><!-- .wp-block-goldencat-quotes-slider -->
     <?php
     return ob_get_clean();
 }
@@ -66,12 +66,12 @@ function goldencat_render_quotes_slider( $attributes ) {
  */
 function goldencat_register_block_core_quotes_slider() {
 	register_block_type(
-		'ecrannoirtwentyone/quotes-slider',
+		'goldencat/quotes-slider',
 		array(
             'attributes'      => array(
                 'postType'                => array(
                     'type'  => 'string',
-                    'default' => 'ec_temoignage',
+                    'default' => 'gc_temoignage',
                 ),
                 'postsToShow'             => array(
                     'type'    => 'number',

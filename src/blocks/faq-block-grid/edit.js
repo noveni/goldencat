@@ -7,36 +7,34 @@
  /**
   * WordPress dependencies
   */
- import { useState, RawHTML, useEffect, useRef } from '@wordpress/element';
- import {
-   BaseControl,
-   SelectControl,
-   PanelBody,
-   Placeholder,
-   QueryControls,
-   RadioControl,
-   RangeControl,
-   Spinner,
-   ToggleControl,
-   ToolbarGroup,
- } from '@wordpress/components';
- import apiFetch from '@wordpress/api-fetch';
- import { addQueryArgs } from '@wordpress/url';
- import { __, sprintf } from '@wordpress/i18n';
- import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
- import {
-   InspectorControls,
-   BlockAlignmentToolbar,
-   BlockControls,
-   __experimentalImageSizeControl as ImageSizeControl,
-   InnerBlocks,
-   useBlockProps,
+import { useState, RawHTML, useEffect, useRef } from '@wordpress/element';
+import {
+  BaseControl,
+  SelectControl,
+  PanelBody,
+  Placeholder,
+  QueryControls,
+  RadioControl,
+  RangeControl,
+  Spinner,
+  ToggleControl,
+  ToolbarGroup,
+} from '@wordpress/components';
+import apiFetch from '@wordpress/api-fetch';
+import { addQueryArgs } from '@wordpress/url';
+import { __, sprintf } from '@wordpress/i18n';
+import { dateI18n, format, __experimentalGetSettings } from '@wordpress/date';
+import {
+  InspectorControls,
+  BlockAlignmentToolbar,
+  BlockControls,
+  __experimentalImageSizeControl as ImageSizeControl,
+  InnerBlocks,
+  useBlockProps,
   useInnerBlocksProps,
- } from '@wordpress/block-editor';
- import { select, useSelect } from '@wordpress/data';
- import { pin, list, grid } from '@wordpress/icons';
-
-// const ALLOWED_BLOCKS = [ 'ecrannoirtwentyone/picked-post' ];
+} from '@wordpress/block-editor';
+import { select, useSelect } from '@wordpress/data';
+import { pin, list, grid } from '@wordpress/icons';
 
 /**
 * Module Constants

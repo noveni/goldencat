@@ -1,7 +1,7 @@
 <?php
 
 
-function ecrannoir_twenty_one_render_cover_slider( $attributes, $content ) {
+function goldencat_render_cover_slider( $attributes, $content ) {
     if (is_admin()) {
         return;
     }
@@ -21,7 +21,7 @@ function ecrannoir_twenty_one_render_cover_slider( $attributes, $content ) {
 
     $style .= '"';
 
-    $class = 'wp-block-ecrannoirtwentyone-cover-slider';
+    $class = 'wp-block-goldencat-cover-slider';
 
     if ( isset( $attributes['align'] ) ) {
 		$class .= ' align' . $attributes['align'];
@@ -30,11 +30,6 @@ function ecrannoir_twenty_one_render_cover_slider( $attributes, $content ) {
     if ( isset( $attributes['themeApparitionEffect'] ) ) {
 		$class .= ' theme-anim-' . $attributes['themeApparitionEffect'];
 	}
-
-    if ( isset( $attributes['ecrannoirtwentyoneNoPadding'] ) ) {
-		$class .= $attributes['ecrannoirtwentyoneNoPadding'] === true ? ' ecrannoirtwentyone-no-padding' : '';
-	}
-
     
     ob_start(); ?>
     <div class="<?php echo $class; ?>" <?php echo $style; ?>>
@@ -66,9 +61,9 @@ function ecrannoir_twenty_one_render_cover_slider( $attributes, $content ) {
 /**
  * Registers the `core/latest-posts` block on server.
  */
-function ecrannoir_twenty_one_register_block_core_cover_slider() {
+function goldencat_register_block_core_cover_slider() {
 	register_block_type(
-		'ecrannoirtwentyone/cover-slider',
+		'goldencat/cover-slider',
 		array(
             'attributes' => array(
                 'imageIds'  => array(
@@ -82,8 +77,8 @@ function ecrannoir_twenty_one_register_block_core_cover_slider() {
                     'default'       => 'px'
                 )
             ),
-			'render_callback' => 'ecrannoir_twenty_one_render_cover_slider',
+			'render_callback' => 'goldencat_render_cover_slider',
 		)
 	);
 }
-add_action( 'init', 'ecrannoir_twenty_one_register_block_core_cover_slider' );
+add_action( 'init', 'goldencat_register_block_core_cover_slider' );
