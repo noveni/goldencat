@@ -28,16 +28,6 @@ const toggleAriaExpanded = ( el, withListeners ) => {
 	}
 }
 
-// const collapseMenuOnClickOutside = ( event ) => {
-// 	console.log(event.target, document.querySelector( '.goldencat-toggle-menu' ))
-// 	console.log(! document.querySelector( '.goldencat-toggle-menu' ).contains( event.target ));
-// 	if ( ! document.querySelector( '.goldencat-toggle-menu' ).contains( event.target ) ) {
-// 		document.getElementById( 'site-navigation' ).querySelectorAll( '.sub-menu-toggle' ).forEach( function( button ) {
-// 			button.setAttribute( 'aria-expanded', 'false' );
-// 		} );
-// 	}
-// }
-
 /**
  * Changes the position of submenus so they always fit the screen horizontally.
  *
@@ -136,8 +126,6 @@ export const toggleMenu = ( id ) => {
 		// if ( toggleMenu.contains( event.target ) ) {
 		// 	return;
 		// }
-		console.log(event.target, document.querySelector( '.' + id + '-menu-container' ))
-		console.log(! document.querySelector( '.' + id + '-menu-container').contains( event.target ));
 		if ( ! document.querySelector( '.' + id + '-menu-container').contains( event.target ) ) {
 			wrapper.classList.toggle( id + '-toggle-menu-open' );
 			wrapper.classList.toggle( 'lock-scrolling' );

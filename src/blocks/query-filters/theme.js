@@ -91,7 +91,6 @@ const ajaxFiltering = ( { blockQueryFilters, attributes, blockQueryAttributes })
       taxonomyAttribute['terms'] = checkedItems.filter(({taxonomy}) => taxonomy === taxonomyAttribute.slug )
       return taxonomyAttribute;
     });
-    // console.log(taxonomiesWithTermsFilled);
     taxonomiesWithTermsFilled.forEach((taxonomy) => {
       displayCount( taxonomy.terms.length, taxonomy.slug, blockQueryFilters);
     })
@@ -137,7 +136,6 @@ const ajaxFiltering = ( { blockQueryFilters, attributes, blockQueryAttributes })
       const htmlPagination = htmlEl.find( '.wp-block-query-pagination' ).html() || '';
 
       if ( html.length ) {
-        // console.log(responseBlockTemplate.attr("class"));
         blockPostTemplate.innerHTML = html;
         blockPostTemplate.setAttribute( 'class', responseBlockTemplate.attr("class") )
         setTimeout(() => {

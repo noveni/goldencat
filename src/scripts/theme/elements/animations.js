@@ -18,7 +18,6 @@ const animateImg = (elem, direction) => {
  */
  const imgReveal = () => {
   const imgBlock = document.querySelectorAll('.wp-block-media-text__media, .wp-block-column .wp-block-image img');
-  console.log(imgBlock);
   if (imgBlock.length) {
     gsap.utils.toArray('.wp-block-media-text__media, .is-style-goldencat-columns-media-text .wp-block-image img').forEach(function(elem) {
       ScrollTrigger.create({

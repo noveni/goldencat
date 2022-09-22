@@ -132,7 +132,6 @@ const Edit = ( { attributes, setAttributes, clientId } ) => {
 
   // const measuredRef = useCallback(node => {
   //   if (node !== null) {
-  //     console.log(node.getBoundingClientRect());
   //     // setHeight(node.getBoundingClientRect().height);
   //   }
   // }, []);
@@ -172,7 +171,6 @@ const Edit = ( { attributes, setAttributes, clientId } ) => {
     const styleOfRef = imageMeasuredRef.current.style;
     styleOfRef['top'] = newValu.top;
     styleOfRef['left'] =newValu.left;
-    // console.log(styleOfRef['top'], styleOfRef['left']);
   }
 
   const ref = measuredRef;

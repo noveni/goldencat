@@ -62,9 +62,7 @@ export default function ProductPriceEdit( {
     </TagName>
   );
 
-  console.log(product, isLoading);
   if ( product && !isLoading ) {
-    console.log(product);
     titleElement = (
       <TagName { ...blockProps }>
         <RawHTML key="html">{ product.price_html }</RawHTML>
