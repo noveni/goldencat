@@ -521,6 +521,7 @@ class GoldenCatThemeBase
 					background-size: 80%;
 					height: 100px;
 					width: 100%;
+                    max-width: 320px;
 				}
 				</style>
 				<?php
