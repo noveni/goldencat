@@ -141,12 +141,54 @@
 }
 
 .entry-content > * {
-	@include media(tablet) {
-		margin-bottom: calc(1.5 * var(--goldencat--spacing-vertical));
+
+	&.wp-block-media-text:first-child,
+	&.wp-block-cover:first-child {
+		margin-top: 0;
 	}
 
-	@include media(desktop) {
-		margin-bottom: calc(2.5 * var(--goldencat--spacing-vertical));
+	// &.wp-block-media-text:last-child,
+	// &.wp-block-cover:last-child {
+	// 	margin-bottom: 0;
+	// }
+
+	&[class*="wp-block"] {
+		@include media(tablet) {
+			margin-top: calc(1.5 * var(--goldencat--spacing-vertical));
+			margin-bottom: calc(1.5 * var(--goldencat--spacing-vertical));
+		}
+
+		@include media(desktop) {
+			margin-top: calc(3 * var(--goldencat--spacing-vertical));
+			margin-bottom: calc(3 * var(--goldencat--spacing-vertical));
+		}
+	}
+
+	&:first-child {
+		margin-top: calc(1 * var(--goldencat--spacing-vertical));
+
+		@include media(tablet) {
+			margin-top: calc(1.5 * var(--goldencat--spacing-vertical));
+		}
+
+		@include media(laptop) {
+			margin-top: calc(2 * var(--goldencat--spacing-vertical));
+		}
+	}
+
+	&:last-child {
+		margin-top: calc(1 * var(--goldencat--spacing-vertical));
+		margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
+
+		@include media(tablet) {
+			margin-top: calc(1.5 * var(--goldencat--spacing-vertical));
+			margin-bottom: calc(1.5 * var(--goldencat--spacing-vertical));
+		}
+
+		@include media(laptop) {
+			// margin-top: calc(2 * var(--goldencat--spacing-vertical));
+			margin-bottom: calc(3 * var(--goldencat--spacing-vertical));
+		}
 	}
 }
 
