@@ -20,10 +20,8 @@ export const settings = {
   save,
 };
 
-
-registerBlockType( {
-  name,
-  ...metadata,
-  },
-  settings,
+registerBlockType( name, {
+  ...settings,
+  ...metadata
+  }
 );
