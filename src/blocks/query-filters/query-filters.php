@@ -189,9 +189,11 @@ function goldencat_query_block_filters_ajax_action() {
 			}
 		}
 		$block['attrs']['query']['taxQuery'] = $terms;
+		remove_filter( 'render_block', 'wp_render_layout_support_flag' );
 		$result = [
 			'html' => render_block( $block ),
 		];
+		add_filter( 'render_block', 'wp_render_layout_support_flag', 10, 2 );
 		
 		echo json_encode($result);
 	}
