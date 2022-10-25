@@ -81,7 +81,7 @@ class GoldenCatThemeSettings
 				'type'         => 'object',
 				'default'      => array(
 					'maintenance_active' => false,
-					'show_admin_bar_active' => true,
+					'show_admin_bar_active' => false,
 					'coming_soon_active' => false,
 					'sticky_header_active' => false
 				),
@@ -105,6 +105,10 @@ class GoldenCatThemeSettings
 								'type'         => 'boolean',
 								'default'      => false
 							),
+							'head_scripts' => array(
+								'type' 			=> 'string',
+								'default'      => ''
+							)
 						)
 					)
 				)
@@ -380,4 +384,21 @@ class GoldenCatThemeSettings
 		}
 		return false;
 	}
+
+	public static function getHeadScripts() {
+		$settings = get_option( 'goldencat_theme_global_settings', [] );
+		
+		if ( empty( $settings ) ) {
+			return false;
+		}
+
+		if ( isset( $settings['head_scripts'] ) && !empty($settings['head_scripts']) ) {
+			return $settings['head_scripts'];
+		}
+		return false;
+	}
+}
+
+function goldencat_test_sanitize_field( $data ) {
+	return $data;
 }

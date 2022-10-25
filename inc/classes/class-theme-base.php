@@ -592,5 +592,12 @@ class GoldenCatThemeBase
 				GoldenCatThemeMeta::addAnalytics($ga_id);
 			}, 102);
 		}
+
+        if ( GoldenCatThemeSettings::getHeadScripts() ) {
+            $headScripts = GoldenCatThemeSettings::getHeadScripts();
+            add_action( 'wp_head', function() use ( $headScripts ) {
+                echo $headScripts, "\n";
+            }, 110);
+        }
     }
 }

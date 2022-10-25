@@ -56,15 +56,15 @@ const ThemeSettings = ( props ) => {
               },
               {
                   name: 'tab-cookie',
-                  title: 'Gestion des Cookies',
+                  title: 'Cookies',
               },
               {
                   name: 'tab-label',
-                  title: 'Gestion des label',
+                  title: 'Labels',
               },
               {
                   name: 'tab-share',
-                  title: 'Gestion des partages',
+                  title: 'Sharing',
               },
           ] }
         >

@@ -10,7 +10,8 @@ import {
   Placeholder,
   Spinner,
   Notice,
-  ToggleControl
+  ToggleControl,
+  TextareaControl
 } from '@wordpress/components';
 
 import { store as coreDataStore } from '@wordpress/core-data';
@@ -33,6 +34,7 @@ const GlobalSettings = ( props ) => {
     showAdminBarIsActive,
     stickyHeaderActive,
     comingSoonIsActive,
+    headScripts,
     comingSoonPage,
     hasResolvedComingSoonPage,
     globalSettings,
@@ -51,6 +53,7 @@ const GlobalSettings = ( props ) => {
       showAdminBarIsActive: globalSettings?.show_admin_bar_active,
       stickyHeaderActive: globalSettings?.sticky_header_active,
       comingSoonIsActive: globalSettings?.coming_soon_active,
+      headScripts: globalSettings?.head_scripts,
       comingSoonPage: getEntityRecords( ...selectorArgs )?.[0],
       hasResolvedComingSoonPage: hasFinishedResolution( 'getEntityRecords', selectorArgs ),
       globalSettings,
@@ -118,6 +121,10 @@ const GlobalSettings = ( props ) => {
 
   const handleToggleShowComingSoon = ( activeStatus ) => {
     editEntityRecord( 'root', 'site', undefined, { 'goldencat_theme_global_settings': {...globalSettings, 'coming_soon_active': activeStatus } })
+  }
+
+  const handleChangeHeadScripts = ( scripts ) => {
+    editEntityRecord( 'root', 'site', undefined, { 'goldencat_theme_global_settings': {...globalSettings, 'head_scripts': scripts } })
   }
 
   const saveGlobalSettings = async () => {
@@ -212,6 +219,19 @@ const GlobalSettings = ( props ) => {
               disabled={!hasResolvedComingSoonPage || comingSoonPage == null }
               onChange={ () => handleToggleShowComingSoon( !comingSoonIsActive) }
             />
+          </PanelRow>
+        </PanelBody>
+        <PanelBody title="Scripts d'en-tête">
+          <PanelRow>
+            <div style={{width:'100%'}}>
+              <TextareaControl
+                help="Le contenu sera inséré dans la balise `<head>`"
+                label="Scripts"
+                rows={ 4 }
+                value={headScripts}
+                onChange={( scripts ) => handleChangeHeadScripts(scripts)}
+              />
+            </div>
           </PanelRow>
         </PanelBody>
         <Button
