@@ -2,11 +2,21 @@
 const body = document.querySelector('body');
 
 const getHeaderHeight = () => {
+  let height = 0;
+  
   const header = document.getElementById('masthead');
+
   if (header) {
-    return header.offsetHeight;
+    height += header.offsetHeight;
   }
-  return 0;
+
+  // If the notifications bar exist add his Height.
+  const headerNoticeBar = document.getElementById('header-notice-bar');
+  if (headerNoticeBar) {
+    height += headerNoticeBar.offsetHeight;
+  }
+
+  return height;
 }
 let headerHeight;
 
