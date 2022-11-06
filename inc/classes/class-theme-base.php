@@ -120,26 +120,78 @@ class GoldenCatThemeBase
      */
     public function cleanWordpressAction()
     {
-        remove_action('wp_head', 'feed_links_extra', 3);
         add_action('wp_head', 'ob_start', 1, 0);
         add_action('wp_head', function () {
             $pattern = '/.*' . preg_quote(esc_url(get_feed_link('comments_' . get_default_feed())), '/') . '.*[\r\n]+/';
             echo preg_replace($pattern, '', ob_get_clean());
         }, 3, 0);
-        remove_action('wp_head', 'rsd_link');
+
+        /**
+         * XML RPC Handler
+         * 
+         */
         add_filter( 'xmlrpc_enabled', '__return_false' );
+
+
+        /**
+         * PingBack Trackbacks
+         */
+        // Disable pingback XMLRPC method to be sure
+        add_filter( 'xmlrpc_methods', function( $methods ) {
+            unset($methods['pingback.ping']);
+            return $methods;
+        });
+        // Remove pingback headers.
+        add_filter( 'wp_headers', function( $headers ) {
+            unset($headers['X-Pingback']);
+            return $headers;
+        });
+        // Remove bloginfo('pingback_url').
+        add_filter( 'bloginfo_url', function( $output, $show ) {
+            return $show === 'pingback_url' ? '' : $output;
+        }, 10, 2);
+        // Disable XMLRPC pingback action.
+        add_filter( 'xmlrpc_call', function( $action ) {
+            if ($action === 'pingback.ping') {
+                wp_die('Pingbacks are not supported', 'Not Allowed!', ['response' => 403]);
+            }
+        });
+        // Remove trackback rewrite rules.
+        add_filter( 'rewrite_rules_array', function( $rules ) {
+            foreach (array_keys($rules) as $rule) {
+                if (preg_match('/trackback\/\?\$$/i', $rule)) {
+                    unset($rules[$rule]);
+                }
+            }
+            return $rules;
+        });
+
+        
+        // RSS Feeds
+        add_filter('feed_links_show_comments_feed', '__return_false');
+        remove_action('wp_head', 'feed_links_extra', 3);
+        remove_action('wp_head', 'feed_links', 3);
+        
+        // hide and/or suppress WordPress information.
+        add_filter('get_bloginfo_rss', function( $bloginfo ) {
+            $default_tagline = __('Just another WordPress site'); // phpcs:ignore WordPress.WP.I18n.MissingArgDomain
+            return ($bloginfo === $default_tagline) ? '' : $bloginfo;
+        });
+        add_filter('the_generator', '__return_false');
+        remove_action('wp_head', 'rsd_link');
         remove_action('wp_head', 'wlwmanifest_link');
         remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10);
         remove_action('wp_head', 'wp_generator');
         remove_action('wp_head', 'wp_shortlink_wp_head', 10);
-        // Emojis
+        remove_action('wp_head', 'rest_output_link_wp_head', 10);
+        remove_action('wp_head', 'wp_oembed_add_discovery_links');
+        remove_action('wp_head', 'wp_oembed_add_host_js');
+
+        // Disable WordPress Emojis
         remove_action('wp_head', 'print_emoji_detection_script', 7);
         remove_action('admin_print_scripts', 'print_emoji_detection_script');
         remove_action('wp_print_styles', 'print_emoji_styles');
         remove_action('admin_print_styles', 'print_emoji_styles');
-        remove_action('wp_head', 'wp_oembed_add_discovery_links');
-        remove_action('wp_head', 'wp_oembed_add_host_js');
-        remove_action('wp_head', 'rest_output_link_wp_head', 10);
         remove_filter('the_content_feed', 'wp_staticize_emoji');
         remove_filter('comment_text_rss', 'wp_staticize_emoji');
         remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
