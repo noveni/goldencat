@@ -78,3 +78,44 @@ function goldencat_label( $label_type = 'btn-product-shop' ) {
 function goldencat_has_sticky() {
 	return GoldenCatThemeSettings::hasStickyHeader();
 }
+
+
+function goldencat_child_load_style_file( $styleName, $parentStyleName = '' ) {
+
+    $style_path = get_stylesheet_directory() . '/assets/' . $styleName . '.css';
+    $script_asset_path = get_stylesheet_directory() . '/assets/js/theme.asset.php';
+
+    $script_asset_path = get_stylesheet_directory() . '/assets/js/' . $styleName . '.asset.php';
+    // If an php file for the js part exist
+    if ( !file_exists($script_asset_path ) ) {
+        $script_asset_path = get_stylesheet_directory() . '/assets/js/theme.asset.php';
+    }
+
+    $script_asset = file_exists($script_asset_path) ? require($script_asset_path) : array('dependencies' => array(), 'version' => filemtime( $style_path ));
+
+    wp_enqueue_style( 'goldencat-child-' . $styleName . '-styles',
+        get_stylesheet_directory_uri() . '/assets/' . $styleName . '.css',
+		!empty($parentStyleName) ? array( $parentStyleName ) : array(),
+		$script_asset['version'], // This only works if you have Version defined in the style header.
+        'all'
+	);
+}
+
+function goldencat_child_load_scripts_file( $scriptName, $parentScriptName = '' ) {
+
+    $script_asset_path = get_stylesheet_directory() . '/assets/js/' . $scriptName . '.asset.php';
+
+    $script_asset = file_exists($script_asset_path) ? require($script_asset_path) : array('dependencies' => array(), 'version' => 1);
+
+    if ( !empty($parentScriptName) ) {
+        $script_asset['dependencies'][] = $parentScriptName;
+    }
+    wp_register_script(
+        'goldencat-child-' . $scriptName . '-script',
+        get_stylesheet_directory_uri() . '/assets/js/' . $scriptName . '.js', 
+        $script_asset['dependencies'], 
+        $script_asset['version'], 
+        true
+    );
+    wp_enqueue_script( 'goldencat-child-' . $scriptName . '-script' );
+}
