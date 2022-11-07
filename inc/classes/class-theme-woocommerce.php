@@ -123,9 +123,14 @@ class GoldenCatThemeWooCommerce {
      */
     public function woocommerce_scripts() {
 
-        GoldenCatThemeScripts::toEnqueueStyle('woocommerce');
-        GoldenCatThemeScripts::toRegisterScript('woocommerce', 'goldencat-wc-scripts');
-        wp_enqueue_script('goldencat-wc-scripts');
+        $do_enqueue_base_wc_style_and_script = apply_filters( 'goldencat_theme_enqueue_theme_scripts', true );
+
+        if ( $do_enqueue_base_wc_style_and_script ) {
+
+            GoldenCatThemeScripts::toEnqueueStyle('woocommerce');
+            GoldenCatThemeScripts::toRegisterScript('woocommerce', 'goldencat-wc-scripts');
+            wp_enqueue_script('goldencat-wc-scripts');
+        }
     }
 
     /**

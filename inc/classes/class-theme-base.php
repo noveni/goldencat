@@ -41,6 +41,8 @@ class GoldenCatThemeBase
             )
         );
 
+        $theme_configuration = apply_filters( 'goldencat_theme_configuration_base', $theme_configuration);
+
         $this->theme_configuration = wp_parse_args( $theme_configuration, $defaults );
 
         $this->init();
@@ -518,21 +520,25 @@ class GoldenCatThemeBase
         /**
 		 * Enqueue front-end assets.
 		 */
-		add_action('wp_enqueue_scripts', function ( $hook ) {
-            global $wp_query; 
+        $do_enqueue_base_theme_style_and_script = apply_filters( 'goldencat_theme_enqueue_theme_scripts', true );
 
-			GoldenCatThemeScripts::toRegisterScript('theme', 'goldencat-front-scripts');
-            wp_localize_script( 'goldencat-front-scripts', 'goldencat_theme_params', array(
-                'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
-                'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
-                'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
-                'max_page' => $wp_query->max_num_pages
-            ) );
-            // GoldenCatThemeScripts::toEnqueueScript('theme', 'goldencat-front-scripts');
-            wp_enqueue_script('goldencat-front-scripts');
-			wp_script_add_data('goldencat-front-scripts', 'async', true );
-			GoldenCatThemeScripts::toEnqueueStyle('style');
-		});
+        if ( $do_enqueue_base_theme_style_and_script ) {
+            add_action('wp_enqueue_scripts', function ( $hook ) {
+                global $wp_query; 
+    
+                GoldenCatThemeScripts::toRegisterScript('theme', 'goldencat-front-scripts');
+                wp_localize_script( 'goldencat-front-scripts', 'goldencat_theme_params', array(
+                    'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
+                    'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
+                    'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
+                    'max_page' => $wp_query->max_num_pages
+                ) );
+                // GoldenCatThemeScripts::toEnqueueScript('theme', 'goldencat-front-scripts');
+                wp_enqueue_script('goldencat-front-scripts');
+                wp_script_add_data('goldencat-front-scripts', 'async', true );
+                GoldenCatThemeScripts::toEnqueueStyle('style');
+            });
+        }
 
         
         /**

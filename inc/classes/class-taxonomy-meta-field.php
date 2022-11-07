@@ -57,6 +57,8 @@ class GoldenCatTaxonomyMetaField
 
         // add_action( 'admin_menu', [$this, 'addPage']);
 
+        $fields_config = apply_filters( 'goldencat_theme_taxonomy_meta_field', $fields_config );
+        
         // We Get the config from the mains functions of theme
         if ( $fields_config != null ) {
 
