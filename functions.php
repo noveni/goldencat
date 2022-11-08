@@ -5,6 +5,7 @@
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @package Golden_Cat
+ * @version 2.0
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
@@ -168,7 +169,6 @@ add_action( 'init', function() {
 
 require get_template_directory() . '/assets/blocks/cover-slider-block.php';
 require get_template_directory() . '/assets/blocks/faq-block-grid.php';
-require get_template_directory() . '/assets/blocks/latest-posts.php';
 require get_template_directory() . '/assets/blocks/picked-post-block.php';
 require get_template_directory() . '/assets/blocks/picked-term.php';
 require get_template_directory() . '/assets/blocks/product-price.php';

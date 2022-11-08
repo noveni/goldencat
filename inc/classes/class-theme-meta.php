@@ -226,10 +226,10 @@ class GoldenCatThemeMeta {
     {
         $base_favicons_dir = '/assets/icons/';
         // Check if favicon Exist
-        if (!file_exists(get_template_directory() . $base_favicons_dir . 'favicon.ico')) {
+        if (!file_exists(get_stylesheet_directory() . $base_favicons_dir . 'favicon.ico')) {
             return;
         }
-        $base_uri = get_template_directory_uri() . $base_favicons_dir;
+        $base_uri = get_stylesheet_directory_uri() . $base_favicons_dir;
         ob_start();
         ?>
         <link rel="apple-touch-icon" sizes="57x57" href="<?php echo $base_uri . 'apple-touch-icon-57x57.png' ?>">

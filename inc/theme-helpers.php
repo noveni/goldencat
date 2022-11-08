@@ -80,7 +80,7 @@ function goldencat_has_sticky() {
 }
 
 
-function goldencat_child_load_style_file( $styleName, $parentStyleName = '' ) {
+function goldencat_child_load_style_file( $styleName, $parentStyleName = '', $dependencies = array() ) {
 
     $style_path = get_stylesheet_directory() . '/assets/' . $styleName . '.css';
     $script_asset_path = get_stylesheet_directory() . '/assets/js/theme.asset.php';
@@ -93,19 +93,27 @@ function goldencat_child_load_style_file( $styleName, $parentStyleName = '' ) {
 
     $script_asset = file_exists($script_asset_path) ? require($script_asset_path) : array('dependencies' => array(), 'version' => filemtime( $style_path ));
 
+    // $script_asset['dependencies'] = wp_parse_args( $dependencies, $script_asset['dependencies'] );
+
+    if ( !empty($parentStyleName) ) {
+        $dependencies[] = $parentStyleName;
+    }
+
     wp_enqueue_style( 'goldencat-child-' . $styleName . '-styles',
         get_stylesheet_directory_uri() . '/assets/' . $styleName . '.css',
-		!empty($parentStyleName) ? array( $parentStyleName ) : array(),
+		$dependencies,
 		$script_asset['version'], // This only works if you have Version defined in the style header.
         'all'
 	);
 }
 
-function goldencat_child_load_scripts_file( $scriptName, $parentScriptName = '' ) {
+function goldencat_child_load_scripts_file( $scriptName, $parentScriptName = '', $dependencies = array() ) {
 
     $script_asset_path = get_stylesheet_directory() . '/assets/js/' . $scriptName . '.asset.php';
 
     $script_asset = file_exists($script_asset_path) ? require($script_asset_path) : array('dependencies' => array(), 'version' => 1);
+
+    $script_asset['dependencies'] = wp_parse_args( $dependencies, $script_asset['dependencies'] );
 
     if ( !empty($parentScriptName) ) {
         $script_asset['dependencies'][] = $parentScriptName;

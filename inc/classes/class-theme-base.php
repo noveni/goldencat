@@ -520,12 +520,14 @@ class GoldenCatThemeBase
         /**
 		 * Enqueue front-end assets.
 		 */
-        $do_enqueue_base_theme_style_and_script = apply_filters( 'goldencat_theme_enqueue_theme_scripts', true );
+        add_action('wp_enqueue_scripts', function ( $hook ) {
+            global $wp_query; 
+            
+            $do_enqueue_base_theme_style = apply_filters( 'goldencat_theme_enqueue_theme_style', true );
+            $do_enqueue_base_theme_script = apply_filters( 'goldencat_theme_enqueue_theme_script', true );
+            $do_enqueue_base_theme_block_style = apply_filters( 'goldencat_theme_enqueue_theme_block_style', true );
 
-        if ( $do_enqueue_base_theme_style_and_script ) {
-            add_action('wp_enqueue_scripts', function ( $hook ) {
-                global $wp_query; 
-    
+            if ( $do_enqueue_base_theme_script ) {
                 GoldenCatThemeScripts::toRegisterScript('theme', 'goldencat-front-scripts');
                 wp_localize_script( 'goldencat-front-scripts', 'goldencat_theme_params', array(
                     'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
@@ -536,9 +538,23 @@ class GoldenCatThemeBase
                 // GoldenCatThemeScripts::toEnqueueScript('theme', 'goldencat-front-scripts');
                 wp_enqueue_script('goldencat-front-scripts');
                 wp_script_add_data('goldencat-front-scripts', 'async', true );
+            }
+
+            if ( $do_enqueue_base_theme_style ) {
                 GoldenCatThemeScripts::toEnqueueStyle('style');
-            });
-        }
+            }
+
+            if ( $do_enqueue_base_theme_block_style ) {
+                $block_style_deps = array();
+                // TODO: Improve the way of handling child and parent style
+                if ( $do_enqueue_base_theme_style ) {
+                    $block_style_deps[] = 'goldencat-style-styles';
+                } else {
+                    $block_style_deps[] = 'goldencat-child-style-styles';
+                }
+                GoldenCatThemeScripts::toEnqueueStyle('goldencat-blocks-style', 'goldencat-blocks-style', 'all', $block_style_deps );
+            }
+        });
 
         
         /**

@@ -13,7 +13,7 @@ class GoldenCatThemeScripts
 
     private static $assets_path = '/assets/';
 
-    public static function toEnqueueScript($scriptName, $customHandleScriptName = '') {
+    public static function toEnqueueScript($scriptName, $customHandleScriptName = '', $dependencies = array() ) {
 
         $base_uri = get_template_directory_uri() . self::$assets_path . 'js/';
         $base_dir = get_template_directory() . self::$assets_path . 'js/';
@@ -26,13 +26,15 @@ class GoldenCatThemeScripts
 
         $script_asset_path = $base_dir . $scriptName . '.asset.php';
         $script_asset = file_exists($script_asset_path) ? require($script_asset_path) : array('dependencies' => array(), 'version' => filemtime( $script_path ));
+
+        $script_asset['dependencies'] = wp_parse_args( $dependencies, $script_asset['dependencies'] );
         
         $handleFileName = $customHandleScriptName !== '' ? $customHandleScriptName : 'goldencat-' . $scriptName . '-scripts';
         // Enqueue Scripts
         wp_enqueue_script($handleFileName, $base_uri . $scriptName . '.js', $script_asset['dependencies'], $script_asset['version'], true);
     }
 
-    public static function toEnqueueStyle($styleName, $customHandleStyleName = '', $media = 'all') {
+    public static function toEnqueueStyle($styleName, $customHandleStyleName = '', $media = 'all', $dependencies = array() ) {
 
         $base_uri = get_template_directory_uri() . self::$assets_path . '';
         $base_dir = get_template_directory() . self::$assets_path . '';
@@ -53,10 +55,10 @@ class GoldenCatThemeScripts
         
         $handleFileName = $customHandleStyleName !== '' ? $customHandleStyleName : 'goldencat-' . $styleName . '-styles';
         // Enqueue Style
-        wp_enqueue_style($handleFileName, $base_uri . $styleName . '.css', array(), $script_asset['version'], $media);
+        wp_enqueue_style($handleFileName, $base_uri . $styleName . '.css', $dependencies, $script_asset['version'], $media);
     }
     
-    public static function toRegisterScript($scriptName, $customHandleScriptName) {
+    public static function toRegisterScript($scriptName, $customHandleScriptName, $dependencies = array() ) {
 
         $script_asset_path = get_template_directory() . '/assets/js/' . $scriptName . '.asset.php';
         

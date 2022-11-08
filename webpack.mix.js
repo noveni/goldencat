@@ -16,6 +16,9 @@ if (mix.inProduction()) {
 
 mix.js('src/scripts/theme/index.js', 'js/theme.js')
   .sass('src/styles/theme.scss', 'style.css')
+  // Only block style
+  .sass('src/styles/goldencat-blocks-style.scss', 'goldencat-blocks-style.css')
+  // Editor Styles
   .block('src/scripts/editor/index.js', 'js/editor.js')
   .sass('src/styles/editor.scss', 'editor.css')
   .sass('src/styles/admin-editor.scss', 'admin-editor.css')

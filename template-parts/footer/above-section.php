@@ -14,5 +14,5 @@ if ( ! is_active_sidebar( 'footer-above-section' ) ) {
 
 <div id="footer-above-section" class="widget-area">
 	<?php dynamic_sidebar( 'footer-above-section' ); ?>
-</div><!-- #header-notice-bar -->
+</div><!-- #footer-above-section -->
 

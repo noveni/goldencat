@@ -87,7 +87,15 @@ class GoldenCatThemeIcons
             $icon_content = $arr[ $icon ];
             if (is_array($arr[ $icon ])) {
                 if (array_key_exists('path', $arr[$icon])) {
-                    $icon_content = file_get_contents( get_template_directory() . self::$assets_path . $arr[$icon]['path'], true);
+					$theme_file_path = self::$assets_path . $arr[$icon]['path'];
+
+					if ( file_exists( get_stylesheet_directory() . $theme_file_path ) ) {
+						$icon_content = file_get_contents( get_stylesheet_directory() . $theme_file_path, true);
+					} elseif ( file_exists( get_template_directory() . $theme_file_path ) ) {
+						$icon_content = file_get_contents( get_template_directory() . $theme_file_path, true);
+					} else {
+						return '';
+					}
                 }
 			}
 			if ($size) {
