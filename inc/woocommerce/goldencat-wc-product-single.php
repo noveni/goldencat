@@ -2,8 +2,8 @@
 /**
  * WooCommerce Theme Product Single functions
  *
- * @package WooCommerce\Functions
- * @version 3.3.0
+ * @package GoldenCat
+ * @version 1.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -29,35 +29,44 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
  * @see woocommerce_output_related_products()
  */
 function goldencat_product_custom_tab( $tabs ) {
-    // unset( $tabs['description'] );
     unset( $tabs['additional_information'] );
     unset( $tabs['reviews'] );
+    // // unset( $tabs['description'] );
 
-    $tabs['description'] = array(
-        'title'    => '',
-        'callback' => 'goldencat_product_custom_tab_content', // the function name, which is on line 15
-        'priority' => 50,
-    );
+    // $tabs['description'] = array(
+    //     'title'    => '',
+    //     'callback' => 'goldencat_product_custom_tab_content', // the function name, which is on line 15
+    //     'priority' => 50,
+    // );
+
+    $product_id = get_the_ID();
+    foreach(goldencat_product_custom_tab_info(  'goldencat_panel_advanced_product_tab' ) as $key_field => $field) {
+        $content = get_post_meta($product_id, $key_field, true);
+        if ($content !== '') {
+            $tabs[$key_field] = array(
+                'title'    => $field['label'],
+                'callback' => 'goldencat_product_custom_tab_content', // the function name, which is on line 15
+                'priority' => 50,
+            );
+        }
+    }
 
     return $tabs;
 }
 function goldencat_product_custom_tab_content( $slug, $tab ) {
-    // return $tab;
-	// the_content();
-    // $prod_id = get_the_ID();
-    // foreach(goldencat_product_custom_tab_info() as $key_field => $field) {
-        // if ($key_field === $slug) {
-        //     // echo '<h2>' . $field['tab_title'] . '</h2>';
-        //     $content = get_post_meta($prod_id, $key_field, true);
-        //     if ($content !== '') {
-        //         echo '<p>' . $content . '</p>';
-        //     }
-        // }
-    // }
-    // return $slug;
+    $product_id = get_the_ID();
+    foreach(goldencat_product_custom_tab_info( 'goldencat_panel_advanced_product_tab' ) as $key_field => $field) {
+        if ($key_field === $slug) {
+            // echo '<h2>' . $field['tab_title'] . '</h2>';
+            $content = get_post_meta($product_id, $key_field, true);
+            if ($content !== '') {
+                echo wpautop(htmlspecialchars_decode($content));
+            }
+        }
+    }
 
 }
-// add_filter( 'woocommerce_product_tabs', 'goldencat_product_custom_tab' );
+add_filter( 'woocommerce_product_tabs', 'goldencat_product_custom_tab' );
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
 add_action( 'woocommerce_single_product_summary', 'woocommerce_output_product_data_tabs', 70 );
 
@@ -81,11 +90,15 @@ function goldencat_wrap_single_product_top_end() {
 }
 
 function goldencat_wrap_product_image_start() {
-    ?><div class="product-image-wrapper"><?php
+    if ( !goldencat_is_carte_cadeaux() ) {
+        ?><div class="product-image-wrapper"><?php
+    }
 }
 
 function goldencat_wrap_product_image_end() {
-    ?></div><!-- .product-image-wrapper --><?php
+    if ( !goldencat_is_carte_cadeaux() ) {
+        ?></div><!-- .product-image-wrapper --><?php
+    }
 }
 
 /**

@@ -2,6 +2,8 @@
 /**
  * WooCommerce Template Functions.
  *
+ * @package GoldenCat
+ * @version 1.0.0
  */
 
 if ( ! function_exists( 'goldencat_woo_cart_available' ) ) {
@@ -162,5 +164,23 @@ if ( ! function_exists( 'goldencat_popular_products' ) ) {
 			</div>
 			<?php
 		}
+	}
+}
+
+
+if ( ! function_exists( 'goldencat_is_carte_cadeaux' ) ) {
+	/**
+	 * Check if current product is Carte Cadeaux
+	 * 
+	 */
+	function goldencat_is_carte_cadeaux() {
+		global $product;
+		
+		$slug = $product->get_slug();
+
+		if ($slug == 'cartes-cadeaux') {
+			return true;
+		}
+		return false;
 	}
 }

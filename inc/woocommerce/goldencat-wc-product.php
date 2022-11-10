@@ -2,8 +2,8 @@
 /**
  * WooCommerce Theme Product functions
  *
- * @package WooCommerce\Functions
- * @version 3.3.0
+ * @package GoldenCat
+ * @version 1.0.0
  */
 
 defined( 'ABSPATH' ) || exit;

@@ -2,8 +2,8 @@
 /**
  * WooCommerce Theme Product Loop functions
  *
- * @package WooCommerce\Functions
- * @version 3.3.0
+ * @package GoldenCat
+ * @version 1.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -70,6 +70,10 @@ function goldencat_wc_get_product_label( $product_id = null ) {
 	return $label;
 	
 }
+
+/**
+ * Add Custom button to product in archive loop
+ */
 add_action( 'woocommerce_after_shop_loop_item', 'goldencat_add_product_item_link_to_btn', 10 );
 if ( ! function_exists( 'goldencat_add_product_item_link_to_btn' ) ) {
 	function goldencat_add_product_item_link_to_btn() {
@@ -90,7 +94,9 @@ if ( ! function_exists( 'goldencat_add_product_item_link_to_btn' ) ) {
 	}
 }
 
-
+/**
+ * Add Custom button to product in product grid block
+ */
 add_filter('woocommerce_blocks_product_grid_item_html', 'goldencat_add_link_to_product_grid_item', 10, 3);
 function goldencat_add_link_to_product_grid_item($product_grid_html, $data, $product) {
 	
@@ -122,6 +128,10 @@ function goldencat_add_link_to_product_grid_item($product_grid_html, $data, $pro
 
 
 
+/**
+ * Change display of title in archive loop
+ * 
+ */
 remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
 add_action( 'woocommerce_shop_loop_item_title', 'goldencat_woocommerce_template_loop_product_title', 10 );
 if ( ! function_exists( 'goldencat_woocommerce_template_loop_product_title' ) ) {
@@ -173,7 +183,9 @@ if ( ! function_exists( 'goldencat_wc_product_grid_item_html_remodel' ) ) {
 }
 add_filter('woocommerce_blocks_product_grid_item_html', 'goldencat_wc_product_grid_item_html_remodel', 10, 3);
 
-
+/**
+ * Add Term Tag above title
+ */
 function goldencat_add_tag_flash() {
 	global $product;
 	$taxonomy = 'product_tag';
@@ -184,7 +196,9 @@ function goldencat_add_tag_flash() {
 }
 add_action( 'woocommerce_before_shop_loop_item_title', 'goldencat_add_tag_flash', 9 );
 
-
+/**
+ * Add Term Tag Above title 
+ */
 function goldencat_add_term_tag_to_product_grid_item($product_grid_html, $data, $product) {
 	
 	// $label = goldencat_wc_get_product_label($product->get_id());
