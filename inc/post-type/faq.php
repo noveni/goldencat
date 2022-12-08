@@ -32,7 +32,7 @@ function goldencat_register_faq() {
         'publicly_queryable'        => true,
         'rewrite'             => array(
             'slug'       => 'faq',
-            'with_front' => false,
+            'with_front' => true,
             'feeds'      => true,
         ) ,
         'has_archive'               => 'faq',
@@ -80,7 +80,7 @@ function goldencat_register_faq_category() {
     $config = array(
         'labels'            => $labels,
         'public'            => true, 
-        'hierarchical'      => false,
+        'hierarchical'      => true,
         'show_ui'           => true,
         'show_in_rest'      => true,
         'show_admin_column' => true,

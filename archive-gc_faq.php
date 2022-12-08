@@ -9,7 +9,7 @@
 
 get_header();
 ?>
-<div class="entry-content">
+<div class="entry-content is-layout-constrained">
 	<?php if ( have_posts() ) : ?>
 		<?php ob_start(); ?>
 		<div class="alignwide">
@@ -20,7 +20,7 @@ get_header();
 				while ( have_posts() ) :
 					the_post(); ?>
 					<div class="goldencat-grid__col">
-						<?php get_template_part( 'template-parts/content/content', 'excerpt' ); ?>
+						<?php get_template_part( 'template-parts/content/content', get_post_type() ); ?>
 					</div>
 					<?php
 				endwhile;
