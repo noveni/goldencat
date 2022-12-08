@@ -11,6 +11,8 @@ import './extensions/hide-block';
 import './extensions/narrow-align';
 import './extensions/no-padding-block';
 import './extensions/no-gap';
+import './extensions/text-justify';
+import './extensions/space-between';
 
 
 
