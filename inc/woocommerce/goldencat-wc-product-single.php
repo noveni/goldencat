@@ -59,9 +59,10 @@ function goldencat_product_custom_tab_content( $slug, $tab ) {
         if ($key_field === $slug) {
             // echo '<h2>' . $field['tab_title'] . '</h2>';
             $content = get_post_meta($product_id, $key_field, true);
-            if ($content !== '') {
+            if ($content !== '' && apply_filters( 'goldencat_product_custom_tab_content_' . $slug . '_default_content', true, $product_id )) {
                 echo wpautop(htmlspecialchars_decode($content));
             }
+            do_action( 'goldencat_product_custom_tab_content_' . $slug . '_after', $product_id);
         }
     }
 
@@ -89,15 +90,19 @@ function goldencat_wrap_single_product_top_end() {
     ?></div><!-- .product-top-wrapper --><?php
 }
 
-function goldencat_wrap_product_image_start() {
-    if ( !goldencat_is_carte_cadeaux() ) {
-        ?><div class="product-image-wrapper"><?php
+if ( ! function_exists( 'goldencat_wrap_product_image_start' ) ) {
+    function goldencat_wrap_product_image_start() {
+        if ( !goldencat_is_carte_cadeaux() ) {
+            ?><div class="product-image-wrapper"><?php
+        }
     }
 }
 
-function goldencat_wrap_product_image_end() {
-    if ( !goldencat_is_carte_cadeaux() ) {
-        ?></div><!-- .product-image-wrapper --><?php
+if ( ! function_exists( 'goldencat_wrap_product_image_end' ) ) {
+    function goldencat_wrap_product_image_end() {
+        if ( !goldencat_is_carte_cadeaux() ) {
+            ?></div><!-- .product-image-wrapper --><?php
+        }
     }
 }
 

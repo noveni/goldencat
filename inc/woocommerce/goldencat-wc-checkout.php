@@ -180,8 +180,9 @@ function goldencat_move_new_shipping_table() {
 
 function goldencat_wc_checkout_fields_add_label_to_placeholder( $field_groups ) {
     $field_groups['billing']['billing_email']['label'] = 'Email';
+    $field_groups['billing']['billing_address_1']['label'] = 'Rue et numéro';
     $field_groups['order']['order_comments']['placeholder'] = 'Une demande particulière pour votre commande ?';
-    $field_groups['account']['account_password']['placeholder'] = 'Mot de passe*';
+    $field_groups['account']['account_password']['label'] = 'Mot de passe';
     foreach ($field_groups as $key_group => $group) {
         foreach ($group as $key_field => $field) {
             $label = isset($field_groups[$key_group][$key_field]['label']) ? $field_groups[$key_group][$key_field]['label'] : '';
@@ -231,6 +232,8 @@ function goldencat_wc_checkout_fields_style( $address_fields ) {
     $address_fields["city"]['class'][0] = 'form-row-first';
     $address_fields["country"]['class'][0] = 'form-row-first';
 	
+    // $field_groups['address_1']['label'] = 'Rue et numéro*';
+    $address_fields['address_1']['placeholder'] = 'Rue et numéro*';
     return $address_fields;
 }
 

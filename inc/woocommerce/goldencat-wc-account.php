@@ -54,7 +54,9 @@ function goldencat_custom_links( $menu_links ){
 	// $new = array( 'link1' => 'Link 1', 'link2' => 'Link 2' );
  
 	// array_slice() is good when you want to add an element between the other ones
-	$position = 4; // Ex: fourth element => position = 3
+	// $position = 4; // Ex: fourth element => position = 3
+	// Last elemen
+	$position = count($menu_links) - 1;
 	$menu_links = array_slice( $menu_links, 0, $position, true )
 	+ $new 
 	+ array_slice( $menu_links, $position, NULL, true );
@@ -147,7 +149,7 @@ add_filter( 'woocommerce_my_account_my_orders_columns', 'goldencat_my_account_my
 function goldencat_my_account_my_orders_column_manage_order_date( $order ) {
 	// sprintf(_('Commande du %s', 'goldencat'), wc_format_datetime( $order->get_date_created() ))
 	?>
-	<time datetime="<?php echo esc_attr( $order->get_date_created()->date( 'c' ) ); ?>"><?php echo esc_html( sprintf(_('Commande du %s', 'goldencat'), wc_format_datetime( $order->get_date_created() )) ); ?></time>
+	<time datetime="<?php echo esc_attr( $order->get_date_created()->date( 'c' ) ); ?>"><?php echo esc_html( sprintf(__('Commande du %s', 'goldencat'), wc_format_datetime( $order->get_date_created() )) ); ?></time>
 	<?php
 
 }
