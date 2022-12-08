@@ -17,6 +17,7 @@
 
 	p {
 		margin-bottom: 0;
+		margin-top: 0;
 		line-height: 1.4;
 	}
 
@@ -43,6 +44,7 @@
 		padding-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
 		display: flex;
 		align-items: center;
+		justify-content: center;
 
 		@include media(tablet) {
 			display: flex;
@@ -51,7 +53,7 @@
 	}
 
 	.goldencat-cookie-btn {
-		flex: 1 0 auto;
+		flex: 0 0 auto;
 		// @include theme-base-button();
 
 		// background: transparent;

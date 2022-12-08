@@ -77,12 +77,12 @@ class GoldenCatThemeCookies
 		$btn_label = $this->settings["goldencat_cookie_settings_btn"];
         ob_start(); ?>
         <!-- Theme Cookie Notice -->
-        <div id="goldencat-cookie" class="cookie-hidden">
-            <div class="goldencat-cookie-content wide-max-width">
+        <div id="goldencat-cookie" class="cookie-hidden is-layout-constrained">
+            <div class="goldencat-cookie-content alignwide">
                 <p>
                     <span><?php echo $msg; ?></span>
                 </p>
-                <button class="wp-block-button__link goldencat-cookie-btn cookie-accept"><?php echo $btn_label; ?></button>
+                <button class="wp-element-button goldencat-cookie-btn cookie-accept has-background-color has-white-background-color has-txt-color"><?php echo $btn_label; ?></button>
             </div>
         </div>
         <!-- / Theme Cookie Notice -->
