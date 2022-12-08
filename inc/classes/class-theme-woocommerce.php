@@ -32,7 +32,7 @@ class GoldenCatThemeWooCommerce {
 
         $this->singleProduct();
         // Product Variations Change it with jQuery
-        add_action( 'woocommerce_after_single_product', [ $this, 'changeVariationToRadio' ] );
+        add_filter( 'woocommerce_dropdown_variation_attribute_options_html', [ $this, 'change_dropdown_to_swatchs' ], 20, 2 );
 
         $this->globalActions();
     }
@@ -84,29 +84,31 @@ class GoldenCatThemeWooCommerce {
      */
     public function addCoreFonts() {
 
-        $font_path   = WC()->plugin_url() . '/assets/fonts/';
-        $inline_font = '@font-face {
-			font-family: "star";
-			src: url("' . $font_path . 'star.eot");
-			src: url("' . $font_path . 'star.eot?#iefix") format("embedded-opentype"),
-				url("' . $font_path . 'star.woff") format("woff"),
-				url("' . $font_path . 'star.ttf") format("truetype"),
-				url("' . $font_path . 'star.svg#star") format("svg");
-			font-weight: normal;
-			font-style: normal;
-		}
-        @font-face {
-            font-family: WooCommerce;
-            src: url("' . $font_path . '/WooCommerce.eot");
-            src:
-                url("' . $font_path . '/WooCommerce.eot?#iefix") format("embedded-opentype"),
-                url("' . $font_path . '/WooCommerce.woff") format("woff"),
-                url("' . $font_path . '/WooCommerce.ttf") format("truetype"),
-                url("' . $font_path . '/WooCommerce.svg#WooCommerce") format("svg");
-            font-weight: 400;
-            font-style: normal;
-        }';
-        wp_add_inline_style( 'goldencat-woocommerce-styles', $inline_font );
+        $fonts_url = plugins_url( '/woocommerce/assets/fonts' );
+        wp_add_inline_style( 
+            'goldencat-child-woocommerce-styles', 
+            '@font-face {
+                font-family: star;
+                src: url(' . $fonts_url . 'star.eot);
+                src: url(' . $fonts_url . 'star.eot?#iefix) format("embedded-opentype"),
+                    url(' . $fonts_url . 'star.woff) format("woff"),
+                    url(' . $fonts_url . 'star.ttf) format("truetype"),
+                    url(' . $fonts_url . 'star.svg#star) format("svg");
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: WooCommerce;
+                src: url(' . $fonts_url . '/WooCommerce.eot);
+                src:
+                    url(' . $fonts_url . '/WooCommerce.eot?#iefix) format("embedded-opentype"),
+                    url(' . $fonts_url . '/WooCommerce.woff) format("woff"),
+                    url(' . $fonts_url . '/WooCommerce.ttf) format("truetype"),
+                    url(' . $fonts_url . '/WooCommerce.svg#WooCommerce) format("svg");
+                font-weight: 400;
+                font-style: normal;
+            }'
+        );
     }
 
     public function addThemeActiveClass( $classes )
@@ -211,7 +213,7 @@ class GoldenCatThemeWooCommerce {
     /**
      * Change Variations Select to Radio
      */
-    public function changeVariationToRadio()
+    public function changeVariationToRadio( $html, $args )
     {
         // https://codedcommerce.com/product/change-variation-drop-downs-to-radio-buttons/
         // Variable Products Only
@@ -228,61 +230,39 @@ class GoldenCatThemeWooCommerce {
 
         $exclude_variation_name_from_tag_conversion = apply_filters( 'goldencat_wc_change_variation_to_radio_exclude', [], $product );
 
-        // Inline jQuery
-        ?>
-        <script>
-            jQuery( document ).ready( function( $ ) {
-                
-                $( ".variations_form" )
-                    .on( "wc_variation_form woocommerce_update_variation_values", function() {
-                        var product_attr    =   jQuery.parseJSON( $(".variations_form").attr("data-product_variations") )
-                        var excluded_variations = <?php echo json_encode($exclude_variation_name_from_tag_conversion) ?>;
-                        $( "label.generatedRadios" ).remove();
-                        $( "table.variations select" ).each( function() {
-                            var selName = $( this ).attr( "name" );
-                            if ( !excluded_variations.includes( selName )) {
-                                $( "select[name=" + selName + "] option" ).each( function() {
-                                    var option = $( this );
-                                    var value = option.attr( "value" );
-                                    if( value == "" ) { return; }
-                                    var label = option.html();
-                                    var select = option.parent();
-                                    var selected = select.val();
-                                    var isSelected = ( selected == value )
-                                        ? " checked=\"checked\"" : "";
-                                    var selClass = ( selected == value )
-                                        ? " selected" : "";
-                                    var radHtml
-                                        = `<input name="${selName}" type="radio" value="${value}" />`;
-                                    var optionHtml
-                                        = `<label class="generatedRadios${selClass}">${radHtml} ${label}</label>`;
-                                    select.parent().append(
-                                        $( optionHtml ).click( function() {
-                                            select.val( value ).trigger( "change" );
-                                            $('.woocommerce-variation-price').hide();
-                                        } )
-                                    )
 
-                                    if (isSelected) {
-                                        // Move Variation Price up.
-                                        $.each( product_attr, function( index, loop_value ) {
-                                            if( value === loop_value.attributes[selName] ){
-                                                $('.product_title + .price').html( loop_value.price_html );
-                                            }
-                                        });
+        $taxonomy = $args[ 'attribute' ];
+        $product = $args[ 'product' ];
+        $options = $args[ 'options' ];
 
-                                        // Hide Old Variation Price
-                                        $('.woocommerce-variation-price').hide();
-                                    }
-                                } ).parent().hide();
-                            }
-                        } );
-                    } );
-                
+        // the thing is that we do not remove original dropdown, just hide it
+	    $html = '<div style="display:none">' . $html . '</div>';
 
-            } );
-        </script>
-        <?php
+        $size_class = '';
+        if ( count($options) == 4 ) {
+            $size_class = 'by-4-item';
+        }
+
+        foreach( $options as $option ) {
+
+            $selected = $args[ 'selected' ] === $option ? 'selected' : '';
+    
+            $radioHtml = sprintf(
+                '<input name="%s" type="radio" value="%s" />',
+                $taxonomy,
+                $option
+            );
+            $html .= sprintf(
+                '<label class="generatedRadios wp-element-button %s %s" data-value="%s">%s</label>',
+                $size_class,
+                $selected,
+                $option,
+                $option
+            );
+        }
+    
+        return $html;
+
     }
 
     /**
