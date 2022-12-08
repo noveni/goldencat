@@ -1,1 +1,52 @@
 // Theme Admin Style
+/* stylelint-disable */
+// WooCommerce Admin Product Simple Style
+#goldencat_panel_advanced_product_data {
+
+	p {
+		margin: 0 0 9px;
+		font-size: 12px;
+		padding: 5px 9px;
+		line-height: 24px;
+		margin: 9px 0;
+	}
+
+	div.form-field {
+		// margin: 0 0 9px;
+    font-size: 12px;
+    // padding: 5px 9px;
+    line-height: 24px;
+    margin: 9px 0;
+		padding: 0 12px;
+
+		&::after {
+			content: "";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+		}
+
+		label {
+			display: block;
+			float: none;
+			margin: 0;
+			margin-bottom: 5px;
+		}
+	}
+
+	.wp-editor-wrap {
+		width: 100%;
+		float: left;
+	}
+}
+
+.wp-block[data-type="core/widget-area"] {
+	max-width: var(--responsive--alignwide-width);
+}
+
+.blocks-widgets-container .editor-styles-wrapper {
+	max-width: var(--responsive--alignwide-width);
+	
+}
+/* stylelint-enable */

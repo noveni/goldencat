@@ -219,6 +219,12 @@
                     "text": "inherit"
                 }
             },
+            "heading": {
+                "typography": {
+                    "fontFamily": "var(--wp--preset--font-family--secondary)",
+                    "fontWeight": "normal"
+                }
+            },
             "h1": {
                 "typography": {
                     "fontSize": "var(--wp--preset--font-size--h-1)"
@@ -250,51 +256,6 @@
                 }
             }            
         },
-        "blocks": {
-            "core/paragraph": {
-                "spacing": {
-                    "margin": {
-                        "top": "0",
-                        "bottom": "var(--goldencat--spacing-vertical)"
-                    }
-                }
-            },
-            "core/heading": {
-                "typography": {
-                    "fontFamily": "var(--wp--preset--font-family--secondary)",
-                    "fontWeight": "normal"
-                },
-                "spacing": {
-                    "margin": {
-                        "top": "0",
-                        "bottom": "var(--goldencat--spacing-vertical)"
-                    }
-                }
-            },
-            "core/button": {
-                "typography": {
-                    "fontFamily": "var(--wp--preset--font-family--secondary)",
-                    "fontWeight": "bold",
-                    "fontSize": "12px",
-                    "letterSpacing": "2px",
-                    "textDecoration": "none",
-                    "textTransform": "uppercase",
-                    "lineHeight": "1"
-                },
-                "color": {
-                    "background": "var(--goldencat--color-primary)",
-                    "text": "var(--goldencat--color-background)"
-                },
-                "border": {
-                    "color": "var(--goldencat--color-background)",
-                    "radius": "0",
-                    "style": "solid",
-                    "width": "1px"
-                },
-                "spacing": {
-                    "padding": "var(--goldencat--button--padding-vertical) var(--goldencat--button--padding-horizontal)"
-                }
-            }
-        }
+        "blocks": {}
     }
 }
