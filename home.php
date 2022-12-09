@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-<div class="entry-content">
+<div class="entry-content is-layout-constrained">
 	<?php ob_start(); ?>
 	<div class="archive-content alignwide">
 		<div class="alignwide">
@@ -29,7 +29,7 @@ get_header();
 				</div>
 			</div>
 		</div>
-		<div class="aligncenter">
+		<div class="aligncenter is-layout-constrained">
 			<?php get_template_part( 'template-parts/pagination'); // Previous/next page navigation. ?>
 		</div>
 	</div>

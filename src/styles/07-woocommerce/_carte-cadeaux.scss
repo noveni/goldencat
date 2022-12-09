@@ -1,0 +1,119 @@
+body.cartes-cadeaux {
+
+	.single_variation_wrap .quantity {
+		display: none !important;
+	}
+
+	.product-show {
+		max-width: 68rem;
+	}
+
+	.woocommerce-variation-add-to-cart {
+		justify-content: center;
+	}
+
+	.variations {
+		// max-width: 44rem;
+		// margin-left: auto;
+		// margin-right: auto;
+
+		// .label {
+		// 	text-align: center;
+		// }
+
+		// .label label {
+		// 	@extend %theme-title-style;
+		// 	@extend %theme-title-h3;
+		// 	// font-family: var(--wp--preset--font-family--secondary);
+		// 	// font-size: 2.8rem;
+		// 	// margin: 3rem 0 1rem;
+		// }
+	}
+
+	.single-product div.product table.variations {
+
+		.value {
+
+			select {
+				width: 100%;
+			}
+		}
+
+		td.value {
+			display: block;
+		}
+
+		.value label {
+
+			padding: unset;
+			border: none;
+			max-width: unset;
+			text-align: left;
+			margin-right: 0;
+			margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
+			font-weight: 400;
+			// display: flex;
+			// align-items: center;
+
+			input {
+				visibility: visible;
+				display: inline-block;
+				vertical-align: middle;
+
+			}
+
+			&.selected {
+				background-color: transparent;
+				font-weight: 400;
+
+				input {
+					color: var(--goldencat--form--color-text);
+
+					&:after {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+
+	.single_variation_wrap {
+		margin-top: calc(1 * var(--goldencat--spacing-vertical));
+
+		h3 {
+			margin-bottom: calc(0.9 * var(--goldencat--spacing-vertical));
+			text-align: center;
+		}
+	}
+
+	.woocommerce_gc_giftcard_form {
+
+		.label label {
+
+			font-family: var(--wp--preset--font-family--secondary);
+			font-size: 2.8rem;
+			color: var(--goldencat--color-black);
+			margin: 3rem 0 1rem;
+			text-align: center;
+		}
+
+		.wc_gc_field {
+
+			label {
+				display: none;
+			}
+		}
+	}
+
+	.woocommerce-variation-price {
+		display: none;
+	}
+
+	.woocommerce-variation-add-to-cart.variations_button {
+		text-align: center;
+	}
+
+	div.product form.cart .button {
+		float: none;
+	}
+}

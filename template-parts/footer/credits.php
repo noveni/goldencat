@@ -9,25 +9,20 @@
 
 
 $has_credits = apply_filters( 'goldencat_has_footer_credits', true );
-$separator = apply_filters( 'goldencat_footer_separator', '<span class="separator"> | </span>' );
+$separator = apply_filters( 'goldencat_footer_separator', '<span class="separator">. </span>' );
 if ( ! $has_credits ) {
 	return;
 }
 ?>
 
-<div class="footer-credits">
+<div class="footer-credits alignwide">
     <p>
         <span><?php
             printf(
-                esc_html__( '&copy; %1$s - %2$s %3$s', 'goldencat' ),
-                date_i18n(_x( 'Y', 'copyright date format', 'goldencat' )),
-                _x('Copyright', 'credits', 'goldencat'),
-                '<a href="' . esc_url( home_url( '/' )  ) . '"><strong>' . get_bloginfo( 'name' ) . '</strong></a>',
+                '<a href="' . esc_url( home_url( '/' )  ) . '"><strong>' . get_bloginfo( 'name' ) . '.</strong></a>'
             );
-        ?></span>
-        <span>
-            <?php _e('Tous droits réservés', 'goldencat' ); ?>
-        </span>
+        ?></span>&nbsp;
+        <span><?php echo __('Tous droits réservés.', 'goldencat' ); ?></span>&nbsp;
         <span><?php
         printf(
             esc_html__( 'Site créé par %1$s & %2$s.', 'goldencat' ),

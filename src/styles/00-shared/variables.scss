@@ -1,12 +1,12 @@
 
 // Size
-$baseline-unit: 10px;
+// $baseline-unit: 10px;
 
-$layout-content-size: 835px;
-$layout-wide-size: 1260px;
-$breakpoint_sm: 482px; // mobile
-$breakpoint_md: 768px; // tablet
-$breakpoint_lg: 1023px; // laptop
-$breakpoint_xl: 1280px; // desktop
-$breakpoint_xxl: 1460px; // wide
+// $layout-content-size: 835px;
+// $layout-wide-size: 1260px;
+$breakpoint_mobile: 482px; // mobile
+$breakpoint_tablet: 768px; // tablet
+$breakpoint_laptop: 1024px; // laptop
+$breakpoint_desktop: 1280px; // desktop
+$breakpoint_ultra: 1460px; // wide
 

@@ -15,13 +15,15 @@
 		z-index: 101;
 		display: block;
 		pointer-events: none;
+		min-width: 400px;
+		max-width: 500px;
 	}
 
 
 	.widget_shopping_cart_content {
 		position: relative;
 		background-color: var(--wp--preset--color--white);
-		border: 1px solid var(--wp--preset--color--gray);
+		border: var(--goldencar--woo--table--border);
 		padding: calc(1 * var(--goldencat--spacing-vertical)) calc(1 * var(--goldencat--spacing-horizontal));
 		box-shadow: var(--goldencat--shadow-elevation--high);
 
@@ -42,7 +44,7 @@
 			top: -14px;
 			right: var(--goldencat--spacing-horizontal);
 			border-style: solid;
-			border-color: var(--wp--preset--color--gray) transparent;
+			border-color: #d8d8d8 transparent;
 			border-width: 0 20px 14px 20px;
 		}
 
@@ -104,16 +106,18 @@
 
 .woocommerce-mini-cart-item {
 	display: flex;
-	border-bottom: 1px solid var(--goldencat--color-primary);
-	padding-bottom: calc(1 * var(--goldencat--spacing-vertical));
-	margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
-	white-space: nowrap;
+	align-items: center;
+	border-bottom: var(--goldencar--woo--table--border);
+	padding-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
+	margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
+	flex-wrap: wrap;
+	// white-space: nowrap;
 	// a {
 	// 	font-weight: 500;
 	// }
 
 	h5 {
-		@extend %theme-menu-style;
+		@include theme-menu-style;
 
 		margin-bottom: calc(0.3 * var(--goldencat--spacing-vertical));
 	}
@@ -121,6 +125,25 @@
 	> * {
 		display: inline-block;
 		padding: 0 calc(0.5 * var(--goldencat--spacing-horizontal)) 0 0;
+	}
+
+	> *.variation {
+		display: block;
+		order: 4;
+		flex: 1 0 100%;
+		width: 100%;
+	}
+
+	a:not(.remove) {
+		display: flex;
+		align-items: center;
+
+		flex: 1 1 60%;
+
+		img {
+			max-width: 100px;
+			padding: 0 calc(0.5 * var(--goldencat--spacing-horizontal)) 0 0;
+		}
 	}
 
 	.cart-item-thumbnail {
@@ -134,7 +157,8 @@
 	}
 
 	.quantity {
-		flex-shrink: 0;
+		// flex-shrink: 0;
+		flex: 1 0 30%;
 
 		> * {
 			display: inline;
@@ -148,6 +172,7 @@
 	.remove_from_cart_button {
 
 		order: 3;
+		flex: 0 1 5%;
 
 		a {
 			font-size: 21px;

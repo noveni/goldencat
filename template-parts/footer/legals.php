@@ -12,7 +12,7 @@ if ( ! has_nav_menu( 'footer-legals' ) ) {
 	return;
 }
 ?>
-<div class="footer-legals-links">
+<div class="footer-legals-links alignwide">
     <p>
         <?php
         $menu_args = array(

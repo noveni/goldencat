@@ -3,61 +3,61 @@
 @mixin media( $res ) {
 
 	@if mobile-only == $res {
-		@media only screen and (max-width: #{$breakpoint_sm - 1}) {
+		@media only screen and (max-width: #{$breakpoint_mobile - 1}) {
 			@content;
 		}
 	}
 
 	@if mobile == $res {
-		@media only screen and (min-width: #{$breakpoint_sm}) {
+		@media only screen and (min-width: #{$breakpoint_mobile}) {
 			@content;
 		}
 	}
 
 	@if tablet-only == $res {
-		@media only screen and (max-width: #{$breakpoint_md - 1}) {
+		@media only screen and (max-width: #{$breakpoint_tablet - 1}) {
 			@content;
 		}
 	}
 
 	@if tablet == $res {
-		@media only screen and (min-width: #{$breakpoint_md}) {
+		@media only screen and (min-width: #{$breakpoint_tablet}) {
 			@content;
 		}
 	}
 
 	@if laptop-only == $res {
-		@media only screen and (max-width: #{$breakpoint_lg - 1}) {
+		@media only screen and (max-width: #{$breakpoint_laptop - 1}) {
 			@content;
 		}
 	}
 
 	@if laptop == $res {
-		@media only screen and (min-width: #{$breakpoint_lg}) {
+		@media only screen and (min-width: #{$breakpoint_laptop}) {
 			@content;
 		}
 	}
 
 	@if desktop-only == $res {
-		@media only screen and (max-width: #{$breakpoint_xl - 1}) {
+		@media only screen and (max-width: #{$breakpoint_desktop - 1}) {
 			@content;
 		}
 	}
 
 	@if desktop == $res {
-		@media only screen and (min-width: #{$breakpoint_xl}) {
+		@media only screen and (min-width: #{$breakpoint_desktop}) {
 			@content;
 		}
 	}
 
 	@if wide-only == $res {
-		@media only screen and (max-width: #{$breakpoint_xxl - 1}) {
+		@media only screen and (max-width: #{$breakpoint_ultra - 1}) {
 			@content;
 		}
 	}
 
 	@if wide == $res {
-		@media only screen and (min-width: #{$breakpoint_xxl}) {
+		@media only screen and (min-width: #{$breakpoint_ultra}) {
 			@content;
 		}
 	}
@@ -109,7 +109,6 @@
 }
 
 @mixin grid-archive-wrapper() {
-	@extend %responsive-alignwide-width;
 
 	> * {
 		display: flex;
@@ -157,4 +156,49 @@
 	&:hover {
 		text-decoration: none;
 	}
+}
+
+@mixin numbered_pseudo_element( $counter: "" ) {
+	@if $counter != "" {
+
+		&::before {
+			content: counter(#{$counter}) ".";
+
+			/* Style away! */
+			font-family: var(--wp--preset--font-family--secondary);
+			background: transparent;
+			width: 41px;
+			height: 41px;
+			display: block;
+			text-align: center;
+			line-height: 41px;
+
+			margin-right: 1rem;
+			@include media(tablet) {
+				margin-left: unset;
+
+				display: inline-block;
+			}
+		}
+	}
+}
+
+
+@mixin size-content-width() {
+	max-width: var(--wp--style--global--content-size);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin size-wide-width() {
+	max-width: var(--wp--style--global--wide-size);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin size-full-width() {
+	max-width: var(--wp--custom--responsive--full-size-width);
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
 }

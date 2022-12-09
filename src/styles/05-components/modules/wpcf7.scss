@@ -4,10 +4,21 @@
 	p {
 		display: flex;
 		flex-wrap: wrap;
-		margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
+		justify-content: space-between;
+		align-items: flex-end;
+		margin-block-start: var(--wp--preset--spacing--40);
+		margin-bottom: 0;
 
 		> * {
 			flex-grow: 1;
+		}
+
+		br {
+			display: none;
+		}
+
+		> label:not([class]) {
+			flex-basis: 100% !important;
 		}
 
 		.wpcf7-form-control-wrap:not(:only-child) {
@@ -20,10 +31,23 @@
 				flex-grow: 0;
 			}
 		}
+
+		label + br + .wpcf7-form-control-wrap {
+			flex: 1 0 100% !important;
+		}
+	}
+
+	.wpcf7-custom-div {
+		margin-block-start: var(--wp--preset--spacing--40);
+		margin-bottom: 0;
+	}
+
+	.wp-element-button {
+		flex-grow: 0;
 	}
 
 	.wp-block-buttons {
-		margin-bottom: var(--goldencat--spacing-vertical);
+		margin-bottom: var(--wp--custom--spacing--vertical);
 		display: flex;
 		justify-content: center;
 
@@ -36,6 +60,17 @@
 			left: 50%;
 			transform: translateX(-50%);
 		}
+	}
+
+	.wpcf7-spinner {
+		display: block;
+	}
+
+	.wpcf7-submit {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		width: calc(50% - var(--wp--style--block-gap, .5em) * 0.5);
 	}
 
 	// p > .wpcf7-form-control-wrap {
@@ -64,14 +99,14 @@
 	.wpcf7-not-valid-tip {
 		padding-top: 0.6rem;
 		color: var(--wp--preset--color--red);
-		font-size: var(--goldencat--font-size-base);
+		font-size: var(--wp--preset--font-size--medium);
 	}
 
 
 	.site & form .wpcf7-response-output {
 		margin-left: 0;
 		margin-right: 0;
-		margin-top: calc(1 * var(--goldencat--spacing-vertical));
+		margin-top: calc(1 * var(--wp--custom--spacing--vertical));
 		border: none;
 		padding: 1.3rem;
 	}
@@ -109,13 +144,31 @@
 		// display: block;
 
 		label {
-			display: flex;
-			align-items: center;
-			margin-bottom: 0;
+
+			@include media(tablet) {
+				display: flex;
+				align-items: center;
+				margin-bottom: 0;
+			}
 
 			.wpcf7-list-item-label {
 				padding-left: 0.5rem;
 				// vertical-align: super;
+			}
+		}
+	}
+
+	.wpcf7-form-control.wpcf7-checkbox {
+
+		@include media(tablet) {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.wpcf7-list-item {
+
+			@include media(tablet) {
+				flex-basis: 50%;
 			}
 		}
 	}

@@ -1,37 +1,9 @@
-.entry-title {
-	@extend %responsive-alignwide-width;
-
-	a {
-		color: currentColor;
-
-		&:active {
-			color: currentColor;
-		}
-	}
-}
-
 .post-thumbnail {
 
 	img {
 		width: 100%;
 	}
 }
-
-.entry-header {
-
-	.go-back-link {
-		display: flex;
-		align-items: center;
-
-		&::after {
-			margin-right: 10px;
-			margin-left: 0;
-			transform: scaleX(-1);
-			order: -1;
-		}
-	}
-}
-
 
 /**
  * Entry Content
@@ -46,18 +18,9 @@
 	// Overwrite iframe embeds that have inline styles.
 	> iframe[style] {
 
-		margin: var(--goldencat--spacing-vertical) 0 !important;
+		margin: var(--wp--custom--spacing--vertical) 0 !important;
 		max-width: 100% !important;
 	}
-
-	// Classic editor audio embeds.
-	.wp-audio-shortcode {
-		@extend %responsive-aligndefault-width;
-	}
-}
-
-.entry-footer {
-	@extend %responsive-alignwide-width;
 }
 
 .goldencat-social-share {

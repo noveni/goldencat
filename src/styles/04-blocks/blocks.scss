@@ -5,30 +5,30 @@
 //   files and conditionally loaded
 
 @import "button/style";
-@import "code/style";
-@import "columns/style";
+// @import "code/style";
+// @import "columns/style";
 @import "cover/style";
-@import "gallery/style";
-@import "group/style";
-@import "heading/style";
-@import "image/style";
-@import "latest-posts/style";
-@import "legacy/style"; // "Blocks" from the legacy WP editor, ie: galleries, .button class, etc.
-@import "list/style";
+// @import "gallery/style";
+// @import "group/style";
+// @import "heading/style";
+// @import "image/style";
+// @import "latest-posts/style";
+// @import "legacy/style"; // "Blocks" from the legacy WP editor, ie: galleries, .button class, etc.
+// @import "list/style";
 @import "media-text/style";
-@import "paragraph/style";
-@import "preformatted/style";
-@import "pullquote/style";
-@import "quote/style";
-@import "social-icons/style";
-@import "spacer/style";
-@import "table/style";
-@import "tag-clould/style";
-@import "verse/style";
-@import "video/style";
-@import "post-template/style";
-@import "post-terms/style";
-@import "query/style";
-@import "query-pagination/style";
-@import "utilities/font-sizes";
+// @import "paragraph/style";
+// @import "preformatted/style";
+// @import "pullquote/style";
+// @import "quote/style";
+// @import "social-icons/style";
+// @import "spacer/style";
+// @import "table/style";
+// @import "tag-clould/style";
+// @import "verse/style";
+// @import "video/style";
+// @import "post-template/style";
+// @import "post-terms/style";
+// @import "query/style";
+// @import "query-pagination/style";
+// @import "utilities/font-sizes";
 @import "utilities/style"; // Import LAST to cascade properly

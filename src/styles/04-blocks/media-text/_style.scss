@@ -1,63 +1,58 @@
 .wp-block-media-text {
 
-	&.alignfull {
+	// &.alignfull {
 
-		@include media(laptop) {
-			margin-top: calc(2.5 * var(--goldencat--spacing-vertical));
-			margin-bottom: calc(2.5 * var(--goldencat--spacing-vertical));
+	// 	@include media(laptop) {
+	// 		margin-top: calc(2.5 * var(--goldencat--spacing-vertical));
+	// 		margin-bottom: calc(2.5 * var(--goldencat--spacing-vertical));
+	// 	}
+	// }
+
+	// a:focus img {
+	// 	outline-offset: -1px;
+	// }
+
+	.wp-block-media-text__content {
+		padding: var(--wp--preset--spacing--25);
+
+		@include media(tablet) {
+			padding: 0 var(--wp--preset--spacing--50);
 		}
-	}
-
-	a:focus img {
-		outline-offset: -1px;
 	}
 
 	&.alignfull .wp-block-media-text__content {
 
 		@include media(laptop) {
-			padding-right: var(--responsive--alignfull-content-gutter);
-			padding-left: calc(1.5 * var(--goldencat--spacing-horizontal));
+			padding-right: var(--wp--custom--responsive--full-content-gutter-size-width);
+			padding-left: calc(1.5 * var(--wp--custom--spacing--horizontal));
 		}
 
 		@include media(desktop) {
-			padding-left: calc(1.8 * var(--goldencat--spacing-horizontal));
+			padding-left: calc(1.8 * var(--wp--custom--spacing--horizontal));
 		}
 	}
 
 	&.alignfull.has-media-on-the-right .wp-block-media-text__content {
 		@include media(laptop) {
-			padding-left: var(--responsive--alignfull-content-gutter);
-			padding-right: calc(1.5 * var(--goldencat--spacing-horizontal));
+			padding-left: var(--wp--custom--responsive--full-content-gutter-size-width);
+			padding-right: calc(1.5 * var(--wp--custom--spacing--horizontal));
 		}
 
 		@include media(desktop) {
-			padding-right: calc(1.8 * var(--goldencat--spacing-horizontal));
+			padding-right: calc(1.8 * var(--wp--custom--spacing--horizontal));
 		}
 	}
 
-	// @include media(laptop) {
+	// /**
+	//  * Block Options
+	//  */
 
-	// 	&.alignfull.has-media-on-the-right .wp-block-media-text__content {
-	// 		margin-left: auto;
-	// 		padding-left: 0;
-	// 	}
-
-	// 	&.alignfull:not(.has-media-on-the-right) .wp-block-media-text__content {
-	// 		padding-right: 0;
-	// 		margin-right: auto;
+	// &.is-stacked-on-mobile .wp-block-media-text__content {
+	// 	@include media(mobile) {
+	// 		padding-top: var(--goldencat--spacing-vertical);
+	// 		padding-bottom: var(--goldencat--spacing-vertical);
 	// 	}
 	// }
-
-	/**
-	 * Block Options
-	 */
-
-	&.is-stacked-on-mobile .wp-block-media-text__content {
-		@include media(mobile) {
-			padding-top: var(--goldencat--spacing-vertical);
-			padding-bottom: var(--goldencat--spacing-vertical);
-		}
-	}
 
 	// Block Styles
 

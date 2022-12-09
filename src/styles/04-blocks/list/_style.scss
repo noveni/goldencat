@@ -1,7 +1,6 @@
 ul,
 ol {
 	margin: 0;
-	padding-left: calc(0.7 * var(--goldencat--spacing-horizontal));
 
 	// Utility classes
 	&.aligncenter {
@@ -17,7 +16,7 @@ ol {
 }
 
 ul {
-	list-style-type: disc;
+	list-style: none;
 }
 
 ol {
@@ -31,6 +30,22 @@ dt {
 dd {
 	margin: 0;
 	padding-left: calc(0.7 * var(--goldencat--spacing-horizontal));
+}
+
+.is-style-goldencat-light-point {
+
+	li {
+		line-height: 18px;
+		position: relative;
+		margin-bottom: 18px;
+	}
+
+	li::before {
+		content: "\2022";
+		font-size: 9px;
+		position: absolute;
+		margin-left: -10px;
+	}
 }
 
 .is-style-goldencat-list-horizontal {
@@ -48,6 +63,7 @@ ol.is-style-goldencat-list-horizontal {
 		counter-increment: goldencat-list-horizontal-counter;
 		padding-right: calc(1 * var(--goldencat--spacing-horizontal));
 		text-align: center;
+		font-size: var(--wp--preset--font-size--h-4);
 
 		&:last-child {
 			padding-right: 0;
@@ -55,17 +71,16 @@ ol.is-style-goldencat-list-horizontal {
 	}
 
 	li::before {
-		content: counter(goldencat-list-horizontal-counter);
+		content: counter(goldencat-list-horizontal-counter) ".";
 		@include theme-numbered-step();
-		display: block;
-		line-height: 41px;
-		margin-right: auto;
-		margin-left: auto;
+		display: inline-block;
+		// margin-right: auto;
+		// margin-left: auto;
 
-		@include media(tablet) {
-			margin-right: 1rem;
-			margin-left: unset;
-			display: inline-block;
-		}
+		// @include media(tablet) {
+		// 	margin-right: 1rem;
+		// 	margin-left: unset;
+		// 	display: inline-block;
+		// }
 	}
 }

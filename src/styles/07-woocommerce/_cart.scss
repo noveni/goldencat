@@ -181,10 +181,6 @@ table.cart {
 	> p:first-child {
 		margin: 0;
 	}
-
-	.shipping-calculator-form {
-		padding-top: ms(2);
-	}
 }
 
 ul#shipping_method { /* stylelint-disable-line */
@@ -193,10 +189,6 @@ ul#shipping_method { /* stylelint-disable-line */
 
 	li {
 		margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
-
-		&:last-child {
-			margin-bottom: 0;
-		}
 	}
 }
 

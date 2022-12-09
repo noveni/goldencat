@@ -11,6 +11,12 @@
 	max-width: var(--responsive--alignwide-width);
 }
 
+// Editor UI font styles
+.wp-block.block-editor-default-block-appender > textarea {
+	font-family: var(--wp--preset--font-family--secondary);
+	font-size: var(--goldencat--font-size-md);
+}
+
 // Gutenberg text color options
 .has-primary-color[class] {
 	color: var(--goldencat--color-primary);
@@ -164,7 +170,6 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-
 
 .goldencat-text-justify {
 	text-align: justify;

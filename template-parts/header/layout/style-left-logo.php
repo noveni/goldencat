@@ -12,7 +12,7 @@
 
 ?>
 
-<div class="header-layout header-layout-style-left-logo">
+<div class="header-layout header-layout-style-left-logo alignwide">
 
 
     <!-- Logo Site -->

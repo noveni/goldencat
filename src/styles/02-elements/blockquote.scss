@@ -1,11 +1,11 @@
 blockquote {
 	padding: 0;
 	position: relative;
-	margin: var(--global--spacing-vertical) 0 var(--global--spacing-vertical) var(--global--spacing-horizontal);
+	margin: var(--goldencat--spacing-vertical) 0 var(--goldencat--spacing-vertical) var(--goldencat--spacing-horizontal);
 
 	> * {
-		margin-top: var(--global--spacing-unit);
-		margin-bottom: var(--global--spacing-unit);
+		margin-top: var(--goldencat--spacing-unit);
+		margin-bottom: var(--goldencat--spacing-unit);
 
 		&:first-child {
 			margin-top: 0;
@@ -17,20 +17,16 @@ blockquote {
 	}
 
 	p {
-		font-size: var(--global--font-size-base);
-		font-style: italic;
-		font-weight: 500;
-		letter-spacing: 0.27px;
-		text-align: center;
-		line-height: 18px;
-		//line-height: $global--line-height-body;
+		@extend %theme-title-style;
+		@extend %theme-title-h1;
+		font-style: normal;
 	}
 
 	cite,
 	footer {
 		font-weight: normal;
-		color: var(--global--color-primary);
-		font-size: var(--global--font-size-xs);
+		color: var(--goldencat--color-primary);
+		font-size: var(--goldencat--font-size-xs);
 	}
 
 	&.alignleft,
@@ -54,20 +50,20 @@ blockquote {
 
 	&:before {
 		content: "\201C";
-		//line-height: $global--line-height-body;
+		//line-height: $goldencat--line-height-body;
 		position: absolute;
-		left: calc(-0.5 * var(--global--spacing-horizontal));
+		left: calc(-0.5 * var(--goldencat--spacing-horizontal));
 	}
 
 	.wp-block-quote__citation,
 	cite,
 	footer {
-		color: var(--global--color-primary);
+		color: var(--goldencat--color-primary);
 		font-style: normal;
 	}
 
 	@include media(mobile-only) {
-		padding-left: calc(0.5 * var(--global--spacing-horizontal));
+		padding-left: calc(0.5 * var(--goldencat--spacing-horizontal));
 
 		&:before {
 			left: 0;

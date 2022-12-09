@@ -1,0 +1,21 @@
+#header-notice-bar {
+	padding-top: 1px;
+	padding-bottom: 5px;
+	background-color: var(--wp--preset--color--rose-light);
+
+	// a {
+	// 	color: var(--goldencat--color-white);
+	// 	text-decoration: none;
+	// }
+
+	p {
+		margin: 0;
+		font-size: 12px;
+		font-weight: 300;
+
+		@include media(tablet) {
+			font-size: 16px;
+			line-height: 26px;
+		}
+	}
+}

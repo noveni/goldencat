@@ -17,7 +17,7 @@ get_header();
 if ( have_posts() ) :
 
 	if ( ! is_singular() ): ?>
-	<div class="alignwide">
+	<div class="is-layout-constrained">
 		<div class="goldencat-grid">
 	<?php endif;
 	/* Start the Loop */

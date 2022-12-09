@@ -10,7 +10,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+	<header class="entry-header is-layout-constrained">
 		<?php
 		if ( is_singular() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
@@ -33,7 +33,7 @@
 
 	<?php goldencat_post_thumbnail(); ?>
 
-	<div class="entry-content">
+	<div class="entry-content is-layout-constrained">
 		<?php
 		the_content(
 			sprintf(
@@ -59,16 +59,17 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
+	<footer class="entry-footer is-layout-constrained">
 		<?php
 
 		if ( is_single() ) :
 
+			?>
+			<div><?php
 			goldencat_posted_on();
 			goldencat_posted_by();
-
 			?>
-
+			</div>
 			<div class="excerpt-term">
 			<?php echo goldencat_get_the_term_list( 'category', null, ', '); ?>
 			</div>

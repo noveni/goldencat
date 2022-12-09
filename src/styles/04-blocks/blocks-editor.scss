@@ -5,25 +5,25 @@
 //   files and conditionally loaded
 
 @import "button/editor";
-@import "code/editor";
+// @import "code/editor";
 @import "cover/editor";
-@import "columns/editor";
-@import "gallery/editor";
-@import "group/editor";
-@import "heading/style";
-@import "html/editor";
-@import "image/editor";
-@import "latest-posts/editor";
-@import "legacy/editor"; // "Blocks" from the legacy WP editor, ie: galleries, .button class, etc.
-@import "list/editor";
+// @import "columns/editor";
+// @import "gallery/editor";
+// @import "group/editor";
+// @import "heading/style";
+// @import "html/editor";
+// @import "image/editor";
+// @import "latest-posts/editor";
+// @import "legacy/editor"; // "Blocks" from the legacy WP editor, ie: galleries, .button class, etc.
+// @import "list/editor";
 @import "media-text/editor";
-@import "paragraph/editor";
-@import "preformatted/editor";
-@import "pullquote/editor";
-@import "quote/editor";
-@import "social-icons/editor";
-@import "table/editor";
-@import "tag-clould/editor";
-@import "verse/editor";
-@import "utilities/font-sizes";
+// @import "paragraph/editor";
+// @import "preformatted/editor";
+// @import "pullquote/editor";
+// @import "quote/editor";
+// @import "social-icons/editor";
+// @import "table/editor";
+// @import "tag-clould/editor";
+// @import "verse/editor";
+// @import "utilities/font-sizes";
 @import "utilities/editor"; // Import LAST to cascade properly

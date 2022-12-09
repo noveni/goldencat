@@ -1,80 +1,69 @@
+// Buttons
+
+.wp-element-button,
 .wp-block-button__link {
-	// Extend button style
-	// @include button-style();
-}
+	cursor: pointer;
+	will-change: color, background-color;
+	transition: color 0.25s ease, background-color 0.25s ease;
 
-/**
- * Block Options
- */
-
-// The parent container does not need outer margins applied.
-// The children should all have top and bottom margins.
-[data-block].wp-block-buttons {
-	margin-top: 0;
-	margin-bottom: 0;
-
-	.wp-block-button:first-child {
-		margin-top: var(--goldencat--spacing-vertical);
+	strong {
+		white-space: inherit;
 	}
 
-	.wp-block-button:last-child {
-		margin-bottom: var(--goldencat--spacing-vertical);
-	}
-}
 
-.wp-block-button {
+	&.has-black-real-background-color.has-background,
+	&.has-black-background-color.has-background,
+	&.has-white-color.has-text-color {
 
-	// Target the default and filled button states.
-	.wp-block-button__link {
-
-		text-align: center;
-		word-break: break-word;
-		cursor: pointer;
-		will-change: color, background-color;
-		transition: color 0.25s ease, background-color 0.25s ease;
-		box-sizing: border-box;
-		box-shadow: none;
-
-		&:focus,
-		&:active,
 		&:hover {
-			background-color: transparent;
-			// border: 1px solid var(--goldencat--color-background);
-			color: var(--goldencat--color-primary);
+			background-color: transparent !important;
+			color: var(--wp--preset--color--black) !important;
 		}
 	}
 
-	// Outline Style.
-	&.is-style-outline {
+	&.has-white-background-color.has-background-color {
 
-		.wp-block-button__link {
-			background: transparent;
-			color: currentColor;
-
-			&:focus,
-			&:active,
-			&:hover {
-				background-color: var(--goldencat--color-primary);
-				// border: 1px solid var(--goldencat--color-background);
-				color: var(--goldencat--color-background);
-			}
+		&:hover {
+			background-color: var(--wp--preset--color--black) !important;
+			color: var(--wp--preset--color--white) !important;
 		}
 	}
 
-	// Squared Style
-	&.is-style-squared {
-		border-radius: 0;
-	}
+	.is-style-filled & {
+		background-color: var(--wp--preset--color--black) !important;
+		color: var(--wp--preset--color--white) !important;
 
-	&.is-style-goldencat-button-arrow {
-
-		.wp-block-button__link {
-			@include theme-button-arrow;
+		&:hover {
+			background-color: transparent !important;
+			color: var(--wp--preset--color--black) !important;
 		}
 	}
+
+	.is-style-goldencat-button-arrow & {
+		@include theme-button-arrow;
+	}
+
+	.is-style-goldencat-button-link & {
+		font-size: 13px;
+		color: var(--goldencat--color-primary);
+		background-color: transparent;
+		border: none;
+		padding-left: 0;
+		padding-right: 0;
+		position: relative;
+
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}
+	}
+
+
 }
 
-.is-style-outline .wp-block-button__link[style*="radius"],
-.wp-block-button__link[style*="radius"] {
-	outline-offset: 2px;
+.wp-block-buttons > .wp-block-button.has-custom-width {
+
+	@include media(tablet-only) {
+		width: auto;
+	}
 }

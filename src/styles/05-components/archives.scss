@@ -1,7 +1,35 @@
-.page-title {
-	@extend %responsive-alignwide-width;
-}
+// Front Style
+.goldencat-child-term-of-taxonomy {
+	margin-bottom: var(--wp--preset--spacing--20);
 
-.page-header {
-	@extend %responsive-alignwide-width;
+	.term-filter-tag {
+		font-family: var(--wp--preset--font-family--primary-book);
+		font-size: var(--wp--preset--font-size--courant);
+		font-weight: normal;
+		text-decoration: none;
+
+		display: inline-block;
+		margin: 0 5px 8px;
+		border-bottom: 1px solid transparent;
+
+		@include media(tablet) {
+			font-size: var(--wp--preset--font-size--h-6);
+			margin: 0 7px 14px;
+		}
+
+		&:hover,
+		&.active {
+			border-bottom: 1px solid var(--wp--preset--color--nouveau-gris, #000);
+		}
+	}
+
+	.term-of-taxonomy-row {
+
+		@include media(tablet) {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+	}
+
 }

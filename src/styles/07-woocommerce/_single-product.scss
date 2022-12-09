@@ -1,7 +1,7 @@
 /**
  * Single Product
  */
- .single-product {
+.single-product {
 
 	.pswp__button {
 		background-color: transparent;
@@ -248,12 +248,13 @@
 			font-family: var(--wp--preset--font-family--primary);
 			font-weight: 400;
 			font-size: var(--wp--preset--font-size--h-3);
-			line-height: 45px;
+			line-height: 56px;
 			letter-spacing: 0;
 			margin: 0;
 
 			@include media(tablet) {
 				text-align: right;
+				margin-left: 7px;
 			}
 		}
 
@@ -642,10 +643,10 @@ a.reset_variations {
 
 }
 
-.wcsatt-options-prompt-text-label {
-	@extend %theme-title-style;
-	@extend %theme-title-h3;
-}
+// .wcsatt-options-prompt-text-label {
+// 	@extend %theme-title-style;
+// 	@extend %theme-title-h3;
+// }
 
 .wcsatt-options-prompt-radios {
 	display: flex;

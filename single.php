@@ -22,10 +22,12 @@ while ( have_posts() ) :
 	$goldencat_next_label     = esc_html__( 'Article suivant', 'goldencat' );
 	$goldencat_previous_label = esc_html__( 'Article précédent', 'goldencat' );
 
+
 	the_post_navigation(
 		array(
 			'next_text' => '<span class="nav-subtitle">' . $goldencat_next_label . $goldencat_next . '</span><p class="nav-title">%title</p>',
 			'prev_text' => '<span class="nav-subtitle">' . $goldencat_prev . $goldencat_previous_label . '</span><p class="nav-title">%title</p>',
+			'class' 	=> 'is-layout-constrained'
 		)
 	);
 endwhile; // End of the loop.

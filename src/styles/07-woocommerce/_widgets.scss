@@ -55,18 +55,18 @@
 		}
 	}
 
-	@media (min-width: $breakpoint_md) and (max-width: 1024px) {
+	// @media (min-width: $breakpoint_md) and (max-width: 1024px) {
 
-		.price_slider_amount {
-			text-align: left;
+	// 	.price_slider_amount {
+	// 		text-align: left;
 
-			.button {
-				display: block;
-				float: none;
-				width: 100%;
-			}
-		}
-	}
+	// 		.button {
+	// 			display: block;
+	// 			float: none;
+	// 			width: 100%;
+	// 		}
+	// 	}
+	// }
 
 	.ui-slider {
 		position: relative;

@@ -1,4 +1,4 @@
-$default-grid-gutter: 2%;
+$default-grid-gutter: 45px;
 
 .goldencat-grid {
 
@@ -24,7 +24,7 @@ $default-grid-gutter: 2%;
 
 		@include media(tablet) {
 			> .goldencat-grid__col-#{$i} {
-				@include grid-col($col: $i, $gutter: 2em);
+				@include grid-col($col: $i, $gutter: 45px);
 			}
 		}
 	}

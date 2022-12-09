@@ -19,7 +19,15 @@
 		padding: calc(0.666 * var(--goldencat--spacing-vertical));
 
 		@include media(mobile) {
-			padding: calc(0.7 * var(--goldencat--spacing-vertical));
+			padding: calc(2 * var(--goldencat--spacing-vertical));
+		}
+
+		// Adjust alignfull items to account for left and right padding.
+		.wp-block-group__inner-container > .alignfull,
+		.wp-block-group__inner-container > hr.wp-block-separator:not(.is-style-dots):not(.alignwide).alignfull {
+			max-width: calc(var(--responsive--alignfull-width) + (2 * var(--goldencat--spacing-vertical)));
+			width: calc(var(--responsive--alignfull-width) + (2 * var(--goldencat--spacing-vertical)));
+			margin-left: calc(-1 * var(--goldencat--spacing-vertical));
 		}
 	}
 

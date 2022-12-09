@@ -3,149 +3,122 @@
  * Root Media Query Variables
  */
 body {
-	--responsive--spacing-horizontal: calc(2 * var(--goldencat--spacing-horizontal) * 0.6);
-	--responsive--content-size-width: calc(100vw - var(--responsive--spacing-horizontal));
-	--responsive--alignwide-width: calc(100vw - var(--responsive--spacing-horizontal));
-	--responsive--alignfull-width: 100%;
-	--responsive--alignright-margin: var(--goldencat--spacing-horizontal);
-	--responsive--alignleft-margin: var(--goldencat--spacing-horizontal);
-	--responsive--alignfull-content-gutter: calc(2px + calc(0.5 * calc(100vw - var(--responsive--alignwide-width))));
-	--responsive--aligndefault-content-gutter: calc(0.5 * calc(100vw - var(--responsive--aligndefault-width)));
+	--wp--style--global--content-size: var(--wp--custom--responsive--content-size-width);
+	--wp--style--global--wide-size: var(--wp--custom--responsive--wide-size-width);
 }
 
 @include media(tablet) {
 
 	body {
-		--responsive--content-size-width: min(calc(100vw - 4 * var(--goldencat--spacing-horizontal)), #{$layout-content-size});
-		--responsive--alignwide-width: calc(100vw - 4 * var(--goldencat--spacing-horizontal));
-		--responsive--alignright-margin: calc(0.5 * (100vw - var(--responsive--content-size-width)));
-		--responsive--alignleft-margin: calc(0.5 * (100vw - var(--responsive--content-size-width)));
-		--responsive--alignfull-content-gutter: calc(2px + calc(0.5 * calc(100vw - var(--responsive--alignwide-width))));
-		--responsive--aligndefault-content-gutter: calc(0.5 * calc(100vw - var(--responsive--content-size-width)));
+		--wp--custom--responsive--content-size-width: min(calc(100vw - 4 * var(--wp--custom--spacing--horizontal)), var(--wp--custom--layout--content-size));
+		--wp--custom--responsive--wide-size-width: calc(100vw - 4 * var(--wp--custom--spacing--horizontal));
+		// --wp--custom--responsive--full-size-width: 100%;
+		--wp--custom--responsive--full-content-gutter-size-width: calc(2px + calc(0.5 * calc(100vw - var(--wp--custom--responsive--wide-size-width))));
+		--wp--custom--responsive--default-content-gutter-size-width: calc(0.5 * calc(100vw - var(--wp--custom--responsive--content-size-width)));
 	}
 }
 
 @include media(desktop) {
 
 	body {
-		--responsive--content-size-width: min(calc(100vw - 8 * var(--goldencat--spacing-horizontal)), #{$layout-content-size});
-		--responsive--alignwide-width: min(calc(100vw - 8 * var(--goldencat--spacing-horizontal)), #{$layout-wide-size});
-		--responsive--alignfull-content-gutter: calc(2px + calc(0.5 * calc(100vw - var(--responsive--alignwide-width))));
-		--responsive--aligndefault-content-gutter: calc(0.5 * calc(100vw - var(--responsive--content-size-width)));
+		--wp--custom--responsive--content-size-width: min(calc(100vw - 8 * var(--wp--custom--spacing--horizontal)), var(--wp--custom--layout--content-size));
+		--wp--custom--responsive--wide-size-width: min(calc(100vw - 8 * var(--wp--custom--spacing--horizontal)), var(--wp--custom--layout--wide-size));
+		--wp--custom--responsive--full-content-gutter-size-width: calc(2px + calc(0.5 * calc(100vw - var(--wp--custom--responsive--wide-size-width))));
+		--wp--custom--responsive--default-content-gutter-size-width: calc(0.5 * calc(100vw - var(--wp--custom--responsive--content-size-width)));
 	}
 }
 
-/**
- * Extends
- */
-%responsive-aligndefault-width {
-	max-width: var(--responsive--content-size-width);
+
+// body {
+// 	--responsive--spacing-horizontal: calc(2 * var(--goldencat--spacing-horizontal) * 0.6);
+// 	--responsive--content-size-width: calc(100vw - var(--responsive--spacing-horizontal));
+// 	--responsive--alignwide-width: calc(100vw - var(--responsive--spacing-horizontal));
+// 	--responsive--alignfull-width: 100%;
+// 	--responsive--alignright-margin: var(--goldencat--spacing-horizontal);
+// 	--responsive--alignleft-margin: var(--goldencat--spacing-horizontal);
+// 	--responsive--alignfull-content-gutter: calc(2px + calc(0.5 * calc(100vw - var(--responsive--alignwide-width))));
+// 	--responsive--aligndefault-content-gutter: calc(0.5 * calc(100vw - var(--responsive--aligndefault-width)));
+// }
+
+// @include media(tablet) {
+
+// 	body {
+// 		--responsive--content-size-width: min(calc(100vw - 4 * var(--goldencat--spacing-horizontal)), #{$layout-content-size});
+// 		--responsive--alignwide-width: calc(100vw - 4 * var(--goldencat--spacing-horizontal));
+// 		--responsive--alignright-margin: calc(0.5 * (100vw - var(--responsive--content-size-width)));
+// 		--responsive--alignleft-margin: calc(0.5 * (100vw - var(--responsive--content-size-width)));
+// 		--responsive--alignfull-content-gutter: calc(2px + calc(0.5 * calc(100vw - var(--responsive--alignwide-width))));
+// 		--responsive--aligndefault-content-gutter: calc(0.5 * calc(100vw - var(--responsive--content-size-width)));
+// 	}
+// }
+
+// @include media(desktop) {
+
+// 	body {
+// 		--responsive--content-size-width: min(calc(100vw - 8 * var(--goldencat--spacing-horizontal)), #{$layout-content-size});
+// 		--responsive--alignwide-width: min(calc(100vw - 8 * var(--goldencat--spacing-horizontal)), #{$layout-wide-size});
+// 		--responsive--alignfull-content-gutter: calc(2px + calc(0.5 * calc(100vw - var(--responsive--alignwide-width))));
+// 		--responsive--aligndefault-content-gutter: calc(0.5 * calc(100vw - var(--responsive--content-size-width)));
+// 	}
+// }
+
+// /**
+//  * Extends
+//  */
+// %responsive-aligndefault-width {
+// 	max-width: var(--responsive--content-size-width);
+// 	margin-left: auto;
+// 	margin-right: auto;
+// }
+
+// %responsive-alignwide-width {
+// 	max-width: var(--responsive--alignwide-width);
+// 	margin-left: auto;
+// 	margin-right: auto;
+// }
+
+// %responsive-alignfull-width {
+// 	max-width: var(--responsive--alignfull-width);
+// 	width: auto;
+// 	margin-left: auto;
+// 	margin-right: auto;
+// }
+
+// %responsive-alignleft {
+
+// 	/*rtl:ignore*/
+// 	margin-left: var(--responsive--alignleft-margin);
+
+// 	/*rtl:ignore*/
+// 	margin-right: var(--goldencat--spacing-horizontal);
+// }
+
+// %responsive-alignright {
+
+// 	/*rtl:ignore*/
+// 	margin-left: var(--goldencat--spacing-horizontal);
+
+// 	/*rtl:ignore*/
+// 	margin-right: var(--responsive--alignright-margin);
+// }
+
+
+// // Output
+
+.aligncenter {
+
+	> * {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+@mixin alignwide {
+	max-width: var(--wp--style--global--wide-size);
 	margin-left: auto;
 	margin-right: auto;
-}
-
-%responsive-alignwide-width {
-	max-width: var(--responsive--alignwide-width);
-	margin-left: auto;
-	margin-right: auto;
-}
-
-%responsive-alignfull-width {
-	max-width: var(--responsive--alignfull-width);
-	width: auto;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-%responsive-alignleft {
-
-	/*rtl:ignore*/
-	margin-left: var(--responsive--alignleft-margin);
-
-	/*rtl:ignore*/
-	margin-right: var(--goldencat--spacing-horizontal);
-}
-
-%responsive-alignright {
-
-	/*rtl:ignore*/
-	margin-left: var(--goldencat--spacing-horizontal);
-
-	/*rtl:ignore*/
-	margin-right: var(--responsive--alignright-margin);
-}
-
-
-// Output
-.default-max-width {
-	@extend %responsive-aligndefault-width;
-}
-
-.wide-max-width {
-	@extend %responsive-alignwide-width;
-}
-
-.full-max-width {
-	@extend %responsive-alignfull-width;
-}
-
-.entry-content > * {
-	@extend %responsive-aligndefault-width;
-	// margin-left: auto !important;
-	// margin-right: auto !important;
 }
 
 .alignwide {
-	@extend %responsive-alignwide-width;
-
-	.entry-content > & {
-		clear: both;
-	}
-}
-
-.alignfull {
-	@extend %responsive-alignfull-width;
-
-	.entry-content > & {
-		clear: both;
-	}
-}
-
-.entry-content > .alignleft {
-
-	text-align: left;
-
-	max-width: var(--responsive--content-size-width);
-	@extend %responsive-alignleft;
-
-	float: left;
-
-	@include media(tablet) {
-		max-width: calc(50% - var(--responsive--alignleft-margin));
-	}
-}
-
-.entry-content > .alignright {
-
-	max-width: var(--responsive--content-size-width);
-	@extend %responsive-alignright;
-
-	float: right;
-
-	@include media(tablet) {
-		max-width: calc(50% - var(--responsive--alignleft-margin));
-	}
-}
-
-
-/**
- * .aligncenter
- */
-.aligncenter {
-	clear: both;
-	display: block;
-	float: none;
-	margin-right: auto;
-	margin-left: auto;
-	text-align: center;
+	@include alignwide();
 }

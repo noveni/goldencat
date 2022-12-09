@@ -1,45 +1,112 @@
-
-%menu-item-footer {
+@mixin menu-item-style {
+	// display: inline-block;
 	font-size: var(--wp--preset--font-size--menu);
-	font-weight: 500;
-	letter-spacing: 2px;
-	line-height: 24px;
-	text-align: center;
+	font-weight: 600;
 	text-decoration: none;
 	text-transform: uppercase;
-
-	@include media(tablet) {
-		line-height: 30px;
-	}
+	position: relative;
+	text-align: center;
 }
 
-%theme-input-text-and-placeholder-style {
-	font-family: var(--wp--preset--font-family--primary);
-	font-style: italic;
-	font-weight: 300;
-	font-size: 13px;
-	color: var(--form--color-text);
-	letter-spacing: 0.27px;
-	line-height: 18px;
+// %menu-item-footer {
+// 	font-size: 14px;
+// 	font-weight: 400;
+// 	letter-spacing: 0;
+// 	line-height: 26px;
+// 	text-decoration: none;
+// 	color: var(--goldencat--color-gray);
+// }
 
-	&::placeholder {
-		font-weight: 300;
-		color: var(--goldencat--color-primary);
-	}
-}
+// %footer-title-style {
+// 	font-family: var(--wp--preset--font-family--primary);
+// 	font-weight: 600;
+// 	font-size: 14px;
+// 	color: var(--goldencat--color-black);
+// 	letter-spacing: 0;
+// 	line-height: 28px;
+// 	text-transform: uppercase;
+// }
 
+// %theme-button-style {
+// 	font-family: var(--wp--preset--font-family--secondary);
+// 	letter-spacing: 0;
+// 	color: var(--goldencat--color-background);
+// 	font-weight: 600;
+// 	font-size: 20px;
+// 	cursor: pointer;
+// 	background-color: var(--goldencat--color-third);
+// 	border-radius: 0;
+// 	border: 3px solid var(--goldencat--color-third);
+// 	text-decoration: none;
+// 	padding: var(--goldencat--button--padding-vertical) calc(2 * var(--goldencat--button--padding-horizontal));
+// 	text-align: center;
+// 	will-change: color, background-color;
+// 	transition: color 0.25s ease, background-color 0.25s ease;
+// }
 
-%theme-wc-price {
-	font-family: var(--wp--preset--font-family--primary);
-	font-size: var(--goldencat--font-size-base);
-	font-weight: bold;
-	font-style: italic;
-	color: var(--goldencat--color-third);
-	letter-spacing: 2.17px;
-	line-height: 16px;
-}
+// %theme-button-arrow-style {
+// 	font-size: 8px;
+// 	letter-spacing: 1.33px;
+// 	color: var(--button--color-text);
+// 	background-color: transparent;
+// 	padding: 0 0;
 
-%timing-detail-italic {
+// 	@include media(tablet) {
+// 		font-size: 8px;
+// 		font-size: var(--wp--preset--font-size--menu);
+// 		letter-spacing: 2.17px;
+// 		line-height: 16px;
+// 	}
+// }
+
+// %theme-title-style {
+// 	clear: both;
+// 	font-family: var(--wp--preset--font-family--secondary);
+// 	line-height: 1;
+// 	font-weight: 500;
+// 	letter-spacing: 0;
+// 	color: var(--wp--preset--color--black);
+// }
+
+// %theme-title-h1 {
+// 	font-size: var(--heading--font-size-h1);
+// 	line-height: 46px;
+// }
+
+// %theme-title-h2 {
+// 	font-size: var(--heading--font-size-h2);
+// 	line-height: 46px;
+// }
+
+// %theme-title-h3 {
+// 	font-size: var(--heading--font-size-h3);
+// }
+
+// %theme-title-h4 {
+// 	font-size: var(--heading--font-size-h4);
+// }
+
+// %theme-title-h5 {
+// 	font-size: var(--heading--font-size-h5);
+// }
+
+// %theme-title-h6 {
+// 	font-size: var(--heading--font-size-h6);
+// }
+
+// %theme-wc-product-grid_title {
+// 	font-size: var(--heading--font-size-h4);
+// }
+
+// %theme-wc-price {
+// 	font-family: var(--wp--preset--font-family--secondary);
+// 	font-style: italic;
+// 	line-height: 1;
+// 	font-size: var(--heading--font-size-h4);
+// 	color: var(--goldencat--color-third);
+// }
+
+@mixin timing-detail-italic {
 	font-family: var(--wp--preset--font-family--primary);
 	font-size: var(--global--font-size-base);
 	font-weight: 300;
@@ -48,7 +115,7 @@
 	line-height: 18px;
 }
 
-%theme-menu-style {
+@mixin theme-menu-style {
 	font-family: var(--wp--preset--font-family--primary);
 	font-size: var(--goldencat--font-size-base);
 	font-weight: 500;
@@ -63,4 +130,12 @@
 	font-size: 15px;
 	color: #000;
 	letter-spacing: 0;
+}
+
+.is-style-subtitle,
+.is-style-goldencat-subtitle {
+	font-family: var(--wp--preset--font-family--primary);
+	line-height: 18px;
+	font-size: var(--wp--preset--font-size--sous-icons);
+	text-transform: uppercase;
 }

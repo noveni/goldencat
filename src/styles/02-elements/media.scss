@@ -1,24 +1,24 @@
-img {
-	display: block;
-	height: auto;
-	max-width: 100%;
-}
+// img {
+// 	display: block;
+// 	height: auto;
+// 	max-width: 100%;
+// }
 
-svg {
-	width: 100%;
-	height: auto;
-}
+// svg {
+// 	width: 100%;
+// 	height: auto;
+// }
 
-svg.svg-has-size {
-	width: unset;
-	height: unset;
-}
+// svg.svg-has-size {
+// 	width: unset;
+// 	height: unset;
+// }
 
 
 /* Classic editor images */
-.entry-content img {
-	max-width: 100%;
-}
+// .entry-content img {
+// 	max-width: 100%;
+// }
 
 /* Make sure embeds and iframes fit their containers. */
 embed,
@@ -34,10 +34,9 @@ figcaption,
 .wp-caption-text,
 .wp-block-embed figcaption {
 	color: currentColor;
-	font-size: var(--goldencat--font-size-xs);
-	//line-height: $global--line-height-body;
-	margin-top: calc(0.5 * var(--goldencat--spacing-unit));
-	margin-bottom: var(--goldencat--spacing-unit);
+	font-size: var(--wp--preset--font-size--small);
+	margin-top: calc(0.5 * var(--wp--custom--spacing--unit));
+	margin-bottom: var(--wp--custom--spacing--unit);
 	text-align: center;
 
 	.alignleft &,

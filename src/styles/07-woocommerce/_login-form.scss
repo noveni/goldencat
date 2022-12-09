@@ -2,13 +2,6 @@
 .u-columns.col2-set {
 	display: flex;
 
-	> .u-column1 {
-		width: 33.33%;
-	}
-
-	> .u-column2 {
-		width: 33.33%;
-	}
 }
 
 .u-columns.col2-set#customer_login { /* stylelint-disable-line */
@@ -16,7 +9,7 @@
 
 	.u-column2,
 	.u-column1 {
-		width: 35%;
+		width: 40%;
 		text-align: center;
 
 		.form-row {
@@ -35,13 +28,15 @@
 		overflow: hidden;
 	}
 
+	// If the content is not wrapper in gutenberg blog
 	.entry-content > .woocommerce {
-		@extend %responsive-alignfull-width;
+		@include size-wide-width;
 	}
 
 	.goldencat-login-wrapper {
 
 		h2 {
+			display: none;
 			margin-bottom: calc(0.666 * var(--goldencat--spacing-vertical));
 		}
 

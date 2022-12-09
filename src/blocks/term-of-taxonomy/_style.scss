@@ -2,7 +2,7 @@
 .wp-block-goldencat-term-of-taxonomy {
 
 	.term-filter-tag {
-		@extend %theme-menu-style;
+		@include theme-menu-style; 
 		text-decoration: none;
 
 		padding: 13px 11px 10px;

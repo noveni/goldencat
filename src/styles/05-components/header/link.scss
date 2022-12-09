@@ -11,11 +11,10 @@
 		position: relative;
 		text-align: center;
 		line-height: 34px;
-		color: var(--primary-nav--color-link);
-
+		// color: var(--primary-nav--color-link);
 
 		svg {
-			fill: var(--primary-nav--color-link);
+			// fill: var(--primary-nav--color-link);
 		}
 	}
 
@@ -23,11 +22,11 @@
 		padding: 0;
 
 		@include media(tablet) {
-			padding: 0 calc(1 * var(--global--spacing-horizontal));
+			padding: 0 calc(1 * var(--wp--custom--spacing--horizontal));
 		}
 
 		@include media(desktop) {
-			padding: 0 calc(1.5 * var(--global--spacing-horizontal));
+			padding: 0 calc(1.5 * var(--wp--custom--spacing--horizontal));
 		}
 	}
 
@@ -37,28 +36,35 @@
 		font-weight: var(--wp--custom--menu--font-weight);
 
 		@include media(tablet) {
-			margin: 0 var(--goldencat--spacing-unit);
-			padding: var(--goldencat--spacing-unit);
+			margin: 0 var(--wp--custom--spacing--unit);
+			padding: var(--wp--custom--spacing--unit);
 		}
 
+
+		&::before,
+		&::after {
+			pointer-events: none;
+			content: "";
+			height: 1px;
+			width: 40%;
+			position: absolute;
+			background: var(--wp--custom--header--color--text, #000);
+			top: 90%;
+			opacity: 0;
+
+			transform-origin: 100% 50%;
+			transition: transform 0.15s linear, opacity 0.15s linear;
+		}
 
 		&::before {
-			content: "";
-			position: absolute;
-			width: 100%;
-			height: 1px;
-			background: var(--wp--style--color--link, var(--goldencat--color-primary));
-			top: 90%;
-			left: 0;
-			pointer-events: none;
-			transform-origin: 100% 50%;
-			transform: scale3d(0, 1, 1);
-			transition: transform 0.3s, opacity, 0.3s;
+			left: calc(3 * var(--wp--custom--spacing--unit));
+			transform: translateX(-80%);
 		}
 
-		&:hover::before {
-			transform-origin: 0% 50%;
-			transform: scale3d(1, 1, 1);
+		&::after {
+			right: calc(3 * var(--wp--custom--spacing--unit));
+			transform-origin: 100% 50%;
+			transform: translateX(80%);
 		}
 
 		&:focus {
@@ -68,23 +74,40 @@
 	}
 
 	// Style Menu On page
+	.menu-item a:hover,
 	.current-menu-item:not(.menu-item-type-custom) > a:first-child,
 	.current_page_item:not(.menu-item-type-custom) > a:first-child {
 
-		&::before {
+		&::before,
+		&::after {
 			transform-origin: 0% 50%;
-			transform: scale3d(1, 1, 1);
+			opacity: 1;
 		}
 
-		&:hover::before {
-			opacity: 0.4;
+		&::before {
+			transform: translateX(0);
 		}
+
+		&::after {
+			transform: translateX(0);
+		}
+
 	}
 
 	// Sub-menu depth indicators + text styles
 	.sub-menu {
-		// margin-left: $primary-nav--padding;
-		// border: 1px solid $primary-nav--border-color;
+
+		@include media(tablet-only) {
+			margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
+
+		}
+
+		a {
+			@include media(tablet-only) {
+				font-size: 12px;
+				font-weight: 500;
+			}
+		}
 
 		.sub-menu {
 			border: none;

@@ -14,25 +14,33 @@ input[type="time"],
 input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
+input[type="file"],
 .site textarea {
-	@extend %theme-input-text-and-placeholder-style;
-	width: 100%;
+	font-family: var(--wp--custom--input--typography--font-family);
+	font-weight: var(--wp--custom--input--typography--font-weight);
+	font-size: var(--wp--custom--input--typography--font-size);
+	line-height: var(--wp--custom--input--typography--line-height);
+	letter-spacing: 0;
 	border: none;
-	border-bottom: var(--goldencat--form--border-width) solid var(--goldencat--form--border-color);
-	border-radius: var(--goldencat--form--border-radius);
-	background-color: transparent;
-
-	padding: calc(0.7 * var(--goldencat--spacing-vertical)) 0 calc(0.3 * var(--goldencat--spacing-vertical));
-	// // Gives a little more space for the outline offset.
+	border: var(--wp--custom--input--border--width) var(--wp--custom--input--border--style) var(--wp--custom--input--border--color);
+	border-radius: var(--wp--custom--input--border--radius);
+	color: var(--wp--custom--input--color--text);
+	background-color: var(--wp--custom--input--color--background);
+	padding: calc(0.5 * var(--wp--custom--spacing--vertical)) calc(1 * var(--wp--custom--spacing--vertical)) calc(0.5 * var(--wp--custom--spacing--vertical));
 	max-width: 100%;
+	width: 100%;
+
+	&::placeholder {
+		font-weight: var(--wp--custom--input--typography--font-weight);
+		color: var(--wp--custom--input--color--text);
+	}
 
 	&:focus {
-		color: var(--goldencat--form--color-text);
-		// outline: none;
-		border-bottom-color: var(--goldencat--form--color-text);
-		border-bottom-width: 2px;
-		padding-bottom: calc(calc(0.3 * var(--goldencat--spacing-vertical)) - 1px);
+		color: var(--wp--custom--input--color--text);
 		outline: none;
+		border-bottom-color: var(--wp--custom--input--border--color);
+		border-bottom-width: 2px;
+		padding-bottom: calc(calc(0.5 * var(--wp--custom--spacing--vertical)) - 1px);
 	}
 
 	&:disabled {
@@ -44,6 +52,26 @@ input[type="color"],
 	}
 }
 
+.custom-file-upload.wp-element-button {
+
+	br {
+		display: none;
+	}
+
+	input[type="file"] {
+		display: none;
+	}
+}
+
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"] {
+	padding-inline-start: 0;
+}
+
 // Reset the negative offset from normalize to make the thicker "border" work on focus.
 input[type="search"] {
 
@@ -51,11 +79,6 @@ input[type="search"] {
 		outline-offset: -7px;
 	}
 }
-
-// input[type="color"] {
-// 	padding: calc(var(--goldencat--form--spacing-unit) / 2);
-// 	height: calc(4 * var(--goldencat--form--spacing-unit));
-// }
 
 input[type="email"],
 input[type="url"] {
@@ -67,52 +90,52 @@ input[type="url"] {
 select {
 	width: 100%;
 	border: none;
-	border-bottom: var(--goldencat--form--border-width) solid var(--goldencat--form--border-color);
-	color: var(--goldencat--form--color-text);
-	-moz-appearance: none;
-	-webkit-appearance: none;
+	border-bottom: var(--wp--custom--input--border--width) var(--wp--custom--input--border--style) var(--wp--custom--input--border--color);
+	color: var(--wp--custom--input--color--text);
 	appearance: none;
-	// padding: var(--goldencat--form--spacing-unit) calc(3 * var(--goldencat--form--spacing-unit)) var(--goldencat--form--spacing-unit) var(--goldencat--form--spacing-unit);
-	padding: calc(0.7 * var(--goldencat--spacing-vertical)) 0 calc(0.3 * var(--goldencat--spacing-vertical));
-	background: var(--wp--preset--color--white) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%2328303d'><polygon points='0,0 10,0 5,5'/></svg>") no-repeat; // stylelint-disable-line function-url-quotes
-	background-position: right var(--goldencat--form--spacing-unit) top 60%;
-	margin-bottom: calc(0.7 * var(--goldencat--spacing-vertical));
+	padding: calc(0.5 * var(--wp--custom--spacing--vertical)) calc(1 * var(--wp--custom--spacing--vertical)) calc(0.5 * var(--wp--custom--spacing--vertical)) 0;
+
+	background: var(--wp--custom--input--color--background) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%2328303d'><polygon points='0,0 10,0 5,5'/></svg>") no-repeat; // stylelint-disable-line function-url-quotes
+	background-position: right calc(2 * var(--wp--preset--spacing--25)) top 60%;
 
 	&:focus {
 		outline: none;
-		padding-bottom: calc(calc(0.3 * var(--goldencat--spacing-vertical)) - 1px);
-		border-bottom: 2px solid var(--goldencat--form--border-color);
+		padding-bottom: calc(calc(0.5 * var(--wp--custom--spacing--vertical)) - 1px);
+		border-bottom: 2px var(--wp--custom--input--border--style) var(--wp--custom--input--border--color);
 	}
 }
 
 .select2-container {
 
 	.select2-selection--single {
-		margin: calc(2.5 * var(--goldencat--form--spacing-unit)) 0 0;
+		// margin: calc(3 * var(--wp--preset--spacing--20)) 0;
 		border: none;
-		border-bottom: var(--goldencat--form--border-width) solid var(--goldencat--form--border-color);
-		color: var(--goldencat--form--color-text);
+		color: var(--wp--custom--input--color--text);
 		border-radius: 0;
+		height: auto;
 
 		.select2-selection__rendered {
-			color: var(--goldencat--form--color-text);
-			padding-left: 0;
+			border: var(--wp--custom--input--border--width) var(--wp--custom--input--border--style) var(--wp--custom--input--border--color);
+			color: var(--wp--custom--input--color--text);
+			padding: calc(2 * var(--wp--preset--spacing--20));
 		}
 
 		.select2-selection__arrow {
-			margin: calc(2.5 * var(--goldencat--form--spacing-unit)) 0 0;
+			margin: calc(5 * var(--wp--preset--spacing--20)) calc(2 * var(--wp--preset--spacing--20)) 0;
 		}
+	}
+
+	.select2-dropdown {
+		border-color: var(--wp--custom--input--border--color);
 	}
 }
 
-.site textarea {
+textarea {
 	width: 100%;
-	border: var(--goldencat--form--border-width) solid var(--goldencat--form--border-color);
-	padding: calc(0.7 * var(--goldencat--spacing-vertical)) calc(0.7 * var(--goldencat--spacing-vertical)) calc(0.3 * var(--goldencat--spacing-vertical));
 }
 
 label {
-	margin-bottom: calc(var(--goldencat--spacing-vertical) / 3);
+	margin-bottom: calc(var(--wp--custom--spacing--vertical) / 3);
 }
 
 /**
@@ -127,12 +150,11 @@ License: MIT.
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		position: relative;
-		width: 15px;
-		height: 15px;
-		padding-left: 16px;
-		display: inline;
-		// border: var(--goldencat--form--border-width) solid var(--goldencat--form--border-color);
-		background: var(--wp--preset--color--white);
+		width: 18px;
+		height: 18px;
+		border: var(--wp--custom--input--border--width) var(--wp--custom--input--border--style) var(--wp--custom--input--border--color);
+		background: var(--wp--custom--input--color--background);
+		vertical-align: sub;
 
 		&:disabled {
 			opacity: 0.7;
@@ -141,39 +163,23 @@ License: MIT.
 
 	input[type="checkbox"] {
 
-		// &:focus {
-		// 	outline-offset: 2px;
-		// 	outline: 2px dotted var(--form--border-color);
-		// }
-
-		&::before {
-			left: 0;
-			top: 0;
-			content: "";
-			position: absolute;
-			width: 15px;
-			height: 15px;
-			border: var(--goldencat--form--border-width) solid var(--goldencat--form--border-color);
-			background: var(--wp--preset--color--white);
-		}
-
 		&:after {
 			content: "";
 			opacity: 0;
 			display: block;
 			left: 5px;
-			top: 2px;
+			top: 0;
 			position: absolute;
-			width: 5px;
-			height: 10px;
-			border: 2px solid var(--goldencat--form--color-text);
+			width: 6px;
+			height: 13px;
+			border: 2px var(--wp--custom--input--border--style) var(--wp--custom--input--border--color);
 			border-top: 0;
 			border-left: 0;
 			transform: rotate(30deg);
 		}
 
 		&:checked {
-			color: var(--goldencat--form--color-text);
+			color: var(--wp--custom--input--color--text);
 
 			&:after {
 				opacity: 1;
@@ -183,35 +189,24 @@ License: MIT.
 
 	input[type="radio"] {
 		border-radius: 50%;
+		margin-right: 15px;
 
 		// &:focus {
 		// 	outline-offset: 2px;
 		// 	outline: 2px dotted var(--form--border-color);
 		// }
 
-		&::before {
-			left: 0;
-			top: 0;
-			content: "";
-			position: absolute;
-			width: 15px;
-			height: 15px;
-			border-radius: 50%;
-			border: var(--goldencat--form--border-width) solid var(--goldencat--form--border-color);
-			background: var(--wp--preset--color--white);
-		}
-
 		&:after {
 			content: "";
 			opacity: 0;
 			display: block;
-			left: 3px;
-			top: 3px;
+			left: 1px;
+			top: 1px;
 			position: absolute;
-			width: 9px;
-			height: 9px;
+			width: 14px;
+			height: 14px;
 			border-radius: 50%;
-			background: var(--goldencat--color-primary);
+			background: #979797;
 		}
 
 		&:checked {
@@ -233,7 +228,6 @@ input[type="checkbox"] + label,
 input[type="radio"] + label {
 	display: inline-block;
 	padding-left: 10px;
-	font-size: var(--goldencat--font-size-xs);
 	vertical-align: top;
 }
 
@@ -246,7 +240,7 @@ input[type="radio"] + label {
 		-webkit-appearance: none; /* Hides the slider so that custom slider can be made */
 		width: 100%; /* Specific width is required for Firefox. */
 		height: 6px;
-		background: var(--form--color-ranged);
+		background: #fff;
 		border-radius: 6px;
 		outline-offset: 10px;
 
@@ -257,20 +251,20 @@ input[type="radio"] + label {
 
 	input[type="range"]::-webkit-slider-thumb {
 		-webkit-appearance: none;
-		border: 3px solid var(--form--color-ranged);
+		border: 3px solid var(--wp--custom--input--border--color);
 		height: 44px;
 		width: 44px;
 		border-radius: 50%;
-		background: var(--goldencat--color-background);
+		background: #fff;
 		cursor: pointer;
 	}
 
 	input[type="range"]::-moz-range-thumb {
-		border: 3px solid var(--form--color-ranged);
+		border: 3px solid var(--wp--custom--input--border--color);
 		height: 44px;
 		width: 44px;
 		border-radius: 50%;
-		background: var(--goldencat--color-background);
+		background: #fff;
 		cursor: pointer;
 		box-sizing: border-box;
 	}
@@ -281,38 +275,38 @@ input[type="range"]::-ms-track {
 	height: 6px;
 	border-radius: 6px;
 	border-width: 19px 0;
-	border-color: var(--goldencat--color-background);
-	background: transparent;
+	border-color: var(--wp--custom--input--border--color);
+	background: var(--wp--custom--input--color--background);
 	color: transparent;
 	cursor: pointer;
 }
 
 input[type="range"]::-ms-fill-upper {
-	background: var(--form--color-ranged);
+	background: #fff;
 	border-radius: 6px;
 }
 
 input[type="range"]::-ms-fill-lower {
-	background: var(--form--color-ranged);
+	background: #fff;
 	border-radius: 6px;
 }
 
 input[type="range"]::-ms-thumb {
-	border: 3px solid var(--form--color-ranged);
+	border: 3px solid var(--wp--custom--input--border--color);
 	height: 44px;
 	width: 44px;
 	border-radius: 50%;
-	background: var(--goldencat--color-background);
+	background: #fff;
 	cursor: pointer;
 }
 
 fieldset {
 	display: grid;
-	border-color: var(--goldencat--color-secondary);
-	padding: var(--goldencat--spacing-horizontal);
+	border-color: var(--wp--custom--input--border--color);
+	padding: var(--wp--custom--spacing--horizontal);
 
 	legend {
-		font-size: var(--goldencat--font-size-md);
+		font-size: var(--wp--preset--font-size--medium);
 	}
 
 	input {
@@ -322,7 +316,7 @@ fieldset {
 		}
 
 		&:not([type="submit"]) {
-			margin-bottom: var(--goldencat--spacing-unit);
+			margin-bottom: var(--wp--custom--spacing--unit);
 		}
 
 		&[type="radio"],
@@ -333,7 +327,7 @@ fieldset {
 		&[type="radio"] + label,
 		&[type="checkbox"] + label {
 			padding-left: 0;
-			margin-bottom: var(--goldencat--spacing-unit);
+			margin-bottom: var(--wp--custom--spacing--unit);
 		}
 	}
 }
@@ -343,7 +337,7 @@ fieldset {
 }
 
 .post-password-message {
-	font-size: var(--goldencat--font-size-md);
+	font-size: var(--wp--preset--font-size--medium);
 }
 
 .post-password-form {
@@ -357,14 +351,14 @@ fieldset {
 
 	input[type="password"] {
 		flex-grow: 1;
-		margin-top: calc(var(--goldencat--spacing-vertical) / 3);
-		margin-right: calc(0.66 * var(--goldencat--spacing-horizontal));
+		margin-top: calc(var(--wp--custom--spacing--vertical) / 3);
+		margin-right: calc(0.66 * var(--wp--custom--spacing--horizontal));
 	}
 
 	&__submit {
-		margin-top: calc(var(--goldencat--spacing-vertical) / 3);
+		margin-top: calc(var(--wp--custom--spacing--vertical) / 3);
 		@include media(tablet) {
-			margin-left: calc(0.4 * var(--goldencat--spacing-horizontal));
+			margin-left: calc(0.4 * var(--wp--custom--spacing--horizontal));
 		}
 	}
 }

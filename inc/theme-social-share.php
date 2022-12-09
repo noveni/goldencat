@@ -99,7 +99,11 @@ function goldencat_social_share_get_share_url( $service, $post_id, $args = array
 
     $encoded_title = htmlspecialchars(urlencode(html_entity_decode( $args['title'] , ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8');
 
-    $encoded_img = urlencode( $args['image'][0] );
+    if ( $args['image'] ) {
+        $encoded_img = urlencode( $args['image'][0] );
+    } else {
+        $encoded_img = get_stylesheet_directory_uri() . '/assets/img/logo.svg';
+    }
 
     $share_url = '#';
 

@@ -1,110 +1,69 @@
-/**
- * Button
- */
-.site .button,
-input[type="submit"],
-input[type="reset"],
-.wp-block-search__button {
+// Buttons
 
-	@include theme-base-button();
-}
-
-/**
- * Block Options
- */
-
+.wp-element-button,
 .wp-block-button__link {
-	word-break: break-word;
 	cursor: pointer;
 	will-change: color, background-color;
 	transition: color 0.25s ease, background-color 0.25s ease;
-	box-sizing: border-box;
-	box-shadow: none;
+
+	strong {
+		white-space: inherit;
+	}
+
+
+	&.has-black-real-background-color.has-background,
+	&.has-black-background-color.has-background,
+	&.has-white-color.has-text-color {
+
+		&:hover {
+			background-color: transparent !important;
+			color: var(--wp--preset--color--black) !important;
+		}
+	}
+
+	&.has-white-background-color.has-background-color {
+
+		&:hover {
+			background-color: var(--wp--preset--color--black) !important;
+			color: var(--wp--preset--color--white) !important;
+		}
+	}
+
+	.is-style-filled & {
+		background-color: var(--wp--preset--color--black) !important;
+		color: var(--wp--preset--color--white) !important;
+
+		&:hover {
+			background-color: transparent !important;
+			color: var(--wp--preset--color--black) !important;
+		}
+	}
+
+	.is-style-goldencat-button-arrow & {
+		@include theme-button-arrow;
+	}
+
+	.is-style-goldencat-button-link & {
+		font-size: 13px;
+		color: var(--goldencat--color-primary);
+		background-color: transparent;
+		border: none;
+		padding-left: 0;
+		padding-right: 0;
+		position: relative;
+
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}
+	}
+
+
 }
 
-.wp-block-button {
+.wp-block-buttons > .wp-block-button.has-custom-width {
 
-	.wp-block-button__link {
-
-		text-align: center;
-
-		&:focus,
-		&:active,
-		&:hover {
-			background-color: transparent;
-			border: 1px solid var(--goldencat--color-background);
-			color: var(--goldencat--color-primary);
-		}
-	}
-
-	&.is-style-outline {
-
-		.wp-block-button__link {
-			background: transparent;
-			color: currentColor;
-			border-color: var(--goldencat--color-primary);
-
-			&:focus,
-			&:active,
-			&:hover {
-				background-color: var(--goldencat--color-primary);
-				// border: 1px solid var(--goldencat--color-background);
-				color: var(--goldencat--color-background);
-			}
-
-			&.has-black-color {
-
-				&:focus,
-				&:active,
-				&:hover {
-					color: var(--goldencat--color-background) !important;
-				}
-			}
-		}
-	}
-
-	&.is-style-goldencat-button-arrow {
-
-		.wp-block-button__link {
-			@include theme-button-arrow;
-		}
-	}
-
-	&.is-style-goldencat-button-link {
-
-		.wp-block-button__link {
-			background-color: transparent;
-			border: none;
-			padding-left: 0;
-			padding-right: 0;
-			position: relative;
-			color: var(--goldencat--color-primary);
-
-			&::after {
-				content: "";
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				right: 0;
-				margin-left: auto;
-				margin-right: auto;
-				width: 100%;
-				height: 2px;
-				background: var(--goldencat--color-primary);
-				transform: scaleX(0.8);
-				transform-origin: bottom center;
-				transition: transform 0.4s;
-				transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-			}
-
-			&:hover,
-			&:focus {
-
-				&::after {
-					transform: scaleX(1.2);
-					transform-origin: bottom center;
-				}
-			}
-		}
+	@include media(tablet-only) {
+		width: auto;
 	}
 }

@@ -24,7 +24,7 @@
 				<?php dynamic_sidebar( 'footer-between-main' ); ?>
 			</div>
 		<?php endif; ?>
-		<div class="footer-bottom aligncenter">
+		<div class="footer-bottom alignwide">
 			<?php get_template_part( 'template-parts/footer/credits' ); ?>
 			<?php get_template_part( 'template-parts/footer/legals' ); ?>
 		</div>

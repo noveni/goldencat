@@ -20,7 +20,7 @@
 			position: relative;
 			cursor: pointer;
 			margin-bottom: 0;
-			padding-bottom: calc(1 * var(--global--spacing-vertical));
+			padding-bottom: calc(1 * var(--wp--custom--spacing--vertical));
 			padding-right: 30px;
 
 			&::after {
@@ -49,11 +49,11 @@
 			transition: max-height .25s ease-in-out;
 			will-change: max-height;
 			border-bottom: 1px solid #bcbcbc;
-			margin-bottom: calc(1 * var(--global--spacing-vertical));
+			margin-bottom: calc(1 * var(--wp--custom--spacing--vertical));
 
 
 			p {
-				margin-bottom: calc(1 * var(--global--spacing-vertical));
+				margin-bottom: calc(1 * var(--wp--custom--spacing--vertical));
 			}
 		}
 
@@ -79,10 +79,10 @@
 
 .goldencat-list-filter {
 
-	margin: var(--global--spacing-vertical) auto;
+	margin: var(--wp--custom--spacing--vertical) auto;
 
 	@include media(desktop) {
-		margin: var(--global--spacing-vertical) auto;
+		margin: var(--wp--custom--spacing--vertical) auto;
 	}
 
 	input {
@@ -98,7 +98,7 @@
 		display: inline-block;
 
 		input[type="checkbox"] + label {
-			@extend %theme-menu-style;
+			@include theme-menu-style; 
 			// padding: var(--form--spacing-unit);
 
 			padding: 13px 11px 10px;

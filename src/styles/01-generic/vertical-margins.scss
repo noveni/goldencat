@@ -1,214 +1,51 @@
-/**
- * Site Structure
- *
- * - Set vertical margins and responsive widths on
- *   top-level wrappers and content wrappers
- * - `--global--width-content` is a responsive variable
- * - See: globals/_global-width-responsive.scss
- */
+// /**
+//  * Site Structure
+//  *
+//  * - Set vertical margins and responsive widths on
+//  *   top-level wrappers and content wrappers
+//  * - `--global--width-content` is a responsive variable
+//  * - See: globals/_global-width-responsive.scss
+//  */
 
 
-%goldencat-default-vertical {
-
-	margin-top: calc(0.666 * var(--goldencat--spacing-vertical));
-	margin-bottom: calc(0.666 * var(--goldencat--spacing-vertical));
-
-	@include media(mobile) {
-		margin-top: calc(1 * var(--goldencat--spacing-vertical));
-		margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
-	}
-
-	&:first-child {
-		margin-top: 0;
-	}
-
-	&:last-child {
-		margin-bottom: 0;
-	}
+body .entry-content.is-layout-constrained > * {
+	margin-block-start: 0;
+	margin-block-end: 0;
 }
 
-/**
- * Top Level Wrappers (header, main, footer)
- * - Set vertical padding and horizontal margins
- */
-.site-header,
-.site-main,
-.widget-area {
-	padding-top: var(--goldencat--spacing-vertical);
-	padding-bottom: var(--goldencat--spacing-vertical);
-	margin-left: auto;
-	margin-right: auto;
+body .entry-content.is-layout-constrained > * + * {
+	margin-block-start: var(--wp--preset--spacing--40);
+	margin-block-end: 0;
 }
 
-.site-header {
-	padding-top: calc(0.5 * var(--goldencat--spacing-vertical));
-	padding-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
+.wp-block-media-text__content > *,
+body .is-layout-constrained > * {
+	margin-block-start: 0;
+	margin-block-end: 0;
 }
 
-.site-main {
-	padding-top: 0;
-	padding-bottom: 0;
-}
+.wp-block-media-text__content > * + *,
+body .is-layout-constrained > * + * {
+	margin-block-start: var(--wp--preset--spacing--25);
+	margin-block-end: 0;
 
-/**
- * Site-main children wrappers
- * - Add double vertical margins here for clearer hierarchy
- */
-.site-main > * {
-	margin-top: calc(2 * var(--goldencat--spacing-vertical));
-	margin-bottom: calc(2 * var(--goldencat--spacing-vertical));
+	&.is-style-subtitle,
+	&.is-style-goldencat-subtitle {
+		margin-block-start: 11px;
 
-	&:first-child {
-		margin-top: 0;
-	}
-
-	&:last-child {
-		margin-bottom: 0;
-	}
-}
-
-
-/*
- * Block & non-gutenberg content wrappers
- * - Set margins
- */
-.post-thumbnail,
-.entry-footer,
-.author-bio,
-.wp-block-goldencat-term-of-taxonomy .term-of-taxonomy-row {
-	margin-top: var(--goldencat--spacing-vertical);
-	margin-right: auto;
-	margin-bottom: var(--goldencat--spacing-vertical);
-	margin-left: auto;
-}
-
-.excerpt-content {
-	margin-right: auto;
-	margin-left: auto;
-
-	> * {
-
-		margin-top: calc(0.5 * var(--goldencat--spacing-vertical));
-		margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
-	}
-}
-
-.entry-content > *,
-[class*="inner-container"] > *,
-.wp-block-template-part > * {
-
-	// margin-top: calc(0.666 * var(--goldencat--spacing-vertical));
-	margin-bottom: calc(0.666 * var(--goldencat--spacing-vertical));
-
-	@include media(tablet) {
-		// margin-top: calc(1 * var(--goldencat--spacing-vertical));
-		margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
-	}
-
-	@include media(desktop) {
-		// margin-top: calc(1 * var(--goldencat--spacing-vertical));
-		margin-bottom: calc(1.5 * var(--goldencat--spacing-vertical));
-	}
-
-	&:first-child {
-		margin-top: 0;
-	}
-
-	&:last-child {
-		margin-bottom: 0;
-	}
-}
-
-.excerpt-thumbnail {
-	margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
-}
-
-
-.entry-content > .wp-block-group > * {
-	margin-bottom: calc(0.666 * var(--goldencat--spacing-vertical));
-
-	@include media(tablet) {
-		margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
-	}
-
-	@include media(desktop) {
-		margin-bottom: calc(1.5 * var(--goldencat--spacing-vertical));
-	}
-
-	&:last-child {
-		margin-bottom: 0;
-	}
-}
-
-.entry-content > * {
-
-	&.wp-block-media-text:first-child,
-	&.wp-block-cover:first-child {
-		margin-top: 0;
-	}
-
-	// &.wp-block-media-text:last-child,
-	// &.wp-block-cover:last-child {
-	// 	margin-bottom: 0;
-	// }
-
-	&[class*="wp-block"] {
-		@include media(tablet) {
-			margin-top: calc(1.5 * var(--goldencat--spacing-vertical));
-			margin-bottom: calc(1.5 * var(--goldencat--spacing-vertical));
-		}
-
-		@include media(desktop) {
-			margin-top: calc(3 * var(--goldencat--spacing-vertical));
-			margin-bottom: calc(3 * var(--goldencat--spacing-vertical));
-		}
-	}
-
-	&:first-child {
-		margin-top: calc(1 * var(--goldencat--spacing-vertical));
-
-		@include media(tablet) {
-			margin-top: calc(1.5 * var(--goldencat--spacing-vertical));
-		}
-
-		@include media(laptop) {
-			margin-top: calc(2 * var(--goldencat--spacing-vertical));
-		}
-	}
-
-	&:last-child {
-		margin-top: calc(1 * var(--goldencat--spacing-vertical));
-		margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
-
-		@include media(tablet) {
-			margin-top: calc(1.5 * var(--goldencat--spacing-vertical));
-			margin-bottom: calc(1.5 * var(--goldencat--spacing-vertical));
-		}
-
-		@include media(laptop) {
-			// margin-top: calc(2 * var(--goldencat--spacing-vertical));
-			margin-bottom: calc(3 * var(--goldencat--spacing-vertical));
+		+ * {
+			margin-block-start: var(--wp--preset--spacing--20);
 		}
 	}
 }
 
-.site-main > .navigation {
-	margin-top: calc(1 * var(--goldencat--spacing-vertical));
-	margin-bottom: calc(1 * var(--goldencat--spacing-vertical));
+body .entry-content.is-layout-constrained > *:not(.wp-block-cover):first-child {
+	margin-top: var(--wp--preset--spacing--30);
 
-	@include media(tablet) {
-		margin-top: calc(2 * var(--goldencat--spacing-vertical));
-		// margin-bottom: calc(2 * var(--goldencat--spacing-vertical));
-	}
 }
 
-.goldencat-grid {
-
-	.post-excerpt {
-		margin-bottom: calc(2 * var(--goldencat--spacing-vertical));
-
-		@include media(tablet) {
-			margin-bottom: calc(2 * var(--goldencat--spacing-vertical));
-		}
-	}
+body .wc-tab .is-layout-constrained > * {
+	margin-block-start: 12px;
+	margin-block-end: 0;
 }
+

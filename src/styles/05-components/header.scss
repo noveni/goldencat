@@ -9,15 +9,16 @@
 
 // Site Header
 .site-header {
-	@extend %responsive-alignwide-width;
-	color: var(--primary-nav--color-link);
+	background-color: var(--wp--custom--header--color--background, transparent);
+	color: var(--wp--custom--header--color--text, #000);
+	margin-bottom: var(--wp--custom--header--spacing--margin--bottom, 0);
 
 	&.sticky-header {
 		position: fixed;
 		top: 0;
 		width: 100%;
 		transition: all 0.3s ease-in-out;
-		background-color: var(--goldencat--color-white);
+		background-color: var(--wp--custom--header--color--background, #fff);
 		z-index: 101;
 	}
 
@@ -38,18 +39,34 @@
 		margin: 0;
 		background-color: transparent;
 		border: none;
-		color: var(--primary-nav--color-link);
+		color: var(--wp--custom--header--color--text, #000);
 		-webkit-tap-highlight-color: transparent;
+
+		svg {
+			fill: var(--wp--custom--header--color--text, #000);
+		}
 	}
 
 	a {
 		text-decoration: none;
+	}
+
+	.goldencat-toggle-menu {
+		background-color: var(--wp--custom--header--color--background, transparent);
 	}
 }
 
 
 // Site branding
 .site-branding {
+	max-width: 176px;
+	margin: 0 auto;
+	padding-top: 10px;
+	padding-bottom: 14px;
+
+	@include media(tablet) {
+		padding-bottom: 25px;
+	}
 
 	h1 {
 		line-height: normal;
@@ -60,12 +77,12 @@
 	}
 
 	.site-logo {
-		max-width: 155px;
+		max-width: 176px;
 		margin: 0 auto;
 
 		svg {
 			display: block;
-			fill: var(--primary-nav--color-link);
+			fill: var(--wp--custom--header--color--text, #000);
 		}
 	}
 }
@@ -76,4 +93,4 @@
 @import "./header/navigation.scss";
 @import "./header/link.scss";
 @import "./header/header-layout.scss";
-@import "./header/search.scss";
+// @import "./header/search.scss";

@@ -1,7 +1,4 @@
 p {
-
-	line-height: var(--wp--typography--line-height, var(--goldencat--line-height));
-
 	// inherits general font style set at <body>
 	&.has-background {
 		padding: var(--goldencat--spacing-unit);
@@ -10,5 +7,30 @@ p {
 	// Override `color: inherit` from Core styles.
 	&.has-text-color a {
 		color: var(--wp--style--color--link, var(--goldencat--color-primary));
+	}
+
+	&.is-style-goldencat-notification {
+		background-color: #fff0f0;
+		max-width: var(--responsive--alignfull-width) !important;
+		width: auto;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 0;
+		margin-bottom: 0;
+		padding: 39px 40px 40px;
+
+		&:first-child {
+			margin-top: 0 !important;
+		}
+
+		@include media(desktop) {
+			text-align: center !important;
+
+			padding-left: calc(0.5 * calc(100vw - var(--responsive--alignwide-width)));
+			padding-right: calc(0.5 * calc(100vw - var(--responsive--alignwide-width)));
+		}
+
+		@extend %theme-title-style;
+		@extend %theme-title-h4;
 	}
 }

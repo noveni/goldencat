@@ -18,6 +18,10 @@
 
 .goldencat-is-full-height {
 	height: 100%;
+
+	.wp-block-group__inner-container {
+		height: 100%;
+	}
 }
 
 .goldencat-no-padding {
@@ -94,6 +98,17 @@
 	text-align: justify;
 }
 
-.goldencat-space-between {
+.goldencat-space-between,
+.goldencat-space-between > .wp-block-column {
 	justify-content: space-between;
+}
+
+.goldencat-space-between > .wp-block-column {
+	flex-direction: column;
+	display: flex;
+}
+
+.aligncenter.wp-block-site-logo img {
+	margin-left: auto;
+	margin-right: auto;
 }

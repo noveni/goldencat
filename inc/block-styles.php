@@ -17,13 +17,11 @@ if ( function_exists( 'register_block_style' ) ) {
 	 */
 	function goldencat_register_block_styles() {
 
-		// Default Outline 
 		register_block_style(
 			'core/button',
 			array(
-				'name'  => 'outline',
-				'label' => esc_html__( 'Outline', 'goldencat' ),
-				'is_default' => true
+				'name'  => 'filled',
+				'label' => esc_html__( 'Fill', 'goldencat' ),
 			)
 		);
 
