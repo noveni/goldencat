@@ -15,26 +15,30 @@ function goldencat_icon( $group, $icon, $size = 24) {
 /**
  * Display Logo in place of a menu item if it's a logo
  */
-function goldencat_logo() {
-	return GoldenCatThemeIcons::get_svg('brand', 'logo', false);
+if ( ! function_exists( 'goldencat_logo' ) ) {
+	function goldencat_logo() {
+		return GoldenCatThemeIcons::get_svg('brand', 'logo', false);
+	}
 }
 
 /**
  * Get Image Placeholder for image replacement
  */
-function goldencat_get_image_placeholder( ) {
-	$image_placeholder_default_size = [
-		'width' => 600,
-		'height' => 600,
-	];
+if ( ! function_exists( 'goldencat_get_image_placeholder' ) ) {
+	function goldencat_get_image_placeholder( ) {
+		$image_placeholder_default_size = [
+			'width' => 600,
+			'height' => 600,
+		];
 
-	$style = '';
+		$style = '';
 
-	$url = get_template_directory_uri() . '/assets/img/placeholder-color.png';
+		$url = get_template_directory_uri() . '/assets/img/placeholder-color.png';
 
-	$className = 'attachment-post-thumbnail size-post-thumbnail wp-post-image';
+		$className = 'attachment-post-thumbnail size-post-thumbnail wp-post-image';
 
-	$image = sprintf('<img src="%1$s" class="%2$s" alt="" %3$s>', $url, $className, $style );
+		$image = sprintf('<img src="%1$s" class="%2$s" alt="" %3$s>', $url, $className, $style );
 
-	return $image;
+		return $image;
+	}
 }

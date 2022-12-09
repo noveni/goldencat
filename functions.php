@@ -61,8 +61,6 @@ require get_template_directory() . '/inc/post-type-functions.php';
 require get_template_directory() . '/inc/block-post-meta.php';
 // Block template functions
 require get_template_directory() . '/inc/blocks-functions.php';
-// Block Patterns.
-require get_template_directory() . '/inc/block-patterns.php';
 // Block Styles.
 require get_template_directory() . '/inc/block-styles.php';
 

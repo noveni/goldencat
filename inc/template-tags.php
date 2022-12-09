@@ -235,29 +235,30 @@ if ( ! function_exists( 'goldencat_block_button' ) ) {
 			'style' => '',
 			'extraClass' => '',
 			'parent_class' => ''
-
+	
 		);
 		$args = wp_parse_args( $args, $defaults );
 		
-
+	
+		$href = '';
 		if ( '' !== trim( $args[ 'href' ] ) ) {
 			$href = 'href="' . esc_url( $args[ 'href' ] ) . '"';
 		}
-
-		$class = 'wp-block-button';
-
+	
+		$class = '';
+	
 		if ( '' !== trim( $args[ 'style' ] ) ) {
 			$class .= " is-style-" . esc_attr( $args[ 'style' ] );
 		}
-
+	
 		if ( '' !== trim( $args[ 'extraClass' ] ) ) {
 			$class .= " ". esc_attr( $args[ 'extraClass' ] );
 		}
 		
-		?>
-		<div class="wp-block-buttons <?php echo esc_attr($args['parent_class']);?>">
-			<div class="<?php echo esc_attr($class) ?>"><a class="wp-block-button__link" <?php echo $href; ?>><?php echo esc_html( $args[ 'label' ] ); ?></a></div>
-		</div>
-		<?php
+		echo sprintf('<a class="wp-element-button %s" %s>%s</a> ',
+			$class,
+			$href,
+			esc_html( $args[ 'label' ] )
+		);
 	}
 }
