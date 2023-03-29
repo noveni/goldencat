@@ -220,16 +220,18 @@ add_action( 'wp_ajax_nopriv_goldencat_block_query_filters_action', 'goldencat_qu
 // Inspired by https://gist.github.com/dkjensen/5190c554420ea2f19987a3f31ac95785
 function goldencat_query_filters_render_block_core_query( $block_content, $block ) {
 	if ( 'core/query' === $block['blockName'] ) {
-		$query_id      = $block['attrs']['queryId'];
-		$container_end = strpos( $block_content, '>' );
+		if ( isset( $block['attrs']['queryId']) ) {
+			$query_id      = $block['attrs']['queryId'];
+			$container_end = strpos( $block_content, '>' );
 
-		$paged = absint( $_GET[ 'query-' . $query_id . '-page' ] ?? 1 );
+			$paged = absint( $_GET[ 'query-' . $query_id . '-page' ] ?? 1 );
 
-		$block_content = substr_replace( $block_content, ' data-paged="' . esc_attr( $paged ) . '" data-attrs="' . esc_attr( json_encode( $block ) ) . '"', $container_end, 0 );
+			$block_content = substr_replace( $block_content, ' data-paged="' . esc_attr( $paged ) . '" data-attrs="' . esc_attr( json_encode( $block ) ) . '"', $container_end, 0 );
 
-		wp_add_inline_script( 'goldencat-front-scripts', 'const block_goldencat_core_query_store = ' . json_encode( array(
-			'blockAttributes' => $block
-		) ), 'before' );
+			wp_add_inline_script( 'goldencat-front-scripts', 'const block_goldencat_core_query_store = ' . json_encode( array(
+				'blockAttributes' => $block
+			) ), 'before' );
+		}
 	}
 
 	return $block_content;
