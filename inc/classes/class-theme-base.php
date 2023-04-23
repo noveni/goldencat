@@ -579,7 +579,11 @@ class GoldenCatThemeBase
                 GoldenCatThemeScripts::toEnqueueScript( 'post-editor' );
             }
             GoldenCatThemeScripts::toEnqueueStyle( 'admin-editor' );
-            GoldenCatThemeScripts::toEnqueueStyle( 'editor' );
+            
+            $do_enqueue_base_theme_editor_style = apply_filters( 'goldencat_theme_enqueue_theme_editor_style', true );
+            if ($do_enqueue_base_theme_editor_style) {
+                GoldenCatThemeScripts::toEnqueueStyle( 'editor' );
+            }
         });
         
 
