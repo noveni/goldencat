@@ -69,10 +69,10 @@
             <?php echo goldencat_icon( 'ui', 'menu', 22 ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
                         <span class="header-button-label"><?php esc_html_e( 'Menu', 'goldencat' ); ?></span>
         </button><!-- #primary-mobile-menu -->
-        <button class="search-header-toggle" data-toggle-target=".search-inline" data-set-focus=".search-inline .search-input" >
-            <span class="screen-reader-text"><?php esc_html_e( 'Rechercher',  ); ?></span>
-            <?php echo goldencat_icon( 'ui', 'search' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-        </button>
+        <button id="search-toggle-menu" class="search-header-toggle" data-toggle-target=".search-inline" data-set-focus=".search-inline .search-input" >
+                <span class="screen-reader-text"><?php esc_html_e( 'Rechercher',  ); ?></span>
+                <?php echo goldencat_icon( 'ui', 'search' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+            </button>
         <div class="search-container">
             <?php get_template_part( 'template-parts/header/inline-search' ); ?>
         </div>
