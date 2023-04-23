@@ -24,18 +24,16 @@ function goldencat_register_faq() {
     );
 
     $config = array(
+        'public' => false,
         'label'     => 'Faq',
         'labels'    => $labels,
         'hierarchical'              => false,
         'show_in_rest'              => true,
         'exclude_from_search'       => false,
         'publicly_queryable'        => true,
-        'rewrite'             => array(
-            'slug'       => 'faq',
-            'with_front' => true,
-            'feeds'      => true,
-        ) ,
-        'has_archive'               => 'faq',
+        'rewrite'                   => false,
+        'query_var'                 => false,
+        'has_archive'               => false,
         'capability_type'           => 'post',
         'supports'                  => array(
             'title',
