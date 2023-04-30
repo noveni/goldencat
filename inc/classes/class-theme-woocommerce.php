@@ -310,12 +310,12 @@ class GoldenCatThemeWooCommerce {
 
     public function globalActions()
     {
-        add_filter( 'template_redirect', [ $this, 'cartRedirectCheckout' ] );
-        add_filter( 'woocommerce_add_to_cart_redirect', [ $this, 'skipCartRedirectCheckout' ] );
-        add_action( 'woocommerce_login_redirect', [ $this, 'redirectAfterLogin' ], 9999, 2 );
+        add_filter( 'template_redirect', [ 'GoldenCatThemeWooCommerce', 'cartRedirectCheckout' ] );
+        add_filter( 'woocommerce_add_to_cart_redirect', [ 'GoldenCatThemeWooCommerce', 'skipCartRedirectCheckout' ] );
+        add_action( 'woocommerce_login_redirect', [ 'GoldenCatThemeWooCommerce', 'redirectAfterLogin' ], 9999, 2 );
     }
 
-    public function cartRedirectCheckout()
+    public static function cartRedirectCheckout()
     {
         if ( !is_cart() ) return;
 
@@ -341,12 +341,12 @@ class GoldenCatThemeWooCommerce {
 		exit;
     }
 
-    public function skipCartRedirectCheckout( $url )
+    public static function skipCartRedirectCheckout( $url )
     {
         return wc_get_checkout_url();
     }
 
-    public function redirectAfterLogin( $redirect, $user )
+    public static function redirectAfterLogin( $redirect, $user )
     {
         $redirect = wc_get_page_permalink( 'shop' ); // shop page
 	    return $redirect;
