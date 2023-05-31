@@ -3,11 +3,12 @@
 	button,
 	.button,
 	a {
-		font-family: var(--wp--custom--menu--font-family);
-		font-size: var(--wp--custom--menu--font-size);
-		font-weight: var(--wp--custom--menu--font-weight);
+		font-family: var(--wp--custom--menu--typography--font-family);
+    font-size: var(--wp--custom--menu--typography--font-size);
+    font-weight: var(--wp--custom--menu--typography--font-weight);
+    line-height: var(--wp--custom--menu--typography--line-height);
 		text-decoration: none;
-		// text-transform: uppercase;
+		text-transform: var(--wp--custom--menu--typography--text-transform);
 		position: relative;
 		text-align: center;
 		line-height: 34px;
@@ -31,9 +32,11 @@
 	}
 
 	.menu-item a {
-		font-family: var(--wp--custom--menu--font-family);
-		font-size: var(--wp--custom--menu--font-size);
-		font-weight: var(--wp--custom--menu--font-weight);
+    font-family: var(--wp--custom--menu--typography--font-family);
+    font-size: var(--wp--custom--menu--typography--font-size);
+    font-weight: var(--wp--custom--menu--typography--font-weight);
+    line-height: var(--wp--custom--menu--typography--line-height);
+    text-transform: var(--wp--custom--menu--typography--text-transform);
 
 		@include media(tablet) {
 			margin: 0 var(--wp--custom--spacing--unit);

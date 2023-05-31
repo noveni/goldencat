@@ -281,7 +281,9 @@
                 "typography": {
                     "fontFamily": "var(--wp--preset--font-family--primary)",
                     "fontSize": "var(--wp--preset--font-size--menu)",
-                    "fontWeight": 600
+                    "fontWeight": "500",
+                    "lineHeight": "15px",
+                    "textTransform": "uppercase"
                 }
             },
             "input": {
