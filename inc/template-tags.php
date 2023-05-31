@@ -234,7 +234,9 @@ if ( ! function_exists( 'goldencat_block_button' ) ) {
 			'label' => 'Voir',
 			'style' => '',
 			'extraClass' => '',
-			'parent_class' => ''
+			'parent_class' => '',
+			'wrap' => false,
+			'parent' => false,
 	
 		);
 		$args = wp_parse_args( $args, $defaults );
@@ -254,11 +256,34 @@ if ( ! function_exists( 'goldencat_block_button' ) ) {
 		if ( '' !== trim( $args[ 'extraClass' ] ) ) {
 			$class .= " ". esc_attr( $args[ 'extraClass' ] );
 		}
-		
-		echo sprintf('<a class="wp-element-button %s" %s>%s</a> ',
+
+		$element_button = sprintf('<a class="wp-element-button %s" %s>%s</a> ',
 			$class,
 			$href,
 			esc_html( $args[ 'label' ] )
 		);
+
+		if ( $args['wrap'] === true ) {
+			$element_button = sprintf('<a class="wp-element-button %s" %s>%s</a> ',
+				'wp-block-button__link',
+				$href,
+				esc_html( $args[ 'label' ] )
+			);
+			$element_button = sprintf( '<div class="wp-block-button %s" %s>%s</div>',
+				$class,
+				'',
+				$element_button
+			);
+		}
+
+		if ( $args['parent'] === true ) {
+			$element_button = sprintf( '<div class="wp-block-buttons %s">%s</div>',
+				esc_attr( $args[ 'parent_class' ] ),
+				$element_button
+			);
+		}
+
+
+		echo $element_button;
 	}
 }
