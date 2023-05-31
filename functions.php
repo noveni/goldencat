@@ -165,12 +165,10 @@ add_action( 'init', function() {
 
 
 
-require get_template_directory() . '/assets/blocks/cover-slider-block.php';
 require get_template_directory() . '/assets/blocks/faq-block-grid.php';
 require get_template_directory() . '/assets/blocks/picked-post-block.php';
 require get_template_directory() . '/assets/blocks/picked-term.php';
 require get_template_directory() . '/assets/blocks/product-price.php';
 require get_template_directory() . '/assets/blocks/quotes-slider.php';
 require get_template_directory() . '/assets/blocks/term-of-taxonomy.php';
-require get_template_directory() . '/assets/blocks/covers-slider-block.php';
 require get_template_directory() . '/assets/blocks/query-filters.php';

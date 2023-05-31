@@ -2,9 +2,6 @@
  * Load all Custom Theme Block
  */
 
-import './block-wrapper-img';
-import './cover-slider-block';
-import './covers-slider';
 import './faq-block-grid';
 import './picked-post-block';
 import './picked-posts-block';
