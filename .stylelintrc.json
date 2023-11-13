@@ -1,6 +1,7 @@
 {
 	"extends": [
-		"@wordpress/stylelint-config/scss"
+		"@wordpress/stylelint-config/scss",
+		"stylelint-config-prettier"
 	],
 	"ignoreFiles": [
 		"vendor/**/*.scss",
@@ -10,10 +11,12 @@
 		"selector-class-pattern": null,
 		"font-weight-notation": null,
 		"selector-type-no-unknown": null,
-		"max-line-length": null,
 		"at-rule-empty-line-before": null,
+		"rule-empty-line-before": null,
 		"selector-pseudo-element-colon-notation": null,
 		"number-leading-zero": null,
-		"no-descending-specificity": null
+		"no-descending-specificity": null,
+		"function-url-quotes": null,
+		"font-family-name-quotes": null
 	}
 }
