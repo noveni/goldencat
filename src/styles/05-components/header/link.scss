@@ -1,152 +1,142 @@
 .primary-navigation {
-
-	button,
-	.button,
-	a {
-		font-family: var(--wp--custom--menu--typography--font-family);
+  button,
+  .button,
+  a {
+    font-family: var(--wp--custom--menu--typography--font-family);
     font-size: var(--wp--custom--menu--typography--font-size);
     font-weight: var(--wp--custom--menu--typography--font-weight);
     line-height: var(--wp--custom--menu--typography--line-height);
-		text-decoration: none;
-		text-transform: var(--wp--custom--menu--typography--text-transform);
-		position: relative;
-		text-align: center;
-		line-height: 34px;
-		// color: var(--primary-nav--color-link);
 
-		svg {
-			// fill: var(--primary-nav--color-link);
-		}
-	}
+    text-decoration: none;
+    // text-transform: uppercase;
+    position: relative;
+    text-align: center;
+    // line-height: 34px;
+    // color: var(--primary-nav--color-link);
 
-	.site-logo a {
-		padding: 0;
+    svg {
+      // fill: var(--primary-nav--color-link);
+    }
+  }
 
-		@include media(tablet) {
-			padding: 0 calc(1 * var(--wp--custom--spacing--horizontal));
-		}
+  .site-logo a {
+    padding: 0;
 
-		@include media(desktop) {
-			padding: 0 calc(1.5 * var(--wp--custom--spacing--horizontal));
-		}
-	}
+    @include media(tablet) {
+      padding: 0 calc(1 * var(--wp--custom--spacing--horizontal));
+    }
 
-	.menu-item a {
+    @include media(desktop) {
+      padding: 0 calc(1.5 * var(--wp--custom--spacing--horizontal));
+    }
+  }
+
+  .menu-item a {
     font-family: var(--wp--custom--menu--typography--font-family);
     font-size: var(--wp--custom--menu--typography--font-size);
     font-weight: var(--wp--custom--menu--typography--font-weight);
     line-height: var(--wp--custom--menu--typography--line-height);
     text-transform: var(--wp--custom--menu--typography--text-transform);
 
-		@include media(tablet) {
-			margin: 0 var(--wp--custom--spacing--unit);
-			padding: var(--wp--custom--spacing--unit);
-		}
+    @include media(tablet) {
+      margin: 0;
+      padding: var(--wp--custom--spacing--unit);
+    }
 
+    &::before,
+    &::after {
+      pointer-events: none;
+      content: "";
+      height: 1px;
+      width: 40%;
+      position: absolute;
+      background: var(--wp--custom--header--color--text, #000);
+      top: 90%;
+      opacity: 0;
 
-		&::before,
-		&::after {
-			pointer-events: none;
-			content: "";
-			height: 1px;
-			width: 40%;
-			position: absolute;
-			background: var(--wp--custom--header--color--text, #000);
-			top: 90%;
-			opacity: 0;
+      transform-origin: 100% 50%;
+      transition: transform 0.15s linear, opacity 0.15s linear;
+    }
 
-			transform-origin: 100% 50%;
-			transition: transform 0.15s linear, opacity 0.15s linear;
-		}
+    &::before {
+      left: calc(3 * var(--wp--custom--spacing--unit));
+      transform: translateX(-80%);
+    }
 
-		&::before {
-			left: calc(3 * var(--wp--custom--spacing--unit));
-			transform: translateX(-80%);
-		}
+    &::after {
+      right: calc(3 * var(--wp--custom--spacing--unit));
+      transform-origin: 100% 50%;
+      transform: translateX(80%);
+    }
 
-		&::after {
-			right: calc(3 * var(--wp--custom--spacing--unit));
-			transform-origin: 100% 50%;
-			transform: translateX(80%);
-		}
+    &:focus {
+      position: relative;
+      z-index: 99999; // Ensure focus styles appear above absolute positioned elements
+    }
+  }
 
-		&:focus {
-			position: relative;
-			z-index: 99999; // Ensure focus styles appear above absolute positioned elements
-		}
-	}
+  // Style Menu On page
+  .menu-item a:hover,
+  .current-menu-item:not(.menu-item-type-custom) > a:first-child,
+  .current_page_item:not(.menu-item-type-custom) > a:first-child {
+    &::before,
+    &::after {
+      transform-origin: 0% 50%;
+      opacity: 1;
+    }
 
-	// Style Menu On page
-	.menu-item a:hover,
-	.current-menu-item:not(.menu-item-type-custom) > a:first-child,
-	.current_page_item:not(.menu-item-type-custom) > a:first-child {
+    &::before {
+      transform: translateX(0);
+    }
 
-		&::before,
-		&::after {
-			transform-origin: 0% 50%;
-			opacity: 1;
-		}
+    &::after {
+      transform: translateX(0);
+    }
+  }
 
-		&::before {
-			transform: translateX(0);
-		}
+  // Sub-menu depth indicators + text styles
+  .sub-menu {
+    @include media(tablet-only) {
+      margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
+    }
 
-		&::after {
-			transform: translateX(0);
-		}
+    a {
+      @include media(tablet-only) {
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
 
-	}
+    .sub-menu {
+      border: none;
+    }
 
-	// Sub-menu depth indicators + text styles
-	.sub-menu {
+    // Sub-menu items om wide screens.
+    @include media(mobile) {
+      // For nested sub-menus, don't duplicate the padding
+      > .menu-item > .sub-menu {
+        padding: 0;
+      }
+    }
 
-		@include media(tablet-only) {
-			margin-bottom: calc(0.5 * var(--goldencat--spacing-vertical));
+    .menu-item {
+      @include media(mobile-only) {
+        &:last-child() {
+          margin-bottom: 0;
+        }
+      }
 
-		}
+      > a {
+        padding: 0;
+        line-height: 30px;
+        display: block;
+        font-size: 12px;
+      }
+    }
+  }
 
-		a {
-			@include media(tablet-only) {
-				font-size: 12px;
-				font-weight: 500;
-			}
-		}
-
-		.sub-menu {
-			border: none;
-		}
-
-		// Sub-menu items om wide screens.
-		@include media(mobile) {
-
-			// For nested sub-menus, don't duplicate the padding
-			> .menu-item > .sub-menu {
-				padding: 0;
-			}
-		}
-
-		.menu-item {
-
-			@include media(mobile-only) {
-
-				&:last-child() {
-					margin-bottom: 0;
-				}
-
-			}
-
-			> a {
-				padding: 0 var(--primary-nav--padding);
-				line-height: 30px;
-				display: block;
-				font-size: 12px;
-
-			}
-		}
-	}
-
-	.menu-item-has-children {
-		// height: 100%;
-		align-self: center;
-	}
+  .menu-item-has-children {
+    // height: 100%;
+    align-self: center;
+  }
 }
