@@ -162,10 +162,6 @@ add_action( 'init', function() {
 }, 99);
 
 
-
-
-
-require get_template_directory() . '/assets/blocks/faq-block-grid.php';
 require get_template_directory() . '/assets/blocks/picked-post-block.php';
 require get_template_directory() . '/assets/blocks/picked-term.php';
 require get_template_directory() . '/assets/blocks/product-price.php';
